@@ -38,6 +38,17 @@ study = StudyDefinition(
             "incidence": 0.5,
         },
     ),
+    covid_death=patients.with_these_codes_on_death_certificate(
+        covid_death_codelist,  # imported from codelists.py
+        returning="date_of_death",
+        on_or_before="index_date",
+        match_only_underlying_cause=False,
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": "index_date", "latest": "today"},
+            "incidence": 0.05,
+        },
+    ),
     cause_of_death = patients.died_from_any_cause(
             on_or_before="index_date",
             returning="underlying_cause_of_death",
