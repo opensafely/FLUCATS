@@ -4,7 +4,7 @@ from codelists import *
 from demographic_variables import demographic_variables
 from comorbidity_variables import comorbidity_variables
 from vaccination_variables import vaccination_variables
-from flucats_variables import flucats_variables
+from flucats_variables import flucats_variables, flucats_variables_numeric, flucats_variables_numeric_codes, flucats_variables_other
 
 
 study = StudyDefinition(
@@ -78,6 +78,9 @@ study = StudyDefinition(
     **comorbidity_variables,
     **vaccination_variables,
     **flucats_variables,
+    **flucats_variables_numeric, 
+    **flucats_variables_numeric_codes,
+    **flucats_variables_other,
     
 
     
