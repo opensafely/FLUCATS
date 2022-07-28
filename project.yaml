@@ -19,9 +19,9 @@ actions:
         cohort: output/input*.csv.gz
   
 
-  generate_study_population_ethnicity:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition_ethnicity_end --output-format=csv.gz
+  generate_study_population_end:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_end --output-format=csv.gz
     outputs:
       highly_sensitive:
-        cohort: output/input_ethnicity.csv.gz
+        cohort: output/input_end.csv.gz
 
