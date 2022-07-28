@@ -5,8 +5,21 @@ expectations:
 
 actions:
 
-  generate_study_population:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition
+  generate_study_population_1:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-03-01 to 2021-03-01 by week" --output-format=csv.gz
     outputs:
       highly_sensitive:
-        cohort: output/input.csv
+        cohort: output/input_*.csv.gz
+
+  # generate_study_population_2:
+  #   run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2021-03-08 to 2022-05-23 by week" --output-format=csv.gz
+  #   outputs:
+  #     highly_sensitive:
+  #       cohort: output/input*.csv.gz
+  
+  generate_study_population_ethnicity:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_ethnicity --output-format=csv.gz
+    outputs:
+      highly_sensitive:
+        cohort: output/input_ethnicity.csv.gz
+

@@ -1,0 +1,215 @@
+from cohortextractor import codelist_from_csv, codelist
+
+# Ethnicity codes
+eth2001 = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-eth2001.csv",
+    system="snomed",
+    column="code",
+    category_column="grouping_16_id",
+)
+
+# Any other ethnicity code
+non_eth2001 = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-non_eth2001.csv",
+    system="snomed",
+    column="code",
+)
+
+# Ethnicity not given - patient refused
+eth_notgiptref = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-eth_notgiptref.csv",
+    system="snomed",
+    column="code",
+)
+
+# Ethnicity not stated
+eth_notstated = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-eth_notstated.csv",
+    system="snomed",
+    column="code",
+)
+
+# Ethnicity no record
+eth_norecord = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-eth_norecord.csv",
+    system="snomed",
+    column="code",
+)
+
+eth_norecord = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-eth_norecord.csv",
+    system="snomed",
+    column="code",
+)
+
+emergency_hospital_admission_codelist = codelist_from_csv(
+    "codelists/opensafely-alanine-aminotransferase-alt-tests.csv",
+    system="snomed",
+    column="code",
+)
+
+covid_death_codelist = codelist(["U071", "U072"], system="icd10")
+
+addisons_hypoadrenalism_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-addis_cod.csv", system="snomed", column="code"
+)
+
+asthma_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-ast.csv", system="snomed", column="code"
+)
+
+bmi_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-bmi.csv", system="snomed", column="code"
+)
+
+chronic_heart_disease_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-chd_cov.csv", system="snomed", column="code"
+)
+chronic_respiratory_disease_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-resp_cov.csv", system="snomed", column="code"
+)
+
+chronic_kidney_disease_non_stage_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-ckd_cov.csv", system="snomed", column="code"
+)
+
+renal_disease_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-ckd15.csv", system="snomed", column="code"
+)
+
+liver_disease_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-cld.csv", system="snomed", column="code"
+)
+
+immunosuppression_disorder_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-immdx_cov.csv", system="snomed", column="code"
+)
+
+immunosuppression_medication_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-immrx.csv", system="snomed", column="code"
+)
+
+immunosuppression_chemo_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-dxt_chemo_cod.csv",
+    system="snomed",
+    column="code",
+)
+
+homeless_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-homeless_cod.csv",
+    system="snomed",
+    column="code",
+)
+
+residential_care_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-longres.csv", system="snomed", column="code"
+)
+
+diabetes_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-diab.csv", system="snomed", column="code"
+)
+
+diabetes_resolved_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-dmres.csv", system="snomed", column="code"
+)
+
+neurological_disorder_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-cns_cov.csv", system="snomed", column="code"
+)
+
+obesity_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-sev_obesity.csv",
+    system="snomed",
+    column="code",
+)
+
+hypertension_codelist = codelist_from_csv(
+    "codelists/opensafely-hypertension-snomed.csv", system="snomed", column="id"
+)
+
+mental_illness_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-sev_mental.csv",
+    system="snomed",
+    column="code",
+)
+
+
+pregnancy_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-preg.csv", system="snomed", column="code"
+)
+
+splenic_disease_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-spln_cov.csv", system="snomed", column="code"
+)
+
+
+steroid_codelist = codelist_from_csv(
+    "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
+)
+
+antibiotic_codelist = codelist_from_csv(
+    "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
+)
+antiviral_codelist = codelist_from_csv(
+    "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
+)
+statin_codelist = codelist_from_csv(
+    "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
+)
+
+flucat_question_numbers = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    18,
+    20,
+    23,
+    24,
+    28,
+    29,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    39,
+    40,
+    41,
+    42,
+    44,
+    45,
+]
+flucats_codelists = {
+    str(i): codelist_from_csv(
+        f"codelists/user-Louis-flucats-template-q{i}.csv",
+        system="snomed",
+        column="code",
+    )
+    for i in flucat_question_numbers
+}
+
+flucats_pneumonia_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-pneumonia.csv", system="snomed", column="code"
+)
+
+flucats_icu_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-icu-admission.csv", system="snomed", column="code"
+)
+
+flucats_clinical_concern_note_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-clinical-concern-note.csv",
+    system="snomed",
+    column="code",
+)
