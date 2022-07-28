@@ -119,7 +119,12 @@ comorbidity_variables = dict(
         find_last_match_in_period=True,
         returning="binary_flag",
     ),
-
+    pneumonia = patients.with_these_clinical_events(
+        flucats_pneumonia_codelist,
+        on_or_before="index_date",
+        find_last_match_in_period=True,
+        returning="binary_flag",
+    ),
     pregnancy=patients.with_these_clinical_events(
         pregnancy_codelist,
         on_or_before="index_date",
