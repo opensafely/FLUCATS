@@ -174,23 +174,21 @@ flucat_question_numbers = [
     16,
     18,
     20,
-    23,
     24,
-    28,
-    29,
     32,
-    33,
     34,
     35,
     36,
     37,
-    39,
     40,
     41,
     42,
     44,
     45,
 ]
+
+flucat_question_numbers_numeric = [23, 28, 29, 31, 33, 39]
+
 flucats_codelists = {
     str(i): codelist_from_csv(
         f"codelists/user-Louis-flucats-template-q{i}.csv",
@@ -199,6 +197,16 @@ flucats_codelists = {
     )
     for i in flucat_question_numbers
 }
+
+flucats_codelists_numeric = {
+    str(i): codelist_from_csv(
+        f"codelists/user-Louis-flucats-template-q{i}.csv",
+        system="snomed",
+        column="code",
+    )
+    for i in flucat_question_numbers_numeric
+}
+
 
 flucats_pneumonia_codelist = codelist_from_csv(
     "codelists/user-Louis-flucats-pneumonia.csv", system="snomed", column="code"
