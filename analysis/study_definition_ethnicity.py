@@ -5,7 +5,7 @@ from cohortextractor import (
 
 from codelists import *
 
-end_date = "2022-05-23"
+end_date = "2021-06-27"
 
 
 study = StudyDefinition(
