@@ -52,12 +52,27 @@ study = StudyDefinition(
     cause_of_death = patients.died_from_any_cause(
             on_or_before="index_date",
             returning="underlying_cause_of_death",
-            return_expectations={"incidence": 0.1},
+            return_expectations={
+                "category": {
+                    "ratios": {
+                        "code1": 0.5,
+                        "code2": 0.5,
+                    }
+                }
+            },
+            
         ),
     place_of_death = patients.died_from_any_cause(
             on_or_before="index_date",
             returning="place_of_death",
-            return_expectations={"incidence": 0.1},
+            return_expectations={
+                "category": {
+                    "ratios": {
+                        "code1": 0.5,
+                        "code2": 0.5,
+                    }
+                }
+            },
         ),
     **demographic_variables,
     **comorbidity_variables,
