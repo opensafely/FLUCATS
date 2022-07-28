@@ -38,6 +38,16 @@ study = StudyDefinition(
             "incidence": 0.5,
         },
     ),
+    cause_of_death = patients.died_from_any_cause(
+            on_or_before="index_date",
+            returning="underlying_cause_of_death",
+            return_expectations={"incidence": 0.1},
+        ),
+    place_of_death = patients.died_from_any_cause(
+            on_or_before="index_date",
+            returning="place_of_death",
+            return_expectations={"incidence": 0.1},
+        ),
     **demographic_variables,
     **comorbidity_variables,
     **vaccination_variables,
