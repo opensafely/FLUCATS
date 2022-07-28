@@ -4,6 +4,7 @@ from cohortextractor import (
 )
 
 from codelists import *
+from vaccination_variables import vaccination_variables
 
 end_date = "2022-03-27"
 
@@ -17,6 +18,7 @@ study = StudyDefinition(
     index_date=end_date,
     population=patients.all(),
     
+    **vaccination_variables,
     died_any_date=patients.died_from_any_cause(
         on_or_before="index_date",
         returning="date_of_death",
