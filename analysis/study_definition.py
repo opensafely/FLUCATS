@@ -3,6 +3,8 @@ from cohortextractor import StudyDefinition, patients
 from codelists import *
 from demographic_variables import demographic_variables
 from comorbidity_variables import comorbidity_variables
+from vaccination_variables import vaccination_variables
+from flucats_variables import flucats_variables
 
 
 study = StudyDefinition(
@@ -38,12 +40,9 @@ study = StudyDefinition(
     ),
     **demographic_variables,
     **comorbidity_variables,
-    flucats_template = patients.with_these_clinical_events(
-        flucats_codelist,
-        between=["index_date","index_date + 6 days"],
-        find_last_match_in_period=True,
-        returning="binary_flag",
-    ),
+    **vaccination_variables,
+    **flucats_variables,
+    
 
     
     
