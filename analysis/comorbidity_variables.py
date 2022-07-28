@@ -13,8 +13,27 @@ comorbidity_variables = dict(
         }
     ),
 
+    bmi_primis=patients.with_these_clinical_events(
+        bmi_codelist,
+        on_or_before="index_date",
+        returning="numeric_value",
+        find_last_match_in_period=True,
+        return_expectations={
+            "float": {"distribution": "normal", "mean": 45.0, "stddev": 20},
+            "incidence": 0.5,
+        },
+        
+    ),
+
     asthma=patients.with_these_clinical_events(
         asthma_codelist,
+        on_or_before="index_date",
+        find_last_match_in_period=True,
+        returning="binary_flag",
+    ),
+
+    addisons_hypoadrenalism=patients.with_these_clinical_events(
+        addisons_hypoadrenalism_codelist,
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
@@ -29,6 +48,13 @@ comorbidity_variables = dict(
 
     chronic_respiratory_disease=patients.with_these_clinical_events(
         chronic_respiratory_disease_codelist,
+        on_or_before="index_date",
+        find_last_match_in_period=True,
+        returning="binary_flag",
+    ),
+
+    chronic_kidney_disease=patients.with_these_clinical_events(
+        chronic_kidney_disease_non_stage_codelist,
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
@@ -50,6 +76,31 @@ comorbidity_variables = dict(
 
     diabetes=patients.with_these_clinical_events(
         diabetes_codelist,
+        on_or_before="index_date",
+        find_last_match_in_period=True,
+        include_date_of_match=True,
+        date_format="YYYY-MM-DD",
+        returning="binary_flag",
+    ),
+
+    diabetes_resolved=patients.with_these_clinical_events(
+        diabetes_resolved_codelist,
+        on_or_before="index_date",
+        find_last_match_in_period=True,
+        include_date_of_match=True,
+        date_format="YYYY-MM-DD",
+        returning="binary_flag",
+    ),
+
+    obesity=patients.with_these_clinical_events(
+        obesity_codelist,
+        on_or_before="index_date",
+        find_last_match_in_period=True,
+        returning="binary_flag",
+    ),
+
+    mental_illness=patients.with_these_clinical_events(
+        mental_illness_codelist,
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
@@ -95,6 +146,14 @@ comorbidity_variables = dict(
         find_last_match_in_period=True,
         returning="binary_flag",
     ),
+
+    splenic_disease=patients.with_these_clinical_events(
+        splenic_disease_codelist,
+        on_or_before="index_date",
+        find_last_match_in_period=True,
+        returning="binary_flag",
+    ),
+
 
     )
 
