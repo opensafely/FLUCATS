@@ -1,0 +1,11 @@
+code,term
+183446009,Admission to cardiac intensive care unit
+183447000,Admission to respiratory intensive care unit
+183448005,Admission to neurological intensive care unit
+183449002,Admission to metabolic intensive care unit
+305351004,Admission to intensive care unit
+305352006,Admission to adult intensive care unit
+305353001,Admission to pediatric intensive care unit
+397769005,Unexpected admission to high dependency unit
+397945004,Unexpected admission to intensive care unit
+398162007,Admission to high dependency unit

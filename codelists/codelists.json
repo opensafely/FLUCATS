@@ -41,6 +41,348 @@
       "url": "https://codelists.opensafely.org/codelist/opensafely/ace-inhibitor-medications/2020-05-19/",
       "downloaded_at": "2022-06-20 16:39:21.631371Z",
       "sha": "e0c30e30450b35339e9007a0fa6b3899b1a8719b"
+    },
+    "primis-covid19-vacc-uptake-bmi.csv": {
+      "id": "primis-covid19-vacc-uptake/bmi/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/bmi/v1/",
+      "downloaded_at": "2022-07-06 15:09:15.228541Z",
+      "sha": "6e96c04ee1a647905be2b410fa2c33d770576bf0"
+    },
+    "primis-covid19-vacc-uptake-ast.csv": {
+      "id": "primis-covid19-vacc-uptake/ast/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/ast/v1/",
+      "downloaded_at": "2022-07-06 15:09:15.525238Z",
+      "sha": "04dd8e518c2dcd43e54a109afed396f836549d62"
+    },
+    "primis-covid19-vacc-uptake-chd_cov.csv": {
+      "id": "primis-covid19-vacc-uptake/chd_cov/v1.2.1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/chd_cov/v1.2.1/",
+      "downloaded_at": "2022-07-06 15:09:15.896227Z",
+      "sha": "31d1504f602925d7c9ff9be3c838212d492086db"
+    },
+    "primis-covid19-vacc-uptake-resp_cov.csv": {
+      "id": "primis-covid19-vacc-uptake/resp_cov/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/resp_cov/v1/",
+      "downloaded_at": "2022-07-06 15:09:16.228668Z",
+      "sha": "55333770ba5b886345790d0e5e50735b7290cf1c"
+    },
+    "primis-covid19-vacc-uptake-ckd15.csv": {
+      "id": "primis-covid19-vacc-uptake/ckd15/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/ckd15/v1/",
+      "downloaded_at": "2022-07-06 15:09:16.591146Z",
+      "sha": "88cc1ab0e8fc6e4be88929369a5b492cc402884a"
+    },
+    "primis-covid19-vacc-uptake-cld.csv": {
+      "id": "primis-covid19-vacc-uptake/cld/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/cld/v1/",
+      "downloaded_at": "2022-07-06 15:09:16.931733Z",
+      "sha": "745227a835b2d87102a314c654adebff254d4db8"
+    },
+    "primis-covid19-vacc-uptake-immdx_cov.csv": {
+      "id": "primis-covid19-vacc-uptake/immdx_cov/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/immdx_cov/v1/",
+      "downloaded_at": "2022-07-06 15:09:17.256941Z",
+      "sha": "c2bfedbbea1ca4027e571b00ec3b549b03fa3ee6"
+    },
+    "primis-covid19-vacc-uptake-immrx.csv": {
+      "id": "primis-covid19-vacc-uptake/immrx/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/immrx/v.1.5.3/",
+      "downloaded_at": "2022-07-06 15:09:17.712211Z",
+      "sha": "1fc42a6e5ef8b428fad7b8a71549fefbbc9ac1a8"
+    },
+    "primis-covid19-vacc-uptake-dxt_chemo_cod.csv": {
+      "id": "primis-covid19-vacc-uptake/dxt_chemo_cod/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/dxt_chemo_cod/v.1.5.3/",
+      "downloaded_at": "2022-07-06 15:09:18.014026Z",
+      "sha": "d8a2958c17dc83ce7d1de4b447d8bb979bcd7227"
+    },
+    "primis-covid19-vacc-uptake-diab.csv": {
+      "id": "primis-covid19-vacc-uptake/diab/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/diab/v.1.5.3/",
+      "downloaded_at": "2022-07-06 15:09:18.307555Z",
+      "sha": "28145dec21a301060a1f3652143dfece6d9f47ff"
+    },
+    "primis-covid19-vacc-uptake-dmres.csv": {
+      "id": "primis-covid19-vacc-uptake/dmres/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/dmres/v1/",
+      "downloaded_at": "2022-07-06 15:09:18.570761Z",
+      "sha": "57682a6345da78472609f01f1ca065ace27fcb43"
+    },
+    "primis-covid19-vacc-uptake-cns_cov.csv": {
+      "id": "primis-covid19-vacc-uptake/cns_cov/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/cns_cov/v1/",
+      "downloaded_at": "2022-07-06 15:09:18.866816Z",
+      "sha": "6492fb0e87c333c5adeb84a803ddfddf6e55143f"
+    },
+    "opensafely-hypertension-snomed.csv": {
+      "id": "opensafely/hypertension-snomed/2020-04-28",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/hypertension-snomed/2020-04-28/",
+      "downloaded_at": "2022-07-06 15:09:19.177111Z",
+      "sha": "5d5471bb6a8a01e362b191b3eb8e80c2febeb1da"
+    },
+    "primis-covid19-vacc-uptake-preg.csv": {
+      "id": "primis-covid19-vacc-uptake/preg/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/preg/v1/",
+      "downloaded_at": "2022-07-06 15:09:19.532788Z",
+      "sha": "16b9bdf6c37c9f5e802912a98542c5dd5d21183d"
+    },
+    "primis-covid19-vacc-uptake-addis_cod.csv": {
+      "id": "primis-covid19-vacc-uptake/addis_cod/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/addis_cod/v.1.5.3/",
+      "downloaded_at": "2022-07-06 15:09:19.797676Z",
+      "sha": "5a7f84908af4745bf67c54945e467f1b99d7aaeb"
+    },
+    "primis-covid19-vacc-uptake-covrx.csv": {
+      "id": "primis-covid19-vacc-uptake/covrx/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/covrx/v.1.5.3/",
+      "downloaded_at": "2022-07-06 15:09:20.125567Z",
+      "sha": "87ec0ab80f5d8ad6bd90eae8c8bd6e159982ed75"
+    },
+    "primis-covid19-vacc-uptake-ckd_cov.csv": {
+      "id": "primis-covid19-vacc-uptake/ckd_cov/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/ckd_cov/v.1.5.3/",
+      "downloaded_at": "2022-07-06 15:09:20.552503Z",
+      "sha": "33a5cdc7e08e3b07cbf06f9d437456c7770542f5"
+    },
+    "primis-covid19-vacc-uptake-homeless_cod.csv": {
+      "id": "primis-covid19-vacc-uptake/homeless_cod/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/homeless_cod/v.1.5.3/",
+      "downloaded_at": "2022-07-06 15:09:20.885824Z",
+      "sha": "91abb1b83667d3b2eab8a357d5c01aa88a2bdcc4"
+    },
+    "primis-covid19-vacc-uptake-longres.csv": {
+      "id": "primis-covid19-vacc-uptake/longres/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/longres/v.1.5.3/",
+      "downloaded_at": "2022-07-06 15:09:21.197590Z",
+      "sha": "3d2ae86b8e250b206dcbc3e2853aeac16805d88c"
+    },
+    "primis-covid19-vacc-uptake-sev_obesity.csv": {
+      "id": "primis-covid19-vacc-uptake/sev_obesity/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/sev_obesity/v.1.5.3/",
+      "downloaded_at": "2022-07-06 15:09:21.511407Z",
+      "sha": "dfe3662bed703c590d1449e604e892cdd7a360c1"
+    },
+    "primis-covid19-vacc-uptake-spln_cov.csv": {
+      "id": "primis-covid19-vacc-uptake/spln_cov/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/spln_cov/v.1.5.3/",
+      "downloaded_at": "2022-07-06 15:09:21.848868Z",
+      "sha": "03158ea5180bba107634be87a1774c1fc3fd474f"
+    },
+    "primis-covid19-vacc-uptake-sev_mental.csv": {
+      "id": "primis-covid19-vacc-uptake/sev_mental/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/sev_mental/v.1.5.3/",
+      "downloaded_at": "2022-07-06 15:41:34.855939Z",
+      "sha": "e4151daaefa5fdbc1e35feeb31778a3d3b7e5cfd"
+    },
+    "user-Louis-flucats-template-q1.csv": {
+      "id": "user/Louis/flucats-template-q1/645b1e99",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q1/645b1e99/",
+      "downloaded_at": "2022-07-28 11:16:47.810711Z",
+      "sha": "feeec829e7551ba1c2eb48a16b32ae3e92d9fa8c"
+    },
+    "user-Louis-flucats-template-q2.csv": {
+      "id": "user/Louis/flucats-template-q2/4b4bab64",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q2/4b4bab64/",
+      "downloaded_at": "2022-07-28 11:25:32.314849Z",
+      "sha": "83993ae9dce2a46adc4ca7b974e881ae9c04b8fb"
+    },
+    "user-Louis-flucats-template-q3.csv": {
+      "id": "user/Louis/flucats-template-q3/323c382f",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q3/323c382f/",
+      "downloaded_at": "2022-07-28 11:25:32.664886Z",
+      "sha": "58311c7b8817acdbf016af1f45b742b491c8c68b"
+    },
+    "user-Louis-flucats-template-q4.csv": {
+      "id": "user/Louis/flucats-template-q4/192cc4fa",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q4/192cc4fa/",
+      "downloaded_at": "2022-07-28 11:25:33.020535Z",
+      "sha": "720d643d22a09385a2a95f59000aa6e83f83810e"
+    },
+    "user-Louis-flucats-template-q5.csv": {
+      "id": "user/Louis/flucats-template-q5/001d51c5",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q5/001d51c5/",
+      "downloaded_at": "2022-07-28 11:25:33.378971Z",
+      "sha": "c48efd60b9adae17c6ea1e44abbd5bb518f5383b"
+    },
+    "user-Louis-flucats-template-q6.csv": {
+      "id": "user/Louis/flucats-template-q6/670dde8f",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q6/670dde8f/",
+      "downloaded_at": "2022-07-28 11:25:33.795016Z",
+      "sha": "dea232dbf9b8de8ca19c6572ec94a53c29a0d35c"
+    },
+    "user-Louis-flucats-template-q7.csv": {
+      "id": "user/Louis/flucats-template-q7/4dfe6b5a",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q7/4dfe6b5a/",
+      "downloaded_at": "2022-07-28 11:25:34.086748Z",
+      "sha": "625ac5391d3bdc0541a2e2211a5468062c1209b0"
+    },
+    "user-Louis-flucats-template-q9.csv": {
+      "id": "user/Louis/flucats-template-q9/1bdf84f0",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q9/1bdf84f0/",
+      "downloaded_at": "2022-07-28 11:25:34.692494Z",
+      "sha": "0513e34be4b07ddd9a00059deda2af47ae5f498a"
+    },
+    "user-Louis-flucats-template-q10.csv": {
+      "id": "user/Louis/flucats-template-q10/02d011bb",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q10/02d011bb/",
+      "downloaded_at": "2022-07-28 11:25:35.001499Z",
+      "sha": "1cb15dffd1702be66bc57efb5d852888e400e025"
+    },
+    "user-Louis-flucats-template-q11.csv": {
+      "id": "user/Louis/flucats-template-q11/69c09e85",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q11/69c09e85/",
+      "downloaded_at": "2022-07-28 11:25:35.542528Z",
+      "sha": "7c1854f7b14306aa129cea8ce357e607139d79c3"
+    },
+    "user-Louis-flucats-template-q12.csv": {
+      "id": "user/Louis/flucats-template-q12/50b12b50",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q12/50b12b50/",
+      "downloaded_at": "2022-07-28 11:25:36.035136Z",
+      "sha": "a432d461363eeb12d1ff859a51a9e6f6a799bf6c"
+    },
+    "user-Louis-flucats-template-q14.csv": {
+      "id": "user/Louis/flucats-template-q14/37a1b81b",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q14/37a1b81b/",
+      "downloaded_at": "2022-07-28 11:25:36.397640Z",
+      "sha": "945561a0dd4d208d88164acd872fded9048a6b98"
+    },
+    "user-Louis-flucats-template-q15.csv": {
+      "id": "user/Louis/flucats-template-q15/1e9244e6",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q15/1e9244e6/",
+      "downloaded_at": "2022-07-28 11:25:36.715075Z",
+      "sha": "12928496e7903a737d0dd99cc128b557c77a35c0"
+    },
+    "user-Louis-flucats-template-q16.csv": {
+      "id": "user/Louis/flucats-template-q16/0582d1b1",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q16/0582d1b1/",
+      "downloaded_at": "2022-07-28 11:25:37.034048Z",
+      "sha": "a538c4879490f4d19293f3b412b155dfa6ab7633"
+    },
+    "user-Louis-flucats-template-q18.csv": {
+      "id": "user/Louis/flucats-template-q18/6c735e7b",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q18/6c735e7b/",
+      "downloaded_at": "2022-07-28 11:25:37.350557Z",
+      "sha": "2ebdccc8e79a6a6762482a1de133f68798d69469"
+    },
+    "user-Louis-flucats-template-q20.csv": {
+      "id": "user/Louis/flucats-template-q20/5363eb46",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q20/5363eb46/",
+      "downloaded_at": "2022-07-28 11:25:37.742319Z",
+      "sha": "534a9b7dd6138b03ed14209db0d92357c89a03dd"
+    },
+    "user-Louis-flucats-template-q23.csv": {
+      "id": "user/Louis/flucats-template-q23/3a547811",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q23/3a547811/",
+      "downloaded_at": "2022-07-28 11:25:38.085457Z",
+      "sha": "4e404bf1d8955110e2554c1f392e1154efcaa309"
+    },
+    "user-Louis-flucats-template-q24.csv": {
+      "id": "user/Louis/flucats-template-q24/214504dc",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q24/214504dc/",
+      "downloaded_at": "2022-07-28 11:25:38.405006Z",
+      "sha": "63d0dfb63ab97d404483bc6380f3d16b3bfe73ea"
+    },
+    "user-Louis-flucats-template-q28.csv": {
+      "id": "user/Louis/flucats-template-q28/083591a7",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q28/083591a7/",
+      "downloaded_at": "2022-07-28 11:25:38.707688Z",
+      "sha": "8ebe2791b1c580f3a9655e3307a7feca8e62afe3"
+    },
+    "user-Louis-flucats-template-q29.csv": {
+      "id": "user/Louis/flucats-template-q29/6f261e71",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q29/6f261e71/",
+      "downloaded_at": "2022-07-28 11:25:39.008981Z",
+      "sha": "e6b68578476b2ce8997df62a267bd5d567c9626d"
+    },
+    "user-Louis-flucats-template-q32.csv": {
+      "id": "user/Louis/flucats-template-q32/5616ab3c",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q32/5616ab3c/",
+      "downloaded_at": "2022-07-28 11:25:39.296840Z",
+      "sha": "1242c33aa0893020374ef1baecbf424847d7f882"
+    },
+    "user-Louis-flucats-template-q33.csv": {
+      "id": "user/Louis/flucats-template-q33/3d073807",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q33/3d073807/",
+      "downloaded_at": "2022-07-28 11:25:39.571410Z",
+      "sha": "2072805174bd1dcb5d99f5703268fc2799ed0715"
+    },
+    "user-Louis-flucats-template-q34.csv": {
+      "id": "user/Louis/flucats-template-q34/23f7c4d2",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q34/23f7c4d2/",
+      "downloaded_at": "2022-07-28 11:25:39.854036Z",
+      "sha": "f7fc46b7167a75403f410401b8221ec890dfcc6f"
+    },
+    "user-Louis-flucats-template-q35.csv": {
+      "id": "user/Louis/flucats-template-q35/0ae8519d",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q35/0ae8519d/",
+      "downloaded_at": "2022-07-28 11:25:40.190921Z",
+      "sha": "c417a84282a1e23fc68888f3653355919489d365"
+    },
+    "user-Louis-flucats-template-q36.csv": {
+      "id": "user/Louis/flucats-template-q36/71d8de67",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q36/71d8de67/",
+      "downloaded_at": "2022-07-28 11:25:40.478703Z",
+      "sha": "43ceed962c77ecebb29d3436ef6de57ea76f2873"
+    },
+    "user-Louis-flucats-template-q37.csv": {
+      "id": "user/Louis/flucats-template-q37/58c96b32",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q37/58c96b32/",
+      "downloaded_at": "2022-07-28 11:25:40.853867Z",
+      "sha": "5eb7d1e069b96baed32d4d6fac4f149466a6e547"
+    },
+    "user-Louis-flucats-template-q39.csv": {
+      "id": "user/Louis/flucats-template-q39/3fb9f7fd",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q39/3fb9f7fd/",
+      "downloaded_at": "2022-07-28 11:25:41.143268Z",
+      "sha": "bc30c280afcb3441e00e631f23c3de6f24463003"
+    },
+    "user-Louis-flucats-template-q40.csv": {
+      "id": "user/Louis/flucats-template-q40/26aa84c8",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q40/26aa84c8/",
+      "downloaded_at": "2022-07-28 11:25:41.465589Z",
+      "sha": "992c6a0ba890f97638784e81e34565eddaaaa547"
+    },
+    "user-Louis-flucats-template-q41.csv": {
+      "id": "user/Louis/flucats-template-q41/0d9b1193",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q41/0d9b1193/",
+      "downloaded_at": "2022-07-28 11:25:41.715547Z",
+      "sha": "2df87048b3ef5f108d327acc283861bf59667708"
+    },
+    "user-Louis-flucats-template-q42.csv": {
+      "id": "user/Louis/flucats-template-q42/748b9e5d",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q42/748b9e5d/",
+      "downloaded_at": "2022-07-28 11:25:41.998689Z",
+      "sha": "246ddd16470a31271c39ef4ac56222bc31400a47"
+    },
+    "user-Louis-flucats-template-q44.csv": {
+      "id": "user/Louis/flucats-template-q44/5b7c2b28",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q44/5b7c2b28/",
+      "downloaded_at": "2022-07-28 11:25:42.324680Z",
+      "sha": "6e0411bbc08c2adcc66db5eb63bda7bce8c8a2a1"
+    },
+    "user-Louis-flucats-template-q45.csv": {
+      "id": "user/Louis/flucats-template-q45/426cb7f3",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-template-q45/426cb7f3/",
+      "downloaded_at": "2022-07-28 11:25:42.604205Z",
+      "sha": "8670404cf241d2cf8112c58ff7d392da56d94eda"
+    },
+    "user-Louis-flucats-pneumonia.csv": {
+      "id": "user/Louis/flucats-pneumonia/336afa04",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-pneumonia/336afa04/",
+      "downloaded_at": "2022-07-28 13:47:27.239465Z",
+      "sha": "b7fc091b51f00a9714f34575e9028673f3b19617"
+    },
+    "user-Louis-flucats-icu-admission.csv": {
+      "id": "user/Louis/flucats-icu-admission/1a5b86cf",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-icu-admission/1a5b86cf/",
+      "downloaded_at": "2022-07-28 13:47:27.500678Z",
+      "sha": "e5dce3d0d39649e36d7291ceabfdbd98952f991b"
+    },
+    "user-Louis-flucats-clinical-concern-note.csv": {
+      "id": "user/Louis/flucats-clinical-concern-note/014c139a",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-clinical-concern-note/014c139a/",
+      "downloaded_at": "2022-07-28 13:47:27.803137Z",
+      "sha": "06b397ec1940bd2d0f50d44dd05c0181056ebce2"
     }
   }
 }

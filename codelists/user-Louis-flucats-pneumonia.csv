@@ -1,0 +1,231 @@
+code,term
+102361000119104,Chronic pneumonia
+1033111000000104,Influenza with pneumonia due to seasonal influenza virus
+105977003,Non-infectious pneumonia
+10624991000119103,Bronchopneumonia caused by Achromobacter
+10625031000119102,Bronchopneumonia caused by anaerobic bacteria
+10625071000119104,Bronchopneumonia caused by bacteria
+10625111000119106,Bronchopneumonia caused by Escherichia coli
+10625151000119107,Bronchopneumonia caused by Group A Streptococcus
+10625191000119102,Bronchopneumonia caused by Group B Streptococcus
+10625231000119106,Bronchopneumonia caused by Haemophilus influenzae
+10625271000119109,Bronchopneumonia caused by Human metapneumovirus
+10625311000119109,Bronchopneumonia caused by Klebsiella pneumoniae
+10625351000119105,Bronchopneumonia caused by methicillin resistant Staphylococcus aureus
+10625391000119100,Bronchopneumonia caused by methicillin susceptible Staphylococcus aureus
+10625431000119105,Bronchopneumonia caused by Mycoplasma pneumoniae
+10625471000119108,Bronchopneumonia caused by Proteus mirabilis
+10625511000119104,Bronchopneumonia caused by Pseudomonas
+10625551000119103,Bronchopneumonia caused by respiratory syncytial virus
+10625591000119108,Bronchopneumonia caused by Staphylococcus
+10625631000119108,Bronchopneumonia caused by Staphylococcus aureus
+10625671000119106,Bronchopneumonia caused by Streptococcus
+10625711000119105,Bronchopneumonia caused by Streptococcus pneumoniae
+10625751000119106,Bronchopneumonia due to virus
+1082721000119101,Pneumonia caused by Ascaris
+1087061000119106,Gonococcal pneumonia
+1092361000119109,Rubella pneumonia
+1092951000119106,Pneumonia caused by Bordetella parapertussis
+111900000,Pneumonia in aspergillosis
+120639003,Hantavirus pulmonary syndrome
+123587001,Acute bronchopneumonia
+123588006,Confluent bronchopneumonia with abscess formation
+123589003,Necrotizing bronchopneumonia
+123590007,Focal pneumonia
+123591006,Confluent pneumonia
+1240521000000100,Otitis media due to disease caused by Severe acute respiratory syndrome coronavirus 2
+1240531000000103,Myocarditis due to disease caused by Severe acute respiratory syndrome coronavirus 2
+1240541000000107,Infection of upper respiratory tract caused by Severe acute respiratory syndrome coronavirus 2
+1240551000000105,Pneumonia caused by severe acute respiratory syndrome coronavirus 2
+1240561000000108,Encephalopathy due to disease caused by Severe acute respiratory syndrome coronavirus 2
+1240571000000101,Gastroenteritis caused by severe acute respiratory syndrome coronavirus 2
+1240751000000100,Coronavirus disease 19 caused by severe acute respiratory syndrome coronavirus 2
+124691000119101,Pneumonia caused by methicillin resistant Staphylococcus aureus
+128711000119106,Pneumonia caused by methicillin susceptible Staphylococcus aureus
+129451001,Respiratory bronchiolitis associated interstitial lung disease
+129452008,Nonspecific interstitial pneumonia
+142931000119100,Pneumonia caused by H1N1 influenza
+143111000119103,Pneumonia caused by avian influenza
+16311000119108,Pneumonia caused by influenza
+181007,Hemorrhagic bronchopneumonia
+187052004,Pulmonary African histoplasmosis
+191727003,Post measles pneumonia
+195878008,Pneumonia and influenza
+195881003,Pneumonia caused by respiratory syncytial virus
+195886008,Group B streptococcal pneumonia
+195888009,Proteus pneumonia
+195889001,Legionella pneumonia
+195896004,Pneumonia caused by pleuropneumonia-like organism
+195900001,Pneumonia co-occurrent and due to measles
+195902009,Anthrax pneumonia
+195904005,Pneumonia with coccidioidomycosis
+195908008,Actinomycotic pneumonia
+195909000,Nocardial pneumonia
+195911009,Chickenpox pneumonia
+196112005,Abscess of lung with pneumonia
+206283000,Congenital staphylococcal pneumonia
+206284006,Congenital group A hemolytic streptococcal pneumonia
+206285007,Congenital group B hemolytic streptococcal pneumonia
+206286008,Congenital Escherichia coli pneumonia
+206287004,Congenital pseudomonal pneumonia
+206289001,Congenital chlamydial pneumonia
+22754005,Staphylococcal pneumonia
+233604007,Pneumonia
+233606009,Atypical pneumonia
+233607000,Pneumococcal pneumonia
+233608005,Meningococcal pneumonia
+233609002,Pneumonia caused by Chlamydiaceae
+233610007,Neonatal chlamydial pneumonia
+233613009,Fungal pneumonia
+233614003,Pulmonary mucormycosis
+233617005,Hemorrhagic pneumonia
+233618000,Mycobacterial pneumonia
+233619008,Neonatal pneumonia
+233620002,Pneumonia due to parasitic infestation
+233621003,Rickettsial pneumonia
+233622005,Infectious mononucleosis pneumonia
+233623000,Mononuclear interstitial pneumonia
+233624006,Herpes simplex pneumonia
+233625007,Giant cell pneumonia
+233713004,Seasonal cryptogenic organizing pneumonia with biochemical cholestasis
+233728004,Cholesterol pneumonia
+233730002,Lupus pneumonia
+233731003,Traumatic pneumonia
+236302005,Acute interstitial pneumonia
+240387006,Pulmonary glanders
+240391001,Pulmonary melioidosis
+240635003,Pneumonia caused by Leishmania
+240741002,Acute pulmonary African histoplasmosis
+240742009,Chronic pulmonary African histoplasmosis
+240747003,Chronic pulmonary blastomycosis
+240871004,Capillaria aerophila chest infection
+2523007,Salmonella pneumonia
+266350000,Pneumococcal lobar pneumonia
+266404004,Chronic chemical respiratory disease
+276692000,Congenital viral pneumonia
+276693005,Congenital bacterial pneumonia
+276695003,Neonatal aspiration pneumonia
+277869007,Non-tuberculous mycobacterial pneumonia
+278516003,Lobar pneumonia
+28791000119105,Chronic coccidioidomycotic pneumonia
+300999006,Basal pneumonia
+301000005,Left lower zone pneumonia
+301001009,Right lower zone pneumonia
+301002002,Left upper zone pneumonia
+301003007,Right middle zone pneumonia
+301004001,Right upper zone pneumonia
+308906005,Secondary bacterial pneumonia
+312342009,Infective pneumonia
+314978007,Postoperative pneumonia
+31561003,Hypostatic bronchopneumonia
+32204007,Pulmonary actinobacillosis
+32286006,Pneumonia in Q fever
+34020007,Pneumonia caused by Streptococcus
+3487004,Candidiasis of lung
+35031000119100,Acute aspiration pneumonia
+35037009,Primary atypical interstitial pneumonia
+35339003,Primary pneumonic plague
+371072008,Postobstructive pneumonia
+385093006,Community acquired pneumonia
+38699009,Pneumonia caused by Histoplasma capsulatum
+38976008,Pneumonic plague
+39172002,Pneumonia caused by Proteus mirabilis
+396285007,Bronchopneumonia
+396286008,Bilateral bronchopneumonia
+407671000,Bilateral pneumonia
+40786001,Aspiration pneumonia caused by regurgitated gastric secretions
+408679000,Healthcare associated pneumonia
+408680002,Healthcare associated bacterial pneumonia
+408681003,Healthcare associated legionnaire's disease
+409664000,Pneumonia caused by anaerobic bacteria
+409665004,Pneumonia caused by aerobic bacteria
+41207000,Adenoviral pneumonia
+41269000,Influenzal bronchopneumonia
+41381004,Pneumonia caused by Pseudomonas
+415125002,Pneumocystosis jirovecii pneumonia
+417688002,Chronic progressive coccidioidal pneumonia
+42004004,Aspiration pneumonia caused by inhalation of vomitus
+420544002,Bacterial pneumonia associated with acquired immunodeficiency syndrome
+420787001,Pneumococcal pneumonia associated with acquired immunodeficiency syndrome
+421047005,Candidiasis of lung associated with acquired immunodeficiency syndrome
+421508002,Viral pneumonia associated with acquired immunodeficiency syndrome
+421671002,Pneumonia associated with acquired immunodeficiency syndrome
+422588002,Aspiration pneumonia
+425464007,Nosocomial pneumonia
+425996009,Bilateral basal pneumonia
+426437004,Familial idiopathic pulmonary fibrosis
+426696003,Lingular pneumonia
+42680007,Endogenous lipoid pneumonia
+429271009,Ventilator-acquired pneumonia
+430395005,Pneumonia caused by Gram negative bacteria
+430969000,Recurrent aspiration pneumonia
+438764004,Postoperative aspiration pneumonia
+441590008,Pneumonia caused by Severe acute respiratory syndrome coronavirus
+441658007,Pneumonia caused by Staphylococcus aureus
+441942006,Pneumonia caused by infection caused by Streptococcus pyogenes
+442094008,Pneumonia caused by Histoplasma
+44274007,Lymphoid interstitial pneumonia
+445096001,Pneumonia caused by Human metapneumovirus
+44549008,Aspiration pneumonia resulting from a procedure
+45312009,Pneumonia in typhoid fever
+45556008,Pulmonary tularemia
+46970008,Pneumonia caused by Mycoplasma pneumoniae
+471272001,Cavitary pneumonia
+50804000,Catarrhal pneumonia
+51530003,Pneumonia caused by Escherichia coli
+53084003,Bacterial pneumonia
+55679008,Peribronchial pneumonia
+57702005,Unresolved pneumonia
+58890000,Adenoviral bronchopneumonia
+59475000,Pneumonia in pertussis
+60485005,Pleurobronchopneumonia
+61884008,Achromobacter pneumonia
+64479007,Pneumonia caused by Klebsiella pneumoniae
+64667001,Interstitial pneumonia
+64703005,Terminal bronchopneumonia
+64880000,Parainfluenza virus bronchopneumonia
+64917006,Parainfluenza virus pneumonia
+65141002,Foreign body pneumonia
+66429007,Unresolved lobar pneumonia
+67525007,Secondary pneumonic plague
+68409003,Organized pneumonia
+699014000,Recurrent pneumonia
+700249006,Idiopathic interstitial pneumonia
+700250006,Idiopathic pulmonary fibrosis
+700251005,Chronic idiopathic pulmonary fibrosis
+700252003,Subacute idiopathic pulmonary fibrosis
+70036007,Haemophilus influenzae pneumonia
+704345008,Chronic interstitial pneumonia
+7063008,Gangrenous pneumonia
+707449006,Exogenous lipoid pneumonia
+707503004,Pneumonia caused by Schistosoma mansoni
+707507003,Pneumonia caused by Schistosoma japonicum
+707508008,Pneumonia caused by Schistosoma haematobium
+707552000,Acute exogenous lipoid pneumonia
+707553005,Chronic exogenous lipoid pneumonia
+708031000,Idiopathic eosinophilic pneumonia
+708537005,Acute idiopathic pulmonary fibrosis
+713084008,Pneumonia caused by Human coronavirus
+713525001,Recurrent bacterial pneumonia
+713526000,Recurrent bacterial pneumonia co-occurrent with human immunodeficiency virus infection
+713544008,Bacterial pneumonia co-occurrent with human immunodeficiency virus infection
+719218000,Cryptogenic organizing pneumonia
+71926009,Infective pneumonia acquired prenatally
+724498004,Pneumonia caused by Chlamydia pneumoniae
+724499007,Idiopathic acute eosinophilic pneumonia
+724500003,Idiopathic chronic eosinophilic pneumonia
+72656004,Granulomatous pneumonia
+72854003,Aspiration pneumonia due to near drowning
+733051000,Pneumonia caused by Gram positive bacteria
+75426006,Aspiration pneumonia caused by regurgitated food
+7548000,Rheumatic pneumonia
+75570004,Viral pneumonia
+76090006,Pittsburgh pneumonia
+763888005,Necrotizing pneumonia caused by Panton-Valentine leukocidin producing Staphylococcus aureus
+7678002,Cytomegaloviral pneumonia
+78895009,Congenital pneumonia
+80003002,Tuberculous pneumonia
+83608006,Aspiration pneumonia caused by inhalation of milk
+84753008,Pneumonia in systemic mycosis
+85469005,Hypostatic pneumonia
+8549006,Desquamative interstitial pneumonia
