@@ -24,7 +24,7 @@ flucats_variables = {
 flucats_variables_other = dict(
 
     flucats_question_8 = patients.with_these_clinical_events(
-            codelist([939761000006103, 939771000006105, 939781000006108], system="snomed"),
+            codelist([81765008, 939761000006103, 939771000006105, 939781000006108], system="snomed"),
             between=["index_date","index_date + 6 days"],
             returning="code",
             find_last_match_in_period=True,
