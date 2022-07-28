@@ -45,6 +45,18 @@ demographic_variables = dict(
             "category": {"ratios": {"M": 0.49, "F": 0.5, "U": 0.01}},
         }
     ),
+    homeless=patients.with_these_clinical_events(
+        homeless_codelist,
+        on_or_before="index_date",
+        find_last_match_in_period=True,
+        returning="binary_flag",
+    ),
+    residential_care = patients.with_these_clinical_events(
+        residential_care_codelist,
+        on_or_before="index_date",
+        find_last_match_in_period=True,
+        returning="binary_flag",
+    ),
     region=patients.registered_practice_as_of(
         "index_date",
         returning="nuts1_region_name",
