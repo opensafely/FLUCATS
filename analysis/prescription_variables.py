@@ -19,7 +19,7 @@ prescription_variables = dict(
         returning="binary_flag",
     ),
     statins = patients.with_these_medications(
-        statins_codelist,
+        statin_codelist,
         between=["index_date - 6 months", "index_date"],
         returning="binary_flag",
     )
