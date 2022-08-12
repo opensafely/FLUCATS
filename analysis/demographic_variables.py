@@ -1,5 +1,6 @@
 from cohortextractor import patients
 from codelists import *
+from study_utils import generate_expectations_codes
 
 demographic_variables = dict(
     age=patients.age_as_of(
@@ -42,7 +43,7 @@ demographic_variables = dict(
     sex=patients.sex(
         return_expectations={
             "rate": "universal",
-            "category": {"ratios": {"M": 0.49, "F": 0.5, "U": 0.01}},
+            "category": {"ratios": {"M": 0.49, "F": 0.49, "U": 0.01, "I": 0.01}},
         }
     ),
 
@@ -53,7 +54,7 @@ demographic_variables = dict(
         find_last_match_in_period=True,
         return_expectations={
             "rate": "universal",
-            "category": {"ratios": {"code_1": 0.5, "code_2": 0.5}},
+            "category": {"ratios":generate_expectations_codes(type_of_residence_codelist, incidence=0.8)},
         }
     ),
 
@@ -73,7 +74,10 @@ demographic_variables = dict(
         type_of_residence='365510008' OR
         type_of_residence='381751000000106' OR
         type_of_residence='65421000'
-        """
+        """,
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
     
 
@@ -86,7 +90,10 @@ demographic_variables = dict(
         type_of_residence='224224003' OR
         type_of_residence='248171000000108' OR
         type_of_residence='394923006'
-        """
+        """,
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
     region=patients.registered_practice_as_of(
         "index_date",
