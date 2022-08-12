@@ -7,7 +7,10 @@ primis-covid19-vacc-uptake/eth_norecord/v1
 opensafely/alanine-aminotransferase-alt-tests/2298df3e
 opensafely/ace-inhibitor-medications/2020-05-19/
 primis-covid19-vacc-uptake/bmi/v1
-primis-covid19-vacc-uptake/ast/v1
+primis-covid19-vacc-uptake/astadm/v.1.5.3
+primis-covid19-vacc-uptake/ast/v.1.5.3
+primis-covid19-vacc-uptake/astrxm1/v1.5.3
+primis-covid19-vacc-uptake/astrxm2/v1.5.3
 primis-covid19-vacc-uptake/chd_cov/v1.2.1
 primis-covid19-vacc-uptake/resp_cov/v1
 primis-covid19-vacc-uptake/ckd15/v1

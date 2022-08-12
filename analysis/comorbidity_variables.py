@@ -25,12 +25,44 @@ comorbidity_variables = dict(
         
     ),
 
-    asthma=patients.with_these_clinical_events(
-        asthma_codelist,
-        on_or_before="index_date",
-        find_last_match_in_period=True,
-        returning="binary_flag",
-    ),
+    ### Patients with Asthma 
+    asthma= patients.satisfying(
+        """
+        ASTADM
+        OR
+        (
+        AST
+        AND
+        ASTRXM1
+        AND
+        ASTRXM2 > 1
+        )
+        """,
+        ### Asthma Admission codes
+        ASTADM = patients.with_these_clinical_events(
+            asthma_admission_codelist,
+            find_last_match_in_period = True,
+            between=["index_date - 730 days", "index_date"],
+        ),  
+        ### Asthma Diagnosis code
+        AST = patients.with_these_clinical_events(
+            asthma_diagnosis_codelist,
+            find_first_match_in_period = True,
+            on_or_before="index_date",
+        ),  
+        ### Asthma - inhalers in last 12 months
+        ASTRXM1=patients.with_these_medications(
+            asthma_inhaler_codelist,
+            returning="binary_flag",
+            between=["index_date - 365 days", "index_date"],
+        ),
+        ### Asthma - systemic oral steroid prescription codes in last 24 months
+        ASTRXM2=patients.with_these_medications(
+            asthma_steroid_codelist,
+            returning="number_of_matches_in_period",
+            between=["index_date - 730 days", "index_date"],
+        ),
+     ),
 
     addisons_hypoadrenalism=patients.with_these_clinical_events(
         addisons_hypoadrenalism_codelist,

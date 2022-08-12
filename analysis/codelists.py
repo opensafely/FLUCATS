@@ -61,8 +61,28 @@ addisons_hypoadrenalism_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-addis_cod.csv", system="snomed", column="code"
 )
 
-asthma_codelist = codelist_from_csv(
-    "codelists/primis-covid19-vacc-uptake-ast.csv", system="snomed", column="code"
+asthma_admission_codelist=codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-astadm.csv",
+    system="snomed",
+    column="code",
+)
+
+asthma_diagnosis_codelist=codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-ast.csv",
+    system="snomed",
+    column="code",
+)
+
+asthma_inhaler_codelist=codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-astrxm1.csv",
+    system="snomed",
+    column="code",
+)
+
+asthma_steroid_codelist=codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-astrxm2.csv",
+    system="snomed",
+    column="code",
 )
 
 bmi_codelist = codelist_from_csv(
