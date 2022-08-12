@@ -14,7 +14,7 @@ prescription_variables = dict(
         returning="binary_flag",
     ),
     antivirals = patients.with_these_medications(
-        antivirals_codelist,
+        antiviral_codelist,
         between=["index_date - 6 months", "index_date"],
         returning="binary_flag",
     ),
