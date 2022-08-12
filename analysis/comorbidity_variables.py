@@ -106,6 +106,39 @@ comorbidity_variables = dict(
         returning="binary_flag",
     ),
 
+    ### Patients who are currently pregnant - https://github.com/opensafely/covid-vaccine-preliminary-uptake-study/analysis/study_definition_delivery_u16.py
+    pregnant = patients.satisfying(
+        """
+        PREG
+        AND
+        PREG_DAT
+        AND
+        PREGDEL_DAT < PREG_DAT
+        """,
+        ### Pregnancy codes recorded in the 8.5 months before the audit run date
+        PREG =  patients.with_these_clinical_events(
+            pregnancy_codelist,
+            returning="binary_flag",
+            between=["index_date - 254 days", "index_date"],
+            ),
+        ### Pregnancy or Delivery codes recorded in the 8.5 months before audit run date
+        PREGDEL_DAT=patients.with_these_clinical_events(
+            pregnancy_or_delivery_codelist,
+            returning="date",
+            find_last_match_in_period=True,
+            between=["index_date - 254 days", "index_date"],
+            date_format="YYYY-MM-DD",
+            ),
+        ### Date of pregnancy codes recorded in the 8.5 months before audit run date
+        PREG_DAT=patients.with_these_clinical_events(
+            pregnancy_codelist,
+            returning="date",
+            find_last_match_in_period=True,
+            between=["index_date - 254 days", "index_date"],
+            date_format="YYYY-MM-DD",
+            ),
+    ),
+
     ### Patients with Diabetes
     diabetes = patients.satisfying(
         """
@@ -187,38 +220,7 @@ comorbidity_variables = dict(
     ),
     
 
-    ### Patients who are currently pregnant - https://github.com/opensafely/covid-vaccine-preliminary-uptake-study/analysis/study_definition_delivery_u16.py
-    pregnant = patients.satisfying(
-        """
-        PREG
-        AND
-        PREG_DAT
-        AND
-        PREGDEL_DAT < PREG_DAT
-        """,
-        ### Pregnancy codes recorded in the 8.5 months before the audit run date
-        PREG =  patients.with_these_clinical_events(
-            pregnancy_codelist,
-            returning="binary_flag",
-            between=["index_date - 254 days", "index_date"],
-            ),
-        ### Pregnancy or Delivery codes recorded in the 8.5 months before audit run date
-        PREGDEL_DAT=patients.with_these_clinical_events(
-            pregnancy_or_delivery_codelist,
-            returning="date",
-            find_last_match_in_period=True,
-            between=["index_date - 254 days", "index_date"],
-            date_format="YYYY-MM-DD",
-            ),
-        ### Date of pregnancy codes recorded in the 8.5 months before audit run date
-        PREG_DAT=patients.with_these_clinical_events(
-            pregnancy_codelist,
-            returning="date",
-            find_last_match_in_period=True,
-            between=["index_date - 254 days", "index_date"],
-            date_format="YYYY-MM-DD",
-            ),
-    ),
+    
 
 
 
