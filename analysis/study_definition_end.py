@@ -15,6 +15,7 @@ study = StudyDefinition(
         "rate": "uniform",
         "incidence": 0.8,
     },
+    nulldate = patients.fixed_value("1900-01-01"),
     index_date=end_date,
     population=patients.all(),
     
@@ -81,6 +82,25 @@ study = StudyDefinition(
         ),
 
     # Ethnicity
+    ethnicity_opensafely=patients.with_these_clinical_events(
+        ethnicity_opensafely,
+        returning="category",
+        find_last_match_in_period=True,
+        on_or_before="index_date",
+        return_expectations={
+            "category": {
+                "ratios": {
+                    "1": 0.5,
+                    "2": 0.4,
+                    "3": 0.05,
+                    "4": 0.025,
+                    "5": 0.025,
+                }
+            },
+            "rate": "universal",
+        },
+    ),
+
     ethnicity=patients.with_these_clinical_events(
         eth2001,
         returning="category",

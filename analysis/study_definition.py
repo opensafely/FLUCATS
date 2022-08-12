@@ -8,7 +8,12 @@ from flucats_variables import (
     flucats_variables_numeric,
     flucats_variables_numeric_codes,
     flucats_variables_other,
+    flucats_variables_5,
+    flucats_variables_11, 
+    flucats_variables_29, 
+    flucats_variables_30
 )
+from prescription_variables import prescription_variables
 
 
 study = StudyDefinition(
@@ -17,6 +22,7 @@ study = StudyDefinition(
         "rate": "uniform",
         "incidence": 0.5,
     },
+    nulldate = patients.fixed_value("1900-01-01"),
     index_date="2020-03-01",
     population=patients.satisfying(
         """
@@ -63,8 +69,15 @@ study = StudyDefinition(
     ),
     **demographic_variables,
     **comorbidity_variables,
+    **prescription_variables,
     **flucats_variables,
     **flucats_variables_numeric,
     **flucats_variables_numeric_codes,
     **flucats_variables_other,
+    **flucats_variables_5,
+    **flucats_variables_11,
+    **flucats_variables_29,
+    **flucats_variables_30,
+
+
 )

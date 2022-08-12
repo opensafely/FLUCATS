@@ -1,6 +1,73 @@
 from cohortextractor import patients, codelist
 from codelists import *
 
+# use this to get indidivual code variables for questions in flucat_individual_question_numbers
+def loop_over_codes(numeric, question_number):
+
+    def make_variable(code):
+        return {
+            f"flucats_question_{question_number}_{code}_code": patients.with_these_clinical_events(
+                codelist = codelist([code], system="snomed"),
+                between=["index_date", "index_date + 6 days"],
+                returning="code",
+                find_last_match_in_period=True,
+                return_expectations={
+                    "category": {
+                        "ratios": {
+                            "code1": 0.5,
+                            "code2": 0.5,
+                        }
+                    }
+                },
+            )
+        }
+    def make_variable_numeric(code):
+        return {
+            f"flucats_question_{question_number}_{code}_numeric_value": patients.with_these_clinical_events(
+                 codelist([code], system="snomed"),
+                between=["index_date", "index_date + 6 days"],
+                returning="numeric_value",
+                find_last_match_in_period=True,
+                return_expectations={
+                    "float": {"distribution": "normal", "mean": 45.0, "stddev": 20},
+                    "incidence": 0.5,
+                },
+            ),
+
+            f"flucats_question_{question_number}_{code}_code": patients.with_these_clinical_events(
+                 codelist([code], system="snomed"),
+                between=["index_date", "index_date + 6 days"],
+                returning="code",
+                find_last_match_in_period=True,
+                return_expectations={
+                    "category": {
+                        "ratios": {
+                            "code1": 0.5,
+                            "code2": 0.5,
+                        }
+                    }
+                },
+            )
+        }
+
+    variables = {}
+    
+    if numeric:
+        code_list = flucats_codelists_individual_numeric[str(question_number)]
+        for code in code_list:
+            variables.update(make_variable_numeric(code))
+            
+    else:
+       
+        code_list = flucats_codelists_individual[str(question_number)]
+        for code in code_list:
+            variables.update(make_variable(code))
+    return variables
+
+flucats_variables_5 = loop_over_codes(numeric=False, question_number=5)
+flucats_variables_11 = loop_over_codes(numeric=False, question_number=11)
+flucats_variables_30 = loop_over_codes(numeric=False, question_number=30)
+flucats_variables_29 = loop_over_codes(numeric=True, question_number=29)
 
 flucats_variables = {
     f"flucats_question_{str(i)}_code": patients.with_these_clinical_events(
@@ -20,8 +87,6 @@ flucats_variables = {
     for i in flucat_question_numbers
 }
 
-
-
 flucats_variables_numeric = {
     f"flucats_question_{str(i)}_numeric_value": patients.with_these_clinical_events(
         flucats_codelists_numeric[str(i)],
@@ -34,11 +99,11 @@ flucats_variables_numeric = {
         },
     )
 
-    for i in flucat_question_numbers_numeric
+    for i in flucat_question_numbers_numeric if i not in flucat_individual_question_numbers_numeric
 }
 
 flucats_variables_numeric_codes = {
-    f"flucats_question_{str(i)}_code": patients.with_these_clinical_events(
+    f"flucats_question_{str(i)}_numeric_code": patients.with_these_clinical_events(
         flucats_codelists_numeric[str(i)],
         between=["index_date", "index_date + 6 days"],
         returning="code",
@@ -53,11 +118,8 @@ flucats_variables_numeric_codes = {
         },
     )
 
-    for i in flucat_question_numbers_numeric
+    for i in flucat_question_numbers_numeric if i not in flucat_individual_question_numbers_numeric
 }
-
-
-
 
 flucats_variables_other = dict(
     flucats_question_8_code=patients.with_these_clinical_events(

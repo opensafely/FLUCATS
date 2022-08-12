@@ -1,5 +1,12 @@
 from cohortextractor import codelist_from_csv, codelist
 
+ethnicity_opensafely = codelist_from_csv(
+    "codelists/opensafely-ethnicity-snomed-0removed.csv",
+    system="snomed",
+    column="snomedcode",
+    category_column="Grouping_16",
+)
+
 # Ethnicity codes
 eth2001 = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-eth2001.csv",
@@ -54,8 +61,28 @@ addisons_hypoadrenalism_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-addis_cod.csv", system="snomed", column="code"
 )
 
-asthma_codelist = codelist_from_csv(
-    "codelists/primis-covid19-vacc-uptake-ast.csv", system="snomed", column="code"
+asthma_admission_codelist=codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-astadm.csv",
+    system="snomed",
+    column="code",
+)
+
+asthma_diagnosis_codelist=codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-ast.csv",
+    system="snomed",
+    column="code",
+)
+
+asthma_inhaler_codelist=codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-astrxm1.csv",
+    system="snomed",
+    column="code",
+)
+
+asthma_steroid_codelist=codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-astrxm2.csv",
+    system="snomed",
+    column="code",
 )
 
 bmi_codelist = codelist_from_csv(
@@ -101,6 +128,12 @@ homeless_codelist = codelist_from_csv(
     column="code",
 )
 
+type_of_residence_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-reside_cod.csv",
+    system="snomed",
+    column="code",
+)
+
 residential_care_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-longres.csv", system="snomed", column="code"
 )
@@ -111,6 +144,10 @@ diabetes_codelist = codelist_from_csv(
 
 diabetes_resolved_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-dmres.csv", system="snomed", column="code"
+)
+
+gestational_diabetes_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-gdiab_cod.csv", system="snomed", column="code"
 )
 
 neurological_disorder_codelist = codelist_from_csv(
@@ -138,6 +175,10 @@ pregnancy_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-preg.csv", system="snomed", column="code"
 )
 
+pregnancy_or_delivery_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-pregdel.csv", system="snomed", column="code"
+)
+
 splenic_disease_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-spln_cov.csv", system="snomed", column="code"
 )
@@ -148,38 +189,53 @@ steroid_codelist = codelist_from_csv(
 )
 
 antibiotic_codelist = codelist_from_csv(
-    "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
+    "codelists/opensafely-antibacterials.csv", system="snomed", column="dmd_id"
 )
 antiviral_codelist = codelist_from_csv(
     "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
 )
 statin_codelist = codelist_from_csv(
-    "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
+    "codelists/opensafely-statin-medication.csv", system="snomed", column="id"
 )
 
+# questions where we expect more than one code would be recorded
+flucat_individual_question_numbers = [
+    5,
+    11,
+    30
+]
+
+flucat_individual_question_numbers_numeric = [
+    29,
+]
+
+# questions where we expect only one code would be recorded
 flucat_question_numbers = [
     1,
     2,
     3,
     4,
-    5,
     6,
     7,
     9,
     10,
-    11,
     12,
     14,
     15,
     16,
     18,
     20,
+    23,
     24,
+    28,
+    31,
     32,
+    33,
     34,
     35,
     36,
     37,
+    39,
     40,
     41,
     42,
@@ -187,6 +243,7 @@ flucat_question_numbers = [
     45,
 ]
 
+# questions where we expect a numeric value to be attached
 flucat_question_numbers_numeric = [23, 28, 29, 31, 33, 39]
 
 flucats_codelists = {
@@ -205,6 +262,24 @@ flucats_codelists_numeric = {
         column="code",
     )
     for i in flucat_question_numbers_numeric
+}
+
+flucats_codelists_individual = {
+    str(i): codelist_from_csv(
+        f"codelists/user-Louis-flucats-template-q{i}.csv",
+        system="snomed",
+        column="code",
+    )
+    for i in flucat_individual_question_numbers
+}
+
+flucats_codelists_individual_numeric = {
+    str(i): codelist_from_csv(
+        f"codelists/user-Louis-flucats-template-q{i}.csv",
+        system="snomed",
+        column="code",
+    )
+    for i in flucat_individual_question_numbers_numeric
 }
 
 

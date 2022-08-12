@@ -1,3 +1,4 @@
+opensafely/ethnicity-snomed-0removed/2e641f61
 primis-covid19-vacc-uptake/eth2001/v1
 primis-covid19-vacc-uptake/non_eth2001/v1
 primis-covid19-vacc-uptake/eth_notgiptref/v1
@@ -6,7 +7,10 @@ primis-covid19-vacc-uptake/eth_norecord/v1
 opensafely/alanine-aminotransferase-alt-tests/2298df3e
 opensafely/ace-inhibitor-medications/2020-05-19/
 primis-covid19-vacc-uptake/bmi/v1
-primis-covid19-vacc-uptake/ast/v1
+primis-covid19-vacc-uptake/astadm/v.1.5.3
+primis-covid19-vacc-uptake/ast/v.1.5.3
+primis-covid19-vacc-uptake/astrxm1/v1.5.3
+primis-covid19-vacc-uptake/astrxm2/v1.5.3
 primis-covid19-vacc-uptake/chd_cov/v1.2.1
 primis-covid19-vacc-uptake/resp_cov/v1
 primis-covid19-vacc-uptake/ckd15/v1
@@ -15,10 +19,12 @@ primis-covid19-vacc-uptake/immdx_cov/v1
 primis-covid19-vacc-uptake/immrx/v.1.5.3
 primis-covid19-vacc-uptake/dxt_chemo_cod/v.1.5.3
 primis-covid19-vacc-uptake/diab/v.1.5.3
+primis-covid19-vacc-uptake/gdiab_cod/v.1.5.3
 primis-covid19-vacc-uptake/dmres/v1
 primis-covid19-vacc-uptake/cns_cov/v1
 opensafely/hypertension-snomed/2020-04-28
 primis-covid19-vacc-uptake/preg/v1
+primis-covid19-vacc-uptake/pregdel/v.1.5.3
 primis-covid19-vacc-uptake/addis_cod/v.1.5.3
 primis-covid19-vacc-uptake/covrx/v.1.5.3
 primis-covid19-vacc-uptake/ckd_cov/v.1.5.3
@@ -47,6 +53,7 @@ user/Louis/flucats-template-q23/3a547811/
 user/Louis/flucats-template-q24/214504dc/
 user/Louis/flucats-template-q28/083591a7/
 user/Louis/flucats-template-q29/6f261e71/
+user/Louis/flucats-template-q30/5eec35b0/
 user/Louis/flucats-template-q31/60e1ab14/
 user/Louis/flucats-template-q32/5616ab3c/
 user/Louis/flucats-template-q33/3d073807/
@@ -63,3 +70,6 @@ user/Louis/flucats-template-q45/426cb7f3/
 user/Louis/flucats-pneumonia/336afa04/
 user/Louis/flucats-icu-admission/1a5b86cf/
 user/Louis/flucats-clinical-concern-note/014c139a/
+primis-covid19-vacc-uptake/reside_cod/v.1.5.3/
+opensafely/statin-medication/2020-04-20/
+opensafely/antibacterials/27089eaa
