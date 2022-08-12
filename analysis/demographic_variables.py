@@ -45,17 +45,48 @@ demographic_variables = dict(
             "category": {"ratios": {"M": 0.49, "F": 0.5, "U": 0.01}},
         }
     ),
-    homeless=patients.with_these_clinical_events(
-        homeless_codelist,
+
+    type_of_residence = patients.with_these_clinical_events(
+        type_of_residence_codelist,
         on_or_before="index_date",
+        returning="code",
         find_last_match_in_period=True,
-        returning="binary_flag",
+        return_expectations={
+            "rate": "universal",
+            "category": {"ratios": {"code_1": 0.5, "code_2": 0.5}},
+        }
     ),
-    residential_care = patients.with_these_clinical_events(
-        residential_care_codelist,
-        on_or_before="index_date",
-        find_last_match_in_period=True,
-        returning="binary_flag",
+
+    # homless is latest reside code in homeless codelist
+    homeless = patients.satisying(
+        """
+        type_of_residence='160700001' OR
+        type_of_residence='224226001' OR
+        type_of_residence='224228000' OR
+        type_of_residence='224229008' OR
+        type_of_residence='224231004' OR
+        type_of_residence='224232006' OR
+        type_of_residence='224233001' OR
+        type_of_residence='266935003' OR
+        type_of_residence='266940006' OR
+        type_of_residence='32911000' OR
+        type_of_residence='365510008' OR
+        type_of_residence='381751000000106' OR
+        type_of_residence='65421000'
+        """
+    ),
+    
+
+    residential_care = patients.satisfying(
+        """
+        type_of_residence='1024771000000108' OR
+        type_of_residence='105530003' OR
+        type_of_residence='160734000' OR
+        type_of_residence='160737007' OR
+        type_of_residence='224224003' OR
+        type_of_residence='248171000000108' OR
+        type_of_residence='394923006'
+        """
     ),
     region=patients.registered_practice_as_of(
         "index_date",

@@ -401,6 +401,12 @@
       "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-clinical-concern-note/014c139a/",
       "downloaded_at": "2022-07-28 13:47:27.803137Z",
       "sha": "06b397ec1940bd2d0f50d44dd05c0181056ebce2"
+    },
+    "primis-covid19-vacc-uptake-reside_cod.csv": {
+      "id": "primis-covid19-vacc-uptake/reside_cod/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/reside_cod/v.1.5.3/",
+      "downloaded_at": "2022-08-12 13:28:31.502798Z",
+      "sha": "8089273366381539d9676e901c5c942f91f84792"
     }
   }
 }

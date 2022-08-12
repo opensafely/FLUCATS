@@ -108,6 +108,12 @@ homeless_codelist = codelist_from_csv(
     column="code",
 )
 
+type_of_residence_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-reside_cod.csv",
+    system="snomed",
+    column="code",
+)
+
 residential_care_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-longres.csv", system="snomed", column="code"
 )
