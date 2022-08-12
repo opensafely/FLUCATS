@@ -30,7 +30,7 @@ vaccination_variables = dict(
         return_expectations={
             "date": {
                 "earliest": "2020-12-08",  # first vaccine administered on the 8/12
-                "latest": index_date,
+                "latest": "index_date",
             },
             "incidence": 0.7,
         },
@@ -45,7 +45,7 @@ vaccination_variables = dict(
         return_expectations={
             "date": {
                 "earliest": "2020-01-04",  # first vaccine administered on the 4/1
-                "latest": index_date,
+                "latest": "index_date",
             },
             "incidence": 0.7,
         },
@@ -60,7 +60,7 @@ vaccination_variables = dict(
         return_expectations={
             "date": {
                 "earliest": "2020-04-01",  # expected from early april
-                "latest": index_date,
+                "latest": "index_date",
             },
             "incidence": 0.4,
         },
@@ -90,7 +90,7 @@ vaccination_variables = dict(
         return_expectations={
             "date": {
                 "earliest": "2020-12-08",  # first vaccine administered on the 8/12
-                "latest": index_date,
+                "latest": "index_date",
             },
             "incidence": 0.7,
         },
@@ -105,7 +105,7 @@ vaccination_variables = dict(
         return_expectations={
             "date": {
                 "earliest": "2020-01-04",  # first vaccine administered on the 4/1
-                "latest": index_date,
+                "latest": "index_date",
             },
             "incidence": 0.7,
         },
@@ -120,7 +120,7 @@ vaccination_variables = dict(
         return_expectations={
             "date": {
                 "earliest": "2020-04-01",  # expected from early april
-                "latest": index_date,
+                "latest": "index_date",
             },
             "incidence": 0.4,
         },
@@ -155,7 +155,7 @@ vaccination_variables = dict(
         return_expectations={
             "date": {
                 "earliest": "2021-09-24",  # first booster dose recorded
-                "latest": index_date,
+                "latest": "index_date",
             },
             "incidence": 0.25,
         },
@@ -170,7 +170,7 @@ vaccination_variables = dict(
         return_expectations={
             "date": {
                 "earliest": "2021-09-24",  # first booster dose recorded
-                "latest": index_date,
+                "latest": "index_date",
             },
             "incidence": 0.10,
         },
@@ -185,7 +185,7 @@ vaccination_variables = dict(
         return_expectations={
             "date": {
                 "earliest": "2021-09-24",  # first booster dose recorded
-                "latest": index_date,
+                "latest": "index_date",
             },
             "incidence": 0.25,
         },

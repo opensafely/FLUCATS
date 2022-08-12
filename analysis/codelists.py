@@ -1,5 +1,12 @@
 from cohortextractor import codelist_from_csv, codelist
 
+ethnicity_opensafely = codelist_from_csv(
+    "codelists/opensafely-ethnicity-snomed-0removed.csv",
+    system="snomed",
+    column="snomedcode",
+    category_column="Grouping_16",
+)
+
 # Ethnicity codes
 eth2001 = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-eth2001.csv",
