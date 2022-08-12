@@ -39,3 +39,13 @@ actions:
       highly_sensitive:
         cohort: output/joined/input_20*.csv.gz
 
+
+  generate_dataset_report:
+    run: >
+      dataset-report:v0.0.24
+        --input-files output/joined/input_2022-03-20.csv.gz
+        --output-dir output/joined
+    needs: [join_cohorts_weekly]
+    outputs:
+      moderately_sensitive:
+        dataset_report: output/joined/input_2022-03-20.html
