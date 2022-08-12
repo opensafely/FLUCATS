@@ -58,7 +58,7 @@ demographic_variables = dict(
     ),
 
     # homless is latest reside code in homeless codelist
-    homeless = patients.satisying(
+    homeless = patients.satisfying(
         """
         type_of_residence='160700001' OR
         type_of_residence='224226001' OR

@@ -20,6 +20,7 @@ primis-covid19-vacc-uptake/dmres/v1
 primis-covid19-vacc-uptake/cns_cov/v1
 opensafely/hypertension-snomed/2020-04-28
 primis-covid19-vacc-uptake/preg/v1
+primis-covid19-vacc-uptake/pregdel/v.1.5.3
 primis-covid19-vacc-uptake/addis_cod/v.1.5.3
 primis-covid19-vacc-uptake/covrx/v.1.5.3
 primis-covid19-vacc-uptake/ckd_cov/v.1.5.3

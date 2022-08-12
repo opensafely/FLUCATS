@@ -151,6 +151,10 @@ pregnancy_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-preg.csv", system="snomed", column="code"
 )
 
+pregnancy_or_delivery_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-pregdel.csv", system="snomed", column="code"
+)
+
 splenic_disease_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-spln_cov.csv", system="snomed", column="code"
 )

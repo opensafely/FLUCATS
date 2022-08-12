@@ -132,6 +132,12 @@
       "downloaded_at": "2022-07-06 15:09:19.532788Z",
       "sha": "16b9bdf6c37c9f5e802912a98542c5dd5d21183d"
     },
+    "primis-covid19-vacc-uptake-pregdel.csv": {
+      "id": "primis-covid19-vacc-uptake/pregdel/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/pregdel/v.1.5.3/",
+      "downloaded_at": "2022-08-12 14:45:05.180981Z",
+      "sha": "be29c0d7d0cf6fb16dea4e461ab524fd098cbadd"
+    },
     "primis-covid19-vacc-uptake-addis_cod.csv": {
       "id": "primis-covid19-vacc-uptake/addis_cod/v.1.5.3",
       "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/addis_cod/v.1.5.3/",
