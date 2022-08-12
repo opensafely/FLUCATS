@@ -9,7 +9,7 @@ prescription_variables = dict(
         returning="binary_flag",
     ),
     antibiotics = patients.with_these_medications(
-        antibiotics_codelist,
+        antibiotic_codelist,
         between=["index_date - 6 months", "index_date"],
         returning="binary_flag",
     ),
