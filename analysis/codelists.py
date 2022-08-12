@@ -157,29 +157,44 @@ statin_codelist = codelist_from_csv(
     "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
 )
 
+# questions where we expect more than one code would be recorded
+flucat_individual_question_numbers = [
+    5,
+    11,
+    30
+]
+
+flucat_individual_question_numbers_numeric = [
+    29,
+]
+
+# questions where we expect only one code would be recorded
 flucat_question_numbers = [
     1,
     2,
     3,
     4,
-    5,
     6,
     7,
     9,
     10,
-    11,
     12,
     14,
     15,
     16,
     18,
     20,
+    23,
     24,
+    28,
+    31,
     32,
+    33,
     34,
     35,
     36,
     37,
+    39,
     40,
     41,
     42,
@@ -187,6 +202,7 @@ flucat_question_numbers = [
     45,
 ]
 
+# questions where we expect a numeric value to be attached
 flucat_question_numbers_numeric = [23, 28, 29, 31, 33, 39]
 
 flucats_codelists = {
@@ -205,6 +221,24 @@ flucats_codelists_numeric = {
         column="code",
     )
     for i in flucat_question_numbers_numeric
+}
+
+flucats_codelists_individual = {
+    str(i): codelist_from_csv(
+        f"codelists/user-Louis-flucats-template-q{i}.csv",
+        system="snomed",
+        column="code",
+    )
+    for i in flucat_individual_question_numbers
+}
+
+flucats_codelists_individual_numeric = {
+    str(i): codelist_from_csv(
+        f"codelists/user-Louis-flucats-template-q{i}.csv",
+        system="snomed",
+        column="code",
+    )
+    for i in flucat_individual_question_numbers_numeric
 }
 
 

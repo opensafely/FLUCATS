@@ -8,6 +8,10 @@ from flucats_variables import (
     flucats_variables_numeric,
     flucats_variables_numeric_codes,
     flucats_variables_other,
+    flucats_variables_5,
+    flucats_variables_11, 
+    flucats_variables_29, 
+    flucats_variables_30
 )
 
 
@@ -67,4 +71,10 @@ study = StudyDefinition(
     **flucats_variables_numeric,
     **flucats_variables_numeric_codes,
     **flucats_variables_other,
+    **flucats_variables_5,
+    **flucats_variables_11,
+    **flucats_variables_29,
+    **flucats_variables_30,
+
+
 )
