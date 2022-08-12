@@ -437,6 +437,18 @@
       "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/reside_cod/v.1.5.3/",
       "downloaded_at": "2022-08-12 13:28:31.502798Z",
       "sha": "8089273366381539d9676e901c5c942f91f84792"
+    },
+    "opensafely-statin-medication.csv": {
+      "id": "opensafely/statin-medication/2020-04-20",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/statin-medication/2020-04-20/",
+      "downloaded_at": "2022-08-12 15:15:24.915002Z",
+      "sha": "82f975a7be188364a1ef1aa5f8ff52f75e499612"
+    },
+    "opensafely-antibacterials.csv": {
+      "id": "opensafely/antibacterials/27089eaa",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/antibacterials/27089eaa/",
+      "downloaded_at": "2022-08-12 15:18:18.937284Z",
+      "sha": "f3c280d89cff832ee287f1b66a5042794f2fda27"
     }
   }
 }

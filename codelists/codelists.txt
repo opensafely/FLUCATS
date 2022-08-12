@@ -71,3 +71,5 @@ user/Louis/flucats-pneumonia/336afa04/
 user/Louis/flucats-icu-admission/1a5b86cf/
 user/Louis/flucats-clinical-concern-note/014c139a/
 primis-covid19-vacc-uptake/reside_cod/v.1.5.3/
+opensafely/statin-medication/2020-04-20/
+opensafely/antibacterials/27089eaa

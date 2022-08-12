@@ -189,13 +189,13 @@ steroid_codelist = codelist_from_csv(
 )
 
 antibiotic_codelist = codelist_from_csv(
-    "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
+    "codelists/opensafely-antibacterials.csv", system="snomed", column="id"
 )
 antiviral_codelist = codelist_from_csv(
     "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
 )
 statin_codelist = codelist_from_csv(
-    "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
+    "codelists/opensafely-statin-medication.csv", system="snomed", column="id"
 )
 
 # questions where we expect more than one code would be recorded
