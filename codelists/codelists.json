@@ -126,6 +126,12 @@
       "downloaded_at": "2022-07-06 15:09:18.307555Z",
       "sha": "28145dec21a301060a1f3652143dfece6d9f47ff"
     },
+    "primis-covid19-vacc-uptake-gdiab_cod.csv": {
+      "id": "primis-covid19-vacc-uptake/gdiab_cod/v.1.5.3",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/gdiab_cod/v.1.5.3/",
+      "downloaded_at": "2022-08-12 15:06:20.445423Z",
+      "sha": "6fabb3f3f0a0655a1157ef0b910dd63a2fabe22b"
+    },
     "primis-covid19-vacc-uptake-dmres.csv": {
       "id": "primis-covid19-vacc-uptake/dmres/v1",
       "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/dmres/v1/",

@@ -106,22 +106,50 @@ comorbidity_variables = dict(
         returning="binary_flag",
     ),
 
-    diabetes=patients.with_these_clinical_events(
-        diabetes_codelist,
-        on_or_before="index_date",
-        find_last_match_in_period=True,
-        include_date_of_match=True,
-        date_format="YYYY-MM-DD",
-        returning="binary_flag",
+    ### Patients with Diabetes
+    diabetes = patients.satisfying(
+        """
+        (
+            DIAB_DAT
+            AND
+            DIAB_DAT > nulldate
+            AND
+            DIAB_DAT > DMRES_DAT
+        )
+        
+        """,
+        ### Date any Diabetes diagnosis Read code is recorded
+        DIAB_DAT=patients.with_these_clinical_events(
+            diabetes_codelist,
+            returning="date",
+            find_last_match_in_period=True,
+            on_or_before="index_date",
+            date_format="YYYY-MM-DD",
+        ),
+        ### Date of Diabetes resolved codes
+        DMRES_DAT=patients.with_these_clinical_events(
+            diabetes_resolved_codelist,
+            returning="date",
+            find_last_match_in_period=True,
+            on_or_before="index_date",
+            date_format="YYYY-MM-DD",
+        ),  
     ),
-
-    diabetes_resolved=patients.with_these_clinical_events(
-        diabetes_resolved_codelist,
-        on_or_before="index_date",
-        find_last_match_in_period=True,
-        include_date_of_match=True,
-        date_format="YYYY-MM-DD",
-        returning="binary_flag",
+    ### Patients who are currently pregnant with gestational diabetes 
+    gestational_diabetes = patients.satisfying(
+        """
+        GDIAB
+        AND
+        pregnant
+        """,
+        ### Gestational Diabetes diagnosis codes
+        GDIAB =  patients.with_these_clinical_events(
+            gestational_diabetes_codelist,
+            find_last_match_in_period = True,
+            returning="binary_flag",
+            between=["index_date - 254 days","index_date"],
+            ),
+       
     ),
 
     obesity=patients.with_these_clinical_events(

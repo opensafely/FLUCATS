@@ -15,6 +15,7 @@ study = StudyDefinition(
         "rate": "uniform",
         "incidence": 0.8,
     },
+    nulldate = patients.fixed_value("1900-01-01"),
     index_date=end_date,
     population=patients.all(),
     

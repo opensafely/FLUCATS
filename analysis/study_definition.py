@@ -21,6 +21,7 @@ study = StudyDefinition(
         "rate": "uniform",
         "incidence": 0.5,
     },
+    nulldate = patients.fixed_value("1900-01-01"),
     index_date="2020-03-01",
     population=patients.satisfying(
         """

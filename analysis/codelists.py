@@ -146,6 +146,10 @@ diabetes_resolved_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-dmres.csv", system="snomed", column="code"
 )
 
+gestational_diabetes_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-gdiab_cod.csv", system="snomed", column="code"
+)
+
 neurological_disorder_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-cns_cov.csv", system="snomed", column="code"
 )

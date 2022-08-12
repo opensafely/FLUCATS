@@ -19,6 +19,7 @@ primis-covid19-vacc-uptake/immdx_cov/v1
 primis-covid19-vacc-uptake/immrx/v.1.5.3
 primis-covid19-vacc-uptake/dxt_chemo_cod/v.1.5.3
 primis-covid19-vacc-uptake/diab/v.1.5.3
+primis-covid19-vacc-uptake/gdiab_cod/v.1.5.3
 primis-covid19-vacc-uptake/dmres/v1
 primis-covid19-vacc-uptake/cns_cov/v1
 opensafely/hypertension-snomed/2020-04-28
