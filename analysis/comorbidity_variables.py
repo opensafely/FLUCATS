@@ -19,8 +19,8 @@ comorbidity_variables = dict(
         returning="numeric_value",
         find_last_match_in_period=True,
         return_expectations={
-            "float": {"distribution": "normal", "mean": 45.0, "stddev": 20},
-            "incidence": 0.5,
+            "float": {"distribution": "normal", "mean": 28, "stddev": 8},
+            "incidence": 0.8,
         },
         
     ),
@@ -62,6 +62,9 @@ comorbidity_variables = dict(
             returning="number_of_matches_in_period",
             between=["index_date - 730 days", "index_date"],
         ),
+        return_expectations={
+            "incidence": 0.05,
+        },
      ),
 
     addisons_hypoadrenalism=patients.with_these_clinical_events(
@@ -69,6 +72,9 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.01,
+        },
     ),
 
     chronic_heart_disease=patients.with_these_clinical_events(
@@ -76,6 +82,9 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
     chronic_respiratory_disease=patients.with_these_clinical_events(
@@ -83,6 +92,9 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
     chronic_kidney_disease=patients.with_these_clinical_events(
@@ -90,6 +102,9 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
     renal_disease=patients.with_these_clinical_events(
@@ -97,6 +112,9 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
     liver_disease=patients.with_these_clinical_events(
@@ -104,6 +122,9 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
     ### Patients who are currently pregnant - https://github.com/opensafely/covid-vaccine-preliminary-uptake-study/analysis/study_definition_delivery_u16.py
@@ -137,6 +158,9 @@ comorbidity_variables = dict(
             between=["index_date - 254 days", "index_date"],
             date_format="YYYY-MM-DD",
             ),
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
     ### Patients with Diabetes
@@ -166,7 +190,10 @@ comorbidity_variables = dict(
             find_last_match_in_period=True,
             on_or_before="index_date",
             date_format="YYYY-MM-DD",
-        ),  
+        ),
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
     ### Patients who are currently pregnant with gestational diabetes 
     gestational_diabetes = patients.satisfying(
@@ -182,6 +209,10 @@ comorbidity_variables = dict(
             returning="binary_flag",
             between=["index_date - 254 days","index_date"],
             ),
+        
+        return_expectations={
+            "incidence": 0.01,
+        },
        
     ),
 
@@ -190,6 +221,9 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
     mental_illness=patients.with_these_clinical_events(
@@ -197,6 +231,9 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
     neurological_disorder=patients.with_these_clinical_events(
@@ -204,6 +241,9 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
     hypertension=patients.with_these_clinical_events(
@@ -211,24 +251,28 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
     pneumonia = patients.with_these_clinical_events(
         flucats_pneumonia_codelist,
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
     
-
-    
-
-
-
     immunosuppression_disorder=patients.with_these_clinical_events(
         immunosuppression_disorder_codelist,
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
     immunosuppression_chemo=patients.with_these_clinical_events(
@@ -236,12 +280,18 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
     immunosuppression_medication=patients.with_these_medications(
         immunosuppression_medication_codelist,
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
     splenic_disease=patients.with_these_clinical_events(
@@ -249,6 +299,9 @@ comorbidity_variables = dict(
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
+        return_expectations={
+            "incidence": 0.05,
+        },
     ),
 
 
