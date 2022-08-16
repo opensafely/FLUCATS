@@ -61,7 +61,7 @@ def loop_over_codes(numeric, question_number):
 
 flucats_variables_5 = loop_over_codes(numeric=False, question_number=5)
 flucats_variables_11 = loop_over_codes(numeric=False, question_number=11)
-flucats_variables_30 = loop_over_codes(numeric=False, question_number=30)
+flucats_variables_30 = loop_over_codes(numeric=True, question_number=30)
 flucats_variables_29 = loop_over_codes(numeric=True, question_number=29)
 
 flucats_variables = {
@@ -110,6 +110,7 @@ flucats_variables_numeric_codes = {
     for i in flucat_question_numbers_numeric if i not in flucat_individual_question_numbers_numeric
 }
 
+# these contain codes that are not available in opencodelists or not part of a question
 flucats_variables_other = dict(
     flucats_question_8_code=patients.with_these_clinical_events(
         codelist(

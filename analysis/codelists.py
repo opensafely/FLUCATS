@@ -201,12 +201,12 @@ statin_codelist = codelist_from_csv(
 # questions where we expect more than one code would be recorded
 flucat_individual_question_numbers = [
     5,
-    11,
-    30
+    11
 ]
 
 flucat_individual_question_numbers_numeric = [
     29,
+    30,
 ]
 
 # questions where we expect only one code would be recorded
