@@ -61,7 +61,7 @@ def loop_over_codes(numeric, question_number):
 
 flucats_variables_5 = loop_over_codes(numeric=False, question_number=5)
 flucats_variables_11 = loop_over_codes(numeric=False, question_number=11)
-flucats_variables_30 = loop_over_codes(numeric=False, question_number=30)
+flucats_variables_30 = loop_over_codes(numeric=True, question_number=30)
 flucats_variables_29 = loop_over_codes(numeric=True, question_number=29)
 
 flucats_variables = {
