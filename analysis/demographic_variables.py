@@ -80,7 +80,6 @@ demographic_variables = dict(
         },
     ),
     
-
     residential_care = patients.satisfying(
         """
         type_of_residence='1024771000000108' OR
