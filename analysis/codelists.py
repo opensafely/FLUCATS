@@ -198,6 +198,7 @@ statin_codelist = codelist_from_csv(
     "codelists/opensafely-statin-medication.csv", system="snomed", column="id"
 )
 
+
 # questions where we expect more than one code would be recorded
 flucat_individual_question_numbers = [
     5,
