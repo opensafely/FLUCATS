@@ -58,7 +58,7 @@ demographic_variables = dict(
         }
     ),
 
-    # homless is latest reside code in homeless codelist
+    # homeless is latest reside code in homeless codelist
     homeless = patients.satisfying(
         """
         type_of_residence='160700001' OR
@@ -113,6 +113,7 @@ demographic_variables = dict(
             }
         },
     ),
+
     imdQ5 = patients.categorised_as(
         {
             "Unknown": "DEFAULT",
