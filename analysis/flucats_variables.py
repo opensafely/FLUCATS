@@ -200,7 +200,7 @@ flucats_variables_other = dict(
             }
         },
     ),
-    flucats_other_covid_antigen_code=patients.with_these_clinical_events(
+    flucats_other_covid_antigen_code=patients.with_these_clinical_events( #
         codelist = codelist(["1322781000000102", "1322791000000100"], system="snomed"),
         between=["index_date", "index_date + 6 days"],
         returning="code",
@@ -211,7 +211,7 @@ flucats_variables_other = dict(
             }
         },
     ),
-    flucats_other_covid_rna_code=patients.with_these_clinical_events(
+    flucats_other_covid_rna_code=patients.with_these_clinical_events( #
         codelist = codelist(["1324581000000102", "1324601000000106"], system="snomed"),
         between=["index_date", "index_date + 6 days"],
         returning="code",
