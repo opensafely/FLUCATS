@@ -242,10 +242,10 @@ flucat_question_numbers = [
     42,
     44,
     45, #
-]
+] #
 
 # questions where we expect a numeric value to be attached
-flucat_question_numbers_numeric = [23, 28, 29, 31, 33, 39] # 43?
+flucat_question_numbers_numeric = [23, 28, 29, 31, 33, 39]
 
 flucats_codelists = {
     str(i): codelist_from_csv(
