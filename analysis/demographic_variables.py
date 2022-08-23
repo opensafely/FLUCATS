@@ -61,37 +61,46 @@ demographic_variables = dict(
     # homeless is latest reside code in homeless codelist
     homeless = patients.satisfying(
         """
-        type_of_residence='160700001' OR
-        type_of_residence='224226001' OR
-        type_of_residence='224228000' OR
-        type_of_residence='224229008' OR
-        type_of_residence='224231004' OR
-        type_of_residence='224232006' OR
-        type_of_residence='224233001' OR
-        type_of_residence='266935003' OR
-        type_of_residence='266940006' OR
-        type_of_residence='32911000' OR
-        type_of_residence='365510008' OR
-        type_of_residence='381751000000106' OR
-        type_of_residence='65421000'
+        type_of_residence=homeless_code
         """,
+
+        homeless_code = patients.with_these_clinical_events(
+            codelist=codelist(homeless_codelist, system="snomed"),
+            on_or_before="index_date",
+            returning="code",
+            find_last_match_in_period=True,
+            return_expectations={
+                "category": {
+                    "ratios": generate_expectations_codes([homless_codelist])
+                }
+            },
+        ),
+
         return_expectations={
             "incidence": 0.05,
         },
     ),
     
+    # residential_care is latest reside code in residential care codelist
     residential_care = patients.satisfying(
         """
-        type_of_residence='1024771000000108' OR
-        type_of_residence='105530003' OR
-        type_of_residence='160734000' OR
-        type_of_residence='160737007' OR
-        type_of_residence='224224003' OR
-        type_of_residence='248171000000108' OR
-        type_of_residence='394923006'
+        type_of_residence=residential_care_code
         """,
+
+        residential_care_code = patients.with_these_clinical_events(
+            codelist=codelist(residential_care_codelist, system="snomed"),
+            on_or_before="index_date",
+            returning="code",
+            find_last_match_in_period=True,
+            return_expectations={
+                "category": {
+                    "ratios": generate_expectations_codes([residential_care_codelist])
+                }
+            },
+        ),
+
         return_expectations={
-            "incidence": 0.05,
+            "incidence": 0.1,
         },
     ),
     region=patients.registered_practice_as_of(

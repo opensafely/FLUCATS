@@ -1,5 +1,6 @@
 from cohortextractor import patients
 from codelists import *
+from study_utils import generate_expectations_codes
 
 vaccination_variables = dict(
     ###############################################################################
