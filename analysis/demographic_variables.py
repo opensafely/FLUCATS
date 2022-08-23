@@ -71,7 +71,7 @@ demographic_variables = dict(
             find_last_match_in_period=True,
             return_expectations={
                 "category": {
-                    "ratios": generate_expectations_codes([homless_codelist])
+                    "ratios": generate_expectations_codes([homeless_codelist])
                 }
             },
         ),
