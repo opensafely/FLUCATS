@@ -56,4 +56,65 @@ vaccination_variables = dict(
             "incidence": 0.1,
         },
     ),
+
+    vaccination_primis_first_dose=patients.with_these_clinical_events(
+        codelist=codelist(["1324681000000101"], system="snomed"),
+        on_or_before="index_date",
+        returning="binary_flag",
+        include_date_of_match=True,
+        date_format="YYYY-MM-DD",
+        find_last_match_in_period=True,
+        return_expectations={
+            "category": {
+                "ratios": generate_expectations_codes(["1324681000000101"])
+            }
+        },
+    ),
+
+    vaccination_primis_second_dose=patients.with_these_clinical_events(
+        codelist=codelist(["1324691000000104"], system="snomed"),
+        on_or_before="index_date",
+        returning="binary_flag",
+        include_date_of_match=True,
+        date_format="YYYY-MM-DD",
+        find_last_match_in_period=True,
+        return_expectations={
+            "category": {
+                "ratios": generate_expectations_codes(["1324691000000104"])
+            }
+        },
+    ),
+
+    vaccination_primis_vaccination=patients.with_these_clinical_events(
+        codelist=codelist(["840534001"], system="snomed"),
+        on_or_before="index_date",
+        returning="binary_flag",
+        include_date_of_match=True,
+        date_format="YYYY-MM-DD",
+        find_last_match_in_period=True,
+        return_expectations={
+            "category": {
+                "ratios": generate_expectations_codes(["840534001"])
+            }
+        },
+    ),
+
+    vaccination_primis_booster_dose=patients.with_these_clinical_events(
+        codelist=codelist(["1362591000000103"], system="snomed"),
+        on_or_before="index_date",
+        returning="binary_flag",
+        include_date_of_match=True,
+        date_format="YYYY-MM-DD",
+        find_last_match_in_period=True,
+        return_expectations={
+            "category": {
+                "ratios": generate_expectations_codes(["1362591000000103"])
+            }
+        },
+    ),
 )
+
+
+
+
+
