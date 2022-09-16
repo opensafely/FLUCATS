@@ -11,16 +11,25 @@ actions:
       highly_sensitive:
         cohort: output/input_*.csv.gz
 
+<<<<<<< HEAD
   # Gives until 2021-06-27
   generate_study_population_2:
     run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2021-03-14 to 2021-06-20 by week" --output-format=csv.gz --with-end-date-fix
+=======
+  generate_study_population_2:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2021-03-14 to 2021-07-01 by week" --output-format=csv.gz --with-end-date-fix
+>>>>>>> 8472aec96475ffd5530f1627f21311989e374f25
     outputs:
       highly_sensitive:
         cohort: output/input*.csv.gz
 
   # gives until 2022-03-27. Only have ONS deaths until 2021-07-01
   generate_study_population_3:
+<<<<<<< HEAD
     run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2021-06-27 to 2022-03-20 by week" --output-format=csv.gz --with-end-date-fix
+=======
+    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2021-07-08 to 2022-03-20 by week" --output-format=csv.gz --with-end-date-fix
+>>>>>>> 8472aec96475ffd5530f1627f21311989e374f25
     outputs:
       highly_sensitive:
         cohort: output/inpu*.csv.gz
