@@ -110,7 +110,7 @@ flucats_variables_numeric_codes = {
 flucats_variables_other = dict(
     flucats_template=patients.with_these_clinical_events(
         codelist=codelist(["13044541000006109"], system="snomed"),
-        between=["index_date", "index_date + 6 days"],
+        between=["index_date", "last_day_of_month(index_date)"],
         returning="binary_flag",
         include_date_of_match=True,
         date_format="YYYY-MM-DD",
@@ -196,7 +196,7 @@ flucats_variables_other = dict(
     ),
     flucats_other_covid_confirmed_test_code=patients.with_these_clinical_events(
         codelist=codelist(["1300721000000109"], system="snomed"),
-        between=["index_date", "index_date + 6 days"],
+        between=["index_date", "last_day_of_month(index_date)"],
         returning="code",
         include_date_of_match=True,
         date_format="YYYY-MM-DD",
@@ -207,7 +207,7 @@ flucats_variables_other = dict(
     ),
     flucats_other_covid_confirmed_diagnostic_code=patients.with_these_clinical_events(
         codelist=codelist(["1300731000000106"], system="snomed"),
-        between=["index_date", "index_date + 6 days"],
+        between=["index_date", "last_day_of_month(index_date)"],
         returning="code",
         include_date_of_match=True,
         date_format="YYYY-MM-DD",
@@ -218,7 +218,7 @@ flucats_variables_other = dict(
     ),
     flucats_other_covid_antigen_code=patients.with_these_clinical_events(  #
         codelist=codelist(["1322781000000102", "1322791000000100"], system="snomed"),
-        between=["index_date", "index_date + 6 days"],
+        between=["index_date", "last_day_of_month(index_date)"],
         returning="code",
         include_date_of_match=True,
         date_format="YYYY-MM-DD",
@@ -233,7 +233,7 @@ flucats_variables_other = dict(
     ),
     flucats_other_covid_rna_code=patients.with_these_clinical_events(  #
         codelist=codelist(["1324581000000102", "1324601000000106"], system="snomed"),
-        between=["index_date", "index_date + 6 days"],
+        between=["index_date", "last_day_of_month(index_date)"],
         returning="code",
         include_date_of_match=True,
         date_format="YYYY-MM-DD",
@@ -248,7 +248,7 @@ flucats_variables_other = dict(
     ),
     flucats_urine_code=patients.with_these_clinical_events(
         codelist=codelist(["718403007", "2472002"], system="snomed"),
-        between=["flucats_template_date", "flucats_template_date + 6 days"],
+        between=["index_date", "last_day_of_month(index_date)"],
         returning="code",
         include_date_of_match=True,
         date_format="YYYY-MM-DD",
@@ -261,7 +261,7 @@ flucats_variables_other = dict(
     ),
     flucats_pneumonia_code=patients.with_these_clinical_events(
         flucats_pneumonia_codelist,
-        between=["index_date", "index_date + 6 days"],
+        between=["index_date", "last_day_of_month(index_date)"],
         returning="code",
         include_date_of_match=True,
         date_format="YYYY-MM-DD",
@@ -274,7 +274,7 @@ flucats_variables_other = dict(
     ),
     flucats_icu_code=patients.with_these_clinical_events(
         flucats_icu_codelist,
-        between=["index_date", "index_date + 6 days"],
+        between=["index_date", "last_day_of_month(index_date)"],
         returning="code",
         include_date_of_match=True,
         date_format="YYYY-MM-DD",
@@ -285,7 +285,7 @@ flucats_variables_other = dict(
     ),
     flucats_clinical_concern_note_code=patients.with_these_clinical_events(
         codelist=flucats_clinical_concern_note_codelist,
-        between=["index_date", "index_date + 6 days"],
+        between=["index_date", "last_day_of_month(index_date)"],
         returning="code",
         include_date_of_match=True,
         date_format="YYYY-MM-DD",
