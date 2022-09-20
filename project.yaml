@@ -52,7 +52,7 @@ actions:
       dataset-report:v0.0.24
         --input-files output/joined/input_2021-06-01.csv.gz
         --output-dir output/joined
-    needs: [join_cohorts_weekly]
+    needs: [join_cohorts_monthly]
     outputs:
       moderately_sensitive:
         dataset_report: output/joined/input_2021-06-01.html
