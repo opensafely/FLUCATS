@@ -5,19 +5,6 @@ expectations:
 
 actions:
 
-  test_action:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-03-01 to 2020-03-01 by week" --output-format=csv.gz
-    outputs:
-      highly_sensitive:
-        cohort: output/inp*.csv.gz
-
-  generate_dataset_report_test:
-    run: jupyter:latest jupyter nbconvert /workspace/analysis/test_analysis.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
-    needs: [test_action]
-    outputs:
-      moderately_sensitive:
-        notebook: output/test_analysis.html
-
   generate_study_population_1:
     run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-03-01 to 2021-03-07 by week" --output-format=csv.gz
     outputs:
