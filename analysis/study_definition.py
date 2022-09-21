@@ -13,7 +13,7 @@ from flucats_variables import (
     flucats_variables_29, 
     flucats_variables_30
 )
-from prescription_variables import prescription_variables
+# from prescription_variables import prescription_variables
 
 
 study = StudyDefinition(
@@ -70,7 +70,7 @@ study = StudyDefinition(
     **flucats_variables_other,
     **demographic_variables,
     **comorbidity_variables,
-    **prescription_variables,
+    # **prescription_variables,
     **flucats_variables,
     **flucats_variables_numeric,
     **flucats_variables_numeric_codes,
