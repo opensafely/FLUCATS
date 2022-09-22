@@ -8,7 +8,7 @@ def loop_over_codes(numeric, question_number):
         return {
             f"flucats_question_{question_number}_{code}_code": patients.with_these_clinical_events(
                 codelist([code], system="snomed"),
-                between=["flucats_template_date", "flucats_template_date"],
+                between=["flucats_template_date", "flucats_template_date + 1 day"],
                 returning="code",
                 find_last_match_in_period=True,
                 return_expectations={
@@ -21,7 +21,7 @@ def loop_over_codes(numeric, question_number):
         return {
             f"flucats_question_{question_number}_{code}_numeric_value": patients.with_these_clinical_events(
                 codelist([code], system="snomed"),
-                between=["flucats_template_date", "flucats_template_date"],
+                between=["flucats_template_date", "flucats_template_date + 1 day"],
                 returning="numeric_value",
                 find_last_match_in_period=True,
                 return_expectations={
@@ -31,7 +31,7 @@ def loop_over_codes(numeric, question_number):
             ),
             f"flucats_question_{question_number}_{code}_code": patients.with_these_clinical_events(
                 codelist([code], system="snomed"),
-                between=["flucats_template_date", "flucats_template_date"],
+                between=["flucats_template_date", "flucats_template_date + 1 day"],
                 returning="code",
                 find_last_match_in_period=True,
                 return_expectations={
@@ -57,13 +57,17 @@ def loop_over_codes(numeric, question_number):
 
 flucats_variables_5 = loop_over_codes(numeric=False, question_number=5)
 flucats_variables_11 = loop_over_codes(numeric=False, question_number=11)
+flucats_variables_20 = loop_over_codes(numeric=False, question_number=20)
+flucats_variables_37 = loop_over_codes(numeric=False, question_number=37)
+flucats_variables_45 = loop_over_codes(numeric=False, question_number=45)
+
 flucats_variables_30 = loop_over_codes(numeric=True, question_number=30)
 flucats_variables_29 = loop_over_codes(numeric=True, question_number=29)
 
 flucats_variables = {
     f"flucats_question_{str(i)}_code": patients.with_these_clinical_events(
         flucats_codelists[str(i)],
-        between=["flucats_template_date", "flucats_template_date"],
+        between=["flucats_template_date", "flucats_template_date + 1 day"],
         returning="code",
         find_last_match_in_period=True,
         return_expectations={
@@ -78,7 +82,7 @@ flucats_variables = {
 flucats_variables_numeric = {
     f"flucats_question_{str(i)}_numeric_value": patients.with_these_clinical_events(
         flucats_codelists_numeric[str(i)],
-        between=["flucats_template_date", "flucats_template_date"],
+        between=["flucats_template_date", "flucats_template_date + 1 day"],
         returning="numeric_value",
         find_last_match_in_period=True,
         return_expectations={
@@ -93,7 +97,7 @@ flucats_variables_numeric = {
 flucats_variables_numeric_codes = {
     f"flucats_question_{str(i)}_numeric_code": patients.with_these_clinical_events(
         flucats_codelists_numeric[str(i)],
-        between=["flucats_template_date", "flucats_template_date"],
+        between=["flucats_template_date", "flucats_template_date + 1 day"],
         returning="code",
         find_last_match_in_period=True,
         return_expectations={
@@ -122,7 +126,7 @@ flucats_variables_other = dict(
             ["81765008", "939761000006103", "939771000006105", "939781000006108"],
             system="snomed",
         ),
-        between=["flucats_template_date", "flucats_template_date"],
+        between=["flucats_template_date", "flucats_template_date + 1 day"],
         returning="code",
         find_last_match_in_period=True,
         return_expectations={
@@ -140,7 +144,7 @@ flucats_variables_other = dict(
     ),
     flucats_question_13_code=patients.with_these_clinical_events(
         codelist=codelist(["62315008", "939811000006105"], system="snomed"),
-        between=["flucats_template_date", "flucats_template_date"],
+        between=["flucats_template_date", "flucats_template_date + 1 day"],
         returning="code",
         find_last_match_in_period=True,
         return_expectations={
@@ -151,7 +155,7 @@ flucats_variables_other = dict(
     ),
     flucats_question_17_code=patients.with_these_clinical_events(
         codelist=codelist(["851581000006108", "851601000006103"], system="snomed"),
-        between=["flucats_template_date", "flucats_template_date"],
+        between=["flucats_template_date", "flucats_template_date + 1 day"],
         returning="code",
         find_last_match_in_period=True,
         return_expectations={
@@ -175,7 +179,7 @@ flucats_variables_other = dict(
             ],
             system="snomed",
         ),
-        between=["flucats_template_date", "flucats_template_date"],
+        between=["flucats_template_date", "flucats_template_date + 1 day"],
         returning="code",
         find_last_match_in_period=True,
         return_expectations={
