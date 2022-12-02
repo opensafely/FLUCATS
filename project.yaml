@@ -57,3 +57,23 @@ actions:
       moderately_sensitive:
         dataset_report: output/joined/input_2021-06-01.html
 
+  generate_first_outputs:
+    run: r:latest analysis/flucats_descriptive_basic.R
+
+
+    needs: [join_cohorts_monthly]
+    outputs:
+      moderately_sensitive:
+        attrition: output/attrition.csv
+        histogram_age: output/age_hist.png
+        date_plot: output/weekly_template.png
+        flucat_tables: output/flucat*.csv
+        sex_table: output/sex_table.csv
+        region_table: output/sex_table.csv
+
+
+
+
+
+
+
