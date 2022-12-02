@@ -69,5 +69,5 @@ actions:
         date_plot: output/weekly_template.png
         flucat_tables: output/flucat*.csv
         sex_table: output/sex_table.csv
-        region_table: output/sex_table.csv
+        region_table: output/region_table.csv
 
