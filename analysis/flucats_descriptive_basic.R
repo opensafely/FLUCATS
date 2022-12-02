@@ -6,27 +6,22 @@ library(ggplot2)
 library(lubridate)
 
 #Import the 16 Flu-CATs monthly files
-d1 <- read_csv("output/joined/input_2020-03-01.csv.gz") 
-d2 <- read_csv("output/joined/input_2020-04-01.csv.gz") 
-d3 <- read_csv("output/joined/input_2020-05-01.csv.gz") 
-d4 <- read_csv("output/joined/input_2020-06-01.csv.gz") 
-d5 <- read_csv("output/joined/input_2020-07-01.csv.gz") 
-d6 <- read_csv("output/joined/input_2020-08-01.csv.gz") 
-d7 <- read_csv("output/joined/input_2020-09-01.csv.gz") 
-d8 <- read_csv("output/joined/input_2020-10-01.csv.gz") 
-d9 <- read_csv("output/joined/input_2020-11-01.csv.gz") 
-d10 <- read_csv("output/joined/input_2020-12-01.csv.gz") 
-d11 <- read_csv("output/joined/input_2021-01-01.csv.gz") 
-d12 <- read_csv("output/joined/input_2021-02-01.csv.gz") 
-d13 <- read_csv("output/joined/input_2021-03-01.csv.gz") 
-d14 <- read_csv("output/joined/input_2021-04-01.csv.gz") 
-d15 <- read_csv("output/joined/input_2021-05-01.csv.gz") 
-d16 <- read_csv("output/joined/input_2021-06-01.csv.gz") 
+d1 <- read_csv("output/input_2020-03-01.csv.gz") 
+d2 <- read_csv("output/input_2020-04-01.csv.gz") 
+d3 <- read_csv("output/input_2020-05-01.csv.gz") 
+d4 <- read_csv("output/input_2020-06-01.csv.gz") 
+d5 <- read_csv("output/input_2020-07-01.csv.gz") 
+d6 <- read_csv("output/input_2020-08-01.csv.gz") 
+d7 <- read_csv("output/input_2020-09-01.csv.gz") 
+d8 <- read_csv("output/input_2020-10-01.csv.gz") 
+d9 <- read_csv("output/input_2020-11-01.csv.gz") 
+d10 <- read_csv("output/input_2020-12-01.csv.gz") 
+d11 <- read_csv("output/input_2021-01-01.csv.gz") 
 
 #Combine them all into one table, as the idea now is that we will analyse data collected over the entire duration as one big file
 #Each enounter will be treated as separate. Two encounters from the same patient will be treated as separate encounters
-d <- rbind(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16)
-rm(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16)
+d <- rbind(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11)
+rm(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11)
 
 df <- d %>% 
   filter(sex == "F"| sex == "M")#highly sensitive: specify in YAML
