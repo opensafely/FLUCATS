@@ -135,8 +135,8 @@ write.csv(flucat_a_table, "output/flucat_a.csv")#moderately sensitive: specify i
 write.csv(flucat_b_table, "output/flucat_b.csv")
 write.csv(flucat_c_table, "output/flucat_c.csv")
 write.csv(flucat_d_table, "output/flucat_d.csv")
-write.csv(flucat_e_table, "output/output/flucat_e.csv")
-write.csv(flucat_f_table, "flucat_f.csv")
+write.csv(flucat_e_table, "output/flucat_e.csv")
+write.csv(flucat_f_table, "output/flucat_f.csv")
 
 write.csv(sex_table, "output/sex_table.csv")
 write.csv(region_table, "output/region_table.csv")
