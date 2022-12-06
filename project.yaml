@@ -57,18 +57,29 @@ actions:
       moderately_sensitive:
         dataset_report: output/input_2021-01-01.html
 
-  generate_first_outputs:
-    run: r:latest analysis/flucats_descriptive_basic.R
+  combined_input_files:
+    run: r:latest analysis/combine_input_files.R
 
 
     needs: [generate_study_population_1, generate_study_population_2]
     outputs:
-      moderately_sensitive:
-        attrition: output/attrition.csv
-        histogram_age: output/age_hist.png
-        date_plot: output/weekly_template.png
-        flucat_tables: output/flucat*.csv
-        sex_table: output/sex_table.csv
-        region_table: output/region_table.csv
+      highly_sensitive:
+        attrition: output/input_all.csv.gz
+        
+
+
+  # generate_first_outputs:
+  #   run: r:latest analysis/flucats_descriptive_basic.R
+
+
+  #   needs: [generate_study_population_1, generate_study_population_2]
+  #   outputs:
+  #     moderately_sensitive:
+  #       attrition: output/attrition.csv
+  #       histogram_age: output/age_hist.png
+  #       date_plot: output/weekly_template.png
+  #       flucat_tables: output/flucat*.csv
+  #       sex_table: output/sex_table.csv
+  #       region_table: output/region_table.csv
 
 
