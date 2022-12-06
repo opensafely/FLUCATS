@@ -5,38 +5,39 @@ library(dplyr)
 library(ggplot2)
 library(lubridate)
 
+# array of dates 
+dates <- seq(as.Date("2020-04-01"), as.Date("2021-01-01"), by = "month")
+# convert dates to strings
+dates <- as.character(dates)
+
 #Import the 16 Flu-CATs monthly files
-d1 <- read_csv("output/input_2020-03-01.csv.gz") %>% select(sex, age, patient_id, flucats_template, flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region)
-d2 <- read_csv("output/input_2020-04-01.csv.gz") %>% select(sex, age, patient_id, flucats_template,flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region)
-d3 <- read_csv("output/input_2020-05-01.csv.gz") %>% select(sex, age, patient_id, flucats_template,flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region)
-d4 <- read_csv("output/input_2020-06-01.csv.gz") %>% select(sex, age, patient_id, flucats_template,flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region)
-d5 <- read_csv("output/input_2020-07-01.csv.gz") %>% select(sex, age, patient_id, flucats_template,flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region)
-d6 <- read_csv("output/input_2020-08-01.csv.gz") %>% select(sex, age, patient_id, flucats_template,flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region)
-d7 <- read_csv("output/input_2020-09-01.csv.gz") %>% select(sex, age, patient_id, flucats_template,flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region)
-d8 <- read_csv("output/input_2020-10-01.csv.gz") %>% select(sex, age, patient_id, flucats_template,flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region)
-d9 <- read_csv("output/input_2020-11-01.csv.gz") %>% select(sex, age, patient_id, flucats_template,flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region)
-d10 <- read_csv("output/input_2020-12-01.csv.gz") %>% select(sex, age, patient_id, flucats_template,flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region)
-d11 <- read_csv("output/input_2021-01-01.csv.gz") %>% select(sex, age, patient_id, flucats_template,flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region)
+df <- read_csv("output/input_2020-03-01.csv.gz") %>% select(sex, age, patient_id, flucats_template, flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region) %>% filter(flucats_template==1)
+
+# iterate over dates, rbind to df
+for (i in dates) {
+  d2 <- read_csv(paste0("output/input_", i, ".csv.gz")) %>%
+    select(sex, age, patient_id, flucats_template, flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region) %>% filter(flucats_template==1)
+
+  df <- rbind(df, d2)
+}
 
 #Combine them all into one table, as the idea now is that we will analyse data collected over the entire duration as one big file
 #Each enounter will be treated as separate. Two encounters from the same patient will be treated as separate encounters
-d <- rbind(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11)
-rm(d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11)
 
-df <- d %>% 
-  filter(sex == "F"| sex == "M")  %>% #highly sensitive: specify in YAML
-  filter(flucats_template == 1)
+rm(d2)
 
-step <- c("Total number of unique patients: ", "Total number of unique patients after excluding sex = I or U: ", "Total number of encounters over the time period: ")
+dim(df)
+
+
+step <- c("Total number of unique patients: ", "Total number of encounters over the time period: ")
 
 attrition <- data.frame(step) %>% 
-  mutate(numbers = case_when(step == "Total number of unique patients: " ~ length(unique(d$patient_id)),
-                           step == "Total number of unique patients after excluding sex = I or U: " ~ length(unique(df$patient_id)),
+  mutate(numbers = case_when(step == "Total number of unique patients: " ~ length(unique(df$patient_id)),
                            step == "Total number of encounters over the time period: " ~ nrow(df)))
 
 #Save output
 write.csv(attrition, "output/attrition.csv")#moderately sensitive: specify in YAML
-rm(d, attrition)
+rm(attrition)
 
 ##Reporting numbers by encounter NOT by patient as each encounter is considered a unique episode
 #Generate an encounter ID for each row of the data (assuming that there is no duplication of rows)
