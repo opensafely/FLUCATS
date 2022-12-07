@@ -63,6 +63,19 @@ png(filename="output/weekly_template.png")#moderately sensitive: specify in YAML
 plot(flucats_week)
 dev.off()
 
+# cast all flucats question code columns to ints using a loop
+df$flucats_question_35_code <- as.integer(df$flucats_question_35_code)
+df$flucats_question_30_86290005_code <- as.integer(df$flucats_question_30_86290005_code)
+df$flucats_question_30_431314004_code <- as.integer(df$flucats_question_30_431314004_code)
+df$flucats_question_7_code <- as.integer(df$flucats_question_7_code)
+df$flucats_question_36_code <- as.integer(df$flucats_question_36_code)
+df$flucats_question_37_162701007_code <- as.integer(df$flucats_question_37_162701007_code)
+df$flucats_question_37_162705003_code <- as.integer(df$flucats_question_37_162705003_code)
+df$flucats_question_37_268913004_code <- as.integer(df$flucats_question_37_268913004_code)
+df$flucats_question_37_162702000_code <- as.integer(df$flucats_question_37_162702000_code)
+df$flucats_question_37_162704004_code <- as.integer(df$flucats_question_37_162704004_code)
+
+
 #FluCATs 1: Respiratory distress
 df <- df %>% 
   mutate(flucats_a = case_when(flucats_question_35_code == 162892000 ~ "respiratory distress",
