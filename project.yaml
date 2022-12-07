@@ -82,4 +82,9 @@ actions:
         sex_table: output/sex_table.csv
         region_table: output/region_table.csv
 
-
+  check_codes:
+    run: r:latest analysis/check_codes.R
+    needs: [generate_study_population_2]
+    outputs:
+      moderately_sensitive:
+        text: output/text.txt
