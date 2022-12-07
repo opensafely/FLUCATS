@@ -62,8 +62,16 @@ flucats_week <- ggplot(df, aes(x = template_week)) +
 png(filename="output/weekly_template.png")#moderately sensitive: specify in YAML
 plot(flucats_week)
 dev.off()
+library(purrr)
 
-# cast all flucats question code columns to ints using a loop
+# for each column that starts with flucats_question but doesnt end in numeric_value print the unique values
+df %>% 
+  select(starts_with("flucats_question")) %>%
+  select(-ends_with("numeric_value"))%>%
+  map(~unique(.x))%>% 
+  map(~print(.x))
+
+
 df$flucats_question_35_code <- as.integer(df$flucats_question_35_code)
 df$flucats_question_30_86290005_code <- as.integer(df$flucats_question_30_86290005_code)
 df$flucats_question_30_431314004_code <- as.integer(df$flucats_question_30_431314004_code)
