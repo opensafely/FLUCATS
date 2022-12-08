@@ -11,11 +11,15 @@ counts = []
 for col in df.columns:
     if col.startswith('flucats_question'):
         if col.endswith('code'):
-        
+            
             count = (df[col].value_counts())
             
         elif col.endswith('value'):
-            count = pd.Series((df[col] != 0).count())
+         
+            df[col] = df[col].astype(int)
+            
+            count = pd.Series(df[col][df[col] > 0].count())
+        
             
         else:
             count = pd.Series([0])
