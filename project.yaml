@@ -16,7 +16,7 @@ actions:
     needs: [generate_study_population_test]
     outputs:
       moderately_sensitive:
-        counts: output/column_counts/combined.csv
+        counts: output/column_counts/combine*.csv
    
 
 
