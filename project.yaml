@@ -5,6 +5,11 @@ expectations:
 
 actions:
 
+  generate_study_population_test:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_test --output-format=csv.gz --with-end-date-fix
+    outputs:
+      highly_sensitive:
+        cohort: output/input_test.csv.gz
   generate_study_population_1:
     run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-03-01 to 2020-07-01 by month" --output-format=csv.gz --with-end-date-fix
     outputs:
