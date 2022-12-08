@@ -7,7 +7,7 @@ library(lubridate)
 
 
 #Import the 16 Flu-CATs monthly files
-df <- read_csv("output/input_all.csv.gz") %>% select(sex, age, patient_id, flucats_template, flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region) %>% filter(flucats_template==1)
+df <- read_csv("output/input_all_py.csv.gz") %>% select(sex, age, patient_id, flucats_template, flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region) %>% filter(flucats_template==1)
 
 
 step <- c("Total number of unique patients: ", "Total number of encounters over the time period: ")
