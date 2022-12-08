@@ -44,7 +44,7 @@ df = pd.read_csv('output/input_test.csv.gz')
 get_counts(df, 'output/column_counts/combined.csv')
 
 
-df_2 = pd.read_csv('output/input_2021-01-01.csv.gz', usecols=["flucats_template", "flucats_question_35_code", "flucats_question_30_86290005_code", "flucats_question_30_86290005_numeric_value", "flucats_question_30_431314004_code", "flucats_question_30_431314004_numeric_value", "flucats_question_7_code", "flucats_question_36_code", "flucats_question_37_162701007_code", "flucats_question_37_162705003_code", "flucats_question_37_268913004_code", "flucats_question_37_162702000_code", "flucats_question_37_162704004_code"])
+df_2 = pd.read_csv('output/input_all_py.csv.gz')
 df_2 = df_2[df_2['flucats_template'] == 1]
 
 get_counts(df_2, 'output/column_counts/combined_all.csv')
