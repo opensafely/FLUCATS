@@ -18,8 +18,6 @@ actions:
       moderately_sensitive:
         counts: output/column_counts/combine*.csv
    
-
-
   generate_study_population_1:
     run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-03-01 to 2020-07-01 by month" --output-format=csv.gz --with-end-date-fix
     outputs:
@@ -80,7 +78,13 @@ actions:
     outputs:
       highly_sensitive:
         attrition: output/input_all.csv.gz
-        
+  
+  combined_input_files_py:
+    run: python:latest python analysis/combine_input_files.py
+    needs: [generate_study_population_1, generate_study_population_2]
+    outputs:
+      highly_sensitive:
+        attrition: output/input_all_py.csv.gz
 
 
   generate_first_outputs:
