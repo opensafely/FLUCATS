@@ -44,6 +44,6 @@ df = pd.read_csv('output/input_test.csv.gz')
 get_counts(df, 'output/column_counts/combined.csv')
 
 
-df_2 = pd.read_csv('output/input_all.csv.gz')
+df_2 = pd.read_csv('output/input_2021-01-01.csv.gz')
 
 get_counts(df_2, 'output/column_counts/combined_all.csv')
