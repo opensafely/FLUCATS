@@ -23,52 +23,52 @@ actions:
       highly_sensitive:
         cohort: output/input*.csv.gz
 
-  # Gives until 2021-07-01. Only have ONS deaths until 2021-07-01
-  # generate_study_population_3:
-  #   run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2021-02-01 to 2021-06-01 by month" --output-format=csv.gz --with-end-date-fix
-  #   outputs:
-  #     highly_sensitive:
-  #       cohort: output/inpu*.csv.gz
+  #Gives until 2021-07-01. Only have ONS deaths until 2021-07-01
+  generate_study_population_3:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2021-02-01 to 2021-06-01 by month" --output-format=csv.gz --with-end-date-fix
+    outputs:
+      highly_sensitive:
+        cohort: output/inpu*.csv.gz
   
 
-  # generate_study_population_end:
-  #   run: cohortextractor:latest generate_cohort --study-definition study_definition_end --output-format=csv.gz --with-end-date-fix
-  #   outputs:
-  #     highly_sensitive:
-  #       cohort: output/input_end.csv.gz
+  generate_study_population_end:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_end --output-format=csv.gz --with-end-date-fix
+    outputs:
+      highly_sensitive:
+        cohort: output/input_end.csv.gz
 
-  # join_cohorts_monthly:
-  #   run: >
-  #     cohort-joiner:v0.0.44
-  #       --lhs output/input_20*.csv.gz
-  #       --rhs output/input_end.csv.gz
-  #       --output-dir output/joined
-  #   needs: [
-  #     generate_study_population_1,
-  #     generate_study_population_2,
-  #     generate_study_population_3,
-  #     generate_study_population_end]
-  #   outputs:
-  #     highly_sensitive:
-  #       cohort: output/joined/input_20*.csv.gz
+  join_cohorts_monthly:
+    run: >
+      cohort-joiner:v0.0.44
+        --lhs output/input_20*.csv.gz
+        --rhs output/input_end.csv.gz
+        --output-dir output/joined
+    needs: [
+      generate_study_population_1,
+      generate_study_population_2,
+      generate_study_population_3,
+      generate_study_population_end]
+    outputs:
+      highly_sensitive:
+        cohort: output/joined/input_20*.csv.gz
 
 
   generate_dataset_report:
     run: >
       dataset-report:v0.0.24
-        --input-files output/input_2021-01-01.csv.gz
+        --input-files output/joined/input_2021-06-01.csv.gz
         --output-dir output
-    needs: [generate_study_population_2]
+    needs: [join_cohorts_monthly]
     outputs:
       moderately_sensitive:
-        dataset_report: output/input_2021-01-01.html
+        dataset_report: output/input_2021-06-01.html
   
   combined_input_files:
     run: python:latest python analysis/combine_input_files.py
-    needs: [generate_study_population_1, generate_study_population_2]
+    needs: [join_cohorts_monthly]
     outputs:
       highly_sensitive:
-        attrition: output/input_all_py.csv.gz
+        attrition: output/joined/input_all_py.csv.gz
 
   column_counts:
     run: python:latest python analysis/test_column_counts.py
@@ -79,8 +79,6 @@ actions:
 
   generate_first_outputs:
     run: r:latest analysis/flucats_descriptive_basic.R
-
-
     needs: [combined_input_files]
     outputs:
       moderately_sensitive:
