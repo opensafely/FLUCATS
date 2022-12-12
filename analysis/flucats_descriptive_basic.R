@@ -16,6 +16,10 @@ attrition <- data.frame(step) %>%
   mutate(numbers = case_when(step == "Total number of unique patients: " ~ length(unique(df$patient_id)),
                            step == "Total number of encounters over the time period: " ~ nrow(df)))
 
+# round all values in attrition 'numbers' column to the nearest 10
+attrition$numbers <- round(attrition$numbers, -1)
+
+
 #Save output
 write.csv(attrition, "output/attrition.csv")#moderately sensitive: specify in YAML
 rm(attrition)
@@ -24,7 +28,6 @@ rm(attrition)
 #Generate an encounter ID for each row of the data (assuming that there is no duplication of rows)
 df$encounter_id <- 1:nrow(df)
 
-#Histogram of age
 histogram_age <- qplot(
   df$age,
   main = "Age distribution of cases",
@@ -53,12 +56,14 @@ df$flucats_template_date <- as.Date(df$flucats_template_date, format = "%Y-%m-%d
 df <- df %>% 
   mutate(template_week = week(flucats_template_date))
 
+
 flucats_week <- ggplot(df, aes(x = template_week)) +
   geom_bar(fill = I("blue"),
            col = I("red"),
            alpha = I(.2)) + xlab("Week number (of calendar year)") + labs(title = "Week number (of calendar year)") +
   theme(plot.title = element_text(color = "black", size = 14, face = "bold")) +
   theme(plot.title = element_text(hjust = 0.5))
+
 png(filename="output/weekly_template.png")#moderately sensitive: specify in YAML
 plot(flucats_week)
 dev.off()
@@ -123,16 +128,31 @@ df <- df %>%
          
 
 sex_table <- table(df$sex)
+sex_table <- round(sex_table, -1)
+
+
 region_table <- table(df$region)
+region_table <- round(region_table, -1)
 
 flucat_a_table <- table(df$flucats_a)
-flucat_b_table <- table(df$flucats_b)
-flucat_c_table <- table(df$flucats_c)
-flucat_d_table <- table(df$flucats_d)
-flucat_e_table <- table(df$flucats_e)
-flucat_f_table <- table(df$flucats_f)
+flucat_a_table <- round(flucat_a_table, -1)
 
-#Write descriptive tables
+flucat_b_table <- table(df$flucats_b)
+flucat_b_table <- round(flucat_b_table, -1)
+
+flucat_c_table <- table(df$flucats_c)
+flucat_c_table <- round(flucat_c_table, -1)
+
+flucat_d_table <- table(df$flucats_d)
+flucat_d_table <- round(flucat_d_table, -1)
+
+flucat_e_table <- table(df$flucats_e)
+flucat_e_table <- round(flucat_e_table, -1)
+
+flucat_f_table <- table(df$flucats_f)
+flucat_f_table <- round(flucat_f_table, -1)
+
+
 write.csv(flucat_a_table, "output/flucat_a.csv")#moderately sensitive: specify in YAML
 write.csv(flucat_b_table, "output/flucat_b.csv")
 write.csv(flucat_c_table, "output/flucat_c.csv")
