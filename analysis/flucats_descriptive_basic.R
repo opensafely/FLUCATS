@@ -127,11 +127,14 @@ df <- df %>%
                                TRUE ~ "NA"))
          
 
-sex_table <- table(df$sex)
+
+sex <- df[!duplicated(df$patient_id),]$sex
+region <- df[!duplicated(df$patient_id),]$region
+
+sex_table <- table(sex)
 sex_table <- round(sex_table, -1)
 
-
-region_table <- table(df$region)
+region_table <- table(region)
 region_table <- round(region_table, -1)
 
 flucat_a_table <- table(df$flucats_a)
