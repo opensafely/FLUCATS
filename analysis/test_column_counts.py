@@ -32,12 +32,19 @@ def get_counts(df, filename):
             counts.append(count)
 
     count_comined = pd.concat(counts)
-    # set any values <100 and >0 to 100
-    count_comined = count_comined.apply(lambda x: 100 if x < 100 and x > 0 else x)
+
+
+    # set any values <100 0
+    count_comined_redacted = count_comined.apply(lambda x: 0 if x < 100 else x)
+
     # round to nrearest 100
-    count_comined = count_comined.apply(lambda x: round(x, -2))
+    count_comined_redacted = count_comined_redacted.apply(lambda x: round(x, -2))
+
+    #drop 0 counts
+    count_comined_redacted = count_comined_redacted[count_comined_redacted > 0]
 
     count_comined.to_csv(filename, header=True, index=True)
+    count_comined_redacted.to_csv(filename.replace('.csv', '_redacted.csv'), header=True, index=True)
 
 df = pd.read_csv('output/input_test.csv.gz')
 
