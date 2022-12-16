@@ -97,6 +97,14 @@ actions:
         sex_table: output/sex_table.csv
         region_table: output/region_table.csv
 
+  compare_short_long_window:
+    run: python:latest python analysis/compare_short_long_window.py
+    needs: [generate_study_population_2, generate_study_population_long_window]
+    outputs:
+      moderately_sensitive:
+        counts: output/compare_short_long_window.csv
+  
+
   # check_codes:
   #   run: r:latest analysis/check_codes.R
   #   needs: [generate_study_population_2]
