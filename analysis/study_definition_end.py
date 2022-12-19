@@ -52,32 +52,7 @@ study = StudyDefinition(
             "incidence": 0.05,
         },
     ),
-    cause_of_death = patients.died_from_any_cause(
-            on_or_before="index_date",
-            returning="underlying_cause_of_death",
-            return_expectations={
-                "category": {
-                    "ratios": {
-                        "code1": 0.5,
-                        "code2": 0.5,
-                    }
-                }
-            },
-            
-        ),
-    place_of_death = patients.died_from_any_cause(
-            on_or_before="index_date",
-            returning="place_of_death",
-            return_expectations={
-                "category": {
-                    "ratios": {
-                        "code1": 0.5,
-                        "code2": 0.5,
-                    }
-                }
-            },
-        ),
-
+    
     # Ethnicity
     ethnicity_opensafely=patients.with_these_clinical_events(
         ethnicity_opensafely,
