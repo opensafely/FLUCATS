@@ -44,6 +44,11 @@ actions:
       highly_sensitive:
         cohort: output/inp*.csv.gz
   
+  generate_study_population_v2_test:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_v2 --index-date-range "2021-04-01" --output-format=csv.gz --with-end-date-fix
+    outputs:
+      highly_sensitive:
+        cohort: output/in*.csv.gz
 
   generate_study_population_end:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_end --output-format=csv.gz --with-end-date-fix
