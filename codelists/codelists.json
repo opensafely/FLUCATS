@@ -444,11 +444,71 @@
       "downloaded_at": "2022-08-12 15:15:24.915002Z",
       "sha": "82f975a7be188364a1ef1aa5f8ff52f75e499612"
     },
-    "opensafely-antibacterials.csv": {
-      "id": "opensafely/antibacterials/27089eaa",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/antibacterials/27089eaa/",
-      "downloaded_at": "2022-08-12 15:18:18.937284Z",
-      "sha": "f3c280d89cff832ee287f1b66a5042794f2fda27"
+    "user-Louis-flucats-altered-conscious-level.csv": {
+      "id": "user/Louis/flucats-altered-conscious-level/05a9010c",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-altered-conscious-level/05a9010c/",
+      "downloaded_at": "2023-02-01 11:00:44.097208Z",
+      "sha": "5eb7d1e069b96baed32d4d6fac4f149466a6e547"
+    },
+    "user-Louis-flucats-causing-clinical-concern.csv": {
+      "id": "user/Louis/flucats-causing-clinical-concern/6c998dd6",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-causing-clinical-concern/6c998dd6/",
+      "downloaded_at": "2023-02-01 11:00:44.334052Z",
+      "sha": "5aedb596599077fc9cdaf148f589c7236a3d6d0f"
+    },
+    "user-Louis-flucats-evidence-of-dehydration-or-shock.csv": {
+      "id": "user/Louis/flucats-evidence-of-dehydration-or-shock/02f64116",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-evidence-of-dehydration-or-shock/02f64116/",
+      "downloaded_at": "2023-02-01 11:00:44.575748Z",
+      "sha": "98520c5bb96fd152ed4c8ecc8d332f4cf351093b"
+    },
+    "user-Louis-flucats-increased-respiratory-rate.csv": {
+      "id": "user/Louis/flucats-increased-respiratory-rate/50d75aab",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-increased-respiratory-rate/50d75aab/",
+      "downloaded_at": "2023-02-01 11:00:44.810248Z",
+      "sha": "c80560210208b7015a69e8ddfe8925d0a63cb844"
+    },
+    "user-Louis-flucats-oxygen-saturation.csv": {
+      "id": "user/Louis/flucats-oxygen-saturation/37c7e776",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-oxygen-saturation/37c7e776/",
+      "downloaded_at": "2023-02-01 11:00:45.035277Z",
+      "sha": "5396d03ea369aed01ceacd1b9ef6f822472ac27a"
+    },
+    "user-Louis-flucats-respiratory-exhaustion-or-apnoea.csv": {
+      "id": "user/Louis/flucats-respiratory-exhaustion-or-apnoea/2ee8f405",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-respiratory-exhaustion-or-apnoea/2ee8f405/",
+      "downloaded_at": "2023-02-01 11:42:30.072211Z",
+      "sha": "45b8c098915a55b7ff4a2e1baffbea5de8395d59"
+    },
+    "user-Louis-flucats-severe-respiratory-distress.csv": {
+      "id": "user/Louis/flucats-severe-respiratory-distress/69e6cde0",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-severe-respiratory-distress/69e6cde0/",
+      "downloaded_at": "2023-02-01 11:00:45.512220Z",
+      "sha": "61563fc96fb1a222c800d00618a8697d6c393d7f"
+    },
+    "user-Louis-flucats-blood-pressure-reading.csv": {
+      "id": "user/Louis/flucats-blood-pressure-reading/2c36340f",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-blood-pressure-reading/2c36340f/",
+      "downloaded_at": "2023-02-01 11:00:45.736226Z",
+      "sha": "348e1a143cd925499cf67ec562932fc8817e7c93"
+    },
+    "user-Louis-flucats-who-performance-score.csv": {
+      "id": "user/Louis/flucats-who-performance-score/7a174da4",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-who-performance-score/7a174da4/",
+      "downloaded_at": "2023-02-01 11:00:45.962256Z",
+      "sha": "d9bb2089a2d6b7e67d5303194895dae823409352"
+    },
+    "user-Louis-flucats-temperature.csv": {
+      "id": "user/Louis/flucats-temperature/4545a744",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-temperature/4545a744/",
+      "downloaded_at": "2023-02-01 11:00:46.214257Z",
+      "sha": "9c95fd0d6a06d3f8aa51e448446e76158306fbb2"
+    },
+    "user-Louis-flucats-heart-rate.csv": {
+      "id": "user/Louis/flucats-heart-rate/1326c0da",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-heart-rate/1326c0da/",
+      "downloaded_at": "2023-02-01 11:00:46.445859Z",
+      "sha": "9f2b9158d229cf94244ca0a653cab646ccce34f7"
     }
   }
 }

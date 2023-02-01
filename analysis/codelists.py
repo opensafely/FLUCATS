@@ -188,9 +188,7 @@ steroid_codelist = codelist_from_csv(
     "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
 )
 
-antibiotic_codelist = codelist_from_csv(
-    "codelists/opensafely-antibacterials.csv", system="snomed", column="dmd_id"
-)
+
 antiviral_codelist = codelist_from_csv(
     "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
 )
@@ -298,3 +296,70 @@ flucats_clinical_concern_note_codelist = codelist_from_csv(
     system="snomed",
     column="code",
 )
+
+flucats_altered_consciousness_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-altered-conscious-level.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_causing_clinical_concern_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-causing-clinical-concern.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_dehydration_or_shock_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-evidence-of-dehydration-or-shock.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_increased_respiratory_rate_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-increased-respiratory-rate.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_oxygen_saturation_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-oxygen-saturation.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_respiratory_exhaustion_or_apnoea_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-respiratory-exhaustion-or-apnoea.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_severe_respiratory_distress_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-severe-respiratory-distress.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_blood_pressure_reading_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-blood-pressure-reading.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_who_performance_score_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-who-performance-score.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_heart_rate_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-heart-rate.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_temperature_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-temperature.csv",
+    system="snomed",
+    column="code",
+)
+
