@@ -44,6 +44,11 @@ actions:
       highly_sensitive:
         cohort: output/inp*.csv.gz
   
+  generate_study_population_v2_test:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_v2 --index-date-range "2021-04-01" --output-format=csv.gz --with-end-date-fix
+    outputs:
+      highly_sensitive:
+        cohort: output/in*.csv.gz
 
   generate_study_population_end:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_end --output-format=csv.gz --with-end-date-fix
@@ -87,10 +92,10 @@ actions:
 
   column_counts:
     run: python:latest python analysis/test_column_counts.py
-    needs: [generate_study_population_test, combined_input_files, generate_study_population_2]
+    needs: [generate_study_population_v2_test]
     outputs:
       moderately_sensitive:
-        counts: output/column_counts/combine*.csv
+        counts: output/column_counts/*.csv
 
   generate_first_outputs:
     run: r:latest analysis/flucats_descriptive_basic.R

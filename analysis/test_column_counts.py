@@ -46,12 +46,9 @@ def get_counts(df, filename):
     count_comined.to_csv(filename, header=True, index=True)
     count_comined_redacted.to_csv(filename.replace('.csv', '_redacted.csv'), header=True, index=True)
 
-df = pd.read_csv('output/input_test.csv.gz')
+df = pd.read_csv('output/input_v2_2021-04-01.csv.gz')
 
-get_counts(df, 'output/column_counts/combined.csv')
+df = df[df['flucats_template'] == 1]
 
+get_counts(df, 'output/column_counts/v2.csv')
 
-df_2 = pd.read_csv('output/joined/input_all_py.csv.gz')
-df_2 = df_2[df_2['flucats_template'] == 1]
-
-get_counts(df_2, 'output/column_counts/combined_all.csv')

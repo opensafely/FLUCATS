@@ -72,4 +72,14 @@ user/Louis/flucats-icu-admission/1a5b86cf/
 user/Louis/flucats-clinical-concern-note/014c139a/
 primis-covid19-vacc-uptake/reside_cod/v.1.5.3/
 opensafely/statin-medication/2020-04-20/
-opensafely/antibacterials/27089eaa
+user/Louis/flucats-altered-conscious-level/05a9010c/
+user/Louis/flucats-causing-clinical-concern/6c998dd6/
+user/Louis/flucats-evidence-of-dehydration-or-shock/02f64116/
+user/Louis/flucats-increased-respiratory-rate/50d75aab/
+user/Louis/flucats-oxygen-saturation/37c7e776/
+user/Louis/flucats-respiratory-exhaustion-or-apnoea/2ee8f405/
+user/Louis/flucats-severe-respiratory-distress/69e6cde0/
+user/Louis/flucats-blood-pressure-reading/2c36340f/
+user/Louis/flucats-who-performance-score/7a174da4/
+user/Louis/flucats-temperature/4545a744/
+user/Louis/flucats-heart-rate/1326c0da/
