@@ -5,50 +5,79 @@ expectations:
 
 actions:
 
-  # this looks for whether each flucats var is ever recorded for each patient as of 2021-01-01
-  generate_study_population_test:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition_test --output-format=csv.gz --with-end-date-fix
-    outputs:
-      highly_sensitive:
-        cohort: output/input_test.csv.gz
   
-  # this looks for whether each flucats var is recorded within a week of template code for each patient as of 2021-01-01
-  generate_study_population_long_window:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition_long_window --output-format=csv.gz --with-end-date-fix
-    outputs:
-      highly_sensitive:
-        cohort: output/input_long_window.csv.gz
-
-  generate_study_population_1:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-03-01 to 2020-07-01 by month" --output-format=csv.gz --with-end-date-fix
+  generate_study_population_conscious_level_blood_pressure:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition_v2
+      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --output-format=csv.gz
+      --with-end-date-fix
+      --param varset=altered_conscious_level,blood_pressure
     outputs:
       highly_sensitive:
         cohort: output/input_*.csv.gz
 
-  generate_study_population_2:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2020-08-01 to 2021-01-01 by month" --output-format=csv.gz --with-end-date-fix
+  generate_study_population_clinical_concern_dehydration:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition_v2
+      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --output-format=csv.gz
+      --with-end-date-fix
+      --param varset=causing_clinical_concern,dehydration_or_shock
     outputs:
       highly_sensitive:
         cohort: output/input*.csv.gz
 
-  generate_study_population_3:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2021-02-01 to 2021-03-01 by month" --output-format=csv.gz --with-end-date-fix
+  generate_study_population_heart_rate_resp_rate:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition_v2
+      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --output-format=csv.gz
+      --with-end-date-fix
+      --param varset=heart_rate,respiratory_rate
     outputs:
       highly_sensitive:
         cohort: output/inpu*.csv.gz
-  
-  #Gives until 2021-07-01. Only have ONS deaths until 2021-07-01
-  generate_study_population_4:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition --index-date-range "2021-04-01 to 2021-06-01 by month" --output-format=csv.gz --with-end-date-fix
+
+  generate_study_population_ox_temp:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition_v2
+      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --output-format=csv.gz
+      --with-end-date-fix
+      --param varset=oxygen_saturation,temperature
     outputs:
       highly_sensitive:
         cohort: output/inp*.csv.gz
-  
-  generate_study_population_v2_test:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition_v2 --index-date-range "2021-04-01" --output-format=csv.gz --with-end-date-fix
+
+  generate_study_population_who_dem:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition_v2
+      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --output-format=csv.gz
+      --with-end-date-fix
+      --param varset=who_performance_score,demographic_variables
     outputs:
       highly_sensitive:
         cohort: output/in*.csv.gz
+
+  generate_study_population_resp:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition_v2
+      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --output-format=csv.gz
+      --with-end-date-fix
+      --param varset=severe_respiratory_distress,respiratory_exhaustion
+    outputs:
+      highly_sensitive:
+        cohort: output/i*.csv.gz
+
 
   generate_study_population_end:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_end --output-format=csv.gz --with-end-date-fix
@@ -56,71 +85,53 @@ actions:
       highly_sensitive:
         cohort: output/input_end.csv.gz
 
-  join_cohorts_monthly:
-    run: >
-      cohort-joiner:v0.0.44
-        --lhs output/input_20*.csv.gz
-        --rhs output/input_end.csv.gz
-        --output-dir output/joined
-    needs: [
-      generate_study_population_1,
-      generate_study_population_2,
-      generate_study_population_3,
-      generate_study_population_4,
-      generate_study_population_end]
-    outputs:
-      highly_sensitive:
-        cohort: output/joined/input_20*.csv.gz
+
+  # join_cohorts_monthly:
+  #   run: >
+  #     cohort-joiner:v0.0.44
+  #       --lhs output/input_v2*.csv.gz
+  #       --rhs output/input_end.csv.gz
+  #       --output-dir output/joined
+  #   needs: [
+  #     generate_study_population_conscious_level_blood_pressure,
+  #     generate_study_population_clinical_concern_dehydration,
+  #     generate_study_population_heart_rate_resp_rate,
+  #     generate_study_population_ox_temp,
+  #     generate_study_population_who_dem,
+  #     generate_study_population_resp,
+  #     generate_study_population_end
+  #     ]
+  #   outputs:
+  #     highly_sensitive:
+  #       cohort: output/joined/input_20*.csv.gz
 
 
-  generate_dataset_report:
-    run: >
-      dataset-report:v0.0.24
-        --input-files output/joined/input_2021-06-01.csv.gz
-        --output-dir output
-    needs: [join_cohorts_monthly]
-    outputs:
-      moderately_sensitive:
-        dataset_report: output/input_2021-06-01.html
-  
-  combined_input_files:
-    run: python:latest python analysis/combine_input_files.py
-    needs: [join_cohorts_monthly]
-    outputs:
-      highly_sensitive:
-        attrition: output/joined/input_all_py.csv.gz
 
-  column_counts:
-    run: python:latest python analysis/test_column_counts.py
-    needs: [generate_study_population_v2_test]
-    outputs:
-      moderately_sensitive:
-        counts: output/column_counts/*.csv
+  # combined_input_files:
+  #   run: python:latest python analysis/combine_input_files.py
+  #   needs: [join_cohorts_monthly]
+  #   outputs:
+  #     highly_sensitive:
+  #       attrition: output/joined/input_all_py.csv.gz
 
-  generate_first_outputs:
-    run: r:latest analysis/flucats_descriptive_basic.R
-    needs: [combined_input_files]
-    outputs:
-      moderately_sensitive:
-        attrition: output/attrition.csv
-        histogram_age: output/age_hist.png
-        date_plot: output/weekly_template.png
-        flucat_tables: output/flucat*.csv
-        sex_table: output/sex_table.csv
-        region_table: output/region_table.csv
-
-  compare_short_long_window:
-    run: python:latest python analysis/compare_short_long_window.py
-    needs: [generate_study_population_2, generate_study_population_long_window]
-    outputs:
-      moderately_sensitive:
-        counts: output/compare_short_long_window.csv
-  
-
-  # check_codes:
-  #   run: r:latest analysis/check_codes.R
-  #   needs: [generate_study_population_2]
+  # column_counts:
+  #   run: python:latest python analysis/test_column_counts.py
+  #   needs: [generate_study_population_v2_conscious_level]
   #   outputs:
   #     moderately_sensitive:
-  #       text: output/text.txt
+  #       counts: output/column_counts/*.csv
 
+  # generate_first_outputs:
+  #   run: r:latest analysis/flucats_descriptive_basic.R
+  #   needs: [combined_input_files]
+  #   outputs:
+  #     moderately_sensitive:
+  #       attrition: output/attrition.csv
+  #       histogram_age: output/age_hist.png
+  #       date_plot: output/weekly_template.png
+  #       flucat_tables: output/flucat*.csv
+  #       sex_table: output/sex_table.csv
+  #       region_table: output/region_table.csv
+
+
+  

@@ -40,13 +40,7 @@ demographic_variables = dict(
             },
         },
     ),
-    sex=patients.sex(
-        return_expectations={
-            "rate": "universal",
-            "category": {"ratios": {"M": 0.49, "F": 0.49, "U": 0.01, "I": 0.01}},
-        }
-    ),
-
+    
     type_of_residence = patients.with_these_clinical_events(
         type_of_residence_codelist,
         on_or_before="index_date",
