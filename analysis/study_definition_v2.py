@@ -64,12 +64,7 @@ study = StudyDefinition(
             returning="binary_flag",
             return_expectations={"incidence": 0.1},
         ),
-        sex=patients.sex(
-            return_expectations={
-                "rate": "universal",
-                "category": {"ratios": {"M": 0.49, "F": 0.49, "U": 0.01, "I": 0.01}},
-            }
-        ),
+        
     ),
     practice=patients.registered_practice_as_of(
         "index_date",
@@ -79,7 +74,13 @@ study = StudyDefinition(
             "incidence": 0.5,
         },
     ),
-    
+    sex=patients.sex(
+        return_expectations={
+            "rate": "universal",
+            "category": {"ratios": {"M": 0.49, "F": 0.49, "U": 0.01, "I": 0.01}},
+        }
+    ),
+
     flucats_template=patients.with_these_clinical_events(
         codelist=codelist(["13044541000006109"], system="snomed"),
         between=["index_date", "last_day_of_month(index_date)"],
