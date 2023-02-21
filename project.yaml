@@ -10,7 +10,7 @@ actions:
     run: >
       cohortextractor:latest generate_cohort
       --study-definition study_definition_v2
-      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --index-date-range "2020-03-01 to 2020-04-01 by month"
       --output-file=output/input_v2_conscious_level_blood_pressure.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
@@ -23,7 +23,7 @@ actions:
     run: >
       cohortextractor:latest generate_cohort
       --study-definition study_definition_v2
-      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --index-date-range "2020-03-01 to 2020-04-01 by month"
       --output-file=output/input_v2_clinical_concern_dehydration.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
@@ -36,7 +36,7 @@ actions:
     run: >
       cohortextractor:latest generate_cohort
       --study-definition study_definition_v2
-      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --index-date-range "2020-03-01 to 2020-04-01 by month"
       --output-file=output/input_v2_heart_rate_resp_rate.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
@@ -49,7 +49,7 @@ actions:
     run: >
       cohortextractor:latest generate_cohort
       --study-definition study_definition_v2
-      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --index-date-range "2020-03-01 to 2020-04-01 by month"
       --output-file=output/input_v2_oxygen_saturation_temperature.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
@@ -62,7 +62,7 @@ actions:
     run: >
       cohortextractor:latest generate_cohort
       --study-definition study_definition_v2
-      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --index-date-range "2020-03-01 to 2020-04-01 by month"
       --output-file=output/input_v2_who_performance_score_demographic_variables.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
@@ -75,7 +75,7 @@ actions:
     run: >
       cohortextractor:latest generate_cohort
       --study-definition study_definition_v2
-      --index-date-range "2020-03-01 to 2021-06-01 by month"
+      --index-date-range "2020-03-01 to 2020-04-01 by month"
       --output-file=output/input_v2_severe_respiratory_distress_respiratory_exhaustion.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
