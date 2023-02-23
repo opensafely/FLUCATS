@@ -55,7 +55,7 @@ def group_low_values(df, count_column, code_column, threshold):
 
 def main():
     
-    combined_df = pd.read_csv('output/joined/full/input_v2_all_py.csv.gz')
+    combined_df = pd.read_csv('output/joined/full/input_v2_all_py.csv.gz', dtype=str)
 
     # for col in combined_df.columns:
     #     print(col)
