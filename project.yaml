@@ -735,7 +735,7 @@ actions:
     needs: [combined_input_files]
     outputs:
       moderately_sensitive:
-        attrition: output/column_counts.csv
+        attrition: output/column_counts*
 
   # generate_first_outputs:
   #   run: r:latest analysis/flucats_descriptive_basic.R

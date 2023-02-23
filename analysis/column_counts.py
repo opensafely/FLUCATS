@@ -76,9 +76,10 @@ def main():
 
 
     dfs= []
+    dfs_raw = []
 
     for group in groups:
-        print(group)
+        
         counts_df = pd.DataFrame(columns=['group', 'column', 'count'])
         
         columns = [col for col in combined_df.columns if col.startswith(f'flucats_question_{group}')]
@@ -95,6 +96,8 @@ def main():
         # remove index
 
         counts_df.reset_index(drop=True, inplace=True)
+        dfs_raw.append(counts_df)
+
         counts_df = group_low_values(counts_df, 'count', 'column', 100)
         
         counts_df.loc[counts_df["column"]=="Other", "group"] = group
@@ -107,6 +110,9 @@ def main():
 
     combined_df = pd.concat(dfs)
     combined_df.to_csv('output/column_counts.csv', index=False)
+
+    combined_df_raw = pd.concat(dfs_raw)
+    combined_df_raw.to_csv('output/column_counts_raw.csv', index=False)
 
 if __name__ == "__main__":
     main()
