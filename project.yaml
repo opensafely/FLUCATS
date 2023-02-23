@@ -723,12 +723,12 @@ actions:
 
 
 
-  # combined_input_files:
-  #   run: python:latest python analysis/combine_input_files.py
-  #   needs: [join_cohorts_monthly]
-  #   outputs:
-  #     highly_sensitive:
-  #       attrition: output/joined/input_all_py.csv.gz
+  combined_input_files:
+    run: python:latest python analysis/combine_input_files.py
+    needs: [join_cohorts_monthly]
+    outputs:
+      highly_sensitive:
+        attrition: output/joined/full/input_v2_all_py.csv.gz
 
   # column_counts:
   #   run: python:latest python analysis/test_column_counts.py
