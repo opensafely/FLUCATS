@@ -12,7 +12,7 @@ def group_low_values(df, count_column, code_column, threshold):
     Returns:
         A table with redacted counts
     """
-
+    df[count_column] = df[count_column].astype(int)
     # get sum of any values <= threshold
     suppressed_count = df.loc[
         df[count_column] <= threshold, count_column
