@@ -730,6 +730,13 @@ actions:
       highly_sensitive:
         attrition: output/joined/full/input_v2_all_py.csv.gz
 
+  column_counts:
+    run: python:latest python analysis/column_counts.py
+    needs: [join_cohorts_monthly]
+    outputs:
+      moderately_sensitive:
+        attrition: output/column_counts.csv
+
   generate_first_outputs:
     run: r:latest analysis/flucats_descriptive_basic.R
     needs: [combined_input_files]
