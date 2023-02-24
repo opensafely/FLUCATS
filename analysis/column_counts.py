@@ -51,9 +51,9 @@ def group_low_values(df, count_column, code_column, threshold):
             )
         
         elif suppressed_count == 0:
-            # set the column of the last row to "Other"
-            df.reset_index(drop=True, inplace=True)
-            df.loc[df.index[-1], code_column] = "Other"
+            df = df.reset_index(drop=True)
+            min_count = df[count_column].idxmin()
+            df.loc[min_count, code_column] = "Other"
 
     return df
 
@@ -82,6 +82,10 @@ def main():
     dfs_raw = []
 
     for group in groups:
+        
+            
+
+
         counts_df = pd.DataFrame(columns=['group', 'column', 'count'])
         
         columns = [col for col in combined_df.columns if col.startswith(f'flucats_question_{group}')]
