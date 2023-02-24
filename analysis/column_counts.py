@@ -93,11 +93,12 @@ def main():
             row = pd.DataFrame({'group': group, 'column': col, 'count': subset[col].count()}, index=[0])
             counts_df = pd.concat([counts_df, row])   
 
+        counts_df_redacted.reset_index(drop=True, inplace=True)
         dfs_raw.append(counts_df)
         
         counts_df_redacted = counts_df.copy()
 
-        counts_df_redacted.reset_index(drop=True, inplace=True)
+   
         
         counts_df_redacted = group_low_values(counts_df, 'count', 'column', 100)
         
