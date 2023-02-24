@@ -18,13 +18,12 @@ def group_low_values(df, count_column, code_column, threshold):
         df[count_column] <= threshold, count_column
     ].sum()
     suppressed_df = df.loc[df[count_column] > threshold, count_column]
-
     # if suppressed values >0 ensure total suppressed count > threshold.
     # Also suppress if all values 0
     if (suppressed_count > 0) | (
         (suppressed_count == 0) & (len(suppressed_df) != len(df))
     ):
-
+       
         # redact counts <= threshold
         df.loc[df[count_column] <= threshold, count_column] = np.nan
 
@@ -50,6 +49,11 @@ def group_low_values(df, count_column, code_column, threshold):
             df = pd.concat(
                 [df, pd.DataFrame([suppressed_count])], ignore_index=True
             )
+        
+        elif suppressed_count == 0:
+            # set the column of the last row to "Other"
+            df.reset_index(drop=True, inplace=True)
+            df.loc[df.index[-1], code_column] = "Other"
 
     return df
 
@@ -57,8 +61,7 @@ def main():
     
     combined_df = pd.read_csv('output/joined/full/input_v2_all_py.csv.gz', dtype=str)
 
-    # for col in combined_df.columns:
-    #     print(col)
+
     groups = [
         "altered_conscious_level",
         "blood_pressure",
@@ -79,7 +82,6 @@ def main():
     dfs_raw = []
 
     for group in groups:
-        
         counts_df = pd.DataFrame(columns=['group', 'column', 'count'])
         
         columns = [col for col in combined_df.columns if col.startswith(f'flucats_question_{group}')]
@@ -90,10 +92,8 @@ def main():
         for col in subset.columns:
             row = pd.DataFrame({'group': group, 'column': col, 'count': subset[col].count()}, index=pd.MultiIndex.from_tuples([(group, col)]))
             counts_df = pd.concat([counts_df, row])   
-
-       
-        dfs_raw.append(counts_df.reset_index(drop=True))
         
+        dfs_raw.append(counts_df.reset_index(drop=True))
         counts_df_redacted = counts_df.copy()
 
         counts_df_redacted = group_low_values(counts_df_redacted, 'count', 'column', 20)
