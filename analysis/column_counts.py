@@ -93,20 +93,20 @@ def main():
             row = pd.DataFrame({'group': group, 'column': col, 'count': subset[col].count()}, index=[0])
             counts_df = pd.concat([counts_df, row])   
 
-        print(counts_df)
         dfs_raw.append(counts_df)
         
+        counts_df_redacted = counts_df.copy()
 
-        counts_df.reset_index(drop=True, inplace=True)
+        counts_df_redacted.reset_index(drop=True, inplace=True)
         
-        counts_df = group_low_values(counts_df, 'count', 'column', 100)
+        counts_df_redacted = group_low_values(counts_df, 'count', 'column', 100)
         
-        counts_df.loc[counts_df["column"]=="Other", "group"] = group
+        counts_df_redacted.loc[counts_df_redacted["column"]=="Other", "group"] = group
 
         # round count column to nearest 10
-        counts_df['count'] = counts_df['count'].apply(lambda x: round(x, -1))
+        counts_df_redacted['count'] = counts_df_redacted['count'].apply(lambda x: round(x, -1))
 
-        dfs.append(counts_df) 
+        dfs.append(counts_df_redacted) 
     # save df
 
     combined_df = pd.concat(dfs)
