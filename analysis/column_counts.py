@@ -86,28 +86,25 @@ def main():
     
         subset = combined_df[columns]
 
-        # pandas count of non-null values in each column
-
         
         for col in subset.columns:
-            row = pd.DataFrame({'group': group, 'column': col, 'count': subset[col].count()}, index=[0])
+            row = pd.DataFrame({'group': group, 'column': col, 'count': subset[col].count()}, index=pd.MultiIndex.from_tuples([(group, col)]))
             counts_df = pd.concat([counts_df, row])   
 
-        counts_df.reset_index(drop=True, inplace=True)
-        dfs_raw.append(counts_df)
+       
+        dfs_raw.append(counts_df.reset_index(drop=True))
         
         counts_df_redacted = counts_df.copy()
 
-   
-        
-        counts_df_redacted = group_low_values(counts_df, 'count', 'column', 100)
-        
+        counts_df_redacted = group_low_values(counts_df_redacted, 'count', 'column', 20)
+
         counts_df_redacted.loc[counts_df_redacted["column"]=="Other", "group"] = group
 
         # round count column to nearest 10
         counts_df_redacted['count'] = counts_df_redacted['count'].apply(lambda x: round(x, -1))
+        # drop col and group columns
 
-        dfs.append(counts_df_redacted) 
+        dfs.append(counts_df_redacted.reset_index(drop=True)) 
     # save df
 
     combined_df = pd.concat(dfs)
