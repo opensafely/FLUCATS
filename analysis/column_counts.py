@@ -93,11 +93,12 @@ def main():
             row = pd.DataFrame({'group': group, 'column': col, 'count': subset[col].count()}, index=[0])
             counts_df = pd.concat([counts_df, row])   
 
-        # remove index
+        print(counts_df)
+        dfs_raw.append(counts_df)
+        
 
         counts_df.reset_index(drop=True, inplace=True)
-        dfs_raw.append(counts_df)
-
+        
         counts_df = group_low_values(counts_df, 'count', 'column', 100)
         
         counts_df.loc[counts_df["column"]=="Other", "group"] = group
