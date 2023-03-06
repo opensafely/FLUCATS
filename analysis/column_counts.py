@@ -142,10 +142,13 @@ def main():
 
         counts_df_redacted = group_low_values(counts_df_redacted, 'count', 'code', 7)
 
-        counts_df_redacted.loc[counts_df_redacted["code"]=="Other", "group"] = group
-        counts_df_redacted.loc[counts_df_redacted["code"]=="Other", "term"] = ''
+        # Get the index labels of the rows where code=="Other"
+        other_rows = counts_df_redacted.index[counts_df_redacted["code"] == "Other"]
 
-        
+        # Set the term column to an empty string for these rows
+        counts_df_redacted.loc[other_rows, "term"] = ''
+        counts_df_redacted.loc[other_rows, "group"] = group
+
 
       
 
