@@ -29,6 +29,13 @@ if include_hospital_admissions:
         find_last_match_in_period=True,
         return_expectations={"incidence": 0.5},
     ),
+    "flucats_template_occurences":patients.with_these_clinical_events(
+        codelist=codelist(["13044541000006109"], system="snomed"),
+        between=["index_date", "last_day_of_month(index_date)"],
+        returning="number_of_matches_in_period",
+        return_expectations={"int": {"distribution": "normal", "mean": 1, "stddev": 1}},
+    ),
+
     }
 else:
     hospital_admissions_variables = {}
