@@ -143,6 +143,7 @@ def main():
         counts_df_redacted = group_low_values(counts_df_redacted, 'count', 'code', 7)
 
         counts_df_redacted.loc[counts_df_redacted["code"]=="Other", "group"] = group
+        counts_df_redacted.loc[counts_df_redacted["code"]=="Other", "term"] = ''
 
         
 
