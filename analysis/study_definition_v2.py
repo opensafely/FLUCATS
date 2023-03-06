@@ -91,5 +91,17 @@ study = StudyDefinition(
         return_expectations={"incidence": 0.5},
     ),
     
-    **varset_variables
+    **varset_variables,
+
+    hospital_admission=patients.with_these_clinical_events(
+        codelist = flucats_hospital_admission_codelist,
+        between=["index_date", "last_day_of_month(index_date)"],
+        returning="binary_flag",
+        include_date_of_match=True,
+        date_format="YYYY-MM-DD",
+        find_last_match_in_period=True,
+        return_expectations={"incidence": 0.5},
+    ),
+
+    
 )
