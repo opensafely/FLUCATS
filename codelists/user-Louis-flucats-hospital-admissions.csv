@@ -1,0 +1,101 @@
+code,term
+10378005,"Hospital admission, emergency, from emergency room, accidental injury"
+1077981000000103,Emergency hospital admission to cardiac surgery service
+1078031000000104,Emergency hospital admission to community paediatric service
+1078041000000108,Emergency hospital admission to general surgical service
+1078051000000106,Emergency hospital admission to transplantation surgery service
+1078071000000102,Emergency hospital admission to colorectal surgery service
+1078081000000100,Emergency hospital admission to cardiothoracic transplantation surgery service
+1078091000000103,Emergency hospital admission to pain management service
+1078101000000106,Emergency hospital admission to paediatric urology service
+1078111000000108,Emergency hospital admission to paediatric gastrointestinal surgery service
+1078121000000102,"Emergency hospital admission to paediatric ear, nose and throat service"
+1078131000000100,Emergency hospital admission to paediatric ophthalmology service
+1078141000000109,Emergency hospital admission to paediatric maxillofacial surgery service
+1078151000000107,Emergency hospital admission to paediatric neurosurgery service
+1078161000000105,Emergency hospital admission to paediatric plastic surgery service
+1078171000000103,Emergency hospital admission to paediatric cardiac surgery service
+1078181000000101,Emergency hospital admission to paediatric thoracic surgery service
+1078191000000104,Emergency hospital admission to paediatric pain management service
+1078201000000102,Emergency hospital admission to paediatric gastroenterology service
+1078211000000100,Emergency hospital admission to paediatric endocrinology service
+1078221000000106,Emergency hospital admission to paediatric dermatology service
+1078231000000108,Emergency hospital admission to paediatric respiratory medicine service
+1078241000000104,Emergency hospital admission to paediatric nephrology service
+1078251000000101,Emergency hospital admission to paediatric rheumatology service
+1078261000000103,Emergency hospital admission to gastroenterology service
+1078271000000105,Emergency hospital admission to endocrinology service
+1078281000000107,Emergency hospital admission to critical care medicine service
+1078291000000109,Emergency hospital admission to general medical service
+1078301000000108,Emergency hospital admission to hepatology service
+1078311000000105,Emergency hospital admission to palliative medicine service
+1078321000000104,Emergency hospital admission to respite care service
+1078331000000102,Emergency hospital admission to intermediate care service
+1078341000000106,Emergency hospital admission to paediatric cardiology service
+1078351000000109,Emergency hospital admission to cardiac rehabilitation service
+1078531000000105,Emergency hospital admission to paediatric dentistry service
+1078551000000103,Emergency hospital admission to paediatric surgical service
+1078561000000100,Emergency hospital admission to paediatric intensive care service
+1078581000000109,Emergency hospital admission to paediatric transplantation surgery service
+1078591000000106,Emergency hospital admission to paediatric trauma and orthopaedics surgery service
+1078601000000100,Emergency hospital admission to paediatric medical oncology service
+1078611000000103,Emergency hospital admission to paediatric diabetes service
+1078621000000109,Emergency hospital admission to paediatric interventional radiology service
+1078631000000106,Emergency hospital admission to paediatric neurodisability service
+1078651000000104,Emergency hospital admission to haemophilia service
+1078661000000101,Emergency hospital admission to clinical immunology and allergy service
+1078671000000108,Emergency hospital admission to stroke service
+1078681000000105,Emergency hospital admission to genitourinary medicine service
+1078711000000109,Emergency hospital admission to midwifery service
+1078741000000105,Emergency hospital admission to clinical oncology service
+1078781000000102,Emergency hospital admission to tropical medicine service
+1078791000000100,Emergency hospital admission to medical oncology service
+1078851000000100,Emergency hospital admission to paediatric burn care service
+1078861000000102,Emergency hospital admission to clinical immunology service
+1078871000000109,Emergency hospital admission to allergy service
+1078881000000106,Emergency hospital admission to spinal injuries service
+1078891000000108,Emergency hospital admission to respiratory physiology service
+1079161000000102,Emergency hospital admission to paediatric clinical haematology service
+1079171000000109,Emergency hospital admission to paediatric infectious diseases service
+1079181000000106,Emergency hospital admission to paediatric metabolic disease service
+1079191000000108,Emergency hospital admission to paediatric cystic fibrosis service
+1079201000000105,Emergency hospital admission to transient ischaemic attack service
+1079211000000107,Emergency hospital admission to adult cystic fibrosis service
+1079221000000101,Emergency hospital admission to infectious diseases service
+1079231000000104,Emergency hospital admission to paediatric neurology service
+1079241000000108,Emergency hospital admission to neonatal critical care service
+1079291000000103,Emergency hospital admission to paediatric epilepsy service
+1079301000000104,Emergency hospital admission to paediatric audiological medicine service
+1079311000000102,Emergency hospital admission to paediatric clinical immunology and allergy service
+1079321000000108,Emergency hospital admission to blood and marrow transplantation service
+1079361000000100,Emergency hospital admission to sport and exercise medicine service
+1079371000000107,Emergency hospital admission to congenital heart disease service
+1082361000000101,Emergency hospital admission to complex specialised rehabilitation service
+1082381000000105,Emergency hospital admission to learning disability service
+1082391000000107,Emergency hospital admission to local specialist rehabilitation service
+1082401000000105,Emergency hospital admission to programmed pulmonary rehabilitation service
+1082411000000107,Emergency hospital admission to well babies specialty
+1082421000000101,Emergency hospital admission to accident and emergency service
+18083007,"Hospital admission, emergency, indirect"
+183452005,Emergency hospital admission
+183457004,Geriatric emergency hospital admission
+183458009,Pediatric emergency hospital admission
+183460006,Obstetric emergency hospital admission
+183465001,Rheumatology emergency hospital admission
+183467009,Neurology emergency hospital admission
+183469007,Radiotherapy emergency hospital admission
+183470008,Hematology emergency hospital admission
+183472000,Diabetic emergency hospital admission
+183474004,Psychogeriatric emergency hospital admission
+183475003,Renal medicine emergency hospital admission
+183477006,Cardiothoracic emergency hospital admission
+183478001,Emergency hospital admission for asthma
+19951005,"Hospital admission, emergency, from emergency room, medical nature"
+313385005,Cardiology emergency hospital admission
+408489005,Respiratory emergency hospital admission
+408501008,Emergency hospital admission for chronic obstructive pulmonary disease
+416683003,Emergency hospital admission for heart failure
+699245006,Emergency hospital admission for ischemic heart disease
+73607007,"Hospital admission, emergency, from emergency room"
+78680009,"Hospital admission, emergency, direct"
+842951000000109,Emergency hospital admission from walk-in centre
