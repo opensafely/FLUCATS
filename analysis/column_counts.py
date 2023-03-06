@@ -129,7 +129,7 @@ def main():
         dfs_raw.append(counts_df.reset_index(drop=True))
         counts_df_redacted = counts_df.copy()
 
-        counts_df_redacted = group_low_values(counts_df_redacted, 'count', 'code', 20)
+        counts_df_redacted = group_low_values(counts_df_redacted, 'count', 'code', 10)
 
         counts_df_redacted.loc[counts_df_redacted["code"]=="Other", "group"] = group
 
