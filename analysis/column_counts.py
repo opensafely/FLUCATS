@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import re
 
 def group_low_values(df, count_column, code_column, threshold):
     """Suppresses low values and groups suppressed values into
@@ -60,7 +61,20 @@ def group_low_values(df, count_column, code_column, threshold):
 def main():
     
     combined_df = pd.read_csv('output/joined/full/input_v2_all_py.csv.gz', dtype=str)
-
+    codelist_paths = {
+        "altered_conscious_level": "codelists/user-Louis-flucats-altered-conscious-level.csv",
+        "blood_pressure": "codelists/user-Louis-flucats-blood-pressure-reading.csv",
+        "causing_clinical_concern": "codelists/user-Louis-flucats-causing-clinical-concern.csv",
+        "dehydration_or_shock": "codelists/user-Louis-flucats-evidence-of-dehydration-or-shock.csv",
+        "heart_rate": "codelists/user-Louis-flucats-heart-rate.csv",
+        "respiratory_rate": "codelists/user-Louis-flucats-increased-respiratory-rate.csv",
+        "oxygen_saturation": "codelists/user-Louis-flucats-oxygen-saturation.csv",
+        "temperature": "codelists/user-Louis-flucats-temperature.csv",
+        "who_performance_score": "codelists/user-Louis-flucats-who-performance-score.csv",
+        "severe_respiratory_distress": "codelists/user-Louis-flucats-severe-respiratory-distress.csv",
+        "respiratory_exhaustion": "codelists/user-Louis-flucats-respiratory-exhaustion-or-apnoea.csv",
+    }
+    codelists = {k: pd.read_csv(v) for k, v in codelist_paths.items()}
 
     groups = [
         "altered_conscious_level",
@@ -83,8 +97,8 @@ def main():
 
     for group in groups:
         
-            
-
+      
+       
 
         counts_df = pd.DataFrame(columns=['group', 'column', 'count'])
         
@@ -97,12 +111,38 @@ def main():
             row = pd.DataFrame({'group': group, 'column': col, 'count': subset[col].count()}, index=pd.MultiIndex.from_tuples([(group, col)]))
             counts_df = pd.concat([counts_df, row])   
         
+        # use regex to rename column from e.g. flucats_question_altered_conscious_level_162701007_code to 162701007
+        
+        pattern = r"(\d+)_code"
+        counts_df['column'] = counts_df['column'].str.extract(pattern)
+
+        
+        # convert to int
+        counts_df['column'] = counts_df['column'].astype(int)
+
+        # rename column to code
+        counts_df = counts_df.rename(columns={'column': 'code'})
+
+  
+        
+
         dfs_raw.append(counts_df.reset_index(drop=True))
         counts_df_redacted = counts_df.copy()
 
-        counts_df_redacted = group_low_values(counts_df_redacted, 'count', 'column', 20)
+        counts_df_redacted = group_low_values(counts_df_redacted, 'count', 'code', 20)
 
-        counts_df_redacted.loc[counts_df_redacted["column"]=="Other", "group"] = group
+        counts_df_redacted.loc[counts_df_redacted["code"]=="Other", "group"] = group
+
+        
+
+        # get code description from codelist
+        if not group == 'demographic_variables':
+            codelist = codelists[group]
+            counts_df_redacted = counts_df_redacted.merge(codelist, on='code', how='left')
+
+            # reorder - group, code, description, count
+            counts_df_redacted = counts_df_redacted[['group', 'code', 'term', 'count']]
+
 
         # round count column to nearest 10
         counts_df_redacted['count'] = counts_df_redacted['count'].apply(lambda x: round(x, -1))
