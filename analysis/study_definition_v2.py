@@ -16,6 +16,22 @@ from flucats_variables_v2 import (
     flucats_variables_respiratory_exhaustion
 )
 
+include_hospital_admissions = params["include_hospital_admissions"]
+
+if include_hospital_admissions:
+    hospital_admissions_variables = {
+        "hospital_admission": patients.with_these_clinical_events(
+        codelist = flucats_hospital_admission_codelist,
+        between=["index_date", "last_day_of_month(index_date)"],
+        returning="binary_flag",
+        include_date_of_match=True,
+        date_format="YYYY-MM-DD",
+        find_last_match_in_period=True,
+        return_expectations={"incidence": 0.5},
+    ),
+    }
+else:
+    hospital_admissions_variables = {}
 
 varset_names = params["varset"].split(",")
 varset_dict = {
@@ -93,15 +109,6 @@ study = StudyDefinition(
     
     **varset_variables,
 
-    hospital_admission=patients.with_these_clinical_events(
-        codelist = flucats_hospital_admission_codelist,
-        between=["index_date", "last_day_of_month(index_date)"],
-        returning="binary_flag",
-        include_date_of_match=True,
-        date_format="YYYY-MM-DD",
-        find_last_match_in_period=True,
-        return_expectations={"incidence": 0.5},
-    ),
-
+    **hospital_admissions_variables,
     
 )
