@@ -127,6 +127,17 @@ def main():
         
 
         dfs_raw.append(counts_df.reset_index(drop=True))
+
+
+          # get code description from codelist
+        if not group == 'demographic_variables':
+            codelist = codelists[group]
+            counts_df = counts_df.merge(codelist, on='code', how='left')
+
+            # reorder - group, code, description, count
+            counts_df = counts_df[['group', 'code', 'term', 'count']]
+
+
         counts_df_redacted = counts_df.copy()
 
         counts_df_redacted = group_low_values(counts_df_redacted, 'count', 'code', 10)
@@ -135,14 +146,7 @@ def main():
 
         
 
-        # get code description from codelist
-        if not group == 'demographic_variables':
-            codelist = codelists[group]
-            counts_df_redacted = counts_df_redacted.merge(codelist, on='code', how='left')
-
-            # reorder - group, code, description, count
-            counts_df_redacted = counts_df_redacted[['group', 'code', 'term', 'count']]
-
+      
 
         # round count column to nearest 10
         counts_df_redacted['count'] = counts_df_redacted['count'].apply(lambda x: round(x, -1))
