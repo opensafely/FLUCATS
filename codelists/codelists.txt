@@ -83,3 +83,4 @@ user/Louis/flucats-blood-pressure-reading/2c36340f/
 user/Louis/flucats-who-performance-score/7a174da4/
 user/Louis/flucats-temperature/4545a744/
 user/Louis/flucats-heart-rate/1326c0da/
+user/Louis/flucats-hospital-admissions/2fa63e97/

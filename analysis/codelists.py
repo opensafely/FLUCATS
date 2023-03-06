@@ -363,3 +363,9 @@ flucats_temperature_codelist = codelist_from_csv(
     column="code",
 )
 
+flucats_hospital_admission_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-hospital-admissions.csv",
+    system="snomed",
+    column="code",
+)
+

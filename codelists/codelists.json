@@ -509,6 +509,12 @@
       "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-heart-rate/1326c0da/",
       "downloaded_at": "2023-02-01 11:00:46.445859Z",
       "sha": "9f2b9158d229cf94244ca0a653cab646ccce34f7"
+    },
+    "user-Louis-flucats-hospital-admissions.csv": {
+      "id": "user/Louis/flucats-hospital-admissions/2fa63e97",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-hospital-admissions/2fa63e97/",
+      "downloaded_at": "2023-03-06 17:17:04.579271Z",
+      "sha": "13db3eb5e5dcdfb2b27337a382b53674f8e4dab4"
     }
   }
 }
