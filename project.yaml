@@ -16,6 +16,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_pressure*.csv.gz
@@ -100,6 +101,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_pressur*.csv.gz
@@ -184,6 +186,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_pressu*.csv.gz
@@ -271,6 +274,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_press*.csv.gz
@@ -358,6 +362,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
       
     outputs:
       highly_sensitive:
@@ -445,6 +450,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_pre*.csv.gz
@@ -532,6 +538,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_pr*.csv.gz
@@ -618,6 +625,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_p*.csv.gz
