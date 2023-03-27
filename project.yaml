@@ -770,6 +770,12 @@ actions:
       highly_sensitive:
         cohort: output/joined/full/input*.csv.gz
 
+  template_frequency:
+    run: python:latest python analysis/template_frequency.py
+    needs: [join_cohorts_monthly]
+    outputs:
+      moderately_sensitive:
+        attrition: output/joined/full/template_frequency.csv
 
 
   combined_input_files:
