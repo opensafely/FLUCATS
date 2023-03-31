@@ -53,8 +53,10 @@ def group_low_values(df, count_column, code_column, threshold):
         
         elif suppressed_count == 0:
             df = df.reset_index(drop=True)
-            min_count = df[count_column].idxmin()
-            df.loc[min_count, code_column] = "Other"
+            if len(df)>0:
+
+                min_count = df[count_column].idxmin()
+                df.loc[min_count, code_column] = "Other"
 
     return df
 
