@@ -16,6 +16,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_pressure*.csv.gz
@@ -30,6 +31,7 @@ actions:
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_clinical_concern_dehydration*.csv.gz
@@ -44,6 +46,7 @@ actions:
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_heart_rate_resp_rate*.csv.gz
@@ -58,6 +61,7 @@ actions:
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_oxygen_saturation_temperature*.csv.gz
@@ -72,6 +76,7 @@ actions:
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_who_performance_score_demographic_variables*.csv.gz
@@ -86,6 +91,7 @@ actions:
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_severe_respiratory_distress_respiratory_exhaustion*.csv.gz
@@ -100,6 +106,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_pressur*.csv.gz
@@ -114,6 +121,7 @@ actions:
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_clinical_concern_dehydratio*.csv.gz
@@ -128,6 +136,7 @@ actions:
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_heart_rate_resp_rat*.csv.gz
@@ -142,6 +151,7 @@ actions:
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_oxygen_saturation_temperatur*.csv.gz
@@ -156,6 +166,7 @@ actions:
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_who_performance_score_demographic_variable*.csv.gz
@@ -170,6 +181,7 @@ actions:
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_severe_respiratory_distress_respiratory_exhaustio*.csv.gz
@@ -184,6 +196,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_pressu*.csv.gz
@@ -198,6 +211,7 @@ actions:
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_clinical_concern_dehydrati*.csv.gz
@@ -212,6 +226,7 @@ actions:
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_heart_rate_resp_ra*.csv.gz
@@ -226,6 +241,7 @@ actions:
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_oxygen_saturation_temperatu*.csv.gz
@@ -240,6 +256,7 @@ actions:
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_who_performance_score_demographic_variabl*.csv.gz
@@ -254,6 +271,7 @@ actions:
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_severe_respiratory_distress_respiratory_exhausti*.csv.gz
@@ -271,6 +289,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_press*.csv.gz
@@ -285,6 +304,7 @@ actions:
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_clinical_concern_dehydrat*.csv.gz
@@ -299,6 +319,7 @@ actions:
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_heart_rate_resp_r*.csv.gz
@@ -313,6 +334,7 @@ actions:
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_oxygen_saturation_temperat*.csv.gz
@@ -327,6 +349,7 @@ actions:
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_who_performance_score_demographic_variab*.csv.gz
@@ -341,6 +364,7 @@ actions:
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_severe_respiratory_distress_respiratory_exhaust*.csv.gz
@@ -358,6 +382,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
       
     outputs:
       highly_sensitive:
@@ -373,6 +398,7 @@ actions:
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_clinical_concern_dehydra*.csv.gz
@@ -387,6 +413,7 @@ actions:
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_heart_rate_resp_*.csv.gz
@@ -401,6 +428,7 @@ actions:
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_oxygen_saturation_tempera*.csv.gz
@@ -415,6 +443,7 @@ actions:
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_who_performance_score_demographic_varia*.csv.gz
@@ -429,6 +458,7 @@ actions:
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_severe_respiratory_distress_respiratory_exhaus*.csv.gz
@@ -445,6 +475,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_pre*.csv.gz
@@ -459,6 +490,7 @@ actions:
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_clinical_concern_dehydr*.csv.gz
@@ -473,6 +505,7 @@ actions:
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_heart_rate_resp*.csv.gz
@@ -487,6 +520,7 @@ actions:
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_oxygen_saturation_temper*.csv.gz
@@ -501,6 +535,7 @@ actions:
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_who_performance_score_demographic_vari*.csv.gz
@@ -515,6 +550,7 @@ actions:
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_severe_respiratory_distress_respiratory_exhau*.csv.gz
@@ -532,6 +568,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_pr*.csv.gz
@@ -546,6 +583,7 @@ actions:
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_clinical_concern_dehyd*.csv.gz
@@ -560,6 +598,7 @@ actions:
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_heart_rate_res*.csv.gz
@@ -574,6 +613,7 @@ actions:
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_oxygen_saturation_tempe*.csv.gz
@@ -588,6 +628,7 @@ actions:
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_who_performance_score_demographic_var*.csv.gz
@@ -602,6 +643,7 @@ actions:
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_severe_respiratory_distress_respiratory_exha*.csv.gz
@@ -618,6 +660,7 @@ actions:
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
       --param include_hospital_admissions=True
+      --param include_numeric_variables=True
     outputs:
       highly_sensitive:
         cohort: output/input_v2_conscious_level_blood_p*.csv.gz
@@ -632,6 +675,7 @@ actions:
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_clinical_concern_dehy*.csv.gz
@@ -646,6 +690,7 @@ actions:
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_heart_rate_re*.csv.gz
@@ -660,6 +705,7 @@ actions:
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_oxygen_saturation_temp*.csv.gz
@@ -674,6 +720,7 @@ actions:
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_who_performance_score_demographic_va*.csv.gz
@@ -688,6 +735,7 @@ actions:
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
       --param include_hospital_admissions=False
+      --param include_numeric_variables=False
     outputs:
       highly_sensitive:
         cohort: output/input_v2_severe_respiratory_distress_respiratory_exh*.csv.gz
@@ -791,6 +839,13 @@ actions:
     outputs:
       moderately_sensitive:
         attrition: output/column_counts*
+
+  numeric_values_check:
+    run: python:latest python analysis/check_numeric_values.py
+    needs: [combined_input_files]
+    outputs:
+      moderately_sensitive:
+        table: output/joined/full/proportions_numeric.csv
 
   # generate_first_outputs:
   #   run: r:latest analysis/flucats_descriptive_basic.R

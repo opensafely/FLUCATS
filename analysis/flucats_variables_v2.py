@@ -19,7 +19,7 @@ def loop_over_codes(numeric, question_str, code_list):
 
     def make_variable_numeric(code):
         return {
-            f"flucats_question_{question_str}_{code}_numeric_value": patients.with_these_clinical_events(
+            f"flucats_question_numeric_value_{question_str}_{code}_value": patients.with_these_clinical_events(
                 codelist([code], system="snomed"),
                 between=["flucats_template_date", "flucats_template_date + 1 day"],
                 returning="numeric_value",
@@ -29,7 +29,7 @@ def loop_over_codes(numeric, question_str, code_list):
                     "incidence": 0.5,
                 },
             ),
-            f"flucats_question_{question_str}_{code}_code": patients.with_these_clinical_events(
+            f"flucats_question_numeric_value_{question_str}_{code}_code": patients.with_these_clinical_events(
                 codelist([code], system="snomed"),
                 between=["flucats_template_date", "flucats_template_date + 1 day"],
                 returning="code",
@@ -62,3 +62,11 @@ flucats_variables_oxygen_saturation = loop_over_codes(numeric=False, question_st
 flucats_variables_who_performance_score = loop_over_codes(numeric=False, question_str="who_performance_score", code_list=flucats_who_performance_score_codelist)
 flucats_variables_severe_respiratory_distress = loop_over_codes(numeric=False, question_str="severe_respiratory_distress", code_list=flucats_severe_respiratory_distress_codelist)
 flucats_variables_respiratory_exhaustion = loop_over_codes(numeric=False, question_str="respiratory_exhaustion", code_list=flucats_respiratory_exhaustion_or_apnoea_codelist)
+
+flucats_variables_163020007_numeric = loop_over_codes(numeric=True, question_str="blood_pressure", code_list=codelist(["163020007"], system="snomed"))
+flucats_variables_15527001_numeric = loop_over_codes(numeric=True, question_str="dehydration_or_shock", code_list=codelist(["15527001"], system="snomed"))
+flucats_variables_787041000000101_numeric = loop_over_codes(numeric=True, question_str="dehydration_or_shock", code_list=codelist(["787041000000101"], system="snomed"))
+flucats_variables_787051000000103_numeric = loop_over_codes(numeric=True, question_str="dehydration_or_shock", code_list=codelist(["787051000000103"], system="snomed"))
+flucats_variables_162986007_numeric = loop_over_codes(numeric=True, question_str="heart_rate", code_list=codelist(["162986007"], system="snomed"))
+flucats_variables_162913005_numeric = loop_over_codes(numeric=True, question_str="respiratory_rate", code_list=codelist(["162913005"], system="snomed"))
+

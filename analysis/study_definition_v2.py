@@ -13,10 +13,35 @@ from flucats_variables_v2 import (
     flucats_variables_temperature,
     flucats_variables_who_performance_score,
     flucats_variables_severe_respiratory_distress,
-    flucats_variables_respiratory_exhaustion
+    flucats_variables_respiratory_exhaustion,
+    flucats_variables_163020007_numeric,
+    flucats_variables_15527001_numeric,
+    flucats_variables_787041000000101_numeric,
+    flucats_variables_787051000000103_numeric,
+    flucats_variables_162986007_numeric,
+    flucats_variables_162913005_numeric
 )
-
 include_hospital_admissions = params["include_hospital_admissions"]
+include_numeric_variables = params["include_numeric_variables"]
+
+if include_numeric_variables:
+    numeric_variables_list = [
+        flucats_variables_163020007_numeric,
+        flucats_variables_15527001_numeric,
+        flucats_variables_787041000000101_numeric,
+        flucats_variables_787051000000103_numeric,
+        flucats_variables_162986007_numeric,
+        flucats_variables_162913005_numeric,
+    ]
+        
+else:
+    numeric_variables_list = []
+
+# convert list of dicts to single dict
+numeric_variables_dict = {
+    key: value for dictionary in numeric_variables_list for key, value in dictionary.items()
+}
+
 
 if include_hospital_admissions:
     hospital_admissions_variables = {
@@ -62,7 +87,7 @@ varset_variables = {}
 for d in varsets:
     varset_variables.update(d)
 
-print(varset_variables)
+
 
 study = StudyDefinition(
     default_expectations={
@@ -117,5 +142,5 @@ study = StudyDefinition(
     **varset_variables,
 
     **hospital_admissions_variables,
-    
+    **numeric_variables_dict
 )
