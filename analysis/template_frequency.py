@@ -25,6 +25,6 @@ def main():
     template_freq = pd.concat([pd.Series([top_5], index=['5+']), template_freq])
 
     template_freq = template_freq.rename('number_of_patients').round(-1)
-    template_freq.to_csv('output/joined/full/template_frequencies.csv')
+    template_freq.to_csv('output/joined/full/template_frequency.csv')
 if __name__ == '__main__':
     main()
