@@ -14,29 +14,23 @@ def group_low_values(df, count_column, code_column, threshold):
         A table with redacted counts
     """
     df[count_column] = df[count_column].astype(int)
-    # get sum of any values <= threshold
+    # get sum of any values <= threshold and > 0
     suppressed_count = df.loc[
-        df[count_column] <= threshold, count_column
+        (df[count_column] <= threshold) & (df[count_column] > 0), count_column
     ].sum()
     suppressed_df = df.loc[df[count_column] > threshold, count_column]
     # if suppressed values >0 ensure total suppressed count > threshold.
-    # Also suppress if all values 0
-    if (suppressed_count > 0) | (
-        (suppressed_count == 0) & (len(suppressed_df) != len(df))
-    ):
-       
-        # redact counts <= threshold
-        df.loc[df[count_column] <= threshold, count_column] = np.nan
+    if suppressed_count > 0:
 
-        # If all values 0, suppress them
-        if suppressed_count == 0:
-            df.loc[df[count_column] == 0, :] = np.nan
+        # redact counts <= threshold and > 0
+        df.loc[(df[count_column] <= threshold) & (df[count_column] > 0), count_column] = np.nan
 
-        else:
-            # if suppressed count <= threshold redact further values
-            while suppressed_count <= threshold:
-                suppressed_count += df[count_column].min()
-                df.loc[df[count_column].idxmin(), :] = np.nan
+        # if suppressed count <= threshold redact further values
+        while suppressed_count <= threshold:
+            min_count = df[df[count_column] > 0][count_column].idxmin()
+            suppressed_count += df.loc[min_count, count_column]
+            df.loc[min_count, count_column] = np.nan
+            suppressed_df = df.loc[df[count_column] > threshold, count_column]
 
         # drop all rows where count column is null
         df = df.loc[df[count_column].notnull(), :]
@@ -50,15 +44,15 @@ def group_low_values(df, count_column, code_column, threshold):
             df = pd.concat(
                 [df, pd.DataFrame([suppressed_count])], ignore_index=True
             )
-        
+
         elif suppressed_count == 0:
             df = df.reset_index(drop=True)
-            if len(df)>0:
-
+            if len(df) > 0:
                 min_count = df[count_column].idxmin()
                 df.loc[min_count, code_column] = "Other"
 
     return df
+
 
 def main():
     
