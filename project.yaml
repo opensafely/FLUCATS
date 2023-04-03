@@ -842,7 +842,7 @@ actions:
 
   numeric_values_check:
     run: python:latest python analysis/check_numeric_values.py
-    needs: [combined_input_files]
+    needs: [join_cohorts_monthly]
     outputs:
       moderately_sensitive:
         table: output/joined/full/proportions_numeric.csv
