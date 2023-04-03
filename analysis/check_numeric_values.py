@@ -29,7 +29,8 @@ def main():
     
     proportions = {}
     for column in df.columns:
-        proportions[column] = df[column].count() / len(df)
+        proportions[column] = round(len(df.loc[df[column]>0]) / len(df), 2)
+
     
     proportions_numeric.append(proportions)
 
