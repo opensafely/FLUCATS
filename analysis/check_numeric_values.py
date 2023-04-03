@@ -12,27 +12,27 @@ from flucats_variables_v2 import (
 def main():
     template_frequencies = []
     numeric_variables_list = [
-        "flucats_question_numeric_value_blood_pressure_163020007_value",
-        "flucats_question_numeric_value_dehydration_or_shock_15527001_value",
-        "flucats_question_numeric_value_dehydration_or_shock_787041000000101_value",
-        "flucats_question_numeric_value_dehydration_or_shock_787051000000103_value",
-        "flucats_question_numeric_value_heart_rate_162986007_value",
-        "flucats_question_numeric_value_respiratory_rate_162913005_value",
+        "flucats_question_numeric_value_blood_pressure_163020007_value_left",
+        "flucats_question_numeric_value_dehydration_or_shock_15527001_value_left",
+        "flucats_question_numeric_value_dehydration_or_shock_787041000000101_value_left",
+        "flucats_question_numeric_value_dehydration_or_shock_787051000000103_value_left",
+        "flucats_question_numeric_value_heart_rate_162986007_value_left",
+        "flucats_question_numeric_value_respiratory_rate_162913005_value_left",
     ]
     
     proportions_numeric = []
-    for file in Path('output/joined/full').glob('input_v2_2020-03-01.csv.gz'):
+    file_path = Path('output/joined/full/input_v2_2020-03-01.csv.gz')
 
-        df = pd.read_csv(file, usecols=numeric_variables_list, dtype='float64')
-        
-        # for each column, calculate proportion where value is not null
-     
-        proportions = {}
-        for column in df.columns:
-            proportions[column] = df[column].count() / len(df)
-        
-        proportions_numeric.append(proportions)
+    df = pd.read_csv(file_path, usecols=numeric_variables_list, dtype='float64')
     
+    # for each column, calculate proportion where value is not null
+    
+    proportions = {}
+    for column in df.columns:
+        proportions[column] = df[column].count() / len(df)
+    
+    proportions_numeric.append(proportions)
+
     # mean value across months for each variable
     proportions_numeric = pd.DataFrame(proportions_numeric).mean()
 
