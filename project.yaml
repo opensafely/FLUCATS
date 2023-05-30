@@ -9,9 +9,9 @@ actions:
   generate_study_population_conscious_level_blood_pressure:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-03-01 to 2020-04-01 by month"
-      --output-file=output/input_v2_conscious_level_blood_pressure.csv.gz
+      --output-file=output/input_conscious_level_blood_pressure.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
@@ -19,14 +19,14 @@ actions:
       --param include_numeric_variables=True
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_conscious_level_blood_pressure*.csv.gz
+        cohort: output/input_conscious_level_blood_pressure*.csv.gz
 
   generate_study_population_clinical_concern_dehydration:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-03-01 to 2020-04-01 by month"
-      --output-file=output/input_v2_clinical_concern_dehydration.csv.gz
+      --output-file=output/input_clinical_concern_dehydration.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
@@ -34,14 +34,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_clinical_concern_dehydration*.csv.gz
+        cohort: output/input_clinical_concern_dehydration*.csv.gz
 
   generate_study_population_heart_rate_resp_rate:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-03-01 to 2020-04-01 by month"
-      --output-file=output/input_v2_heart_rate_resp_rate.csv.gz
+      --output-file=output/input_heart_rate_resp_rate.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
@@ -49,14 +49,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_heart_rate_resp_rate*.csv.gz
+        cohort: output/input_heart_rate_resp_rate*.csv.gz
 
   generate_study_population_ox_temp:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-03-01 to 2020-04-01 by month"
-      --output-file=output/input_v2_oxygen_saturation_temperature.csv.gz
+      --output-file=output/input_oxygen_saturation_temperature.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
@@ -64,14 +64,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_oxygen_saturation_temperature*.csv.gz
+        cohort: output/input_oxygen_saturation_temperature*.csv.gz
 
   generate_study_population_who_dem:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-03-01 to 2020-04-01 by month"
-      --output-file=output/input_v2_who_performance_score_demographic_variables.csv.gz
+      --output-file=output/input_who_performance_score_demographic_variables.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
@@ -79,14 +79,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_who_performance_score_demographic_variables*.csv.gz
+        cohort: output/input_who_performance_score_demographic_variables*.csv.gz
 
   generate_study_population_resp:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-03-01 to 2020-04-01 by month"
-      --output-file=output/input_v2_severe_respiratory_distress_respiratory_exhaustion.csv.gz
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
@@ -94,14 +94,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_severe_respiratory_distress_respiratory_exhaustion*.csv.gz
+        cohort: output/input_severe_respiratory_distress_respiratory_exhaustion*.csv.gz
 
   generate_study_population_conscious_level_blood_pressure_2:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-05-01 to 2020-06-01 by month"
-      --output-file=output/input_v2_conscious_level_blood_pressure.csv.gz
+      --output-file=output/input_conscious_level_blood_pressure.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
@@ -109,14 +109,14 @@ actions:
       --param include_numeric_variables=True
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_conscious_level_blood_pressur*.csv.gz
+        cohort: output/input_conscious_level_blood_pressur*.csv.gz
 
   generate_study_population_clinical_concern_dehydration_2:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-05-01 to 2020-06-01 by month"
-      --output-file=output/input_v2_clinical_concern_dehydration.csv.gz
+      --output-file=output/input_clinical_concern_dehydration.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
@@ -124,14 +124,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_clinical_concern_dehydratio*.csv.gz
+        cohort: output/input_clinical_concern_dehydratio*.csv.gz
 
   generate_study_population_heart_rate_resp_rate_2:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-05-01 to 2020-06-01 by month"
-      --output-file=output/input_v2_heart_rate_resp_rate.csv.gz
+      --output-file=output/input_heart_rate_resp_rate.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
@@ -139,14 +139,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_heart_rate_resp_rat*.csv.gz
+        cohort: output/input_heart_rate_resp_rat*.csv.gz
 
   generate_study_population_ox_temp_2:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-05-01 to 2020-06-01 by month"
-      --output-file=output/input_v2_oxygen_saturation_temperature.csv.gz
+      --output-file=output/input_oxygen_saturation_temperature.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
@@ -154,14 +154,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_oxygen_saturation_temperatur*.csv.gz
+        cohort: output/input_oxygen_saturation_temperatur*.csv.gz
 
   generate_study_population_who_dem_2:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-05-01 to 2020-06-01 by month"
-      --output-file=output/input_v2_who_performance_score_demographic_variables.csv.gz
+      --output-file=output/input_who_performance_score_demographic_variables.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
@@ -169,14 +169,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_who_performance_score_demographic_variable*.csv.gz
+        cohort: output/input_who_performance_score_demographic_variable*.csv.gz
 
   generate_study_population_resp_2:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-05-01 to 2020-06-01 by month"
-      --output-file=output/input_v2_severe_respiratory_distress_respiratory_exhaustion.csv.gz
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
@@ -184,14 +184,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_severe_respiratory_distress_respiratory_exhaustio*.csv.gz
+        cohort: output/input_severe_respiratory_distress_respiratory_exhaustio*.csv.gz
 
   generate_study_population_conscious_level_blood_pressure_3:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-07-01 to 2020-08-01 by month"
-      --output-file=output/input_v2_conscious_level_blood_pressure.csv.gz
+      --output-file=output/input_conscious_level_blood_pressure.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
@@ -199,14 +199,14 @@ actions:
       --param include_numeric_variables=True
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_conscious_level_blood_pressu*.csv.gz
+        cohort: output/input_conscious_level_blood_pressu*.csv.gz
 
   generate_study_population_clinical_concern_dehydration_3:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-07-01 to 2020-08-01 by month"
-      --output-file=output/input_v2_clinical_concern_dehydration.csv.gz
+      --output-file=output/input_clinical_concern_dehydration.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
@@ -214,14 +214,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_clinical_concern_dehydrati*.csv.gz
+        cohort: output/input_clinical_concern_dehydrati*.csv.gz
 
   generate_study_population_heart_rate_resp_rate_3:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-07-01 to 2020-08-01 by month"
-      --output-file=output/input_v2_heart_rate_resp_rate.csv.gz
+      --output-file=output/input_heart_rate_resp_rate.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
@@ -229,14 +229,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_heart_rate_resp_ra*.csv.gz
+        cohort: output/input_heart_rate_resp_ra*.csv.gz
 
   generate_study_population_ox_temp_3:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-07-01 to 2020-08-01 by month"
-      --output-file=output/input_v2_oxygen_saturation_temperature.csv.gz
+      --output-file=output/input_oxygen_saturation_temperature.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
@@ -244,14 +244,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_oxygen_saturation_temperatu*.csv.gz
+        cohort: output/input_oxygen_saturation_temperatu*.csv.gz
 
   generate_study_population_who_dem_3:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-07-01 to 2020-08-01 by month"
-      --output-file=output/input_v2_who_performance_score_demographic_variables.csv.gz
+      --output-file=output/input_who_performance_score_demographic_variables.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
@@ -259,14 +259,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_who_performance_score_demographic_variabl*.csv.gz
+        cohort: output/input_who_performance_score_demographic_variabl*.csv.gz
 
   generate_study_population_resp_3:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-07-01 to 2020-08-01 by month"
-      --output-file=output/input_v2_severe_respiratory_distress_respiratory_exhaustion.csv.gz
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
@@ -274,7 +274,7 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_severe_respiratory_distress_respiratory_exhausti*.csv.gz
+        cohort: output/input_severe_respiratory_distress_respiratory_exhausti*.csv.gz
 
 
   #######################
@@ -282,9 +282,9 @@ actions:
   generate_study_population_conscious_level_blood_pressure_4:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-09-01 to 2020-10-01 by month"
-      --output-file=output/input_v2_conscious_level_blood_pressure.csv.gz
+      --output-file=output/input_conscious_level_blood_pressure.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
@@ -292,14 +292,14 @@ actions:
       --param include_numeric_variables=True
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_conscious_level_blood_press*.csv.gz
+        cohort: output/input_conscious_level_blood_press*.csv.gz
 
   generate_study_population_clinical_concern_dehydration_4:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-09-01 to 2020-10-01 by month"
-      --output-file=output/input_v2_clinical_concern_dehydration.csv.gz
+      --output-file=output/input_clinical_concern_dehydration.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
@@ -307,14 +307,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_clinical_concern_dehydrat*.csv.gz
+        cohort: output/input_clinical_concern_dehydrat*.csv.gz
 
   generate_study_population_heart_rate_resp_rate_4:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-09-01 to 2020-10-01 by month"
-      --output-file=output/input_v2_heart_rate_resp_rate.csv.gz
+      --output-file=output/input_heart_rate_resp_rate.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
@@ -322,14 +322,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_heart_rate_resp_r*.csv.gz
+        cohort: output/input_heart_rate_resp_r*.csv.gz
 
   generate_study_population_ox_temp_4:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-09-01 to 2020-10-01 by month"
-      --output-file=output/input_v2_oxygen_saturation_temperature.csv.gz
+      --output-file=output/input_oxygen_saturation_temperature.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
@@ -337,14 +337,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_oxygen_saturation_temperat*.csv.gz
+        cohort: output/input_oxygen_saturation_temperat*.csv.gz
 
   generate_study_population_who_dem_4:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-09-01 to 2020-10-01 by month"
-      --output-file=output/input_v2_who_performance_score_demographic_variables.csv.gz
+      --output-file=output/input_who_performance_score_demographic_variables.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
@@ -352,14 +352,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_who_performance_score_demographic_variab*.csv.gz
+        cohort: output/input_who_performance_score_demographic_variab*.csv.gz
 
   generate_study_population_resp_4:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-09-01 to 2020-10-01 by month"
-      --output-file=output/input_v2_severe_respiratory_distress_respiratory_exhaustion.csv.gz
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
@@ -367,7 +367,7 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_severe_respiratory_distress_respiratory_exhaust*.csv.gz
+        cohort: output/input_severe_respiratory_distress_respiratory_exhaust*.csv.gz
 
 
   ############################
@@ -375,9 +375,9 @@ actions:
   generate_study_population_conscious_level_blood_pressure_5:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-11-01 to 2020-12-01 by month"
-      --output-file=output/input_v2_conscious_level_blood_pressure.csv.gz
+      --output-file=output/input_conscious_level_blood_pressure.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
@@ -386,14 +386,14 @@ actions:
       
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_conscious_level_blood_pres*.csv.gz
+        cohort: output/input_conscious_level_blood_pres*.csv.gz
 
   generate_study_population_clinical_concern_dehydration_5:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-11-01 to 2020-12-01 by month"
-      --output-file=output/input_v2_clinical_concern_dehydration.csv.gz
+      --output-file=output/input_clinical_concern_dehydration.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
@@ -401,14 +401,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_clinical_concern_dehydra*.csv.gz
+        cohort: output/input_clinical_concern_dehydra*.csv.gz
 
   generate_study_population_heart_rate_resp_rate_5:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-11-01 to 2020-12-01 by month"
-      --output-file=output/input_v2_heart_rate_resp_rate.csv.gz
+      --output-file=output/input_heart_rate_resp_rate.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
@@ -416,14 +416,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_heart_rate_resp_*.csv.gz
+        cohort: output/input_heart_rate_resp_*.csv.gz
 
   generate_study_population_ox_temp_5:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-11-01 to 2020-12-01 by month"
-      --output-file=output/input_v2_oxygen_saturation_temperature.csv.gz
+      --output-file=output/input_oxygen_saturation_temperature.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
@@ -431,14 +431,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_oxygen_saturation_tempera*.csv.gz
+        cohort: output/input_oxygen_saturation_tempera*.csv.gz
 
   generate_study_population_who_dem_5:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-11-01 to 2020-12-01 by month"
-      --output-file=output/input_v2_who_performance_score_demographic_variables.csv.gz
+      --output-file=output/input_who_performance_score_demographic_variables.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
@@ -446,14 +446,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_who_performance_score_demographic_varia*.csv.gz
+        cohort: output/input_who_performance_score_demographic_varia*.csv.gz
 
   generate_study_population_resp_5:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2020-11-01 to 2020-12-01 by month"
-      --output-file=output/input_v2_severe_respiratory_distress_respiratory_exhaustion.csv.gz
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
@@ -461,16 +461,16 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_severe_respiratory_distress_respiratory_exhaus*.csv.gz
+        cohort: output/input_severe_respiratory_distress_respiratory_exhaus*.csv.gz
 
   ####################
 
   generate_study_population_conscious_level_blood_pressure_6:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-01-01 to 2021-02-01 by month"
-      --output-file=output/input_v2_conscious_level_blood_pressure.csv.gz
+      --output-file=output/input_conscious_level_blood_pressure.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
@@ -478,14 +478,14 @@ actions:
       --param include_numeric_variables=True
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_conscious_level_blood_pre*.csv.gz
+        cohort: output/input_conscious_level_blood_pre*.csv.gz
 
   generate_study_population_clinical_concern_dehydration_6:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-01-01 to 2021-02-01 by month"
-      --output-file=output/input_v2_clinical_concern_dehydration.csv.gz
+      --output-file=output/input_clinical_concern_dehydration.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
@@ -493,14 +493,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_clinical_concern_dehydr*.csv.gz
+        cohort: output/input_clinical_concern_dehydr*.csv.gz
 
   generate_study_population_heart_rate_resp_rate_6:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-01-01 to 2021-02-01 by month"
-      --output-file=output/input_v2_heart_rate_resp_rate.csv.gz
+      --output-file=output/input_heart_rate_resp_rate.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
@@ -508,14 +508,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_heart_rate_resp*.csv.gz
+        cohort: output/input_heart_rate_resp*.csv.gz
 
   generate_study_population_ox_temp_6:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-01-01 to 2021-02-01 by month"
-      --output-file=output/input_v2_oxygen_saturation_temperature.csv.gz
+      --output-file=output/input_oxygen_saturation_temperature.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
@@ -523,14 +523,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_oxygen_saturation_temper*.csv.gz
+        cohort: output/input_oxygen_saturation_temper*.csv.gz
 
   generate_study_population_who_dem_6:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-01-01 to 2021-02-01 by month"
-      --output-file=output/input_v2_who_performance_score_demographic_variables.csv.gz
+      --output-file=output/input_who_performance_score_demographic_variables.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
@@ -538,14 +538,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_who_performance_score_demographic_vari*.csv.gz
+        cohort: output/input_who_performance_score_demographic_vari*.csv.gz
 
   generate_study_population_resp_6:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-01-01 to 2021-02-01 by month"
-      --output-file=output/input_v2_severe_respiratory_distress_respiratory_exhaustion.csv.gz
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
@@ -553,7 +553,7 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_severe_respiratory_distress_respiratory_exhau*.csv.gz
+        cohort: output/input_severe_respiratory_distress_respiratory_exhau*.csv.gz
 
   ###################
 
@@ -561,9 +561,9 @@ actions:
   generate_study_population_conscious_level_blood_pressure_7:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-03-01 to 2021-04-01 by month"
-      --output-file=output/input_v2_conscious_level_blood_pressure.csv.gz
+      --output-file=output/input_conscious_level_blood_pressure.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
@@ -571,14 +571,14 @@ actions:
       --param include_numeric_variables=True
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_conscious_level_blood_pr*.csv.gz
+        cohort: output/input_conscious_level_blood_pr*.csv.gz
 
   generate_study_population_clinical_concern_dehydration_7:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-03-01 to 2021-04-01 by month"
-      --output-file=output/input_v2_clinical_concern_dehydration.csv.gz
+      --output-file=output/input_clinical_concern_dehydration.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
@@ -586,14 +586,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_clinical_concern_dehyd*.csv.gz
+        cohort: output/input_clinical_concern_dehyd*.csv.gz
 
   generate_study_population_heart_rate_resp_rate_7:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-03-01 to 2021-04-01 by month"
-      --output-file=output/input_v2_heart_rate_resp_rate.csv.gz
+      --output-file=output/input_heart_rate_resp_rate.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
@@ -601,14 +601,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_heart_rate_res*.csv.gz
+        cohort: output/input_heart_rate_res*.csv.gz
 
   generate_study_population_ox_temp_7:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-03-01 to 2021-04-01 by month"
-      --output-file=output/input_v2_oxygen_saturation_temperature.csv.gz
+      --output-file=output/input_oxygen_saturation_temperature.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
@@ -616,14 +616,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_oxygen_saturation_tempe*.csv.gz
+        cohort: output/input_oxygen_saturation_tempe*.csv.gz
 
   generate_study_population_who_dem_7:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-03-01 to 2021-04-01 by month"
-      --output-file=output/input_v2_who_performance_score_demographic_variables.csv.gz
+      --output-file=output/input_who_performance_score_demographic_variables.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
@@ -631,14 +631,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_who_performance_score_demographic_var*.csv.gz
+        cohort: output/input_who_performance_score_demographic_var*.csv.gz
 
   generate_study_population_resp_7:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-03-01 to 2021-04-01 by month"
-      --output-file=output/input_v2_severe_respiratory_distress_respiratory_exhaustion.csv.gz
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
@@ -646,16 +646,16 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_severe_respiratory_distress_respiratory_exha*.csv.gz
+        cohort: output/input_severe_respiratory_distress_respiratory_exha*.csv.gz
 
   ###################
 
   generate_study_population_conscious_level_blood_pressure_8:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-05-01 to 2021-06-01 by month"
-      --output-file=output/input_v2_conscious_level_blood_pressure.csv.gz
+      --output-file=output/input_conscious_level_blood_pressure.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=altered_conscious_level,blood_pressure
@@ -663,14 +663,14 @@ actions:
       --param include_numeric_variables=True
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_conscious_level_blood_p*.csv.gz
+        cohort: output/input_conscious_level_blood_p*.csv.gz
 
   generate_study_population_clinical_concern_dehydration_8:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-05-01 to 2021-06-01 by month"
-      --output-file=output/input_v2_clinical_concern_dehydration.csv.gz
+      --output-file=output/input_clinical_concern_dehydration.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=causing_clinical_concern,dehydration_or_shock
@@ -678,14 +678,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_clinical_concern_dehy*.csv.gz
+        cohort: output/input_clinical_concern_dehy*.csv.gz
 
   generate_study_population_heart_rate_resp_rate_8:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-05-01 to 2021-06-01 by month"
-      --output-file=output/input_v2_heart_rate_resp_rate.csv.gz
+      --output-file=output/input_heart_rate_resp_rate.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=heart_rate,respiratory_rate
@@ -693,14 +693,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_heart_rate_re*.csv.gz
+        cohort: output/input_heart_rate_re*.csv.gz
 
   generate_study_population_ox_temp_8:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-05-01 to 2021-06-01 by month"
-      --output-file=output/input_v2_oxygen_saturation_temperature.csv.gz
+      --output-file=output/input_oxygen_saturation_temperature.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=oxygen_saturation,temperature
@@ -708,14 +708,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_oxygen_saturation_temp*.csv.gz
+        cohort: output/input_oxygen_saturation_temp*.csv.gz
 
   generate_study_population_who_dem_8:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-05-01 to 2021-06-01 by month"
-      --output-file=output/input_v2_who_performance_score_demographic_variables.csv.gz
+      --output-file=output/input_who_performance_score_demographic_variables.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=who_performance_score,demographic_variables
@@ -723,14 +723,14 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_who_performance_score_demographic_va*.csv.gz
+        cohort: output/input_who_performance_score_demographic_va*.csv.gz
 
   generate_study_population_resp_8:
     run: >
       cohortextractor:latest generate_cohort
-      --study-definition study_definition_v2
+      --study-definition study_definition
       --index-date-range "2021-05-01 to 2021-06-01 by month"
-      --output-file=output/input_v2_severe_respiratory_distress_respiratory_exhaustion.csv.gz
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv.gz
       --output-format=csv.gz
       --with-end-date-fix
       --param varset=severe_respiratory_distress,respiratory_exhaustion
@@ -738,7 +738,7 @@ actions:
       --param include_numeric_variables=False
     outputs:
       highly_sensitive:
-        cohort: output/input_v2_severe_respiratory_distress_respiratory_exh*.csv.gz
+        cohort: output/input_severe_respiratory_distress_respiratory_exh*.csv.gz
 
 
   ###################
@@ -749,7 +749,7 @@ actions:
         cohort: output/input_end.csv.gz
 
   join_cohorts:
-    run: python:latest python analysis/join_cohorts.py --input-dir=output --output-dir=output/joined
+    run: python:latest python analysis/analysis/join_cohorts.py --input-dir=output --output-dir=output/joined
     needs: [
       generate_study_population_conscious_level_blood_pressure,
       generate_study_population_clinical_concern_dehydration,
@@ -802,12 +802,12 @@ actions:
       ]
     outputs:
       highly_sensitive:
-        counts: output/joined/input_v2*.csv.gz
+        counts: output/joined/input_*.csv.gz
 
   join_cohorts_monthly:
     run: >
       cohort-joiner:v0.0.44
-        --lhs output/joined/input_v2*.csv.gz
+        --lhs output/joined/input_*.csv.gz
         --rhs output/input_end.csv.gz
         --output-dir output/joined/full
     needs: [
@@ -818,30 +818,23 @@ actions:
       highly_sensitive:
         cohort: output/joined/full/input*.csv.gz
 
-  template_frequency:
-    run: python:latest python analysis/template_frequency.py
-    needs: [join_cohorts_monthly]
-    outputs:
-      moderately_sensitive:
-        attrition: output/joined/full/template_frequency.csv
-
 
   combined_input_files:
-    run: python:latest python analysis/combine_input_files.py
+    run: python:latest python analysis/analysis/combine_input_files.py
     needs: [join_cohorts_monthly]
     outputs:
       highly_sensitive:
-        attrition: output/joined/full/input_v2_all_py.csv.gz
+        attrition: output/joined/full/input_all_py.csv.gz
 
   column_counts:
-    run: python:latest python analysis/column_counts.py
+    run: python:latest python analysis/analysis/column_counts.py
     needs: [combined_input_files]
     outputs:
       moderately_sensitive:
         attrition: output/column_counts*
 
   numeric_values_check:
-    run: python:latest python analysis/check_numeric_values.py
+    run: python:latest python analysis/analysis/check_numeric_values.py
     needs: [join_cohorts_monthly]
     outputs:
       moderately_sensitive:

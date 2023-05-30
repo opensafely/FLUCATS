@@ -56,7 +56,7 @@ def group_low_values(df, count_column, code_column, threshold):
 
 def main():
     
-    combined_df = pd.read_csv('output/joined/full/input_v2_all_py.csv.gz', dtype=str)
+    combined_df = pd.read_csv('output/joined/full/input_all_py.csv.gz', dtype=str)
     codelist_paths = {
         "altered_conscious_level": "codelists/user-Louis-flucats-altered-conscious-level.csv",
         "blood_pressure": "codelists/user-Louis-flucats-blood-pressure-reading.csv",
