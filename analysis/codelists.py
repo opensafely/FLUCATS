@@ -184,104 +184,9 @@ splenic_disease_codelist = codelist_from_csv(
 )
 
 
-steroid_codelist = codelist_from_csv(
-    "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
-)
-
-
-antiviral_codelist = codelist_from_csv(
-    "codelists/opensafely-ace-inhibitor-medications.csv", system="snomed", column="id"
-)
 statin_codelist = codelist_from_csv(
     "codelists/opensafely-statin-medication.csv", system="snomed", column="id"
 )
-
-
-# questions where we expect more than one code would be recorded
-flucat_individual_question_numbers = [
-    5,
-    11,
-    20,
-    37,
-    45,
-
-]
-
-flucat_individual_question_numbers_numeric = [
-    29,
-    30,
-]
-
-# questions where we expect only one code would be recorded
-flucat_question_numbers = [
-    1,
-    2, #
-    3,
-    4,
-    6,
-    7,
-    9,
-    10,
-    12,
-    14,
-    15,
-    16,
-    18,
-    23,
-    24,
-    28,
-    31,
-    32,
-    33,
-    34,
-    35,
-    36,
-    39,
-    40,
-    41,
-    42,
-    44
-] #
-
-# questions where we expect a numeric value to be attached
-flucat_question_numbers_numeric = [23, 28, 29, 31, 33, 39]
-
-flucats_codelists = {
-    str(i): codelist_from_csv(
-        f"codelists/user-Louis-flucats-template-q{i}.csv",
-        system="snomed",
-        column="code",
-    )
-    for i in flucat_question_numbers
-}
-
-flucats_codelists_numeric = {
-    str(i): codelist_from_csv(
-        f"codelists/user-Louis-flucats-template-q{i}.csv",
-        system="snomed",
-        column="code",
-    )
-    for i in flucat_question_numbers_numeric
-}
-
-flucats_codelists_individual = {
-    str(i): codelist_from_csv(
-        f"codelists/user-Louis-flucats-template-q{i}.csv",
-        system="snomed",
-        column="code",
-    )
-    for i in flucat_individual_question_numbers
-}
-
-flucats_codelists_individual_numeric = {
-    str(i): codelist_from_csv(
-        f"codelists/user-Louis-flucats-template-q{i}.csv",
-        system="snomed",
-        column="code",
-    )
-    for i in flucat_individual_question_numbers_numeric
-}
-
 
 flucats_pneumonia_codelist = codelist_from_csv(
     "codelists/user-Louis-flucats-pneumonia.csv", system="snomed", column="code"
@@ -315,11 +220,24 @@ flucats_dehydration_or_shock_codelist = codelist_from_csv(
     column="code",
 )
 
+flucats_dehydration_or_shock_observable_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-evidence-of-dehydration-or-shock-observable.csv",
+    system="snomed",
+    column="code",
+)
+
 flucats_increased_respiratory_rate_codelist = codelist_from_csv(
     "codelists/user-Louis-flucats-increased-respiratory-rate.csv",
     system="snomed",
     column="code",
 )
+
+flucats_increased_respiratory_rate_observable_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-increased-respiratory-rate-observable.csv",
+    system="snomed",
+    column="code",
+)
+
 
 flucats_oxygen_saturation_codelist = codelist_from_csv(
     "codelists/user-Louis-flucats-oxygen-saturation.csv",
@@ -357,8 +275,20 @@ flucats_heart_rate_codelist = codelist_from_csv(
     column="code",
 )
 
+flucats_heart_rate_observable_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-heart-rate-observable.csv",
+    system="snomed",
+    column="code",
+)
+
 flucats_temperature_codelist = codelist_from_csv(
     "codelists/user-Louis-flucats-temperature.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_temperature_observable_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-temperature-observable.csv",
     system="snomed",
     column="code",
 )
