@@ -14,7 +14,7 @@ def main():
     ]
 
     proportions_numeric = []
-    file_path = Path("output/joined/full/input_2020-03-01.csv.gz")
+    file_path = Path("output/joined/full/input_2020-03-01.csv")
 
     df = pd.read_csv(file_path, usecols=numeric_variables_list, dtype="float64")
 
