@@ -12,7 +12,7 @@ def parse_args():
 
 def match_input_files(file: str) -> bool:
     """Checks if file name has format outputted by cohort extractor"""
-    pattern = r"^input_v2_([a-zA-Z]+\_)*20\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])\.csv.gz"
+    pattern = r"^input_([a-zA-Z]+\_)*20\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])\.csv.gz"
     return True if re.match(pattern, file) else False
 
 def get_date_input_file(file: str) -> str:
@@ -64,7 +64,7 @@ def main():
                 df = df.join(pd.read_csv(file).set_index(['patient_id', 'flucats_template', 'flucats_template_date', 'sex', 'practice']), on=['patient_id', 'flucats_template', 'flucats_template_date', 'sex', 'practice'], how='left', lsuffix='_left', rsuffix='_right')
                 
         
-        df.to_csv(output_dir / f"input_v2_{date}.csv.gz", index=False)
+        df.to_csv(output_dir / f"input_{date}.csv.gz", index=False)
 
 
 
