@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import re
 
+
 def group_low_values(df, count_column, code_column, threshold):
     """Suppresses low values and groups suppressed values into
     a new row "Other".
@@ -21,9 +22,10 @@ def group_low_values(df, count_column, code_column, threshold):
     suppressed_df = df.loc[df[count_column] > threshold, count_column]
     # if suppressed values >0 ensure total suppressed count > threshold.
     if suppressed_count > 0:
-
         # redact counts <= threshold and > 0
-        df.loc[(df[count_column] <= threshold) & (df[count_column] > 0), count_column] = np.nan
+        df.loc[
+            (df[count_column] <= threshold) & (df[count_column] > 0), count_column
+        ] = np.nan
 
         # if suppressed count <= threshold redact further values
         while suppressed_count <= threshold:
@@ -41,9 +43,7 @@ def group_low_values(df, count_column, code_column, threshold):
                 code_column: "Other",
                 count_column: suppressed_count,
             }
-            df = pd.concat(
-                [df, pd.DataFrame([suppressed_count])], ignore_index=True
-            )
+            df = pd.concat([df, pd.DataFrame([suppressed_count])], ignore_index=True)
 
         elif suppressed_count == 0:
             df = df.reset_index(drop=True)
@@ -55,8 +55,7 @@ def group_low_values(df, count_column, code_column, threshold):
 
 
 def main():
-    
-    combined_df = pd.read_csv('output/joined/full/input_all_py.csv.gz', dtype=str)
+    combined_df = pd.read_csv("output/joined/full/input_all_py.csv.gz", dtype=str)
     codelist_paths = {
         "altered_conscious_level": "codelists/user-Louis-flucats-altered-conscious-level.csv",
         "blood_pressure": "codelists/user-Louis-flucats-blood-pressure-reading.csv",
@@ -87,78 +86,77 @@ def main():
         "demographic_variables",
     ]
 
-
-    dfs= []
+    dfs = []
     dfs_raw = []
 
     for group in groups:
-        
-      
-       
+        counts_df = pd.DataFrame(columns=["group", "column", "count"])
 
-        counts_df = pd.DataFrame(columns=['group', 'column', 'count'])
-        
-        columns = [col for col in combined_df.columns if col.startswith(f'flucats_question_{group}')]
-    
+        columns = [
+            col
+            for col in combined_df.columns
+            if col.startswith(f"flucats_question_{group}")
+        ]
+
         subset = combined_df[columns]
 
-        
         for col in subset.columns:
-            row = pd.DataFrame({'group': group, 'column': col, 'count': subset[col].count()}, index=pd.MultiIndex.from_tuples([(group, col)]))
-            counts_df = pd.concat([counts_df, row])   
-        
-        # use regex to rename column from e.g. flucats_question_altered_conscious_level_162701007_code to 162701007
-        
-        pattern = r"(\d+)_code"
-        counts_df['column'] = counts_df['column'].str.extract(pattern)
+            row = pd.DataFrame(
+                {"group": group, "column": col, "count": subset[col].count()},
+                index=pd.MultiIndex.from_tuples([(group, col)]),
+            )
+            counts_df = pd.concat([counts_df, row])
 
-        
+        # use regex to rename column from e.g. flucats_question_altered_conscious_level_162701007_code to 162701007
+
+        pattern = r"(\d+)_code"
+        counts_df["column"] = counts_df["column"].str.extract(pattern)
+
         # convert to int
-        counts_df['column'] = counts_df['column'].astype(int)
+        counts_df["column"] = counts_df["column"].astype(int)
 
         # rename column to code
-        counts_df = counts_df.rename(columns={'column': 'code'})
-
-  
-        
+        counts_df = counts_df.rename(columns={"column": "code"})
 
         dfs_raw.append(counts_df.reset_index(drop=True))
 
-
-          # get code description from codelist
-        if not group == 'demographic_variables':
+        # get code description from codelist
+        if not group == "demographic_variables":
             codelist = codelists[group]
-            counts_df = counts_df.merge(codelist, on='code', how='left')
+            counts_df = counts_df.merge(codelist, on="code", how="left")
 
             # reorder - group, code, description, count
-            counts_df = counts_df[['group', 'code', 'term', 'count']]
-
+            counts_df = counts_df[["group", "code", "term", "count"]]
 
         counts_df_redacted = counts_df.copy()
 
-        counts_df_redacted = group_low_values(counts_df_redacted, 'count', 'code', 7)
-        
-        if len(counts_df_redacted)>0:
-       
-            counts_df_redacted.loc[counts_df_redacted['code']=='Other', 'term'] = ''
-            counts_df_redacted.loc[counts_df_redacted['code']=='Other', 'group'] = group      
+        counts_df_redacted = group_low_values(counts_df_redacted, "count", "code", 7)
+
+        if len(counts_df_redacted) > 0:
+            counts_df_redacted.loc[counts_df_redacted["code"] == "Other", "term"] = ""
+            counts_df_redacted.loc[
+                counts_df_redacted["code"] == "Other", "group"
+            ] = group
 
         # round count column to nearest 10
-        counts_df_redacted['count'] = counts_df_redacted['count'].apply(lambda x: round(x, -1))
+        counts_df_redacted["count"] = counts_df_redacted["count"].apply(
+            lambda x: round(x, -1)
+        )
         # drop col and group columns
 
-        dfs.append(counts_df_redacted.reset_index(drop=True)) 
+        dfs.append(counts_df_redacted.reset_index(drop=True))
     # save df
 
     combined_df = pd.concat(dfs)
 
     # remove rows where count is 0
-    combined_df = combined_df.loc[combined_df['count'] > 0, :]
+    combined_df = combined_df.loc[combined_df["count"] > 0, :]
 
-    combined_df.to_csv('output/column_counts.csv', index=False)
+    combined_df.to_csv("output/column_counts.csv", index=False)
 
     combined_df_raw = pd.concat(dfs_raw)
-    combined_df_raw.to_csv('output/column_counts_raw.csv', index=False)
+    combined_df_raw.to_csv("output/column_counts_raw.csv", index=False)
+
 
 if __name__ == "__main__":
     main()

@@ -4,13 +4,12 @@ from study_utils import generate_expectations_codes
 
 demographic_variables = dict(
     age=patients.age_as_of(
-            "index_date",
-            return_expectations={
-                "rate": "universal",
-                "int": {"distribution": "population_ages"},
-            },
-        ),
-
+        "index_date",
+        return_expectations={
+            "rate": "universal",
+            "int": {"distribution": "population_ages"},
+        },
+    ),
     age_band=patients.categorised_as(
         {
             "missing": "DEFAULT",
@@ -40,48 +39,44 @@ demographic_variables = dict(
             },
         },
     ),
-    
-    type_of_residence = patients.with_these_clinical_events(
+    type_of_residence=patients.with_these_clinical_events(
         type_of_residence_codelist,
         on_or_before="index_date",
         returning="code",
         find_last_match_in_period=True,
         return_expectations={
             "rate": "universal",
-            "category": {"ratios":generate_expectations_codes(type_of_residence_codelist, incidence=0.8)},
-        }
+            "category": {
+                "ratios": generate_expectations_codes(
+                    type_of_residence_codelist, incidence=0.8
+                )
+            },
+        },
     ),
-
     # homeless is latest reside code in homeless codelist
-    homeless = patients.satisfying(
+    homeless=patients.satisfying(
         """
         type_of_residence=homeless_code
         """,
-
-        homeless_code = patients.with_these_clinical_events(
+        homeless_code=patients.with_these_clinical_events(
             codelist=codelist(homeless_codelist, system="snomed"),
             on_or_before="index_date",
             returning="code",
             find_last_match_in_period=True,
             return_expectations={
-                "category": {
-                    "ratios": generate_expectations_codes([homeless_codelist])
-                }
+                "category": {"ratios": generate_expectations_codes([homeless_codelist])}
             },
         ),
-
         return_expectations={
             "incidence": 0.05,
         },
     ),
-    
     # residential_care is latest reside code in residential care codelist
-    residential_care = patients.satisfying(
+    residential_care=patients.satisfying(
         """
         type_of_residence=residential_care_code
         """,
-
-        residential_care_code = patients.with_these_clinical_events(
+        residential_care_code=patients.with_these_clinical_events(
             codelist=codelist(residential_care_codelist, system="snomed"),
             on_or_before="index_date",
             returning="code",
@@ -92,7 +87,6 @@ demographic_variables = dict(
                 }
             },
         ),
-
         return_expectations={
             "incidence": 0.1,
         },
@@ -115,8 +109,7 @@ demographic_variables = dict(
             }
         },
     ),
-
-    imdQ5 = patients.categorised_as(
+    imdQ5=patients.categorised_as(
         {
             "Unknown": "DEFAULT",
             "1 (most deprived)": "imd >= 0 AND imd < 32800*1/5",
@@ -125,7 +118,7 @@ demographic_variables = dict(
             "4": "imd >= 32844*3/5 AND imd < 32844*4/5",
             "5 (least deprived)": "imd >= 32844*4/5 AND imd <= 32844",
         },
-        imd = patients.address_as_of(
+        imd=patients.address_as_of(
             "index_date",
             returning="index_of_multiple_deprivation",
             round_to_nearest=100,
@@ -144,7 +137,5 @@ demographic_variables = dict(
             },
             "incidence": 1.0,
         },
-    )
-
-    )
-
+    ),
+)

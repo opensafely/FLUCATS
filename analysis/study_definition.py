@@ -19,8 +19,9 @@ from variables.flucats_variables import (
     flucats_variables_787041000000101_numeric,
     flucats_variables_787051000000103_numeric,
     flucats_variables_162986007_numeric,
-    flucats_variables_162913005_numeric
+    flucats_variables_162913005_numeric,
 )
+
 include_hospital_admissions = params["include_hospital_admissions"]
 include_numeric_variables = params["include_numeric_variables"]
 
@@ -33,34 +34,37 @@ if include_numeric_variables:
         flucats_variables_162986007_numeric,
         flucats_variables_162913005_numeric,
     ]
-        
+
 else:
     numeric_variables_list = []
 
 # convert list of dicts to single dict
 numeric_variables_dict = {
-    key: value for dictionary in numeric_variables_list for key, value in dictionary.items()
+    key: value
+    for dictionary in numeric_variables_list
+    for key, value in dictionary.items()
 }
 
 
 if include_hospital_admissions:
     hospital_admissions_variables = {
         "hospital_admission": patients.with_these_clinical_events(
-        codelist = flucats_hospital_admission_codelist,
-        between=["index_date", "last_day_of_month(index_date)"],
-        returning="binary_flag",
-        include_date_of_match=True,
-        date_format="YYYY-MM-DD",
-        find_last_match_in_period=True,
-        return_expectations={"incidence": 0.5},
-    ),
-    "flucats_template_occurences":patients.with_these_clinical_events(
-        codelist=codelist(["13044541000006109"], system="snomed"),
-        between=["index_date", "last_day_of_month(index_date)"],
-        returning="number_of_matches_in_period",
-        return_expectations={"int": {"distribution": "normal", "mean": 1, "stddev": 1}},
-    ),
-
+            codelist=flucats_hospital_admission_codelist,
+            between=["index_date", "last_day_of_month(index_date)"],
+            returning="binary_flag",
+            include_date_of_match=True,
+            date_format="YYYY-MM-DD",
+            find_last_match_in_period=True,
+            return_expectations={"incidence": 0.5},
+        ),
+        "flucats_template_occurences": patients.with_these_clinical_events(
+            codelist=codelist(["13044541000006109"], system="snomed"),
+            between=["index_date", "last_day_of_month(index_date)"],
+            returning="number_of_matches_in_period",
+            return_expectations={
+                "int": {"distribution": "normal", "mean": 1, "stddev": 1}
+            },
+        ),
     }
 else:
     hospital_admissions_variables = {}
@@ -88,14 +92,13 @@ for d in varsets:
     varset_variables.update(d)
 
 
-
 study = StudyDefinition(
     default_expectations={
         "date": {"earliest": "1900-01-01", "latest": "today"},
         "rate": "uniform",
         "incidence": 0.5,
     },
-    nulldate = patients.fixed_value("1900-01-01"),
+    nulldate=patients.fixed_value("1900-01-01"),
     index_date="2020-03-01",
     population=patients.satisfying(
         """
@@ -112,7 +115,6 @@ study = StudyDefinition(
             returning="binary_flag",
             return_expectations={"incidence": 0.1},
         ),
-        
     ),
     practice=patients.registered_practice_as_of(
         "index_date",
@@ -128,7 +130,6 @@ study = StudyDefinition(
             "category": {"ratios": {"M": 0.49, "F": 0.49, "U": 0.01, "I": 0.01}},
         }
     ),
-
     flucats_template=patients.with_these_clinical_events(
         codelist=codelist(["13044541000006109"], system="snomed"),
         between=["index_date", "last_day_of_month(index_date)"],
@@ -138,9 +139,7 @@ study = StudyDefinition(
         find_last_match_in_period=True,
         return_expectations={"incidence": 0.5},
     ),
-    
     **varset_variables,
-
     **hospital_admissions_variables,
     **numeric_variables_dict
 )
