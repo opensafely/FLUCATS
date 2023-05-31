@@ -245,6 +245,12 @@ flucats_oxygen_saturation_codelist = codelist_from_csv(
     column="code",
 )
 
+flucats_oxygen_saturation_observable_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-oxygen-saturation-observable.csv",
+    system="snomed",
+    column="code",
+)
+
 flucats_respiratory_exhaustion_or_apnoea_codelist = codelist_from_csv(
     "codelists/user-Louis-flucats-respiratory-exhaustion-or-apnoea.csv",
     system="snomed",

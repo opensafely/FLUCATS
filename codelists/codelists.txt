@@ -45,6 +45,7 @@ user/Louis/flucats-evidence-of-dehydration-or-shock-observable/35025586/
 user/Louis/flucats-increased-respiratory-rate/50d75aab/
 user/Louis/flucats-increased-respiratory-rate-observable/4e11c8bb/
 user/Louis/flucats-oxygen-saturation/37c7e776/
+user/Louis/flucats-oxygen-saturation-observable/324f9590/
 user/Louis/flucats-respiratory-exhaustion-or-apnoea/2ee8f405/
 user/Louis/flucats-severe-respiratory-distress/69e6cde0/
 user/Louis/flucats-blood-pressure-reading/2c36340f/

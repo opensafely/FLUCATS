@@ -282,6 +282,12 @@
       "downloaded_at": "2023-02-01 11:00:45.035277Z",
       "sha": "5396d03ea369aed01ceacd1b9ef6f822472ac27a"
     },
+    "user-Louis-flucats-oxygen-saturation-observable.csv": {
+      "id": "user/Louis/flucats-oxygen-saturation-observable/324f9590",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-oxygen-saturation-observable/324f9590/",
+      "downloaded_at": "2023-05-31 11:05:22.627007Z",
+      "sha": "433c8925aec24cc5fe300849b36a651df3c5f25b"
+    },
     "user-Louis-flucats-respiratory-exhaustion-or-apnoea.csv": {
       "id": "user/Louis/flucats-respiratory-exhaustion-or-apnoea/2ee8f405",
       "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-respiratory-exhaustion-or-apnoea/2ee8f405/",
