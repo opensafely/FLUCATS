@@ -7,32 +7,33 @@ from variables.flucats_variables import (
     flucats_variables_blood_pressure,
     flucats_variables_causing_clinical_concern,
     flucats_variables_dehydration_or_shock,
+    flucats_variables_dehydration_or_shock_numeric,
     flucats_variables_heart_rate,
+    flucats_variables_heart_rate_numeric,
     flucats_variables_respiratory_rate,
+    flucats_variables_respiratory_rate_numeric,
     flucats_variables_oxygen_saturation,
+    flucats_variables_oxygen_saturation_numeric,
     flucats_variables_temperature,
+    flucats_variables_temperature_numeric,
     flucats_variables_who_performance_score,
     flucats_variables_severe_respiratory_distress,
     flucats_variables_respiratory_exhaustion,
-    flucats_variables_163020007_numeric,
-    flucats_variables_15527001_numeric,
-    flucats_variables_787041000000101_numeric,
-    flucats_variables_787051000000103_numeric,
-    flucats_variables_162986007_numeric,
-    flucats_variables_162913005_numeric,
 )
 
 include_hospital_admissions = params["include_hospital_admissions"]
+include_hospital_admissions = include_hospital_admissions == "True"
+
 include_numeric_variables = params["include_numeric_variables"]
+include_numeric_variables = include_numeric_variables == "True"
 
 if include_numeric_variables:
     numeric_variables_list = [
-        flucats_variables_163020007_numeric,
-        flucats_variables_15527001_numeric,
-        flucats_variables_787041000000101_numeric,
-        flucats_variables_787051000000103_numeric,
-        flucats_variables_162986007_numeric,
-        flucats_variables_162913005_numeric,
+        flucats_variables_dehydration_or_shock_numeric,
+        flucats_variables_heart_rate_numeric,
+        flucats_variables_respiratory_rate_numeric,
+        flucats_variables_temperature_numeric,
+        flucats_variables_oxygen_saturation_numeric,
     ]
 
 else:
@@ -40,10 +41,12 @@ else:
 
 # convert list of dicts to single dict
 numeric_variables_dict = {
-    key: value
-    for dictionary in numeric_variables_list
-    for key, value in dictionary.items()
-}
+    "dehydration_or_shock": flucats_variables_dehydration_or_shock_numeric,
+    "heart_rate": flucats_variables_heart_rate_numeric,
+    "respiratory_rate": flucats_variables_respiratory_rate_numeric,
+    "temperature": flucats_variables_temperature_numeric,
+    "oxygen_saturation": flucats_variables_oxygen_saturation_numeric,
+    }
 
 
 if include_hospital_admissions:
@@ -90,6 +93,23 @@ varsets = [varset_dict[varset_name] for varset_name in varset_names]
 varset_variables = {}
 for d in varsets:
     varset_variables.update(d)
+
+if include_numeric_variables:
+    
+    numeric_variables_list = [
+        numeric_variables_dict.get(varset_name)
+        for varset_name in varset_names
+    ]
+
+else:
+    numeric_variables_list = []
+
+# convert list of dicts to single dict
+numeric_variables_dict = {
+    key: value
+    for dictionary in numeric_variables_list if dictionary is not None
+    for key, value in dictionary.items()
+}
 
 
 study = StudyDefinition(

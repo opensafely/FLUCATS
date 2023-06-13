@@ -3,18 +3,27 @@ from pathlib import Path
 
 
 def main():
-    template_frequencies = []
+
     numeric_variables_list = [
-        "flucats_question_numeric_value_blood_pressure_163020007_value_left",
-        "flucats_question_numeric_value_dehydration_or_shock_15527001_value_left",
-        "flucats_question_numeric_value_dehydration_or_shock_787041000000101_value_left",
-        "flucats_question_numeric_value_dehydration_or_shock_787051000000103_value_left",
-        "flucats_question_numeric_value_heart_rate_162986007_value_left",
-        "flucats_question_numeric_value_respiratory_rate_162913005_value_left",
+        "flucats_question_numeric_value_dehydration_or_shock_15527001_value",
+        "flucats_question_numeric_value_dehydration_or_shock_787041000000101_value",
+        "flucats_question_numeric_value_dehydration_or_shock_787051000000103_value",
+        "flucats_question_numeric_value_heart_rate_422119006_value",
+        "flucats_question_numeric_value_heart_rate_429525003_value",
+        "flucats_question_numeric_value_heart_rate_429614003_value",
+        "flucats_question_numeric_value_heart_rate_78564009_value",
+        "flucats_question_numeric_value_heart_rate_843941000000100_value",
+        "flucats_question_numeric_value_respiratory_rate_250810003_value",
+        "flucats_question_numeric_value_respiratory_rate_271625008_value",
+        "flucats_question_numeric_value_respiratory_rate_86290005_value",
+        "flucats_question_numeric_value_respiratory_rate_927961000000102_value",
+        "flucats_question_numeric_value_oxygen_saturation_431314004_value",
+        "flucats_question_numeric_value_oxygen_saturation_927981000000106_value",
+        "flucats_question_numeric_value_temperature_703421000_value",
     ]
 
     proportions_numeric = []
-    file_path = Path("output/joined/full/input_2020-03-01.csv")
+    file_path = Path("output/joined/full/input_all.csv")
 
     df = pd.read_csv(file_path, usecols=numeric_variables_list, dtype="float64")
 
