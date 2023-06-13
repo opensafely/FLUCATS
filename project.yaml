@@ -824,7 +824,7 @@ actions:
     needs: [join_cohorts_monthly]
     outputs:
       highly_sensitive:
-        attrition: output/joined/full/input_all_py.csv
+        attrition: output/joined/full/input_all.csv
 
   column_counts:
     run: python:latest python analysis/analysis/column_counts.py

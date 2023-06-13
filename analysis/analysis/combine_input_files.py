@@ -1,33 +1,42 @@
-import pandas as pd
 import os
+import pandas as pd
+from pathlib import Path
+
+INPUT_DIRECTORY = "output/joined/full"
+OUTPUT_FILE = "output/joined/full/input_all.csv"
 
 
-def chunk_and_filter(file):
+def chunk_and_filter(file_path, date):
+    """
+    Read file in chunks and filter for flucats_template == 1
+    """
     filtered = []
-    for chunk in pd.read_csv(file, chunksize=100000):
+    for chunk in pd.read_csv(file_path, chunksize=100000):
         chunk_filtered = chunk[chunk["flucats_template"] == 1]
+        chunk_filtered["date"] = date
         filtered.append(chunk_filtered)
-
     return pd.concat(filtered)
 
 
-df_1 = chunk_and_filter("output/joined/full/input_2020-03-01.csv")
-
-# all files in output that start with input and end with .csv and don't contain 'end' and are not input_2020-04-01.csv
-files = [
-    f
-    for f in os.listdir("output/joined/full")
-    if f.startswith("input")
-    and f.endswith(".csv")
-    and not f.startswith("input_2020-03-01")
-    and not f.endswith("end.csv")
-]
-print(files)
-for file in files:
-    # read in the file in chunks with pandas
-    df_2 = chunk_and_filter(f"output/joined/full/{file}")
-
-    df_1 = pd.concat([df_1, df_2])
+def get_file_paths(directory):
+    """
+    Get all file paths in directory that match input files
+    """
+    return (
+        (file, get_date_input_file(file.name))
+        for file in Path(directory).iterdir()
+        if match_input_files(file.name)
+    )
 
 
-df_1.to_csv("output/joined/full/input_all_py.csv", index=False)
+def main():
+    file_paths = get_file_paths(INPUT_DIRECTORY)
+    combined_df = pd.concat(
+        [chunk_and_filter(file_path, date) for file_path, date in file_paths],
+        ignore_index=True,
+    )
+    combined_df.to_csv(OUTPUT_FILE, index=False)
+
+
+if __name__ == "__main__":
+    main()
