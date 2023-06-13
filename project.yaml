@@ -804,7 +804,7 @@ actions:
       highly_sensitive:
         counts: output/joined/input_*.csv
 
-  join_cohorts_monthly:
+  join_cohorts_end:
     run: >
       cohort-joiner:v0.0.44
         --lhs output/joined/input_*.csv
@@ -821,7 +821,7 @@ actions:
 
   combined_input_files:
     run: python:latest python analysis/analysis/combine_input_files.py
-    needs: [join_cohorts_monthly]
+    needs: [join_cohorts_end]
     outputs:
       highly_sensitive:
         attrition: output/joined/full/input_all.csv

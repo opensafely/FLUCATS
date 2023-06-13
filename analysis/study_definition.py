@@ -27,19 +27,6 @@ include_hospital_admissions = include_hospital_admissions == "True"
 include_numeric_variables = params["include_numeric_variables"]
 include_numeric_variables = include_numeric_variables == "True"
 
-if include_numeric_variables:
-    numeric_variables_list = [
-        flucats_variables_dehydration_or_shock_numeric,
-        flucats_variables_heart_rate_numeric,
-        flucats_variables_respiratory_rate_numeric,
-        flucats_variables_temperature_numeric,
-        flucats_variables_oxygen_saturation_numeric,
-    ]
-
-else:
-    numeric_variables_list = []
-
-# convert list of dicts to single dict
 numeric_variables_dict = {
     "dehydration_or_shock": flucats_variables_dehydration_or_shock_numeric,
     "heart_rate": flucats_variables_heart_rate_numeric,
@@ -47,6 +34,8 @@ numeric_variables_dict = {
     "temperature": flucats_variables_temperature_numeric,
     "oxygen_saturation": flucats_variables_oxygen_saturation_numeric,
     }
+
+
 
 
 if include_hospital_admissions:
@@ -118,7 +107,7 @@ study = StudyDefinition(
         "rate": "uniform",
         "incidence": 0.5,
     },
-    nulldate=patients.fixed_value("1900-01-01"),
+    
     index_date="2020-03-01",
     population=patients.satisfying(
         """
