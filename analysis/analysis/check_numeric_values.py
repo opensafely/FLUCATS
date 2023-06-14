@@ -25,13 +25,19 @@ def main():
     proportions_numeric = []
     file_path = Path("output/joined/full/input_all.csv")
 
-    df = pd.read_csv(file_path, usecols=numeric_variables_list, dtype="float64")
+    df = pd.read_csv(file_path, usecols=numeric_variables_list, dtype="float")
+    df_dates = pd.read_csv(file_path, usecols=["date"])
+
+    df = pd.concat([df, df_dates], axis=1)
 
     # for each column, calculate proportion where value is not null
 
     proportions = {}
+    unique_dates = df["date"].unique()
     for column in df.columns:
-        proportions[column] = round(len(df.loc[df[column] > 0]) / len(df), 2)
+        if column != "date":
+            for date in unique_dates:
+                proportions[column] = round(len(df.loc[(df["date"]==date) & (df[column] > 0)]) / len(df), 2)
 
     proportions_numeric.append(proportions)
 
