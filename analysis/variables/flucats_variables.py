@@ -1,5 +1,5 @@
 from codelists import *
-from study_utils import loop_over_codes
+from analysis.study_utils import loop_over_codes
 
 flucats_variables_altered_conscious_level = loop_over_codes(
     numeric=False,

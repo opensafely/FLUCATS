@@ -1,6 +1,6 @@
 from cohortextractor import patients
 from codelists import *
-from study_utils import generate_expectations_codes
+from analysis.study_utils import generate_expectations_codes
 
 demographic_variables = dict(
     age=patients.age_as_of(

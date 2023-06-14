@@ -1,7 +1,8 @@
 from pathlib import Path
 import argparse
-import re
 import pandas as pd
+
+from study_utils import match_input_files, get_date_input_file
 
 
 def parse_args():
@@ -9,24 +10,6 @@ def parse_args():
     parser.add_argument("--input-dir", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     return parser.parse_args()
-
-
-def match_input_files(file: str) -> bool:
-    pattern = (
-        r"^input_([a-zA-Z]+\_)*20\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])\.csv"
-    )
-    return bool(re.match(pattern, file))
-
-
-def get_date_input_file(file: str) -> str:
-    """
-    Gets the date in format YYYY-MM-DD from input file name string
-    """
-    
-    if not match_input_files(file):
-        raise Exception("Not valid input file format")
-    date = re.search(r"(\d{4}-\d{2}-\d{2})", file)
-    return date.group(1)
 
 
 def create_directory_if_not_exists(directory: Path):
