@@ -81,6 +81,21 @@ actions:
       highly_sensitive:
         cohort: output/input_who_performance_score_demographic_variables*.csv
 
+  generate_study_population_com_presc:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2020-03-01 to 2020-04-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_prescription*.csv
+
   generate_study_population_resp:
     run: >
       cohortextractor:latest generate_cohort
@@ -171,6 +186,21 @@ actions:
       highly_sensitive:
         cohort: output/input_who_performance_score_demographic_variable*.csv
 
+  generate_study_population_com_presc_2:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2020-05-01 to 2020-06-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_prescriptio*.csv
+
   generate_study_population_resp_2:
     run: >
       cohortextractor:latest generate_cohort
@@ -260,6 +290,21 @@ actions:
     outputs:
       highly_sensitive:
         cohort: output/input_who_performance_score_demographic_variabl*.csv
+
+  generate_study_population_com_presc_3:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2020-07-01 to 2020-08-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_prescripti*.csv
 
   generate_study_population_resp_3:
     run: >
@@ -353,6 +398,21 @@ actions:
     outputs:
       highly_sensitive:
         cohort: output/input_who_performance_score_demographic_variab*.csv
+
+  generate_study_population_com_presc_4:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2020-09-01 to 2020-10-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_prescript*.csv
 
   generate_study_population_resp_4:
     run: >
@@ -448,6 +508,21 @@ actions:
       highly_sensitive:
         cohort: output/input_who_performance_score_demographic_varia*.csv
 
+  generate_study_population_com_presc_5:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2020-11-01 to 2020-12-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_prescrip*.csv
+
   generate_study_population_resp_5:
     run: >
       cohortextractor:latest generate_cohort
@@ -539,6 +614,21 @@ actions:
     outputs:
       highly_sensitive:
         cohort: output/input_who_performance_score_demographic_vari*.csv
+
+  generate_study_population_com_presc_6:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-01-01 to 2021-02-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_prescri*.csv
 
   generate_study_population_resp_6:
     run: >
@@ -633,6 +723,21 @@ actions:
       highly_sensitive:
         cohort: output/input_who_performance_score_demographic_var*.csv
 
+  generate_study_population_com_presc_7:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-03-01 to 2021-04-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_presc*.csv
+
   generate_study_population_resp_7:
     run: >
       cohortextractor:latest generate_cohort
@@ -725,6 +830,21 @@ actions:
       highly_sensitive:
         cohort: output/input_who_performance_score_demographic_va*.csv
 
+  generate_study_population_com_presc_8:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-05-01 to 2021-06-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_pres*.csv
+
   generate_study_population_resp_8:
     run: >
       cohortextractor:latest generate_cohort
@@ -756,48 +876,56 @@ actions:
       generate_study_population_heart_rate_resp_rate,
       generate_study_population_ox_temp,
       generate_study_population_who_dem,
+      generate_study_population_com_presc,
       generate_study_population_resp,
       generate_study_population_conscious_level_blood_pressure_2,
       generate_study_population_clinical_concern_dehydration_2,
       generate_study_population_heart_rate_resp_rate_2,
       generate_study_population_ox_temp_2,
       generate_study_population_who_dem_2,
+      generate_study_population_com_presc_2,
       generate_study_population_resp_2,
       generate_study_population_conscious_level_blood_pressure_3,
       generate_study_population_clinical_concern_dehydration_3,
       generate_study_population_heart_rate_resp_rate_3,
       generate_study_population_ox_temp_3,
       generate_study_population_who_dem_3,
+      generate_study_population_com_presc_3,
       generate_study_population_resp_3,
       generate_study_population_conscious_level_blood_pressure_4,
       generate_study_population_clinical_concern_dehydration_4,
       generate_study_population_heart_rate_resp_rate_4,
       generate_study_population_ox_temp_4,
       generate_study_population_who_dem_4,
+      generate_study_population_com_presc_4,
       generate_study_population_resp_4,
       generate_study_population_conscious_level_blood_pressure_5,
       generate_study_population_clinical_concern_dehydration_5,
       generate_study_population_heart_rate_resp_rate_5,
       generate_study_population_ox_temp_5,
       generate_study_population_who_dem_5,
+      generate_study_population_com_presc_5,
       generate_study_population_resp_5,
       generate_study_population_conscious_level_blood_pressure_6,
       generate_study_population_clinical_concern_dehydration_6,
       generate_study_population_heart_rate_resp_rate_6,
       generate_study_population_ox_temp_6,
       generate_study_population_who_dem_6,
+      generate_study_population_com_presc_6,
       generate_study_population_resp_6,
       generate_study_population_conscious_level_blood_pressure_7,
       generate_study_population_clinical_concern_dehydration_7,
       generate_study_population_heart_rate_resp_rate_7,
       generate_study_population_ox_temp_7,
       generate_study_population_who_dem_7,
+      generate_study_population_com_presc_7,
       generate_study_population_resp_7,
       generate_study_population_conscious_level_blood_pressure_8,
       generate_study_population_clinical_concern_dehydration_8,
       generate_study_population_heart_rate_resp_rate_8,
       generate_study_population_ox_temp_8,
       generate_study_population_who_dem_8,
+      generate_study_population_com_presc_8,
       generate_study_population_resp_8
       ]
     outputs:
@@ -818,6 +946,16 @@ actions:
       highly_sensitive:
         cohort: output/joined/full/input*.csv
 
+  cohort_description:
+    run: >
+      python:latest python analysis/analysis/cohort_description.py
+        --study_def_paths "output/joined/full/input_*.csv"
+        --demographics "sex" "imdQ5" "ethnicity" "age_band" "homeless" "residential_care" "region" "asthma" "addisons_hypoadrenalism" "chronic_heart_disease" "chronic_respiratory_disease" "chronic_kidney_disease" "renal_disease" "liver_disease" "pregnant" "diabetes" "gestational_diabetes" "mental_illness" "neurological_disorder" "hypertension" "pneumonia" "immunosuppression_disorder" "immunosuppression_chemo" "immunosuppression_medication" "splenic_disease" "statins"
+    needs: [join_cohorts_end]
+    outputs:
+      moderately_sensitive:
+        counts: output/cohort_description.csv
+        counts_redacted: output/cohort_description_redacted.csv
 
   combined_input_files:
     run: python:latest python analysis/analysis/combine_input_files.py

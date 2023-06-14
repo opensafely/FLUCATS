@@ -2,6 +2,8 @@ from cohortextractor import StudyDefinition, patients, params
 
 from codelists import *
 from variables.demographic_variables import demographic_variables
+from variables.comorbidity_variables import comorbidity_variables
+from variables.prescription_variables import prescription_variables
 from variables.flucats_variables import (
     flucats_variables_altered_conscious_level,
     flucats_variables_blood_pressure,
@@ -26,6 +28,7 @@ include_hospital_admissions = include_hospital_admissions == "True"
 
 include_numeric_variables = params["include_numeric_variables"]
 include_numeric_variables = include_numeric_variables == "True"
+
 
 numeric_variables_dict = {
     "dehydration_or_shock": flucats_variables_dehydration_or_shock_numeric,
@@ -75,6 +78,8 @@ varset_dict = {
     "severe_respiratory_distress": flucats_variables_severe_respiratory_distress,
     "respiratory_exhaustion": flucats_variables_respiratory_exhaustion,
     "demographic_variables": demographic_variables,
+    "comorbidity_variables": comorbidity_variables,
+    "prescription_variables": prescription_variables,
 }
 
 varsets = [varset_dict[varset_name] for varset_name in varset_names]
@@ -150,5 +155,6 @@ study = StudyDefinition(
     ),
     **varset_variables,
     **hospital_admissions_variables,
-    **numeric_variables_dict
+    **numeric_variables_dict,
 )
+    
