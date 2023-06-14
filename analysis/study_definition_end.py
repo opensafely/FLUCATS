@@ -14,7 +14,7 @@ study = StudyDefinition(
         "rate": "uniform",
         "incidence": 0.8,
     },
-    nulldate = patients.fixed_value("1900-01-01"),
+  
     index_date=end_date,
     population=patients.all(),
     died_any_date=patients.died_from_any_cause(
@@ -22,12 +22,10 @@ study = StudyDefinition(
         returning="date_of_death",
         date_format="YYYY-MM-DD",
         return_expectations={
-            "date": {"earliest" : "2020-02-01"},
-            "rate" : "exponential_increase"
+            "date": {"earliest": "2020-02-01"},
+            "rate": "exponential_increase",
         },
     ),
-
-
     died_covid_any_date=patients.with_these_codes_on_death_certificate(
         covid_death_codelist,  # imported from codelists.py
         returning="date_of_death",
@@ -40,7 +38,6 @@ study = StudyDefinition(
             "incidence": 0.05,
         },
     ),
-
     covid_death=patients.with_these_codes_on_death_certificate(
         covid_death_codelist,  # imported from codelists.py
         returning="date_of_death",
@@ -52,7 +49,6 @@ study = StudyDefinition(
             "incidence": 0.05,
         },
     ),
-    
     # Ethnicity
     ethnicity_opensafely=patients.with_these_clinical_events(
         ethnicity_opensafely,
@@ -72,7 +68,6 @@ study = StudyDefinition(
             "rate": "universal",
         },
     ),
-
     ethnicity=patients.with_these_clinical_events(
         eth2001,
         returning="category",
@@ -123,5 +118,4 @@ study = StudyDefinition(
         on_or_before="index_date",
         date_format="YYYY-MM-DD",
     ),
-    
 )

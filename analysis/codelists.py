@@ -61,25 +61,25 @@ addisons_hypoadrenalism_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-addis_cod.csv", system="snomed", column="code"
 )
 
-asthma_admission_codelist=codelist_from_csv(
+asthma_admission_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-astadm.csv",
     system="snomed",
     column="code",
 )
 
-asthma_diagnosis_codelist=codelist_from_csv(
+asthma_diagnosis_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-ast.csv",
     system="snomed",
     column="code",
 )
 
-asthma_inhaler_codelist=codelist_from_csv(
+asthma_inhaler_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-astrxm1.csv",
     system="snomed",
     column="code",
 )
 
-asthma_steroid_codelist=codelist_from_csv(
+asthma_steroid_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-astrxm2.csv",
     system="snomed",
     column="code",
@@ -245,6 +245,12 @@ flucats_oxygen_saturation_codelist = codelist_from_csv(
     column="code",
 )
 
+flucats_oxygen_saturation_observable_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-oxygen-saturation-observable.csv",
+    system="snomed",
+    column="code",
+)
+
 flucats_respiratory_exhaustion_or_apnoea_codelist = codelist_from_csv(
     "codelists/user-Louis-flucats-respiratory-exhaustion-or-apnoea.csv",
     system="snomed",
@@ -298,4 +304,3 @@ flucats_hospital_admission_codelist = codelist_from_csv(
     system="snomed",
     column="code",
 )
-
