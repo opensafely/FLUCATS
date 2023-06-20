@@ -917,6 +917,13 @@ actions:
       highly_sensitive:
         attrition: output/joined/full/input_all.csv
 
+  population_count:
+    run: python:latest python analysis/analysis/population_count.py
+    needs: [combined_input_files]
+    outputs:
+      moderately_sensitive:
+        count: output/joined/full/population_count.csv
+
   column_counts:
     run: python:latest python analysis/analysis/column_counts.py
     needs: [combined_input_files]
