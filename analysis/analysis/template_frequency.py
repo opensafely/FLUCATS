@@ -24,8 +24,8 @@ def main():
     # order in ascending order
     template_freq = template_freq.sort_index()
 
-    five_plus = template_freq.iloc[5:].sum()
-    template_freq = template_freq.iloc[:5]
+    five_plus = template_freq.iloc[4:].sum()
+    template_freq = template_freq.iloc[:4]
     template_freq = pd.concat([template_freq, pd.Series([five_plus], index=['5+'])])
 
     template_freq = template_freq.rename('number_of_patients').round(-1)
