@@ -21,7 +21,7 @@ def group_low_values(df, count_column, code_column, threshold):
     ].sum()
     suppressed_df = df.loc[df[count_column] > threshold, count_column]
     # if suppressed values >0 ensure total suppressed count > threshold.
-    if suppressed_count > 0:
+    if suppressed_count > 0 & df[count_column].notnull().any():
         # redact counts <= threshold and > 0
         df.loc[
             (df[count_column] <= threshold) & (df[count_column] > 0), count_column
