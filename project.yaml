@@ -978,6 +978,13 @@ actions:
       moderately_sensitive:
         table: output/joined/full/proportions_numeric.csv
 
+  template_frequency:
+    run: python:latest python analysis/analysis/template_frequency.py
+    needs: [combined_input_files]
+    outputs:
+      moderately_sensitive:
+        attrition: output/joined/full/template_frequency.csv
+        
   # generate_first_outputs:
   #   run: r:latest analysis/flucats_descriptive_basic.R
   #   needs: [combined_input_files]
