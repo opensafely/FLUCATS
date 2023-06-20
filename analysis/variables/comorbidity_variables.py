@@ -164,6 +164,7 @@ comorbidity_variables = dict(
         )
         
         """,
+        
         ### Date any Diabetes diagnosis Read code is recorded
         DIAB_DAT=patients.with_these_clinical_events(
             diabetes_codelist,
@@ -180,6 +181,7 @@ comorbidity_variables = dict(
             on_or_before="index_date",
             date_format="YYYY-MM-DD",
         ),
+        nulldate=patients.fixed_value("1900-01-01"),
         return_expectations={
             "incidence": 0.05,
         },

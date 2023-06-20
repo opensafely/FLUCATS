@@ -1,5 +1,11 @@
 import re
+
+from pathlib import Path
 from cohortextractor import patients, codelist
+
+BASE_DIR = Path(__file__).parents[1]
+OUTPUT_DIR = BASE_DIR / "../output"
+ANALYSIS_DIR = BASE_DIR / "../analysis"
 
 
 def generate_expectations_codes(codelist, incidence=0.5):
@@ -73,3 +79,4 @@ def get_date_input_file(file: str) -> str:
         raise Exception("Not valid input file format")
     date = re.search(r"(\d{4}-\d{2}-\d{2})", file)
     return date.group(1)
+
