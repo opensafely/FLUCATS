@@ -40,10 +40,10 @@ def loop_over_codes(numeric, question_str, code_list):
                     "incidence": 0.5,
                 },
             ),
-            f"flucats_question_numeric_value_{question_str}_{code}_code": patients.with_these_clinical_events(
+            f"flucats_question_numeric_value_{question_str}_{code}": patients.with_these_clinical_events(
                 codelist([code], system="snomed"),
                 between=["flucats_template_date", "flucats_template_date + 1 day"],
-                returning="code",
+                returning="binary_flag",
                 find_last_match_in_period=True,
                 return_expectations={
                     "category": {"ratios": generate_expectations_codes([code])}
