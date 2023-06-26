@@ -31,19 +31,20 @@ def main():
 
     file_path = Path("output/joined/full/input_all.csv")
 
-    df = pd.read_csv(file_path, usecols=numeric_variables_list.extend(numeric_values_variables_list))
+    df = pd.read_csv(file_path, usecols=numeric_variables_list + numeric_values_variables_list)
 
-    
+
     proportions = {}
 
     for code in codes:
-    
+        print(f"Code: {code}")
         binary_variable = [x for x in numeric_variables_list if code in x][0]
         numeric_value = [x for x in numeric_values_variables_list if code in x][0]
-
+   
         subset_df = df.loc[df[binary_variable] == 1]
 
-        proportions[code] = round(len(subset_df.loc[subset_df[numeric_value] > 0]) / len(subset_df), 2)
+        if len(subset_df) > 0:
+            proportions[code] = round(len(subset_df.loc[subset_df[numeric_value] > 0]) / len(subset_df), 2)
 
     proportions_numeric = pd.DataFrame(proportions, index=["proportion"])
 
