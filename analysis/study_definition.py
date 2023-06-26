@@ -36,9 +36,7 @@ numeric_variables_dict = {
     "respiratory_rate": flucats_variables_respiratory_rate_numeric,
     "temperature": flucats_variables_temperature_numeric,
     "oxygen_saturation": flucats_variables_oxygen_saturation_numeric,
-    }
-
-
+}
 
 
 if include_hospital_admissions:
@@ -89,10 +87,9 @@ for d in varsets:
     varset_variables.update(d)
 
 if include_numeric_variables:
-    
+
     numeric_variables_list = [
-        numeric_variables_dict.get(varset_name)
-        for varset_name in varset_names
+        numeric_variables_dict.get(varset_name) for varset_name in varset_names
     ]
 
 else:
@@ -101,7 +98,8 @@ else:
 # convert list of dicts to single dict
 numeric_variables_dict = {
     key: value
-    for dictionary in numeric_variables_list if dictionary is not None
+    for dictionary in numeric_variables_list
+    if dictionary is not None
     for key, value in dictionary.items()
 }
 
@@ -112,7 +110,6 @@ study = StudyDefinition(
         "rate": "uniform",
         "incidence": 0.5,
     },
-    
     index_date="2020-03-01",
     population=patients.satisfying(
         """
@@ -157,4 +154,3 @@ study = StudyDefinition(
     **hospital_admissions_variables,
     **numeric_variables_dict,
 )
-    

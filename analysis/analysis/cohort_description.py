@@ -22,7 +22,7 @@ def load_and_preprocess_csv(path, cols):
 
     df = pd.read_csv(path, usecols=cols)
     df.loc[:, cols] = df.loc[:, cols].fillna("missing")
-    df = df.drop_duplicates(subset=["patient_id"], keep="last")
+    df = df.drop_duplicates(subset=["patient_id"], keep="last").reset_index(drop=True)
     return df
 
 
@@ -45,6 +45,7 @@ def update_df(original_df, new_df, columns=[], on="patient_id"):
     updated.update(new_df[columns])
 
     return updated.reset_index()
+
 
 def round_column(column, base):
     return column.apply(lambda x: base * round(x / base))
@@ -71,13 +72,11 @@ def group_low_values_df(df):
         else:
             df_subset.loc[df_subset["count"] <= 7, "count"] = np.nan
 
-            while suppressed_count <= 7:
-                suppressed_count += df_subset.loc[
-                    df_subset["count"] <= 7, "count"
-                ].min()
-                df_subset.loc[df_subset["count"].idxmin(), "count"] = np.nan
+            while (suppressed_count <= 7) & (df_subset["count"].notnull().any()):
 
-            df_subset = df_subset[df_subset["count"].notnull()]
+                suppressed_count += df_subset.loc[:, "count"].min()
+
+                df_subset.loc[df_subset["count"].idxmin(), "count"] = np.nan
 
             if suppressed_count > 7:
                 other_row = pd.DataFrame(
@@ -87,10 +86,10 @@ def group_low_values_df(df):
 
                 other_row["count"] = round_column(other_row["count"], 5)
                 df_subset = pd.concat([df_subset, other_row])
-
+            df_subset = df_subset[df_subset["count"].notnull()]
             redacted_groups.append(df_subset)
 
-    redacted_df = pd.concat(redacted_groups)
+    redacted_df = pd.concat(redacted_groups).reset_index(drop=True)
 
     return redacted_df
 
