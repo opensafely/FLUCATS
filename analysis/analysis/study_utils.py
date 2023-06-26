@@ -79,4 +79,3 @@ def get_date_input_file(file: str) -> str:
         raise Exception("Not valid input file format")
     date = re.search(r"(\d{4}-\d{2}-\d{2})", file)
     return date.group(1)
-

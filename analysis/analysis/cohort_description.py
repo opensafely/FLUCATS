@@ -46,6 +46,7 @@ def update_df(original_df, new_df, columns=[], on="patient_id"):
 
     return updated.reset_index()
 
+
 def round_column(column, base):
     return column.apply(lambda x: base * round(x / base))
 
@@ -73,13 +74,9 @@ def group_low_values_df(df):
 
             while (suppressed_count <= 7) & (df_subset["count"].notnull().any()):
 
-                suppressed_count += df_subset.loc[
-                    :, "count"
-                ].min()
+                suppressed_count += df_subset.loc[:, "count"].min()
 
                 df_subset.loc[df_subset["count"].idxmin(), "count"] = np.nan
-
-            
 
             if suppressed_count > 7:
                 other_row = pd.DataFrame(

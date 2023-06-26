@@ -164,7 +164,6 @@ comorbidity_variables = dict(
         )
         
         """,
-        
         ### Date any Diabetes diagnosis Read code is recorded
         DIAB_DAT=patients.with_these_clinical_events(
             diabetes_codelist,

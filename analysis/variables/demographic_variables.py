@@ -3,7 +3,6 @@ from codelists import *
 from analysis.study_utils import generate_expectations_codes
 
 demographic_variables = dict(
-    
     age_band=patients.categorised_as(
         {
             "missing": "DEFAULT",
@@ -33,12 +32,12 @@ demographic_variables = dict(
             },
         },
         age=patients.age_as_of(
-        "index_date",
-        return_expectations={
-            "rate": "universal",
-            "int": {"distribution": "population_ages"},
-        },
-    ),
+            "index_date",
+            return_expectations={
+                "rate": "universal",
+                "int": {"distribution": "population_ages"},
+            },
+        ),
     ),
     type_of_residence=patients.with_these_clinical_events(
         type_of_residence_codelist,

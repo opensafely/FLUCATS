@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('output/joined/full/input_all.csv')
+df = pd.read_csv("output/joined/full/input_all.csv")
 
 dates = df["date"].unique()
 pop_count = {}

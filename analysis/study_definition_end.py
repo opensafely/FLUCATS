@@ -14,7 +14,6 @@ study = StudyDefinition(
         "rate": "uniform",
         "incidence": 0.8,
     },
-  
     index_date=end_date,
     population=patients.all(),
     died_any_date=patients.died_from_any_cause(
