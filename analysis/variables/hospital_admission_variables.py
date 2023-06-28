@@ -19,7 +19,9 @@ hospital_admissions_variables = {
             include_date_of_match=True,
             date_format="YYYY-MM-DD",
             find_last_match_in_period=True,
-            return_expectations=generate_expectations_codes(flucats_hospital_admission_codelist),
+            return_expectations={
+                "category": {"ratios": generate_expectations_codes([flucats_hospital_admission_codelist])}
+            },
         ),
         "icu_admission": patients.with_these_clinical_events(
             codelist=flucats_icu_codelist,
@@ -37,7 +39,9 @@ hospital_admissions_variables = {
             include_date_of_match=True,
             date_format="YYYY-MM-DD",
             find_last_match_in_period=True,
-            return_expectations=generate_expectations_codes(flucats_icu_codelist),
+            return_expectations={
+                "category": {"ratios": generate_expectations_codes([flucats_icu_codelist])}
+            },
         )
         
     }
