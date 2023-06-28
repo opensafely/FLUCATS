@@ -46,6 +46,12 @@ def main():
         "flucats_question_numeric_value_respiratory_rate_927961000000102",
         "flucats_question_numeric_value_oxygen_saturation_431314004",
         "flucats_question_numeric_value_oxygen_saturation_927981000000106",
+        "flucats_question_numeric_value_oxygen_saturation_852651000000100",
+        "flucats_question_numeric_value_oxygen_saturation_852661000000102",
+        "flucats_question_numeric_value_oxygen_saturation_866661000000106",
+        "flucats_question_numeric_value_oxygen_saturation_866681000000102",
+        "flucats_question_numeric_value_oxygen_saturation_866701000000100",
+        "flucats_question_numeric_value_oxygen_saturation_866721000000109",
         "flucats_question_numeric_value_temperature_703421000",
     ]
 
