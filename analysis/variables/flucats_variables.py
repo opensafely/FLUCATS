@@ -16,6 +16,12 @@ flucats_variables_causing_clinical_concern = loop_over_codes(
     question_str="causing_clinical_concern",
     code_list=flucats_causing_clinical_concern_codelist,
 )
+flucats_variables_clinical_concern_note = loop_over_codes(
+    numeric=False,
+    question_str="clinical_concern_note",
+    code_list=flucats_clinical_concern_note_codelist,
+)
+
 flucats_variables_dehydration_or_shock = loop_over_codes(
     numeric=False,
     question_str="dehydration_or_shock",

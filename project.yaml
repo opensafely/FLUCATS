@@ -29,7 +29,7 @@ actions:
       --output-file=output/input_clinical_concern_dehydration.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=causing_clinical_concern,dehydration_or_shock
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -134,7 +134,7 @@ actions:
       --output-file=output/input_clinical_concern_dehydration.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=causing_clinical_concern,dehydration_or_shock
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -239,7 +239,7 @@ actions:
       --output-file=output/input_clinical_concern_dehydration.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=causing_clinical_concern,dehydration_or_shock
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -347,7 +347,7 @@ actions:
       --output-file=output/input_clinical_concern_dehydration.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=causing_clinical_concern,dehydration_or_shock
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -456,7 +456,7 @@ actions:
       --output-file=output/input_clinical_concern_dehydration.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=causing_clinical_concern,dehydration_or_shock
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -563,7 +563,7 @@ actions:
       --output-file=output/input_clinical_concern_dehydration.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=causing_clinical_concern,dehydration_or_shock
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -671,7 +671,7 @@ actions:
       --output-file=output/input_clinical_concern_dehydration.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=causing_clinical_concern,dehydration_or_shock
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -778,7 +778,7 @@ actions:
       --output-file=output/input_clinical_concern_dehydration.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=causing_clinical_concern,dehydration_or_shock
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:

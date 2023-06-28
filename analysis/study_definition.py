@@ -8,6 +8,7 @@ from variables.flucats_variables import (
     flucats_variables_altered_conscious_level,
     flucats_variables_blood_pressure,
     flucats_variables_causing_clinical_concern,
+    flucats_variables_clinical_concern_note,
     flucats_variables_dehydration_or_shock,
     flucats_variables_dehydration_or_shock_numeric,
     flucats_variables_heart_rate,
