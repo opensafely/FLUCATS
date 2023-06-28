@@ -3,6 +3,7 @@ from cohortextractor import StudyDefinition, patients, params
 from codelists import *
 from variables.demographic_variables import demographic_variables
 from variables.comorbidity_variables import comorbidity_variables
+from variables.hospital_admission_variables import hospital_admissions_variables
 from variables.prescription_variables import prescription_variables
 from variables.flucats_variables import (
     flucats_variables_altered_conscious_level,
@@ -39,19 +40,12 @@ numeric_variables_dict = {
     "oxygen_saturation": flucats_variables_oxygen_saturation_numeric,
 }
 
-
 if include_hospital_admissions:
-    hospital_admissions_variables = {
-        "hospital_admission": patients.with_these_clinical_events(
-            codelist=flucats_hospital_admission_codelist,
-            between=["index_date", "last_day_of_month(index_date)"],
-            returning="binary_flag",
-            include_date_of_match=True,
-            date_format="YYYY-MM-DD",
-            find_last_match_in_period=True,
-            return_expectations={"incidence": 0.5},
-        ),
-        "flucats_template_occurences": patients.with_these_clinical_events(
+    hospital_admissions_variables = hospital_admissions_variables
+
+    # we also want to extract flucats template occurences once per period, so we do this with the hosp vars
+
+    hospital_admissions_variables["flucats_template_occurences"] = patients.with_these_clinical_events(
             codelist=codelist(["13044541000006109"], system="snomed"),
             between=["index_date", "last_day_of_month(index_date)"],
             returning="number_of_matches_in_period",
@@ -59,7 +53,6 @@ if include_hospital_admissions:
                 "int": {"distribution": "normal", "mean": 1, "stddev": 1}
             },
         ),
-    }
 else:
     hospital_admissions_variables = {}
 
@@ -68,6 +61,7 @@ varset_dict = {
     "altered_conscious_level": flucats_variables_altered_conscious_level,
     "blood_pressure": flucats_variables_blood_pressure,
     "causing_clinical_concern": flucats_variables_causing_clinical_concern,
+    "clinical_concern_note": flucats_variables_clinical_concern_note,
     "dehydration_or_shock": flucats_variables_dehydration_or_shock,
     "heart_rate": flucats_variables_heart_rate,
     "respiratory_rate": flucats_variables_respiratory_rate,
