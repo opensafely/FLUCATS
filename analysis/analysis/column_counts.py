@@ -97,7 +97,9 @@ def main():
         columns = [
             col
             for col in combined_df.columns
-            if col.startswith(f"flucats_question_{group}")
+            if (col.startswith(f"flucats_question_{group}") | col.startswith(f"flucats_question_numeric_value_{group}")) & 
+                ~col.endswith("_value") 
+                
         ]
 
         subset = combined_df[columns]
@@ -109,14 +111,18 @@ def main():
             )
             counts_df = pd.concat([counts_df, row])
 
-        # use regex to rename column from e.g. flucats_question_altered_conscious_level_162701007_code to 162701007
+        
+        # use regex to rename column from e.g. flucats_question_altered_conscious_level_162701007 to 162701007 but not flucats_question_numeric_value_altered_conscious_level_162701007_value
 
-        pattern = r"(\d+)_code"
+        pattern = r"(\d+)"
         counts_df["column"] = counts_df["column"].str.extract(pattern)
 
-        # convert to int
-        counts_df["column"] = counts_df["column"].astype(int)
+      
 
+        # convert to int
+        counts_df["column"] = counts_df["column"].astype('int64')
+
+      
         # rename column to code
         counts_df = counts_df.rename(columns={"column": "code"})
 
