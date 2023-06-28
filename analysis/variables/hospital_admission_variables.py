@@ -38,6 +38,6 @@ hospital_admissions_variables = {
             date_format="YYYY-MM-DD",
             find_last_match_in_period=True,
             return_expectations=generate_expectations_codes(flucats_icu_codelist),
-        ),
+        )
         
     }

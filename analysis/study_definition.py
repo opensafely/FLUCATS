@@ -52,9 +52,10 @@ if include_hospital_admissions:
             return_expectations={
                 "int": {"distribution": "normal", "mean": 1, "stddev": 1}
             },
-        ),
+        )
 else:
     hospital_admissions_variables = {}
+
 
 varset_names = params["varset"].split(",")
 varset_dict = {
