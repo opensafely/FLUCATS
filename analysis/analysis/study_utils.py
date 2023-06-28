@@ -17,7 +17,7 @@ def generate_expectations_codes(codelist, incidence=0.5):
 def loop_over_codes(numeric, question_str, code_list):
     def make_variable(code):
         return {
-            f"flucats_question_{question_str}_{code}_code": patients.with_these_clinical_events(
+            f"flucats_question_{question_str}_{code}": patients.with_these_clinical_events(
                 codelist([code], system="snomed"),
                 between=["flucats_template_date", "flucats_template_date + 1 day"],
                 returning="binary_flag",
