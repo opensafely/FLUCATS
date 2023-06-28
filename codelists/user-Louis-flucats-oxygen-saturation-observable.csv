@@ -1,3 +1,9 @@
 code,term
 431314004,Peripheral oxygen saturation
+852651000000100,Maximum peripheral oxygen saturation
+852661000000102,Minimum peripheral oxygen saturation
+866661000000106,Peripheral blood oxygen saturation on room air at rest
+866681000000102,Peripheral blood oxygen saturation on room air on exertion
+866701000000100,Peripheral blood oxygen saturation on supplemental oxygen at rest
+866721000000109,Peripheral blood oxygen saturation on supplemental oxygen on exertion
 927981000000106,Baseline oxygen saturation at periphery
