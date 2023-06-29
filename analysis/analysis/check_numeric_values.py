@@ -68,7 +68,7 @@ def main():
     proportions_numeric = calculate_proportions(
         df, numeric_variables_list, numeric_values_variables_list
     )
-    proportions_numeric.to_csv(output_path)
+    proportions_numeric.T.to_csv(output_path)
 
 
 if __name__ == "__main__":
