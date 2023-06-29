@@ -38,9 +38,10 @@ def read_and_join_files(file_list):
         file_data = pd.read_csv(file).set_index(join_columns)
         if i == 0:
             df = file_data
+            
         else:
-            df = df.join(file_data, on=join_columns, how="outer")
-
+            df = df.join(file_data, how="outer")
+            
     return df.reset_index()
 
 
@@ -52,8 +53,9 @@ def main():
     create_directory_if_not_exists(output_dir)
 
     files = create_files_dictionary(input_dir)
-
+  
     for date, file_list in files.items():
+        
         df = read_and_join_files(file_list)
         df.to_csv(output_dir / f"input_{date}.csv", index=False)
 
