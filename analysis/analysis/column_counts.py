@@ -57,20 +57,20 @@ def group_low_values(df, count_column, code_column, threshold):
 def main():
     combined_df = pd.read_csv("output/joined/full/input_all.csv", dtype=str)
     codelist_paths = {
-        "altered_conscious_level": "codelists/user-Louis-flucats-altered-conscious-level.csv",
-        "blood_pressure": "codelists/user-Louis-flucats-blood-pressure-reading.csv",
-        "causing_clinical_concern": "codelists/user-Louis-flucats-causing-clinical-concern.csv",
-        "clinical_concern_note": "codelists/user-Louis-flucats-clinical-concern-note.csv",
-        "dehydration_or_shock": "codelists/user-Louis-flucats-evidence-of-dehydration-or-shock.csv",
-        "heart_rate": "codelists/user-Louis-flucats-heart-rate.csv",
-        "respiratory_rate": "codelists/user-Louis-flucats-increased-respiratory-rate.csv",
-        "oxygen_saturation": "codelists/user-Louis-flucats-oxygen-saturation.csv",
-        "temperature": "codelists/user-Louis-flucats-temperature.csv",
-        "who_performance_score": "codelists/user-Louis-flucats-who-performance-score.csv",
-        "severe_respiratory_distress": "codelists/user-Louis-flucats-severe-respiratory-distress.csv",
-        "respiratory_exhaustion": "codelists/user-Louis-flucats-respiratory-exhaustion-or-apnoea.csv",
+        "altered_conscious_level": ["codelists/user-Louis-flucats-altered-conscious-level.csv"],
+        "blood_pressure": ["codelists/user-Louis-flucats-blood-pressure-reading.csv"],
+        "causing_clinical_concern": ["codelists/user-Louis-flucats-causing-clinical-concern.csv"],
+        "clinical_concern_note": ["codelists/user-Louis-flucats-clinical-concern-note.csv"],
+        "dehydration_or_shock": ["codelists/user-Louis-flucats-evidence-of-dehydration-or-shock.csv", "codelists/user-Louis-flucats-evidence-of-dehydration-or-shock-observable.csv"],
+        "heart_rate": ["codelists/user-Louis-flucats-heart-rate.csv", "codelists/user-Louis-flucats-heart-rate-observable.csv"],
+        "respiratory_rate": ["codelists/user-Louis-flucats-increased-respiratory-rate.csv", "codelists/user-Louis-flucats-increased-respiratory-rate-observable.csv"],
+        "oxygen_saturation": ["codelists/user-Louis-flucats-oxygen-saturation.csv", "codelists/user-Louis-flucats-oxygen-saturation-observable.csv"],
+        "temperature": ["codelists/user-Louis-flucats-temperature.csv", "codelists/user-Louis-flucats-temperature-observable.csv"],
+        "who_performance_score": ["codelists/user-Louis-flucats-who-performance-score.csv"],
+        "severe_respiratory_distress": ["codelists/user-Louis-flucats-severe-respiratory-distress.csv"],
+        "respiratory_exhaustion": ["codelists/user-Louis-flucats-respiratory-exhaustion-or-apnoea.csv"],
     }
-    codelists = {k: pd.read_csv(v) for k, v in codelist_paths.items()}
+    
 
     groups = [
         "altered_conscious_level",
@@ -132,9 +132,16 @@ def main():
 
         # get code description from codelist
         if not group == "demographic_variables":
-            codelist = codelists[group]
-            counts_df = counts_df.merge(codelist, on="code", how="left")
+            codelists = codelist_paths[group]
+            for codelist_path in codelists:
+                codelist = pd.read_csv(codelist_path)
+                
+                counts_df = counts_df.merge(codelist, on="code", how="left")
 
+            # some codes are present in both codelists
+            if "term_x" in counts_df.columns and "term_y" in counts_df.columns:
+                counts_df["term"] = counts_df["term_x"].fillna(counts_df["term_y"])
+       
             # reorder - group, code, description, count
             counts_df = counts_df[["group", "code", "term", "count"]]
 
