@@ -101,29 +101,31 @@ def main():
                 ~col.endswith("_value") 
                 
         ]
-
+       
         subset = combined_df[columns]
-
+        
+       
         for col in subset.columns:
+            
+            
+            subset[col] = pd.to_numeric(subset[col], errors="coerce")
+        
             row = pd.DataFrame(
-                {"group": group, "column": col, "count": subset[col].count()},
+                {"group": group, "column": col, "count": len(subset.loc[subset[col]>0, col])},
                 index=pd.MultiIndex.from_tuples([(group, col)]),
             )
+         
             counts_df = pd.concat([counts_df, row])
-
-        
-        # use regex to rename column from e.g. flucats_question_altered_conscious_level_162701007 to 162701007 but not flucats_question_numeric_value_altered_conscious_level_162701007_value
+       
+    
 
         pattern = r"(\d+)"
         counts_df["column"] = counts_df["column"].str.extract(pattern)
 
-      
 
-        # convert to int
         counts_df["column"] = counts_df["column"].astype('int64')
 
-      
-        # rename column to code
+
         counts_df = counts_df.rename(columns={"column": "code"})
 
         dfs_raw.append(counts_df.reset_index(drop=True))
