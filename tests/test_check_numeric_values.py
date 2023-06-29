@@ -44,10 +44,9 @@ def numeric_values_variables_list():
 def test_calculate_proportions(input_df, numeric_variables_list, numeric_values_variables_list):
     expected_output = pd.DataFrame(
         {
-            "15527001": [0.75],
-            "787041000000101": [1.0],
-            "422119006": [0.5],
-            "429525003": [0],
+            "15527001": [75.00],
+            "787041000000101": [100.00],
+            "422119006": [50.00],
         },
         index=["proportion"]
     )
