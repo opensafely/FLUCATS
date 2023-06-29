@@ -16,16 +16,14 @@ def calculate_proportions(df, numeric_variables_list, numeric_values_variables_l
     for var in numeric_variables_list:
         code = var.split("_")[-1]
         numeric_value = [x for x in numeric_values_variables_list if code in x][0]
-
+   
         subset_df = df.loc[df[var] == 1]
-
+    
         if len(subset_df) > 0:
             proportions[code] = round(
-                len(subset_df.loc[subset_df[numeric_value] > 0]) / len(subset_df), 2
+                (len(subset_df.loc[subset_df[numeric_value] > 0]) / len(subset_df))*100, 2
             )
-
-        else:
-            proportions[code] = 0
+        
     proportions_numeric = pd.DataFrame(proportions, index=["proportion"])
     return proportions_numeric
 
