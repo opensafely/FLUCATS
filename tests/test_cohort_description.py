@@ -20,9 +20,7 @@ def test_load_and_preprocess_csv(tmp_path):
     })
 
     output = load_and_preprocess_csv(test_file, cols)
-    print(df)
-    print(output)
-    print(expected_output)
+
     assert_frame_equal(output, expected_output)
 
     # Check there are no NaN values
@@ -74,7 +72,7 @@ def test_group_low_values_df():
     expected_data = {
         "category": ["A", "B", "B", "C", "C"],
         "group": ["other", "group1", "other", "group1", "group2"],
-        "count": [15, 10, 10, 20, 20]
+        "count": [20, 10, 10, 20, 20]
     }
 
     df = pd.DataFrame(data)

@@ -20,11 +20,24 @@ def calculate_proportions(df, numeric_variables_list, numeric_values_variables_l
         subset_df = df.loc[df[var] == 1]
     
         if len(subset_df) > 0:
-            proportions[code] = round(
-                (len(subset_df.loc[subset_df[numeric_value] > 0]) / len(subset_df))*100, 2
-            )
+            proportions[code] = {
+                "with_value": len(subset_df.loc[subset_df[numeric_value] > 0]),
+                "without_value": len(subset_df.loc[subset_df[numeric_value] == 0]),
+                "proportion": (len(subset_df.loc[subset_df[numeric_value] > 0]) / len(subset_df))*100
+                
+            }
+            
         
-    proportions_numeric = pd.DataFrame(proportions, index=["proportion"])
+    proportions_numeric = pd.DataFrame(proportions).T
+
+    proportions_numeric.loc[proportions_numeric["without_value"] > 7, "proportion"] = (
+        proportions_numeric["proportion"].round(2)
+    )
+
+    proportions_numeric.loc[(proportions_numeric["without_value"] <= 7) & (proportions_numeric["without_value"] >0), "proportion"] = (
+        "~" + proportions_numeric["proportion"].round(0).astype(int).astype(str)
+    )
+
     return proportions_numeric
 
 
@@ -54,7 +67,7 @@ def main():
     ]
 
     file_path = Path("output/joined/full/input_all.csv")
-    output_path = "output/joined/full/proportions_numeric.csv"
+    
 
     numeric_values_variables_list = numeric_values_variables_list = [
         f"{x}_value" for x in numeric_variables_list
@@ -66,7 +79,13 @@ def main():
     proportions_numeric = calculate_proportions(
         df, numeric_variables_list, numeric_values_variables_list
     )
-    proportions_numeric.T.to_csv(output_path)
+
+    proportions_numeric.to_csv("output/joined/full/proportions_numeric_raw.csv")
+    
+    proportions_numeric.drop(
+        columns=["with_value", "without_value"], inplace=True
+    )
+    proportions_numeric.to_csv("output/joined/full/proportions_numeric.csv")
 
 
 if __name__ == "__main__":
