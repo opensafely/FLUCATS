@@ -30,13 +30,14 @@ def calculate_proportions(df, numeric_variables_list, numeric_values_variables_l
         
     proportions_numeric = pd.DataFrame(proportions).T
 
-    proportions_numeric.loc[(proportions_numeric["without_value"] <= 7) & (proportions_numeric["without_value"] >0), "proportion"] = (
-        proportions_numeric["proportion"].round(0).astype(int).astype(str) + "~"
-    )
     proportions_numeric.loc[proportions_numeric["without_value"] > 7, "proportion"] = (
-        proportions_numeric["proportion"].round(2).astype(str)
+        proportions_numeric["proportion"].round(2)
     )
-    
+
+    proportions_numeric.loc[(proportions_numeric["without_value"] <= 7) & (proportions_numeric["without_value"] >0), "proportion"] = (
+        "~" + proportions_numeric["proportion"].round(0).astype(int).astype(str)
+    )
+
     return proportions_numeric
 
 
@@ -78,6 +79,7 @@ def main():
     proportions_numeric = calculate_proportions(
         df, numeric_variables_list, numeric_values_variables_list
     )
+
     proportions_numeric.to_csv("output/joined/full/proportions_numeric_raw.csv")
     
     proportions_numeric.drop(
