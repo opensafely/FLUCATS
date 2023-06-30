@@ -67,7 +67,7 @@ def group_low_values_df(df):
         suppressed_count = df_subset.loc[df_subset["count"] <= 7, "count"].sum()
 
         if suppressed_count == 0:
-            df_subset["count"] = round_column(df_subset["count"], 5)
+            df_subset["count"] = round_column(df_subset["count"], 10)
             redacted_groups.append(df_subset)
         else:
             df_subset.loc[df_subset["count"] <= 7, "count"] = np.nan
@@ -84,7 +84,7 @@ def group_low_values_df(df):
                     index=[0],
                 )
 
-                other_row["count"] = round_column(other_row["count"], 5)
+                other_row["count"] = round_column(other_row["count"], 10)
                 df_subset = pd.concat([df_subset, other_row])
             df_subset = df_subset[df_subset["count"].notnull()]
             redacted_groups.append(df_subset)
