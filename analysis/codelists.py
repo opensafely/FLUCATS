@@ -96,12 +96,19 @@ chronic_respiratory_disease_codelist = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-resp_cov.csv", system="snomed", column="code"
 )
 
-chronic_kidney_disease_non_stage_codelist = codelist_from_csv(
-    "codelists/primis-covid19-vacc-uptake-ckd_cov.csv", system="snomed", column="code"
+primis_ckd_stage_codelist = codelist_from_csv(
+    "codelists/ukrr-ckd-stages.csv",
+    system="snomed",
+    column="code",
+    category_column="stage",
 )
 
 renal_disease_codelist = codelist_from_csv(
-    "codelists/primis-covid19-vacc-uptake-ckd15.csv", system="snomed", column="code"
+    "codelists/primis-covid19-vacc-uptake-ckd_cov.csv", system="snomed", column="code"
+)
+
+ckd_os_codelist = codelist_from_csv(
+    "codelists/opensafely-chronic-kidney-disease-snomed.csv", system="snomed", column="id"
 )
 
 liver_disease_codelist = codelist_from_csv(
@@ -301,6 +308,12 @@ flucats_temperature_observable_codelist = codelist_from_csv(
 
 flucats_hospital_admission_codelist = codelist_from_csv(
     "codelists/user-Louis-flucats-hospital-admissions.csv",
+    system="snomed",
+    column="code",
+)
+
+flucats_inspired_oxygen_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-inspired-oxygen.csv",
     system="snomed",
     column="code",
 )
