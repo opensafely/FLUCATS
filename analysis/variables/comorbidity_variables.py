@@ -90,8 +90,25 @@ comorbidity_variables = dict(
             "incidence": 0.05,
         },
     ),
-    chronic_kidney_disease=patients.with_these_clinical_events(
-        chronic_kidney_disease_non_stage_codelist,
+    ckd_primis_stage=patients.with_these_clinical_events(
+        codelist=primis_ckd_stage_codelist,
+        on_or_before="index_date",
+        returning="category",
+        return_expectations={
+            "rate": "universal",
+            "category": {
+                "ratios": {
+                    "1": 0.2,
+                    "2": 0.2,
+                    "3": 0.2,
+                    "4": 0.2,
+                    "5": 0.2,
+                }
+            },
+        },
+    ),
+    renal_disease=patients.with_these_clinical_events(
+        renal_disease_codelist,
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",
@@ -99,8 +116,17 @@ comorbidity_variables = dict(
             "incidence": 0.05,
         },
     ),
-    renal_disease=patients.with_these_clinical_events(
-        renal_disease_codelist,
+    ckd35_or_renal_disease = patients.satisfying(
+        """
+        renal_disease
+        OR
+        (ckd_primis_stage = "3" OR
+        ckd_primis_stage = "4" OR
+        ckd_primis_stage = "5")
+        """,
+    ),
+    ckd_os=patients.with_these_clinical_events(
+        ckd_os_codelist,
         on_or_before="index_date",
         find_last_match_in_period=True,
         returning="binary_flag",

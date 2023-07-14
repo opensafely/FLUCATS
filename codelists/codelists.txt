@@ -55,4 +55,6 @@ user/Louis/flucats-temperature-observable/0030af26/
 user/Louis/flucats-heart-rate/1326c0da/
 user/Louis/flucats-heart-rate-observable/67213bf0/
 user/Louis/flucats-hospital-admissions/2fa63e97/
+opensafely/chronic-kidney-disease-snomed/2020-04-14/
+ukrr/ckd-stages/77b93e93/
 user/Louis/flucats-inspired-oxygen/199ec7a4/
