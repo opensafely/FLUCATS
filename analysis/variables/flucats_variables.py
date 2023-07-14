@@ -83,3 +83,15 @@ flucats_variables_respiratory_exhaustion = loop_over_codes(
     question_str="respiratory_exhaustion",
     code_list=flucats_respiratory_exhaustion_or_apnoea_codelist,
 )
+
+flucats_variables_inspired_oxygen_numeric = loop_over_codes(
+    numeric=True,
+    question_str="inspired_oxygen",
+    code_list=flucats_inspired_oxygen_codelist,
+)
+
+flucats_variables_inspired_oxygen = loop_over_codes(
+    numeric=False,
+    question_str="inspired_oxygen",
+    code_list=flucats_inspired_oxygen_codelist,
+)

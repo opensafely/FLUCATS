@@ -341,6 +341,11 @@
       "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-hospital-admissions/2fa63e97/",
       "downloaded_at": "2023-03-06 17:17:04.579271Z",
       "sha": "13db3eb5e5dcdfb2b27337a382b53674f8e4dab4"
+    "user-Louis-flucats-inspired-oxygen.csv": {
+      "id": "user/Louis/flucats-inspired-oxygen/199ec7a4",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-inspired-oxygen/199ec7a4/",
+      "downloaded_at": "2023-07-14 10:36:15.510704Z",
+      "sha": "8f8b2a66fdbdad5888732ff4c6db96c82d8f1bef"
     }
   }
 }

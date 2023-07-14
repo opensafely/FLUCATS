@@ -64,6 +64,8 @@ def main():
         "flucats_question_numeric_value_oxygen_saturation_866701000000100",
         "flucats_question_numeric_value_oxygen_saturation_866721000000109",
         "flucats_question_numeric_value_temperature_703421000",
+        "flucats_question_numeric_value_inspired_oxygen_427081008",
+        "flucats_question_numeric_value_inspired_oxygen_698833004",
     ]
 
     file_path = Path("output/joined/full/input_all.csv")

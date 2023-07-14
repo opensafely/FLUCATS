@@ -304,3 +304,9 @@ flucats_hospital_admission_codelist = codelist_from_csv(
     system="snomed",
     column="code",
 )
+
+flucats_inspired_oxygen_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-inspired-oxygen.csv",
+    system="snomed",
+    column="code",
+)

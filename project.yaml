@@ -44,7 +44,7 @@ actions:
       --output-file=output/input_heart_rate_resp_rate.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=heart_rate,respiratory_rate
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -149,7 +149,7 @@ actions:
       --output-file=output/input_heart_rate_resp_rate.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=heart_rate,respiratory_rate
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -254,7 +254,7 @@ actions:
       --output-file=output/input_heart_rate_resp_rate.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=heart_rate,respiratory_rate
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -362,7 +362,7 @@ actions:
       --output-file=output/input_heart_rate_resp_rate.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=heart_rate,respiratory_rate
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -471,7 +471,7 @@ actions:
       --output-file=output/input_heart_rate_resp_rate.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=heart_rate,respiratory_rate
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -578,7 +578,7 @@ actions:
       --output-file=output/input_heart_rate_resp_rate.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=heart_rate,respiratory_rate
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -686,7 +686,7 @@ actions:
       --output-file=output/input_heart_rate_resp_rate.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=heart_rate,respiratory_rate
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:
@@ -793,7 +793,7 @@ actions:
       --output-file=output/input_heart_rate_resp_rate.csv
       --output-format=csv
       --with-end-date-fix
-      --param varset=heart_rate,respiratory_rate
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
       --param include_hospital_admissions=False
       --param include_numeric_variables=True
     outputs:

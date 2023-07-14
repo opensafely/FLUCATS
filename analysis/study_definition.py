@@ -23,6 +23,8 @@ from variables.flucats_variables import (
     flucats_variables_who_performance_score,
     flucats_variables_severe_respiratory_distress,
     flucats_variables_respiratory_exhaustion,
+    flucats_variables_inspired_oxygen,
+    flucats_variables_inspired_oxygen_numeric,
 )
 
 include_hospital_admissions = params["include_hospital_admissions"]
@@ -38,6 +40,7 @@ numeric_variables_dict = {
     "respiratory_rate": flucats_variables_respiratory_rate_numeric,
     "temperature": flucats_variables_temperature_numeric,
     "oxygen_saturation": flucats_variables_oxygen_saturation_numeric,
+    "inspired_oxygen": flucats_variables_inspired_oxygen_numeric,
 }
 
 if include_hospital_admissions:
@@ -74,6 +77,7 @@ varset_dict = {
     "demographic_variables": demographic_variables,
     "comorbidity_variables": comorbidity_variables,
     "prescription_variables": prescription_variables,
+    "inspired_oxygen": flucats_variables_inspired_oxygen,
 }
 
 varsets = [varset_dict[varset_name] for varset_name in varset_names]
