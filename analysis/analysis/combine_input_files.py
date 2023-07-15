@@ -3,7 +3,7 @@ import pandas as pd
 from pathlib import Path
 from study_utils import match_input_files, get_date_input_file
 
-INPUT_DIRECTORY = "output/joined/full"
+INPUT_DIRECTORY = "output/joined/full/eth"
 OUTPUT_FILE = "output/joined/full/input_all.csv"
 
 
