@@ -5,7 +5,6 @@ expectations:
 
 actions:
 
-  
   generate_study_population_conscious_level_blood_pressure:
     run: >
       cohortextractor:latest generate_cohort
@@ -111,6 +110,8 @@ actions:
       highly_sensitive:
         cohort: output/input_severe_respiratory_distress_respiratory_exhaustion*.csv
 
+  ############
+
   generate_study_population_conscious_level_blood_pressure_2:
     run: >
       cohortextractor:latest generate_cohort
@@ -215,6 +216,8 @@ actions:
     outputs:
       highly_sensitive:
         cohort: output/input_severe_respiratory_distress_respiratory_exhaustio*.csv
+
+  ##############
 
   generate_study_population_conscious_level_blood_pressure_3:
     run: >
@@ -862,16 +865,485 @@ actions:
 
 
   ###################
+
+  generate_study_population_conscious_level_blood_pressure_9:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-07-01 to 2021-08-01 by month"
+      --output-file=output/input_conscious_level_blood_pressure.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=altered_conscious_level,blood_pressure
+      --param include_hospital_admissions=True
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_conscious_level_blood_*.csv
+
+  generate_study_population_clinical_concern_dehydration_9:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-07-01 to 2021-08-01 by month"
+      --output-file=output/input_clinical_concern_dehydration.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_clinical_concern_deh*.csv
+
+  generate_study_population_heart_rate_resp_rate_9:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-07-01 to 2021-08-01 by month"
+      --output-file=output/input_heart_rate_resp_rate.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_heart_rate_r*.csv
+
+  generate_study_population_ox_temp_9:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-07-01 to 2021-08-01 by month"
+      --output-file=output/input_oxygen_saturation_temperature.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=oxygen_saturation,temperature
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_oxygen_saturation_tem*.csv
+
+  generate_study_population_who_dem_9:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-07-01 to 2021-08-01 by month"
+      --output-file=output/input_who_performance_score_demographic_variables.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=who_performance_score,demographic_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_who_performance_score_demographic_v*.csv
+
+  generate_study_population_com_presc_9:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-07-01 to 2021-08-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_pre*.csv
+
+  generate_study_population_resp_9:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-07-01 to 2021-08-01 by month"
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=severe_respiratory_distress,respiratory_exhaustion
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_severe_respiratory_distress_respiratory_ex*.csv
+
+  ##############
+
+  generate_study_population_conscious_level_blood_pressure_10:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-09-01 to 2021-11-01 by month"
+      --output-file=output/input_conscious_level_blood_pressure.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=altered_conscious_level,blood_pressure
+      --param include_hospital_admissions=True
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_conscious_level_blood*.csv
+
+  generate_study_population_clinical_concern_dehydration_10:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-09-01 to 2021-11-01 by month"
+      --output-file=output/input_clinical_concern_dehydration.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_clinical_concern_de*.csv
+
+  generate_study_population_heart_rate_resp_rate_10:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-09-01 to 2021-11-01 by month"
+      --output-file=output/input_heart_rate_resp_rate.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_heart_rate_*.csv
+
+  generate_study_population_ox_temp_10:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-09-01 to 2021-11-01 by month"
+      --output-file=output/input_oxygen_saturation_temperature.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=oxygen_saturation,temperature
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_oxygen_saturation_te*.csv
+
+  generate_study_population_who_dem_10:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-09-01 to 2021-11-01 by month"
+      --output-file=output/input_who_performance_score_demographic_variables.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=who_performance_score,demographic_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_who_performance_score_demographic_*.csv
+
+  generate_study_population_com_presc_10:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-09-01 to 2021-11-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_pr*.csv
+
+  generate_study_population_resp_10:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-09-01 to 2021-11-01 by month"
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=severe_respiratory_distress,respiratory_exhaustion
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_severe_respiratory_distress_respiratory_e*.csv
+
+  ##############
+
+  generate_study_population_conscious_level_blood_pressure_11:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-12-01 to 2022-02-01 by month"
+      --output-file=output/input_conscious_level_blood_pressure.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=altered_conscious_level,blood_pressure
+      --param include_hospital_admissions=True
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_conscious_level_bloo*.csv
+
+  generate_study_population_clinical_concern_dehydration_11:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-12-01 to 2022-02-01 by month"
+      --output-file=output/input_clinical_concern_dehydration.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_clinical_concern_d*.csv
+
+  generate_study_population_heart_rate_resp_rate_11:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-12-01 to 2022-02-01 by month"
+      --output-file=output/input_heart_rate_resp_rate.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_heart_rate*.csv
+
+  generate_study_population_ox_temp_11:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-12-01 to 2022-02-01 by month"
+      --output-file=output/input_oxygen_saturation_temperature.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=oxygen_saturation,temperature
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_oxygen_saturation_t*.csv
+
+  generate_study_population_who_dem_11:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-12-01 to 2022-02-01 by month"
+      --output-file=output/input_who_performance_score_demographic_variables.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=who_performance_score,demographic_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_who_performance_score_demographic*.csv
+
+  generate_study_population_com_presc_11:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-12-01 to 2022-02-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_p*.csv
+
+  generate_study_population_resp_11:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2021-12-01 to 2022-02-01 by month"
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=severe_respiratory_distress,respiratory_exhaustion
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_severe_respiratory_distress_respiratory_*.csv
+
+  ##############
+
+  generate_study_population_conscious_level_blood_pressure_12:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2022-03-01 to 2022-06-01 by month"
+      --output-file=output/input_conscious_level_blood_pressure.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=altered_conscious_level,blood_pressure
+      --param include_hospital_admissions=True
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_conscious_level_blo*.csv
+
+  generate_study_population_clinical_concern_dehydration_12:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2022-03-01 to 2022-06-01 by month"
+      --output-file=output/input_clinical_concern_dehydration.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=causing_clinical_concern,clinical_concern_note,dehydration_or_shock
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_clinical_concern_*.csv
+
+  generate_study_population_heart_rate_resp_rate_12:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2022-03-01 to 2022-06-01 by month"
+      --output-file=output/input_heart_rate_resp_rate.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=heart_rate,respiratory_rate,inspired_oxygen
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_heart_rat*.csv
+
+  generate_study_population_ox_temp_12:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2022-03-01 to 2022-06-01 by month"
+      --output-file=output/input_oxygen_saturation_temperature.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=oxygen_saturation,temperature
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=True
+    outputs:
+      highly_sensitive:
+        cohort: output/input_oxygen_saturation_*.csv
+
+  generate_study_population_who_dem_12:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2022-03-01 to 2022-06-01 by month"
+      --output-file=output/input_who_performance_score_demographic_variables.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=who_performance_score,demographic_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_who_performance_score_demographi*.csv
+
+  generate_study_population_com_presc_12:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2022-03-01 to 2022-06-01 by month"
+      --output-file=output/input_comorbidity_prescription.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=comorbidity_variables,prescription_variables
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_comorbidity_*.csv
+
+  generate_study_population_resp_12:
+    run: >
+      cohortextractor:latest generate_cohort
+      --study-definition study_definition
+      --index-date-range "2022-03-01 to 2022-06-01 by month"
+      --output-file=output/input_severe_respiratory_distress_respiratory_exhaustion.csv
+      --output-format=csv
+      --with-end-date-fix
+      --param varset=severe_respiratory_distress,respiratory_exhaustion
+      --param include_hospital_admissions=False
+      --param include_numeric_variables=False
+    outputs:
+      highly_sensitive:
+        cohort: output/input_severe_respiratory_distress_respiratory*.csv
+
+  ##############
+
   generate_study_population_end:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_end --output-format=csv --with-end-date-fix
     outputs:
       highly_sensitive:
         cohort: output/input_end.csv
 
+  generate_study_population_eth:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_ethnicity --output-format=csv --with-end-date-fix
+    outputs:
+      highly_sensitive:
+        cohort: output/input_ethnicity.csv
+
   join_cohorts:
     run: python:latest python analysis/analysis/join_cohorts.py --input-dir=output --output-dir=output/joined
     needs: [
-    
+      generate_study_population_conscious_level_blood_pressure,
+      generate_study_population_clinical_concern_dehydration,
+      generate_study_population_heart_rate_resp_rate,
+      generate_study_population_ox_temp,
+      generate_study_population_who_dem,
+      generate_study_population_com_presc,
+      generate_study_population_resp,
+      generate_study_population_conscious_level_blood_pressure_2,
+      generate_study_population_clinical_concern_dehydration_2,
+      generate_study_population_heart_rate_resp_rate_2,
+      generate_study_population_ox_temp_2,
+      generate_study_population_who_dem_2,
+      generate_study_population_com_presc_2,
+      generate_study_population_resp_2,
+      generate_study_population_conscious_level_blood_pressure_3,
+      generate_study_population_clinical_concern_dehydration_3,
+      generate_study_population_heart_rate_resp_rate_3,
+      generate_study_population_ox_temp_3,
+      generate_study_population_who_dem_3,
+      generate_study_population_com_presc_3,
+      generate_study_population_resp_3,
+      generate_study_population_conscious_level_blood_pressure_4,
+      generate_study_population_clinical_concern_dehydration_4,
+      generate_study_population_heart_rate_resp_rate_4,
+      generate_study_population_ox_temp_4,
+      generate_study_population_who_dem_4,
+      generate_study_population_com_presc_4,
+      generate_study_population_resp_4,
+      generate_study_population_conscious_level_blood_pressure_5,
+      generate_study_population_clinical_concern_dehydration_5,
+      generate_study_population_heart_rate_resp_rate_5,
+      generate_study_population_ox_temp_5,
+      generate_study_population_who_dem_5,
+      generate_study_population_com_presc_5,
+      generate_study_population_resp_5,
       generate_study_population_conscious_level_blood_pressure_6,
       generate_study_population_clinical_concern_dehydration_6,
       generate_study_population_heart_rate_resp_rate_6,
@@ -879,7 +1351,48 @@ actions:
       generate_study_population_who_dem_6,
       generate_study_population_com_presc_6,
       generate_study_population_resp_6,
-     
+      generate_study_population_conscious_level_blood_pressure_7,
+      generate_study_population_clinical_concern_dehydration_7,
+      generate_study_population_heart_rate_resp_rate_7,
+      generate_study_population_ox_temp_7,
+      generate_study_population_who_dem_7,
+      generate_study_population_com_presc_7,
+      generate_study_population_resp_7,
+      generate_study_population_conscious_level_blood_pressure_8,
+      generate_study_population_clinical_concern_dehydration_8,
+      generate_study_population_heart_rate_resp_rate_8,
+      generate_study_population_ox_temp_8,
+      generate_study_population_who_dem_8,
+      generate_study_population_com_presc_8,
+      generate_study_population_resp_8,
+      generate_study_population_conscious_level_blood_pressure_9,
+      generate_study_population_clinical_concern_dehydration_9,
+      generate_study_population_heart_rate_resp_rate_9,
+      generate_study_population_ox_temp_9,
+      generate_study_population_who_dem_9,
+      generate_study_population_com_presc_9,
+      generate_study_population_resp_9,
+      generate_study_population_conscious_level_blood_pressure_10,
+      generate_study_population_clinical_concern_dehydration_10,
+      generate_study_population_heart_rate_resp_rate_10,
+      generate_study_population_ox_temp_10,
+      generate_study_population_who_dem_10,
+      generate_study_population_com_presc_10,
+      generate_study_population_resp_10,
+      generate_study_population_conscious_level_blood_pressure_11,
+      generate_study_population_clinical_concern_dehydration_11,
+      generate_study_population_heart_rate_resp_rate_11,
+      generate_study_population_ox_temp_11,
+      generate_study_population_who_dem_11,
+      generate_study_population_com_presc_11,
+      generate_study_population_resp_11,
+      generate_study_population_conscious_level_blood_pressure_12,
+      generate_study_population_clinical_concern_dehydration_12,
+      generate_study_population_heart_rate_resp_rate_12,
+      generate_study_population_ox_temp_12,
+      generate_study_population_who_dem_12,
+      generate_study_population_com_presc_12,
+      generate_study_population_resp_12,
       ]
     outputs:
       highly_sensitive:
@@ -899,12 +1412,26 @@ actions:
       highly_sensitive:
         cohort: output/joined/full/input*.csv
 
+  join_cohorts_eth:
+    run: >
+      cohort-joiner:v0.0.44
+        --lhs output/joined/full/input_*.csv
+        --rhs output/input_ethnicity.csv
+        --output-dir output/joined/full/eth
+    needs: [
+      join_cohorts_end,
+      generate_study_population_eth
+      ]
+    outputs:
+      highly_sensitive:
+        cohort: output/joined/full/eth/inpu*.csv
+
   cohort_description:
     run: >
       python:latest python analysis/analysis/cohort_description.py
-        --study_def_paths "output/joined/full/input_*.csv"
+        --study_def_paths "output/joined/full/eth/input_*.csv"
         --demographics "sex" "imdQ5" "ethnicity" "age_band" "homeless" "residential_care" "region" "asthma" "addisons_hypoadrenalism" "chronic_heart_disease" "chronic_respiratory_disease" "ckd_primis_stage" "renal_disease" "ckd35_or_renal_disease" "ckd_os" "liver_disease" "pregnant" "diabetes" "gestational_diabetes" "obesity" "mental_illness" "neurological_disorder" "hypertension" "pneumonia" "immunosuppression_disorder" "immunosuppression_chemo" "immunosuppression_medication" "splenic_disease" "statins" "hospital_admission" "icu_admission"
-    needs: [join_cohorts_end]
+    needs: [join_cohorts_eth]
     outputs:
       moderately_sensitive:
         counts: output/cohort_description.csv
@@ -912,7 +1439,7 @@ actions:
 
   combined_input_files:
     run: python:latest python analysis/analysis/combine_input_files.py
-    needs: [join_cohorts_end]
+    needs: [join_cohorts_eth]
     outputs:
       highly_sensitive:
         attrition: output/joined/full/input_all.csv
