@@ -48,7 +48,7 @@ def update_df(original_df, new_df, columns=[], on="patient_id"):
 
 
 def round_column(column, base):
-    return column.apply(lambda x: base * round(x / base))
+    return (column / base).round() * base
 
 
 def group_low_values_df(df):
@@ -67,6 +67,7 @@ def group_low_values_df(df):
         suppressed_count = df_subset.loc[df_subset["count"] <= 7, "count"].sum()
 
         if suppressed_count == 0:
+            df_subset = df_subset.copy()
             df_subset["count"] = round_column(df_subset["count"], 10)
             redacted_groups.append(df_subset)
         else:
@@ -151,7 +152,7 @@ def main():
     args = parse_args()
     paths = args.study_def_paths
     demographics = args.demographics
-
+    print(paths)
     cohort_description, cohort_description_redacted = create_cohort_description(
         paths, demographics
     )
