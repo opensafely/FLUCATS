@@ -111,9 +111,10 @@ def create_cohort_description(paths, demographics):
     for i, path in enumerate(paths):
         if i == 0:
             df = load_and_preprocess_csv(path, demographics + ["patient_id"])
+            print(df.shape)
         else:
             updated_df = load_and_preprocess_csv(path, demographics + ["patient_id"])
-
+            print(updated_df.shape)
             df = update_df(df, updated_df, columns=demographics)
 
     df = df.drop("patient_id", axis=1)
