@@ -38,13 +38,13 @@ def update_df(original_df, new_df, columns=[], on="patient_id"):
         pd.DataFrame: Updated DataFrame
     """
 
-    updated = original_df.copy()
-    new_df.set_index(on, inplace=True)
-    updated.set_index(on, inplace=True)
+    merged_df = pd.merge(original_df, new_df, on=on, how='outer', suffixes=('', '_new'))
+    for column in columns:
+        merged_df[column].update(merged_df[column+"_new"])
+        merged_df = merged_df.drop(columns=[column+"_new"])
 
-    updated.update(new_df[columns])
+    return merged_df
 
-    return updated.reset_index()
 
 
 def round_column(column, base):
@@ -111,10 +111,10 @@ def create_cohort_description(paths, demographics):
     for i, path in enumerate(paths):
         if i == 0:
             df = load_and_preprocess_csv(path, demographics + ["patient_id"])
-            print(df.shape)
+         
         else:
             updated_df = load_and_preprocess_csv(path, demographics + ["patient_id"])
-            print(updated_df.shape)
+            
             df = update_df(df, updated_df, columns=demographics)
 
     df = df.drop("patient_id", axis=1)
@@ -153,7 +153,6 @@ def main():
     args = parse_args()
     paths = args.study_def_paths
     demographics = args.demographics
-    print(paths)
     cohort_description, cohort_description_redacted = create_cohort_description(
         paths, demographics
     )
