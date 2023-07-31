@@ -41,13 +41,13 @@ def test_update_df():
     }
 
     new_data = {
-        "patient_id": [2, 3],
-        "age": [26, 36]
+        "patient_id": [2, 3, 4],
+        "age": [26, 36, 40]
     }
 
     expected_data = {
-        "patient_id": [1, 2, 3],
-        "age": [30, 26, 36]
+        "patient_id": [1, 2, 3, 4],
+        "age": [30, 26, 36, 40]
     }
 
     original_df = pd.DataFrame(original_data)
