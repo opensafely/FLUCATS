@@ -171,6 +171,9 @@ def main():
     # remove rows where count is 0
     combined_df = combined_df.loc[combined_df["count"] > 0, :]
 
+    # drop repeated codes
+    combined_df = combined_df.drop_duplicates(subset=["group", "code"])
+
     combined_df.to_csv("output/column_counts.csv", index=False)
 
     combined_df_raw = pd.concat(dfs_raw)
