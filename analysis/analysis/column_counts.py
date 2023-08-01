@@ -69,6 +69,7 @@ def main():
         "who_performance_score": ["codelists/user-Louis-flucats-who-performance-score.csv"],
         "severe_respiratory_distress": ["codelists/user-Louis-flucats-severe-respiratory-distress.csv"],
         "respiratory_exhaustion": ["codelists/user-Louis-flucats-respiratory-exhaustion-or-apnoea.csv"],
+        "inspired_oxygen": ["codelists/user-Louis-flucats-inspired-oxygen.csv"],
     }
     
 
@@ -86,6 +87,7 @@ def main():
         "severe_respiratory_distress",
         "respiratory_exhaustion",
         "demographic_variables",
+        "inspired_oxygen"
     ]
 
     dfs = []
