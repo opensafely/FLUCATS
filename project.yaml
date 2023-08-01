@@ -1464,6 +1464,7 @@ actions:
     outputs:
       moderately_sensitive:
         table: output/joined/full/proportions_numeric.csv
+        raw: output/joined/full/proportions_numeric_raw.csv
 
   template_frequency:
     run: python:latest python analysis/analysis/template_frequency.py
