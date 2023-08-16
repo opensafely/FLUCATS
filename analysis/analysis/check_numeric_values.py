@@ -40,6 +40,21 @@ def calculate_proportions(df, numeric_variables_list, numeric_values_variables_l
 
     return proportions_numeric
 
+def get_distribution_numeric(df, numeric_values_variables_list):
+    df = df[numeric_values_variables_list]
+    for col in df.columns:
+ 
+        distribution = df[col].value_counts(bins=10, sort=False)
+
+        # round the bin widths to nearest 10
+        distribution.index = distribution.index.map(
+            lambda x: pd.Interval(
+                round(x.left, -1), round(x.right, -1), closed=x.closed
+            )
+        )
+        distribution = round(distribution, -1)
+        distribution.to_csv(f"output/joined/full/distribution_{col}.csv")
+
 
 def main():
     numeric_variables_list = [
@@ -78,6 +93,7 @@ def main():
     df = pd.read_csv(
         file_path, usecols=numeric_variables_list + numeric_values_variables_list
     )
+    get_distribution_numeric(df, numeric_values_variables_list)
     proportions_numeric = calculate_proportions(
         df, numeric_variables_list, numeric_values_variables_list
     )
