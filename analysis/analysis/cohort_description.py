@@ -38,13 +38,12 @@ def update_df(original_df, new_df, columns=[], on="patient_id"):
         pd.DataFrame: Updated DataFrame
     """
 
-    merged_df = pd.merge(original_df, new_df, on=on, how='outer', suffixes=('', '_new'))
+    merged_df = pd.merge(original_df, new_df, on=on, how="outer", suffixes=("", "_new"))
     for column in columns:
-        merged_df[column].update(merged_df[column+"_new"])
-        merged_df = merged_df.drop(columns=[column+"_new"])
+        merged_df[column].update(merged_df[column + "_new"])
+        merged_df = merged_df.drop(columns=[column + "_new"])
 
     return merged_df
-
 
 
 def round_column(column, base):
@@ -74,7 +73,6 @@ def group_low_values_df(df):
             df_subset.loc[df_subset["count"] <= 7, "count"] = np.nan
 
             while (suppressed_count <= 7) & (df_subset["count"].notnull().any()):
-
                 suppressed_count += df_subset.loc[:, "count"].min()
 
                 df_subset.loc[df_subset["count"].idxmin(), "count"] = np.nan
@@ -111,18 +109,39 @@ def create_cohort_description(paths, demographics):
     for i, path in enumerate(paths):
         if i == 0:
             df = load_and_preprocess_csv(path, demographics + ["patient_id"])
-         
+
         else:
             updated_df = load_and_preprocess_csv(path, demographics + ["patient_id"])
-            
+
             df = update_df(df, updated_df, columns=demographics)
 
     df = df.drop("patient_id", axis=1)
 
-    
+    ethnicity_mapping = {
+        1: "White - British",
+        2: "White - Irish",
+        3: "White - Any other White background",
+        4: "Mixed - White and Black Caribbean",
+        5: "Mixed - White and Black African",
+        6: "Mixed - White and Asian",
+        7: "Mixed - Any other mixed background",
+        8: "Asian or Asian British - Indian",
+        9: "Asian or Asian British - Pakistani",
+        10: "Asian or Asian British - Bangladeshi",
+        11: "Asian or Asian British - Any other Asian background",
+        12: "Black or Black British - Caribbean",
+        13: "Black or Black British - African",
+        14: "Black or Black British - Any other Black background",
+        15: " Other Ethnic Groups - Chinese",
+        16: "Other Ethnic Groups - Any other ethnic group",
+    }
+
     for col in df.columns:
         if "date" in col:
             df[col] = df[col].apply(lambda x: 0 if x == "missing" else 1)
+
+        elif "ethnicity" in col:
+            df[col] = df[col].map(ethnicity_mapping)
 
     df_counts = df.apply(lambda x: x.value_counts()).T.stack().reset_index()
 
