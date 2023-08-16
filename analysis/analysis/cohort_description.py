@@ -174,8 +174,7 @@ def create_cohort_description(paths, demographics):
 
     for col in df.columns:
         if "date" in col:
-            df[col] = df[col].notnull().astype(int)
-
+            df[col] = df[col].str.contains(r"^\d{4}-\d{2}-\d{2}$").astype(int)
         elif "ethnicity" in col:
             df[col] = df[col].map(ethnicity_mapping)
         
