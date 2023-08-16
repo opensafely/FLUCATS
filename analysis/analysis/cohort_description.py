@@ -119,6 +119,11 @@ def create_cohort_description(paths, demographics):
 
     df = df.drop("patient_id", axis=1)
 
+    
+    for col in df.columns:
+        if "date" in col:
+            df[col] = df[col].apply(lambda x: 0 if x == "missing" else 1)
+
     df_counts = df.apply(lambda x: x.value_counts()).T.stack().reset_index()
 
     df_counts.columns = ["category", "group", "count"]
