@@ -174,7 +174,7 @@ def create_cohort_description(paths, demographics):
 
     for col in df.columns:
         if "date" in col:
-            df[col] = df[col].apply(lambda x: 0 if x == "missing" else 1)
+            df[col] = df[col].notnull().astype(int)
 
         elif "ethnicity" in col:
             df[col] = df[col].map(ethnicity_mapping)
