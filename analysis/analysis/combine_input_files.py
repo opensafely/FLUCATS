@@ -1,7 +1,8 @@
-import os
 import pandas as pd
 from pathlib import Path
 from study_utils import match_input_files, get_date_input_file
+from cohort_description import fix_residential_vars
+
 
 INPUT_DIRECTORY = "output/joined/full/eth"
 OUTPUT_FILE = "output/joined/full/input_all.csv"
@@ -30,12 +31,15 @@ def get_file_paths(directory):
     )
 
 
+
+
 def main():
     file_paths = get_file_paths(INPUT_DIRECTORY)
     combined_df = pd.concat(
         [chunk_and_filter(file_path, date) for file_path, date in file_paths],
         ignore_index=True,
     )
+    combined_df = fix_residential_vars(combined_df)
     combined_df.to_csv(OUTPUT_FILE, index=False)
 
 
