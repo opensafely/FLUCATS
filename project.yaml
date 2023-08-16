@@ -1430,7 +1430,7 @@ actions:
     run: >
       python:latest python analysis/analysis/cohort_description.py
         --study_def_paths "output/joined/full/eth/input_*.csv"
-        --demographics "sex" "imdQ5" "ethnicity" "age_band" "homeless" "residential_care" "region" "asthma" "addisons_hypoadrenalism" "chronic_heart_disease" "chronic_respiratory_disease" "ckd_primis_stage" "renal_disease" "ckd35_or_renal_disease" "ckd_os" "liver_disease" "pregnant" "diabetes" "gestational_diabetes" "obesity" "mental_illness" "neurological_disorder" "hypertension" "pneumonia" "immunosuppression_disorder" "immunosuppression_chemo" "immunosuppression_medication" "splenic_disease" "statins" "hospital_admission" "icu_admission" "died_any_date" "died_covid_any_date"
+        --demographics "sex" "imdQ5" "ethnicity" "age_band" "homeless" "residential_care" "region" "asthma" "addisons_hypoadrenalism" "chronic_heart_disease" "chronic_respiratory_disease" "ckd_primis_stage" "renal_disease" "ckd35_or_renal_disease" "ckd_os" "liver_disease" "pregnant" "diabetes" "gestational_diabetes" "obesity" "mental_illness" "neurological_disorder" "hypertension" "pneumonia" "immunosuppression_disorder" "immunosuppression_chemo" "immunosuppression_medication" "splenic_disease" "statins" "hospital_admission" "icu_admission" "died_any_date" "died_covid_any_date" "type_of_residence"
     needs: [join_cohorts_eth]
     outputs:
       moderately_sensitive:

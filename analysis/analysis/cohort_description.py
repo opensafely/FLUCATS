@@ -92,6 +92,42 @@ def group_low_values_df(df):
 
     return redacted_df
 
+def fix_residential_vars(df):
+    """Applies correct logic for homeless and residential_care variables.
+    Previously, when a patient was missing a type_of_residence code, they were
+    incorrectly assigned to the homeless adn residential_care variables.
+    """
+    homeless_codes = [
+        160700001,
+        224226001,
+        224228000,
+        224229008,
+        224231004,
+        224232006,
+        224233001,
+        266935003,
+        266940006,
+        32911000,
+        365510008,
+        381751000000106,
+        65421000,
+    ]
+    residential_care_codes = [
+        1024771000000108,
+        105530003,
+        160734000,
+        160737007,
+        224224003,
+        248171000000108,
+        394923006,
+    ]
+    type_of_residence = df["type_of_residence"]
+
+    df["homeless"] = type_of_residence.isin(homeless_codes)
+    df["residential_care"] = type_of_residence.isin(residential_care_codes)
+    df = df.drop("type_of_residence", axis=1)
+    return df
+
 
 def create_cohort_description(paths, demographics):
     """
@@ -142,6 +178,8 @@ def create_cohort_description(paths, demographics):
 
         elif "ethnicity" in col:
             df[col] = df[col].map(ethnicity_mapping)
+        
+    df = fix_residential_vars(df)
 
     df_counts = df.apply(lambda x: x.value_counts()).T.stack().reset_index()
 
