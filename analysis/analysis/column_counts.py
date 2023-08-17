@@ -70,6 +70,8 @@ def main():
         "severe_respiratory_distress": ["codelists/user-Louis-flucats-severe-respiratory-distress.csv"],
         "respiratory_exhaustion": ["codelists/user-Louis-flucats-respiratory-exhaustion-or-apnoea.csv"],
         "inspired_oxygen": ["codelists/user-Louis-flucats-inspired-oxygen.csv"],
+        "suspected_covid": ["codelists/user-Louis-flucats-covid-19-suspected-positive-test.csv"],
+        "probable_covid": ["codelists/user-Louis-flucats-covid-19-probable-positive-test.csv"],
     }
     
 
@@ -87,7 +89,9 @@ def main():
         "severe_respiratory_distress",
         "respiratory_exhaustion",
         "demographic_variables",
-        "inspired_oxygen"
+        "inspired_oxygen",
+        "suspected_covid",
+        "probable_covid",
     ]
 
     dfs = []
