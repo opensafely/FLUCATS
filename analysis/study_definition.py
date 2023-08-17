@@ -5,6 +5,10 @@ from variables.demographic_variables import demographic_variables
 from variables.comorbidity_variables import comorbidity_variables
 from variables.hospital_admission_variables import hospital_admissions_variables
 from variables.prescription_variables import prescription_variables
+from variables.covid_testing_variables import (
+    suspected_covid_variables,
+    probable_covid_variables,
+)
 from variables.flucats_variables import (
     flucats_variables_altered_conscious_level,
     flucats_variables_blood_pressure,
@@ -78,6 +82,8 @@ varset_dict = {
     "comorbidity_variables": comorbidity_variables,
     "prescription_variables": prescription_variables,
     "inspired_oxygen": flucats_variables_inspired_oxygen,
+    "suspected_covid": suspected_covid_variables,
+    "probable_covid": probable_covid_variables,
 }
 
 varsets = [varset_dict[varset_name] for varset_name in varset_names]
