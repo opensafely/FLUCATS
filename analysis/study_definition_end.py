@@ -16,6 +16,11 @@ study = StudyDefinition(
     },
     index_date=end_date,
     population=patients.all(),
+    died_any=patients.died_from_any_cause(
+        on_or_before="index_date",
+        returning="binary_flag",
+        return_expectations={"incidence": 0.05},
+    ),
     died_any_date=patients.died_from_any_cause(
         on_or_before="index_date",
         returning="date_of_death",
@@ -25,19 +30,16 @@ study = StudyDefinition(
             "rate": "exponential_increase",
         },
     ),
-    died_covid_any_date=patients.with_these_codes_on_death_certificate(
+    covid_related_death=patients.with_these_codes_on_death_certificate(
         covid_death_codelist,  # imported from codelists.py
-        returning="date_of_death",
+        returning="binary_flag",
         on_or_before="index_date",
-        match_only_underlying_cause=False,  # boolean for indicating if filters
-        # results to only specified cause of death
-        date_format="YYYY-MM-DD",
+        match_only_underlying_cause=False,
         return_expectations={
-            "date": {"earliest": "index_date", "latest": end_date},
             "incidence": 0.05,
         },
     ),
-    covid_death=patients.with_these_codes_on_death_certificate(
+    covid_related_death_date=patients.with_these_codes_on_death_certificate(
         covid_death_codelist,  # imported from codelists.py
         returning="date_of_death",
         on_or_before="index_date",
@@ -45,7 +47,27 @@ study = StudyDefinition(
         date_format="YYYY-MM-DD",
         return_expectations={
             "date": {"earliest": "index_date", "latest": "today"},
+        },
+    ),
+    covid_death=patients.with_these_codes_on_death_certificate(
+        covid_death_codelist,  # imported from codelists.py
+        returning="binary_flag",
+        on_or_before="index_date",
+        match_only_underlying_cause=True,
+        return_expectations={
             "incidence": 0.05,
         },
     ),
+    covid_death_date=patients.with_these_codes_on_death_certificate(
+        covid_death_codelist,  # imported from codelists.py
+        returning="date_of_death",
+        on_or_before="index_date",
+        match_only_underlying_cause=True,
+        date_format="YYYY-MM-DD",
+        return_expectations={
+            "date": {"earliest": "index_date", "latest": "today"},
+        },
+    ),
+    
+    
 )

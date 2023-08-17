@@ -173,9 +173,6 @@ def create_cohort_description(paths, demographics):
     }
 
     for col in df.columns:
-        if "date" in col:
-            df[col] = pd.to_datetime(df[col], format="%Y-%m-%d", errors="coerce")
-            df[col] = df[col].notnull()
         elif "ethnicity" in col:
             df[col] = df[col].map(ethnicity_mapping)
         
