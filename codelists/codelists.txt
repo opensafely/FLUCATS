@@ -58,3 +58,6 @@ user/Louis/flucats-hospital-admissions/2fa63e97/
 opensafely/chronic-kidney-disease-snomed/2020-04-14/
 ukrr/ckd-stages/77b93e93/
 user/Louis/flucats-inspired-oxygen/199ec7a4/
+user/Louis/flucats-covid-vaccination/56209fa0/
+user/Louis/flucats-covid-vaccination-second-dose/3d112c6b/
+user/Louis/flucats-covid-vaccination-booster/0af24601/

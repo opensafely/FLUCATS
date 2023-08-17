@@ -4,6 +4,7 @@ from cohortextractor import (
 )
 
 from codelists import *
+from variables.vaccination_variables import vaccination_variables
 
 end_date = "2021-06-30"
 
@@ -68,6 +69,6 @@ study = StudyDefinition(
             "date": {"earliest": "index_date", "latest": "today"},
         },
     ),
-    
+    **vaccination_variables,
     
 )
