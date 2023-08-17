@@ -173,7 +173,7 @@ def create_cohort_description(paths, demographics):
     }
 
     for col in df.columns:
-        elif "ethnicity" in col:
+        if "ethnicity" in col:
             df[col] = df[col].map(ethnicity_mapping)
         
     df = fix_residential_vars(df)
