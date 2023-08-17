@@ -317,3 +317,21 @@ flucats_inspired_oxygen_codelist = codelist_from_csv(
     system="snomed",
     column="code",
 )
+
+vaccination_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-covid-vaccination.csv", 
+    system="snomed", 
+    column="code",
+)
+
+second_dose_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-covid-vaccination-second-dose.csv",
+    system="snomed",
+    column="code",
+)
+
+booster_dose_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-covid-vaccination-booster.csv",
+    system="snomed",
+    column="code",
+)

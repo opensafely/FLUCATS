@@ -359,6 +359,24 @@
       "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-inspired-oxygen/199ec7a4/",
       "downloaded_at": "2023-07-14 10:36:15.510704Z",
       "sha": "8f8b2a66fdbdad5888732ff4c6db96c82d8f1bef"
+    },
+    "user-Louis-flucats-covid-vaccination.csv": {
+      "id": "user/Louis/flucats-covid-vaccination/56209fa0",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-vaccination/56209fa0/",
+      "downloaded_at": "2023-08-17 10:32:05.678720Z",
+      "sha": "1cb7c0c95e5e38d3d35d17c29fb1ded3f35b2572"
+    },
+    "user-Louis-flucats-covid-vaccination-second-dose.csv": {
+      "id": "user/Louis/flucats-covid-vaccination-second-dose/3d112c6b",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-vaccination-second-dose/3d112c6b/",
+      "downloaded_at": "2023-08-17 10:32:05.992822Z",
+      "sha": "47c5a3aac77648731860ae4746558b0c13719426"
+    },
+    "user-Louis-flucats-covid-vaccination-booster.csv": {
+      "id": "user/Louis/flucats-covid-vaccination-booster/0af24601",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-vaccination-booster/0af24601/",
+      "downloaded_at": "2023-08-17 10:32:06.287969Z",
+      "sha": "de1f8b8e8fb8bbdc0279787bce94ffbc01d7de85"
     }
   }
 }
