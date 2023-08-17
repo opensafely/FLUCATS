@@ -377,6 +377,18 @@
       "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-vaccination-booster/0af24601/",
       "downloaded_at": "2023-08-17 10:32:06.287969Z",
       "sha": "de1f8b8e8fb8bbdc0279787bce94ffbc01d7de85"
+    },
+    "user-Louis-flucats-covid-19-probable-positive-test.csv": {
+      "id": "user/Louis/flucats-covid-19-probable-positive-test/26b4792c",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-19-probable-positive-test/26b4792c/",
+      "downloaded_at": "2023-08-17 11:22:56.122738Z",
+      "sha": "07573887f671eec634c72a8c398d80e4535264ae"
+    },
+    "user-Louis-flucats-covid-19-suspected-positive-test.csv": {
+      "id": "user/Louis/flucats-covid-19-suspected-positive-test/749592c1",
+      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-19-suspected-positive-test/749592c1/",
+      "downloaded_at": "2023-08-17 11:22:56.424631Z",
+      "sha": "d52e23133fdd33c667c259b941d6b8b154a70ac6"
     }
   }
 }

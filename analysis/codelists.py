@@ -335,3 +335,14 @@ booster_dose_codelist = codelist_from_csv(
     system="snomed",
     column="code",
 )
+
+suspected_covid_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-covid-19-suspected-positive-test.csv",
+    system="snomed",
+    column="code",
+)
+probable_covid_codelist = codelist_from_csv(
+    "codelists/user-Louis-flucats-covid-19-probable-positive-test.csv",
+    system="snomed",
+    column="code",
+)
