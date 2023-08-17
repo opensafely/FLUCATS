@@ -61,3 +61,5 @@ user/Louis/flucats-inspired-oxygen/199ec7a4/
 user/Louis/flucats-covid-vaccination/56209fa0/
 user/Louis/flucats-covid-vaccination-second-dose/3d112c6b/
 user/Louis/flucats-covid-vaccination-booster/0af24601/
+user/Louis/flucats-covid-19-probable-positive-test/26b4792c/
+user/Louis/flucats-covid-19-suspected-positive-test/749592c1/
