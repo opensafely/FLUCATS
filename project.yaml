@@ -1662,6 +1662,13 @@ actions:
     outputs:
       moderately_sensitive:
         attrition: output/joined/full/template_frequency.csv
+  
+  check_deaths:
+    run: python:latest python analysis/analysis/check_deaths.py
+    needs: [generate_study_population_end]
+    outputs:
+      moderately_sensitive:
+        attrition: output/died_any_counts.csv
         
   # generate_first_outputs:
   #   run: r:latest analysis/flucats_descriptive_basic.R
