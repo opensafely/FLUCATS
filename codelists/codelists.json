@@ -389,6 +389,48 @@
       "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-19-suspected-positive-test/749592c1/",
       "downloaded_at": "2023-08-17 11:22:56.424631Z",
       "sha": "d52e23133fdd33c667c259b941d6b8b154a70ac6"
+    },
+    "primis-covid19-vacc-uptake-covadm1.csv": {
+      "id": "primis-covid19-vacc-uptake/covadm1/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/covadm1/v1/",
+      "downloaded_at": "2023-08-18 09:31:20.743197Z",
+      "sha": "5e6a8bef2da93467d11c25affbd33755205e4204"
+    },
+    "primis-covid19-vacc-uptake-covadm2.csv": {
+      "id": "primis-covid19-vacc-uptake/covadm2/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/covadm2/v1/",
+      "downloaded_at": "2023-08-18 09:31:21.049130Z",
+      "sha": "1faed2cda35ad12c432e67a6630cf4f2093aed52"
+    },
+    "primis-covid19-vacc-uptake-pfdrx.csv": {
+      "id": "primis-covid19-vacc-uptake/pfdrx/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/pfdrx/v1/",
+      "downloaded_at": "2023-08-18 09:31:21.374990Z",
+      "sha": "37447abc32a323c91751ceb0879ed240e2e97b16"
+    },
+    "primis-covid19-vacc-uptake-azdrx.csv": {
+      "id": "primis-covid19-vacc-uptake/azdrx/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/azdrx/v1/",
+      "downloaded_at": "2023-08-18 09:31:21.681026Z",
+      "sha": "b055ff66b874412064beb6fb61cae632fb6ad41b"
+    },
+    "primis-covid19-vacc-uptake-modrx.csv": {
+      "id": "primis-covid19-vacc-uptake/modrx/v1.2",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/modrx/v1.2/",
+      "downloaded_at": "2023-08-18 09:31:21.960390Z",
+      "sha": "aaa6cf3e37294bfc822c31ee284e2c3b48b2726e"
+    },
+    "primis-covid19-vacc-uptake-shield.csv": {
+      "id": "primis-covid19-vacc-uptake/shield/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/shield/v1/",
+      "downloaded_at": "2023-08-18 09:31:22.267315Z",
+      "sha": "7edf08877d201478d4f794edb4d4dfe1353cb095"
+    },
+    "primis-covid19-vacc-uptake-nonshield.csv": {
+      "id": "primis-covid19-vacc-uptake/nonshield/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/nonshield/v1/",
+      "downloaded_at": "2023-08-18 09:31:22.603763Z",
+      "sha": "fb1e019781d5a58c5512d71e9cd6cf47c05e72c5"
     }
   }
 }

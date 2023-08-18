@@ -346,3 +346,61 @@ probable_covid_codelist = codelist_from_csv(
     system="snomed",
     column="code",
 )
+
+
+
+# First COVID vaccination administration codes
+covadm1_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-covadm1.csv",
+    system="snomed",
+    column="code",
+)
+
+# Second COVID vaccination administration codes
+covadm2_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-covadm2.csv",
+    system="snomed",
+    column="code",
+)
+
+# Pfizer BioNTech vaccination medication code
+pfdrx_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-pfdrx.csv",
+    system="snomed",
+    column="code",
+)
+
+# Oxford AstraZeneca vaccination medication code
+azdrx_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-azdrx.csv",
+    system="snomed",
+    column="code",
+)
+
+# Moderna vaccination medication code
+modrx_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-modrx.csv",
+    system="snomed",
+    column="code",
+)
+
+# COVID vaccination medication codes
+covrx_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-covrx.csv",
+    system="snomed",
+    column="code",
+)
+
+# High Risk from COVID-19 code
+shield_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-shield.csv",
+    system="snomed",
+    column="code",
+)
+
+# Lower Risk from COVID-19 codes
+nonshield_codelist = codelist_from_csv(
+    "codelists/primis-covid19-vacc-uptake-nonshield.csv",
+    system="snomed",
+    column="code",
+)
