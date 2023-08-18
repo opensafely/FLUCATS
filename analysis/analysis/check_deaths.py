@@ -10,3 +10,10 @@ death_col = df["died_any"]
 counts = death_col.value_counts(dropna=False) 
 counts = counts.round(-1)
 counts.to_csv(OUTPUT_DIR / "died_any_counts.csv")
+
+
+df_test = pd.read_csv(OUTPUT_DIR / "input_test.csv")
+test_col = df_test["flucats_template"]
+counts_test = test_col.value_counts(dropna=False)
+counts_test = counts_test.round(-1)
+counts_test.to_csv(OUTPUT_DIR / "flucats_template_test_counts.csv")
