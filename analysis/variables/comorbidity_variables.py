@@ -310,4 +310,18 @@ comorbidity_variables = dict(
             "incidence": 0.05,
         },
     ),
+    # High Risk from COVID-19 code
+    shield=patients.with_these_clinical_events(
+        shield_codelist,
+        returning="binary_flag",
+        find_last_match_in_period=True,
+        on_or_before="index_date",
+    ),
+    # Lower Risk from COVID-19 codes
+    nonshield=patients.with_these_clinical_events(
+        nonshield_codelist,
+        returning="binary_flag",
+        find_last_match_in_period=True,
+        on_or_before="index_date",
+    ),
 )

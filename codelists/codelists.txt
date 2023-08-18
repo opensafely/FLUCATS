@@ -63,3 +63,10 @@ user/Louis/flucats-covid-vaccination-second-dose/3d112c6b/
 user/Louis/flucats-covid-vaccination-booster/0af24601/
 user/Louis/flucats-covid-19-probable-positive-test/26b4792c/
 user/Louis/flucats-covid-19-suspected-positive-test/749592c1/
+primis-covid19-vacc-uptake/covadm1/v1
+primis-covid19-vacc-uptake/covadm2/v1
+primis-covid19-vacc-uptake/pfdrx/v1
+primis-covid19-vacc-uptake/azdrx/v1
+primis-covid19-vacc-uptake/modrx/v1.2
+primis-covid19-vacc-uptake/shield/v1
+primis-covid19-vacc-uptake/nonshield/v1
