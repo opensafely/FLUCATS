@@ -8,13 +8,7 @@ study = StudyDefinition(
         "rate": "uniform",
         "incidence": 0.5,
     },
-    population=patients.satisfying(
-        """
-        flucats_template
-        """,
-    
-  
-    ),
+    population=patients.all(),
     flucats_template=patients.with_these_clinical_events(
         codelist=codelist(["13044541000006109"], system="snomed"),
         on_or_before="2021-06-30",

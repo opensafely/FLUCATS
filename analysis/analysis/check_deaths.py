@@ -17,3 +17,9 @@ test_col = df_test["died"]
 counts_test = test_col.value_counts(dropna=False)
 counts_test = counts_test.round(-1)
 counts_test.to_csv(OUTPUT_DIR / "died_test_counts.csv")
+
+
+test_col = df_test["flucats_template"]
+counts_test = test_col.value_counts(dropna=False)
+counts_test = counts_test.round(-1)
+counts_test.to_csv(OUTPUT_DIR / "flucats_template_test_counts.csv")

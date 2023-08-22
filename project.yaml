@@ -1675,7 +1675,7 @@ actions:
     outputs:
       moderately_sensitive:
         attrition: output/died_any_counts.csv
-        test: output/died_test_counts.csv
+        test: output/*_test_counts.csv
         
   # generate_first_outputs:
   #   run: r:latest analysis/flucats_descriptive_basic.R
