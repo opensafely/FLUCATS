@@ -23,7 +23,7 @@ study = StudyDefinition(
         return_expectations={"incidence": 0.5},
     ),
     died=patients.died_from_any_cause(
-        on_or_before="index_date",
+        on_or_before="2021-06-30",
         returning="binary_flag",
         return_expectations={"incidence": 0.1},
     ),
