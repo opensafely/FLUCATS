@@ -4,7 +4,7 @@ from study_utils import OUTPUT_DIR
 # loop through all the files in output. If they match input_end*.csv. load them
 
 df = pd.read_csv(OUTPUT_DIR / "input_end.csv")
-death_col = df["died_any"]
+death_col = df["died_any_pc"]
 
 # output value counts including nan
 counts = death_col.value_counts(dropna=False) 
