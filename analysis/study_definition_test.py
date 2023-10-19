@@ -16,10 +16,9 @@ study = StudyDefinition(
         find_last_match_in_period=True,
         return_expectations={"incidence": 0.5},
     ),
-    died=patients.died_from_any_cause(
-        on_or_before="2021-06-30",
+    died=patients.with_death_recorded_in_primary_care(
+        on_or_after="2021-06-30",
         returning="binary_flag",
-        return_expectations={"incidence": 0.1},
     ),
 
 )
