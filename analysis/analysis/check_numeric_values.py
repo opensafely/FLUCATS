@@ -45,9 +45,13 @@ def get_distribution_numeric(df, numeric_values_variables_list):
     for col in df.columns:
         
         # subset of the column with non zero values
+        col_subset = df[col]
+        col_subset = col_subset.loc[col_subset > 0]
 
-        col_subset = df[col].loc[df[col] > 0]
-
+        # if there are no non zero values, skip
+        if len(col_subset) == 0:
+            continue
+        
         distribution = col_subset.value_counts(bins=10, sort=False)
 
         # round the bin widths to nearest 10
