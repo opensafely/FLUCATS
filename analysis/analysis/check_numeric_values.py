@@ -43,8 +43,12 @@ def calculate_proportions(df, numeric_variables_list, numeric_values_variables_l
 def get_distribution_numeric(df, numeric_values_variables_list):
     df = df[numeric_values_variables_list]
     for col in df.columns:
- 
-        distribution = df[col].value_counts(bins=10, sort=False)
+        
+        # subset of the column with non zero values
+
+        col_subset = df.loc[df[col] > 0]
+
+        distribution = col_subset.value_counts(bins=10, sort=False)
 
         # round the bin widths to nearest 10
         distribution.index = distribution.index.map(
