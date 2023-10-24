@@ -15,21 +15,32 @@ def group_low_values(df, count_column, code_column, threshold):
         A table with redacted counts
     """
     df[count_column] = df[count_column].astype(int)
+
+     # if all values 0, return empty df
+    if df[count_column].sum() == 0:
+        df = pd.DataFrame(columns=[count_column, code_column])
+        return df
+
     # get sum of any values <= threshold and > 0
     suppressed_count = df.loc[
         (df[count_column] <= threshold) & (df[count_column] > 0), count_column
     ].sum()
+    
     suppressed_df = df.loc[df[count_column] > threshold, count_column]
+
     # if suppressed values >0 ensure total suppressed count > threshold.
-    if suppressed_count > 0 & (suppressed_df.shape[0] != df.shape[0]):
+    if (suppressed_count >= 0) & (suppressed_df.shape[0] != df.shape[0]):
+        
         # redact counts <= threshold and > 0
         df.loc[
-            (df[count_column] <= threshold) & (df[count_column] > 0), count_column
+            df[count_column] <= threshold, count_column
         ] = np.nan
-
+        
         # if suppressed count <= threshold redact further values
-        while suppressed_count <= threshold & df[count_column].notnull().any():
-            min_count = df[df[count_column] > 0][count_column].idxmin()
+        while (suppressed_count <= threshold) & (df[count_column].notnull().any()):
+            
+            min_count = df[count_column].idxmin()
+           
             suppressed_count += df.loc[min_count, count_column]
             df.loc[min_count, count_column] = np.nan
             suppressed_df = df.loc[df[count_column] > threshold, count_column]
