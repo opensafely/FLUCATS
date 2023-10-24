@@ -28,8 +28,11 @@ def group_low_values(df, count_column, code_column, threshold):
     
     suppressed_df = df.loc[df[count_column] > threshold, count_column]
 
+    if suppressed_count == 0:
+        return df.loc[df[count_column] > threshold, :]
+
     # if suppressed values >0 ensure total suppressed count > threshold.
-    if (suppressed_count >= 0) & (suppressed_df.shape[0] != df.shape[0]):
+    if (suppressed_count > 0) & (suppressed_df.shape[0] != df.shape[0]):
         
         # redact counts <= threshold and > 0
         df.loc[
