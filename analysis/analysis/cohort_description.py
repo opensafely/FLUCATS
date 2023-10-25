@@ -82,10 +82,11 @@ def group_low_values_df(df):
                     {"category": cat, "group": "other", "count": suppressed_count},
                     index=[0],
                 )
-
-                other_row["count"] = round_column(other_row["count"], 10)
                 df_subset = pd.concat([df_subset, other_row])
+            
             df_subset = df_subset[df_subset["count"].notnull()]
+            
+            df_subset["count"] = round_column(df_subset["count"], 10)
             redacted_groups.append(df_subset)
 
     redacted_df = pd.concat(redacted_groups).reset_index(drop=True)
