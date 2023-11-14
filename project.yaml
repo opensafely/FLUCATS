@@ -1651,7 +1651,7 @@ actions:
     needs: [combined_input_files]
     outputs:
       moderately_sensitive:
-        attrition: output/column_counts*
+        attrition: output/column_counts*.csv
 
   numeric_values_check:
     run: python:latest python analysis/analysis/check_numeric_values.py
