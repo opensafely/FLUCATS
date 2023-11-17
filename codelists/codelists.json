@@ -2,433 +2,433 @@
   "files": {
     "opensafely-ethnicity-snomed-0removed.csv": {
       "id": "opensafely/ethnicity-snomed-0removed/2e641f61",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/ethnicity-snomed-0removed/2e641f61/",
+      "url": "https://www.opencodelists.org/codelist/opensafely/ethnicity-snomed-0removed/2e641f61/",
       "downloaded_at": "2022-08-12 13:15:02.884894Z",
       "sha": "8b849b5b785d80306e488d0109640c8c1d2da01b"
     },
     "primis-covid19-vacc-uptake-eth2001.csv": {
       "id": "primis-covid19-vacc-uptake/eth2001/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth2001/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/eth2001/v1/",
       "downloaded_at": "2022-08-12 11:28:46.116594Z",
       "sha": "2ff9aea91a05f41fe911a885eee50d2494247d58"
     },
     "primis-covid19-vacc-uptake-non_eth2001.csv": {
       "id": "primis-covid19-vacc-uptake/non_eth2001/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/non_eth2001/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/non_eth2001/v1/",
       "downloaded_at": "2022-06-20 16:39:20.136579Z",
       "sha": "b8581424b9305f70148f1bbccc0d3e4703847df7"
     },
     "primis-covid19-vacc-uptake-eth_notgiptref.csv": {
       "id": "primis-covid19-vacc-uptake/eth_notgiptref/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth_notgiptref/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/eth_notgiptref/v1/",
       "downloaded_at": "2022-06-20 16:39:20.425711Z",
       "sha": "6245c85e4bd44c0c3aa573325cf55891efee45db"
     },
     "primis-covid19-vacc-uptake-eth_notstated.csv": {
       "id": "primis-covid19-vacc-uptake/eth_notstated/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth_notstated/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/eth_notstated/v1/",
       "downloaded_at": "2022-06-20 16:39:20.721859Z",
       "sha": "a8997e1807a07d8f56e34ba3d0b95ee0082fec82"
     },
     "primis-covid19-vacc-uptake-eth_norecord.csv": {
       "id": "primis-covid19-vacc-uptake/eth_norecord/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth_norecord/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/eth_norecord/v1/",
       "downloaded_at": "2022-06-20 16:39:21.005548Z",
       "sha": "ca003bb021a14e704a6e81c139536ef459673da4"
     },
     "opensafely-alanine-aminotransferase-alt-tests.csv": {
       "id": "opensafely/alanine-aminotransferase-alt-tests/2298df3e",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/alanine-aminotransferase-alt-tests/2298df3e/",
+      "url": "https://www.opencodelists.org/codelist/opensafely/alanine-aminotransferase-alt-tests/2298df3e/",
       "downloaded_at": "2022-06-20 16:39:21.299835Z",
       "sha": "0d231653e5ece343f6945309d21fc40c7f685ff2"
     },
     "opensafely-ace-inhibitor-medications.csv": {
       "id": "opensafely/ace-inhibitor-medications/2020-05-19",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/ace-inhibitor-medications/2020-05-19/",
-      "downloaded_at": "2022-06-20 16:39:21.631371Z",
-      "sha": "e0c30e30450b35339e9007a0fa6b3899b1a8719b"
+      "url": "https://www.opencodelists.org/codelist/opensafely/ace-inhibitor-medications/2020-05-19/",
+      "downloaded_at": "2023-11-17 09:59:08.060765Z",
+      "sha": "643c61c5ab865a7c91ee1e8ee3b8fc22de0abefc"
     },
     "primis-covid19-vacc-uptake-bmi.csv": {
       "id": "primis-covid19-vacc-uptake/bmi/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/bmi/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/bmi/v1/",
       "downloaded_at": "2022-07-06 15:09:15.228541Z",
       "sha": "6e96c04ee1a647905be2b410fa2c33d770576bf0"
     },
     "primis-covid19-vacc-uptake-astadm.csv": {
       "id": "primis-covid19-vacc-uptake/astadm/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/astadm/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/astadm/v.1.5.3/",
       "downloaded_at": "2022-08-12 14:54:29.098649Z",
       "sha": "1b3aba9c130dafdc6a1aea3254ac6db6dfd6169b"
     },
     "primis-covid19-vacc-uptake-ast.csv": {
       "id": "primis-covid19-vacc-uptake/ast/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/ast/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/ast/v.1.5.3/",
       "downloaded_at": "2022-07-06 15:09:15.525238Z",
       "sha": "04dd8e518c2dcd43e54a109afed396f836549d62"
     },
     "primis-covid19-vacc-uptake-astrxm1.csv": {
       "id": "primis-covid19-vacc-uptake/astrxm1/v1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/astrxm1/v1.5.3/",
-      "downloaded_at": "2022-08-12 14:54:29.813193Z",
-      "sha": "de273df54d8c80e6457494da8d4f6da1b3600045"
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/astrxm1/v1.5.3/",
+      "downloaded_at": "2023-11-17 09:59:08.637479Z",
+      "sha": "3bb91f31780887b9e236dc2585666b295cefdb17"
     },
     "primis-covid19-vacc-uptake-astrxm2.csv": {
       "id": "primis-covid19-vacc-uptake/astrxm2/v1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/astrxm2/v1.5.3/",
-      "downloaded_at": "2022-08-12 14:54:30.228275Z",
-      "sha": "fbb45446f0f5be328ffd792eae223ee98673050e"
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/astrxm2/v1.5.3/",
+      "downloaded_at": "2023-11-17 09:59:08.777464Z",
+      "sha": "15874e95ed86836d31e9af639635a1c0152e3775"
     },
     "primis-covid19-vacc-uptake-chd_cov.csv": {
       "id": "primis-covid19-vacc-uptake/chd_cov/v1.2.1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/chd_cov/v1.2.1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/chd_cov/v1.2.1/",
       "downloaded_at": "2022-07-06 15:09:15.896227Z",
       "sha": "31d1504f602925d7c9ff9be3c838212d492086db"
     },
     "primis-covid19-vacc-uptake-resp_cov.csv": {
       "id": "primis-covid19-vacc-uptake/resp_cov/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/resp_cov/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/resp_cov/v1/",
       "downloaded_at": "2022-07-06 15:09:16.228668Z",
       "sha": "55333770ba5b886345790d0e5e50735b7290cf1c"
     },
     "primis-covid19-vacc-uptake-ckd15.csv": {
       "id": "primis-covid19-vacc-uptake/ckd15/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/ckd15/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/ckd15/v1/",
       "downloaded_at": "2022-07-06 15:09:16.591146Z",
       "sha": "88cc1ab0e8fc6e4be88929369a5b492cc402884a"
     },
     "primis-covid19-vacc-uptake-cld.csv": {
       "id": "primis-covid19-vacc-uptake/cld/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/cld/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/cld/v1/",
       "downloaded_at": "2022-07-06 15:09:16.931733Z",
       "sha": "745227a835b2d87102a314c654adebff254d4db8"
     },
     "primis-covid19-vacc-uptake-immdx_cov.csv": {
       "id": "primis-covid19-vacc-uptake/immdx_cov/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/immdx_cov/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/immdx_cov/v1/",
       "downloaded_at": "2022-07-06 15:09:17.256941Z",
       "sha": "c2bfedbbea1ca4027e571b00ec3b549b03fa3ee6"
     },
     "primis-covid19-vacc-uptake-immrx.csv": {
       "id": "primis-covid19-vacc-uptake/immrx/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/immrx/v.1.5.3/",
-      "downloaded_at": "2022-07-06 15:09:17.712211Z",
-      "sha": "1fc42a6e5ef8b428fad7b8a71549fefbbc9ac1a8"
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/immrx/v.1.5.3/",
+      "downloaded_at": "2023-11-17 09:59:10.520673Z",
+      "sha": "6161cdbe7cadf1d2593cc7eff68ab19f5cf18cc9"
     },
     "primis-covid19-vacc-uptake-dxt_chemo_cod.csv": {
       "id": "primis-covid19-vacc-uptake/dxt_chemo_cod/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/dxt_chemo_cod/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/dxt_chemo_cod/v.1.5.3/",
       "downloaded_at": "2022-07-06 15:09:18.014026Z",
       "sha": "d8a2958c17dc83ce7d1de4b447d8bb979bcd7227"
     },
     "primis-covid19-vacc-uptake-diab.csv": {
       "id": "primis-covid19-vacc-uptake/diab/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/diab/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/diab/v.1.5.3/",
       "downloaded_at": "2022-07-06 15:09:18.307555Z",
       "sha": "28145dec21a301060a1f3652143dfece6d9f47ff"
     },
     "primis-covid19-vacc-uptake-gdiab_cod.csv": {
       "id": "primis-covid19-vacc-uptake/gdiab_cod/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/gdiab_cod/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/gdiab_cod/v.1.5.3/",
       "downloaded_at": "2022-08-12 15:06:20.445423Z",
       "sha": "6fabb3f3f0a0655a1157ef0b910dd63a2fabe22b"
     },
     "primis-covid19-vacc-uptake-dmres.csv": {
       "id": "primis-covid19-vacc-uptake/dmres/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/dmres/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/dmres/v1/",
       "downloaded_at": "2022-07-06 15:09:18.570761Z",
       "sha": "57682a6345da78472609f01f1ca065ace27fcb43"
     },
     "primis-covid19-vacc-uptake-cns_cov.csv": {
       "id": "primis-covid19-vacc-uptake/cns_cov/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/cns_cov/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/cns_cov/v1/",
       "downloaded_at": "2022-07-06 15:09:18.866816Z",
       "sha": "6492fb0e87c333c5adeb84a803ddfddf6e55143f"
     },
     "opensafely-hypertension-snomed.csv": {
       "id": "opensafely/hypertension-snomed/2020-04-28",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/hypertension-snomed/2020-04-28/",
+      "url": "https://www.opencodelists.org/codelist/opensafely/hypertension-snomed/2020-04-28/",
       "downloaded_at": "2022-07-06 15:09:19.177111Z",
       "sha": "5d5471bb6a8a01e362b191b3eb8e80c2febeb1da"
     },
     "primis-covid19-vacc-uptake-preg.csv": {
       "id": "primis-covid19-vacc-uptake/preg/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/preg/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/preg/v1/",
       "downloaded_at": "2022-07-06 15:09:19.532788Z",
       "sha": "16b9bdf6c37c9f5e802912a98542c5dd5d21183d"
     },
     "primis-covid19-vacc-uptake-pregdel.csv": {
       "id": "primis-covid19-vacc-uptake/pregdel/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/pregdel/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/pregdel/v.1.5.3/",
       "downloaded_at": "2022-08-12 14:45:05.180981Z",
       "sha": "be29c0d7d0cf6fb16dea4e461ab524fd098cbadd"
     },
     "primis-covid19-vacc-uptake-addis_cod.csv": {
       "id": "primis-covid19-vacc-uptake/addis_cod/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/addis_cod/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/addis_cod/v.1.5.3/",
       "downloaded_at": "2022-07-06 15:09:19.797676Z",
       "sha": "5a7f84908af4745bf67c54945e467f1b99d7aaeb"
     },
     "primis-covid19-vacc-uptake-covrx.csv": {
       "id": "primis-covid19-vacc-uptake/covrx/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/covrx/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/covrx/v.1.5.3/",
       "downloaded_at": "2022-07-06 15:09:20.125567Z",
       "sha": "87ec0ab80f5d8ad6bd90eae8c8bd6e159982ed75"
     },
     "primis-covid19-vacc-uptake-ckd_cov.csv": {
       "id": "primis-covid19-vacc-uptake/ckd_cov/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/ckd_cov/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/ckd_cov/v.1.5.3/",
       "downloaded_at": "2022-07-06 15:09:20.552503Z",
       "sha": "33a5cdc7e08e3b07cbf06f9d437456c7770542f5"
     },
     "primis-covid19-vacc-uptake-homeless_cod.csv": {
       "id": "primis-covid19-vacc-uptake/homeless_cod/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/homeless_cod/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/homeless_cod/v.1.5.3/",
       "downloaded_at": "2022-07-06 15:09:20.885824Z",
       "sha": "91abb1b83667d3b2eab8a357d5c01aa88a2bdcc4"
     },
     "primis-covid19-vacc-uptake-longres.csv": {
       "id": "primis-covid19-vacc-uptake/longres/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/longres/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/longres/v.1.5.3/",
       "downloaded_at": "2022-07-06 15:09:21.197590Z",
       "sha": "3d2ae86b8e250b206dcbc3e2853aeac16805d88c"
     },
     "primis-covid19-vacc-uptake-sev_obesity.csv": {
       "id": "primis-covid19-vacc-uptake/sev_obesity/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/sev_obesity/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/sev_obesity/v.1.5.3/",
       "downloaded_at": "2022-07-06 15:09:21.511407Z",
       "sha": "dfe3662bed703c590d1449e604e892cdd7a360c1"
     },
     "primis-covid19-vacc-uptake-spln_cov.csv": {
       "id": "primis-covid19-vacc-uptake/spln_cov/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/spln_cov/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/spln_cov/v.1.5.3/",
       "downloaded_at": "2022-07-06 15:09:21.848868Z",
       "sha": "03158ea5180bba107634be87a1774c1fc3fd474f"
     },
     "primis-covid19-vacc-uptake-sev_mental.csv": {
       "id": "primis-covid19-vacc-uptake/sev_mental/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/sev_mental/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/sev_mental/v.1.5.3/",
       "downloaded_at": "2022-07-06 15:41:34.855939Z",
       "sha": "e4151daaefa5fdbc1e35feeb31778a3d3b7e5cfd"
     },
     "user-Louis-flucats-pneumonia.csv": {
       "id": "user/Louis/flucats-pneumonia/336afa04",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-pneumonia/336afa04/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-pneumonia/336afa04/",
       "downloaded_at": "2022-07-28 13:47:27.239465Z",
       "sha": "b7fc091b51f00a9714f34575e9028673f3b19617"
     },
     "user-Louis-flucats-icu-admission.csv": {
       "id": "user/Louis/flucats-icu-admission/1a5b86cf",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-icu-admission/1a5b86cf/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-icu-admission/1a5b86cf/",
       "downloaded_at": "2022-07-28 13:47:27.500678Z",
       "sha": "e5dce3d0d39649e36d7291ceabfdbd98952f991b"
     },
     "user-Louis-flucats-clinical-concern-note.csv": {
       "id": "user/Louis/flucats-clinical-concern-note/014c139a",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-clinical-concern-note/014c139a/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-clinical-concern-note/014c139a/",
       "downloaded_at": "2022-07-28 13:47:27.803137Z",
       "sha": "06b397ec1940bd2d0f50d44dd05c0181056ebce2"
     },
     "primis-covid19-vacc-uptake-reside_cod.csv": {
       "id": "primis-covid19-vacc-uptake/reside_cod/v.1.5.3",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/reside_cod/v.1.5.3/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/reside_cod/v.1.5.3/",
       "downloaded_at": "2022-08-12 13:28:31.502798Z",
       "sha": "8089273366381539d9676e901c5c942f91f84792"
     },
     "opensafely-statin-medication.csv": {
       "id": "opensafely/statin-medication/2020-04-20",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/statin-medication/2020-04-20/",
-      "downloaded_at": "2022-08-12 15:15:24.915002Z",
-      "sha": "82f975a7be188364a1ef1aa5f8ff52f75e499612"
+      "url": "https://www.opencodelists.org/codelist/opensafely/statin-medication/2020-04-20/",
+      "downloaded_at": "2023-11-17 09:59:14.912105Z",
+      "sha": "02c75fb7c4fa8ca7f0e86be819a7043707aa8768"
     },
     "user-Louis-flucats-altered-conscious-level.csv": {
       "id": "user/Louis/flucats-altered-conscious-level/05a9010c",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-altered-conscious-level/05a9010c/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-altered-conscious-level/05a9010c/",
       "downloaded_at": "2023-02-01 11:00:44.097208Z",
       "sha": "5eb7d1e069b96baed32d4d6fac4f149466a6e547"
     },
     "user-Louis-flucats-causing-clinical-concern.csv": {
       "id": "user/Louis/flucats-causing-clinical-concern/6c998dd6",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-causing-clinical-concern/6c998dd6/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-causing-clinical-concern/6c998dd6/",
       "downloaded_at": "2023-02-01 11:00:44.334052Z",
       "sha": "5aedb596599077fc9cdaf148f589c7236a3d6d0f"
     },
     "user-Louis-flucats-evidence-of-dehydration-or-shock.csv": {
       "id": "user/Louis/flucats-evidence-of-dehydration-or-shock/02f64116",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-evidence-of-dehydration-or-shock/02f64116/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-evidence-of-dehydration-or-shock/02f64116/",
       "downloaded_at": "2023-02-01 11:00:44.575748Z",
       "sha": "98520c5bb96fd152ed4c8ecc8d332f4cf351093b"
     },
     "user-Louis-flucats-evidence-of-dehydration-or-shock-observable.csv": {
       "id": "user/Louis/flucats-evidence-of-dehydration-or-shock-observable/35025586",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-evidence-of-dehydration-or-shock-observable/35025586/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-evidence-of-dehydration-or-shock-observable/35025586/",
       "downloaded_at": "2023-05-30 14:11:59.795380Z",
       "sha": "b083b2948d7f2aa7eacdb08401a61111acf9b07d"
     },
     "user-Louis-flucats-increased-respiratory-rate.csv": {
       "id": "user/Louis/flucats-increased-respiratory-rate/50d75aab",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-increased-respiratory-rate/50d75aab/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-increased-respiratory-rate/50d75aab/",
       "downloaded_at": "2023-02-01 11:00:44.810248Z",
       "sha": "c80560210208b7015a69e8ddfe8925d0a63cb844"
     },
     "user-Louis-flucats-increased-respiratory-rate-observable.csv": {
       "id": "user/Louis/flucats-increased-respiratory-rate-observable/4e11c8bb",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-increased-respiratory-rate-observable/4e11c8bb/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-increased-respiratory-rate-observable/4e11c8bb/",
       "downloaded_at": "2023-05-30 14:12:00.338294Z",
       "sha": "51e2b4eb78085af8a590e604e4502e24c760f569"
     },
     "user-Louis-flucats-oxygen-saturation.csv": {
       "id": "user/Louis/flucats-oxygen-saturation/25f72e9a",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-oxygen-saturation/25f72e9a/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-oxygen-saturation/25f72e9a/",
       "downloaded_at": "2023-06-28 11:53:24.424545Z",
       "sha": "36c3f64ca752df0d731418373716bfa986c342d3"
     },
     "user-Louis-flucats-oxygen-saturation-observable.csv": {
       "id": "user/Louis/flucats-oxygen-saturation-observable/602e54e6",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-oxygen-saturation-observable/602e54e6/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-oxygen-saturation-observable/602e54e6/",
       "downloaded_at": "2023-06-28 11:53:24.716482Z",
       "sha": "527a3fd4020ce15b7a893f015d6d7180f895baa5"
     },
     "user-Louis-flucats-respiratory-exhaustion-or-apnoea.csv": {
       "id": "user/Louis/flucats-respiratory-exhaustion-or-apnoea/2ee8f405",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-respiratory-exhaustion-or-apnoea/2ee8f405/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-respiratory-exhaustion-or-apnoea/2ee8f405/",
       "downloaded_at": "2023-02-01 11:42:30.072211Z",
       "sha": "45b8c098915a55b7ff4a2e1baffbea5de8395d59"
     },
     "user-Louis-flucats-severe-respiratory-distress.csv": {
       "id": "user/Louis/flucats-severe-respiratory-distress/69e6cde0",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-severe-respiratory-distress/69e6cde0/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-severe-respiratory-distress/69e6cde0/",
       "downloaded_at": "2023-02-01 11:00:45.512220Z",
       "sha": "61563fc96fb1a222c800d00618a8697d6c393d7f"
     },
     "user-Louis-flucats-blood-pressure-reading.csv": {
       "id": "user/Louis/flucats-blood-pressure-reading/2c36340f",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-blood-pressure-reading/2c36340f/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-blood-pressure-reading/2c36340f/",
       "downloaded_at": "2023-02-01 11:00:45.736226Z",
       "sha": "348e1a143cd925499cf67ec562932fc8817e7c93"
     },
     "user-Louis-flucats-who-performance-score.csv": {
       "id": "user/Louis/flucats-who-performance-score/7a174da4",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-who-performance-score/7a174da4/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-who-performance-score/7a174da4/",
       "downloaded_at": "2023-02-01 11:00:45.962256Z",
       "sha": "d9bb2089a2d6b7e67d5303194895dae823409352"
     },
     "user-Louis-flucats-temperature.csv": {
       "id": "user/Louis/flucats-temperature/4545a744",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-temperature/4545a744/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-temperature/4545a744/",
       "downloaded_at": "2023-02-01 11:00:46.214257Z",
       "sha": "9c95fd0d6a06d3f8aa51e448446e76158306fbb2"
     },
     "user-Louis-flucats-temperature-observable.csv": {
       "id": "user/Louis/flucats-temperature-observable/0030af26",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-temperature-observable/0030af26/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-temperature-observable/0030af26/",
       "downloaded_at": "2023-05-30 14:12:02.339161Z",
       "sha": "4e404bf1d8955110e2554c1f392e1154efcaa309"
     },
     "user-Louis-flucats-heart-rate.csv": {
       "id": "user/Louis/flucats-heart-rate/1326c0da",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-heart-rate/1326c0da/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-heart-rate/1326c0da/",
       "downloaded_at": "2023-02-01 11:00:46.445859Z",
       "sha": "9f2b9158d229cf94244ca0a653cab646ccce34f7"
     },
     "user-Louis-flucats-heart-rate-observable.csv": {
       "id": "user/Louis/flucats-heart-rate-observable/67213bf0",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-heart-rate-observable/67213bf0/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-heart-rate-observable/67213bf0/",
       "downloaded_at": "2023-05-30 14:12:02.942262Z",
       "sha": "1a9f2f6d9e61373bb4db6b1c911f2457e9e7682c"
     },
     "user-Louis-flucats-hospital-admissions.csv": {
       "id": "user/Louis/flucats-hospital-admissions/2fa63e97",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-hospital-admissions/2fa63e97/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-hospital-admissions/2fa63e97/",
       "downloaded_at": "2023-03-06 17:17:04.579271Z",
       "sha": "13db3eb5e5dcdfb2b27337a382b53674f8e4dab4"
     },
     "opensafely-chronic-kidney-disease-snomed.csv": {
       "id": "opensafely/chronic-kidney-disease-snomed/2020-04-14",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/chronic-kidney-disease-snomed/2020-04-14/",
+      "url": "https://www.opencodelists.org/codelist/opensafely/chronic-kidney-disease-snomed/2020-04-14/",
       "downloaded_at": "2023-07-14 09:18:56.529577Z",
       "sha": "5facf34dc24ff71032df5399b43adcd36997d670"
     },
     "ukrr-ckd-stages.csv": {
       "id": "ukrr/ckd-stages/77b93e93",
-      "url": "https://codelists.opensafely.org/codelist/ukrr/ckd-stages/77b93e93/",
+      "url": "https://www.opencodelists.org/codelist/ukrr/ckd-stages/77b93e93/",
       "downloaded_at": "2023-07-14 09:53:53.365851Z",
       "sha": "c5be45339cd50ef9fa91186273707e17ded06d0d"
     },
     "user-Louis-flucats-inspired-oxygen.csv": {
       "id": "user/Louis/flucats-inspired-oxygen/199ec7a4",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-inspired-oxygen/199ec7a4/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-inspired-oxygen/199ec7a4/",
       "downloaded_at": "2023-07-14 10:36:15.510704Z",
       "sha": "8f8b2a66fdbdad5888732ff4c6db96c82d8f1bef"
     },
     "user-Louis-flucats-covid-vaccination.csv": {
       "id": "user/Louis/flucats-covid-vaccination/56209fa0",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-vaccination/56209fa0/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-covid-vaccination/56209fa0/",
       "downloaded_at": "2023-08-17 10:32:05.678720Z",
       "sha": "1cb7c0c95e5e38d3d35d17c29fb1ded3f35b2572"
     },
     "user-Louis-flucats-covid-vaccination-second-dose.csv": {
       "id": "user/Louis/flucats-covid-vaccination-second-dose/3d112c6b",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-vaccination-second-dose/3d112c6b/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-covid-vaccination-second-dose/3d112c6b/",
       "downloaded_at": "2023-08-17 10:32:05.992822Z",
       "sha": "47c5a3aac77648731860ae4746558b0c13719426"
     },
     "user-Louis-flucats-covid-vaccination-booster.csv": {
       "id": "user/Louis/flucats-covid-vaccination-booster/0af24601",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-vaccination-booster/0af24601/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-covid-vaccination-booster/0af24601/",
       "downloaded_at": "2023-08-17 10:32:06.287969Z",
       "sha": "de1f8b8e8fb8bbdc0279787bce94ffbc01d7de85"
     },
     "user-Louis-flucats-covid-19-probable-positive-test.csv": {
       "id": "user/Louis/flucats-covid-19-probable-positive-test/26b4792c",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-19-probable-positive-test/26b4792c/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-covid-19-probable-positive-test/26b4792c/",
       "downloaded_at": "2023-08-17 11:22:56.122738Z",
       "sha": "07573887f671eec634c72a8c398d80e4535264ae"
     },
     "user-Louis-flucats-covid-19-suspected-positive-test.csv": {
       "id": "user/Louis/flucats-covid-19-suspected-positive-test/749592c1",
-      "url": "https://codelists.opensafely.org/codelist/user/Louis/flucats-covid-19-suspected-positive-test/749592c1/",
+      "url": "https://www.opencodelists.org/codelist/user/Louis/flucats-covid-19-suspected-positive-test/749592c1/",
       "downloaded_at": "2023-08-17 11:22:56.424631Z",
       "sha": "d52e23133fdd33c667c259b941d6b8b154a70ac6"
     },
     "primis-covid19-vacc-uptake-covadm1.csv": {
       "id": "primis-covid19-vacc-uptake/covadm1/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/covadm1/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/covadm1/v1/",
       "downloaded_at": "2023-08-18 09:31:20.743197Z",
       "sha": "5e6a8bef2da93467d11c25affbd33755205e4204"
     },
     "primis-covid19-vacc-uptake-covadm2.csv": {
       "id": "primis-covid19-vacc-uptake/covadm2/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/covadm2/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/covadm2/v1/",
       "downloaded_at": "2023-08-18 09:31:21.049130Z",
       "sha": "1faed2cda35ad12c432e67a6630cf4f2093aed52"
     },
     "primis-covid19-vacc-uptake-pfdrx.csv": {
       "id": "primis-covid19-vacc-uptake/pfdrx/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/pfdrx/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/pfdrx/v1/",
       "downloaded_at": "2023-08-18 09:31:21.374990Z",
       "sha": "37447abc32a323c91751ceb0879ed240e2e97b16"
     },
     "primis-covid19-vacc-uptake-azdrx.csv": {
       "id": "primis-covid19-vacc-uptake/azdrx/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/azdrx/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/azdrx/v1/",
       "downloaded_at": "2023-08-18 09:31:21.681026Z",
       "sha": "b055ff66b874412064beb6fb61cae632fb6ad41b"
     },
     "primis-covid19-vacc-uptake-modrx.csv": {
       "id": "primis-covid19-vacc-uptake/modrx/v1.2",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/modrx/v1.2/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/modrx/v1.2/",
       "downloaded_at": "2023-08-18 09:31:21.960390Z",
       "sha": "aaa6cf3e37294bfc822c31ee284e2c3b48b2726e"
     },
     "primis-covid19-vacc-uptake-shield.csv": {
       "id": "primis-covid19-vacc-uptake/shield/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/shield/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/shield/v1/",
       "downloaded_at": "2023-08-18 09:31:22.267315Z",
       "sha": "7edf08877d201478d4f794edb4d4dfe1353cb095"
     },
     "primis-covid19-vacc-uptake-nonshield.csv": {
       "id": "primis-covid19-vacc-uptake/nonshield/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/nonshield/v1/",
+      "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/nonshield/v1/",
       "downloaded_at": "2023-08-18 09:31:22.603763Z",
       "sha": "fb1e019781d5a58c5512d71e9cd6cf47c05e72c5"
     }
