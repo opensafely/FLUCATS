@@ -1483,6 +1483,12 @@ actions:
       highly_sensitive:
         cohort: output/input_end.csv
 
+  generate_study_population_end_2022:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_end_2022 --output-format=csv --with-end-date-fix
+    outputs:
+      highly_sensitive:
+        cohort: output/input_end_2022.csv
+
   generate_study_population_eth:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_ethnicity --output-format=csv --with-end-date-fix
     outputs:
