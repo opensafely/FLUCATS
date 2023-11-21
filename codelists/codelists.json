@@ -75,8 +75,8 @@
     "primis-covid19-vacc-uptake-astrxm2.csv": {
       "id": "primis-covid19-vacc-uptake/astrxm2/v1.5.3",
       "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/astrxm2/v1.5.3/",
-      "downloaded_at": "2023-11-17 09:59:08.777464Z",
-      "sha": "15874e95ed86836d31e9af639635a1c0152e3775"
+      "downloaded_at": "2023-11-21 09:20:18.470507Z",
+      "sha": "9614ab29a19eb4466440a7d355dccecba7b2f663"
     },
     "primis-covid19-vacc-uptake-chd_cov.csv": {
       "id": "primis-covid19-vacc-uptake/chd_cov/v1.2.1",
@@ -111,8 +111,8 @@
     "primis-covid19-vacc-uptake-immrx.csv": {
       "id": "primis-covid19-vacc-uptake/immrx/v.1.5.3",
       "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/immrx/v.1.5.3/",
-      "downloaded_at": "2023-11-17 09:59:10.520673Z",
-      "sha": "6161cdbe7cadf1d2593cc7eff68ab19f5cf18cc9"
+      "downloaded_at": "2023-11-21 09:20:19.772584Z",
+      "sha": "48b035b2cc15946aa1b8f66fa2c31dc3cfdbc938"
     },
     "primis-covid19-vacc-uptake-dxt_chemo_cod.csv": {
       "id": "primis-covid19-vacc-uptake/dxt_chemo_cod/v.1.5.3",
