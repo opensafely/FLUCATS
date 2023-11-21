@@ -18,7 +18,7 @@ study = StudyDefinition(
     index_date=end_date,
     population=patients.all(),
     died_any_date_pc=patients.with_death_recorded_in_primary_care(
-        on_or_after="index_date",
+        on_or_before="index_date",
         returning="date_of_death",
         date_format="YYYY-MM-DD",
         return_expectations={
@@ -27,7 +27,7 @@ study = StudyDefinition(
         },
     ),
     died_any_pc=patients.with_death_recorded_in_primary_care(
-        on_or_after="index_date",
+        on_or_before="index_date",
         returning="binary_flag",
     ),
    
