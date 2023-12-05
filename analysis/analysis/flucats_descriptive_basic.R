@@ -7,14 +7,14 @@ library(lubridate)
 
 
 #Import the 16 Flu-CATs monthly files
-df <- read_csv("output/joined/full/input_all_py.csv") %>% select(sex, age, patient_id, flucats_template, flucats_template_date, flucats_question_35_code, flucats_question_30_86290005_code, flucats_question_30_86290005_numeric_value, flucats_question_30_431314004_code, flucats_question_30_431314004_numeric_value, flucats_question_7_code, flucats_question_36_code, flucats_question_37_162701007_code, flucats_question_37_162705003_code, flucats_question_37_268913004_code, flucats_question_37_162702000_code, flucats_question_37_162704004_code, region) %>% filter(flucats_template==1)
+df <- read_csv("output/joined/full/input_all_py.csv") %>% select(patient_id, date, flucats_template, flucats_template_date, flucats_template_occurences, sex, practice, bmi, bmi_date_measured, bmi_primis, asthma, addisons_hypoadrenalism, chronic_heart_disease, chronic_respiratory_disease, ckd_primis_stage, renal_disease, ckd35_or_renal_disease, ckd_os, liver_disease, pregnant, diabetes, gestational_diabetes, obesity, mental_illness, neurological_disorder, hypertension, pneumonia, immunosuppression_disorder, immunosuppression_chemo, immunosuppression_medication, splenic_disease, shield, nonshield, statins, hospital_admission, hospital_admission_date, hospital_admission_code, icu_admission, icu_admission_code, icu_admission_date, icu_admission_code_date, died_any_pc, died_any_date_pc, covadm1_dat, covadm2_dat, pfd1rx_dat, pfd2rx_dat, azd1rx_dat, azd2rx_dat, covrx1_dat, covrx2_dat, covadm1, covadm2, pfd1rx, pfd2rx, azd1rx, azd2rx, covrx1, covrx2, eth_notgiptref_dat, eth_notstated_dat, eth_norecord_dat, ethnicity_opensafely, ethnicity, non_eth2001_dat, age_band, homeless, residential_care, region, imdQ5, flucats_question_altered_conscious_level_162701007, flucats_question_altered_conscious_level_162702000, flucats_question_altered_conscious_level_162704004, flucats_question_altered_conscious_level_162705003, flucats_question_altered_conscious_level_268913004, flucats_question_blood_pressure_163020007,  flucats_question_blood_pressure_163021006, flucats_question_blood_pressure_163025002, flucats_question_blood_pressure_163026001, flucats_question_blood_pressure_163027005, flucats_question_blood_pressure_163028000, flucats_question_blood_pressure_163029008, flucats_question_blood_pressure_163030003, flucats_question_blood_pressure_163031004, flucats_question_blood_pressure_163032006, flucats_question_blood_pressure_163036009, flucats_question_blood_pressure_163037000, flucats_question_blood_pressure_163053002, flucats_question_blood_pressure_170581003, flucats_question_blood_pressure_170582005, flucats_question_blood_pressure_274283008, flucats_question_blood_pressure_310357009, flucats_question_severe_respiratory_distress_162892000, flucats_question_respiratory_exhaustion_1023001, flucats_question_respiratory_exhaustion_162889004, flucats_question_respiratory_exhaustion_162896002, flucats_question_respiratory_exhaustion_162900004, flucats_question_respiratory_exhaustion_162901000, flucats_question_respiratory_exhaustion_207053005, flucats_question_respiratory_exhaustion_268927009, flucats_question_who_performance_score_129072006, flucats_question_who_performance_score_160680006, flucats_question_who_performance_score_160684002, flucats_question_who_performance_score_160685001, flucats_question_heart_rate_162986007, flucats_question_heart_rate_162990009, flucats_question_heart_rate_162992001, flucats_question_respiratory_rate_162913005, flucats_question_respiratory_rate_162914004, flucats_question_respiratory_rate_162915003, flucats_question_respiratory_rate_162916002, flucats_question_inspired_oxygen_427081008, flucats_question_inspired_oxygen_698833004, flucats_question_numeric_value_heart_rate_422119006_value, flucats_question_numeric_value_heart_rate_422119006, flucats_question_numeric_value_heart_rate_429525003_value, flucats_question_numeric_value_heart_rate_429525003, flucats_question_numeric_value_heart_rate_429614003_value, flucats_question_numeric_value_heart_rate_429614003, flucats_question_numeric_value_heart_rate_78564009_value, flucats_question_numeric_value_heart_rate_78564009, flucats_question_numeric_value_heart_rate_843941000000100_value, flucats_question_numeric_value_heart_rate_843941000000100, flucats_question_numeric_value_respiratory_rate_250810003_value, flucats_question_numeric_value_respiratory_rate_250810003, flucats_question_numeric_value_respiratory_rate_271625008_value, flucats_question_numeric_value_respiratory_rate_271625008, flucats_question_numeric_value_respiratory_rate_86290005_value, flucats_question_numeric_value_respiratory_rate_86290005, flucats_question_numeric_value_respiratory_rate_927961000000102_value, flucats_question_numeric_value_respiratory_rate_927961000000102, flucats_question_numeric_value_inspired_oxygen_427081008_value, flucats_question_numeric_value_inspired_oxygen_427081008, flucats_question_numeric_value_inspired_oxygen_698833004_value, flucats_question_numeric_value_inspired_oxygen_698833004, flucats_question_suspected_covid_1008541000000105, flucats_question_suspected_covid_1029481000000103, flucats_question_suspected_covid_1240451000000106, flucats_question_suspected_covid_1240511000000106, flucats_question_suspected_covid_1240581000000104, flucats_question_suspected_covid_1300721000000109, flucats_question_suspected_covid_1300731000000106, flucats_question_suspected_covid_1321301000000101, flucats_question_suspected_covid_1322781000000102, flucats_question_suspected_covid_1324601000000106, flucats_question_suspected_covid_204351000000100, flucats_question_suspected_covid_50321000237103, flucats_question_suspected_covid_51631000237101, flucats_question_suspected_covid_817111000000102, flucats_question_suspected_covid_871553007, flucats_question_suspected_covid_871555000, flucats_question_suspected_covid_871556004, flucats_question_suspected_covid_871557008, flucats_question_suspected_covid_871558003, flucats_question_suspected_covid_871559006, flucats_question_suspected_covid_871560001, flucats_question_suspected_covid_871562009, flucats_question_suspected_covid_906711000000107, flucats_question_suspected_covid_906721000000101, flucats_question_suspected_covid_933791000000101, flucats_question_probable_covid_1240581000000104, flucats_question_probable_covid_1300721000000109, flucats_question_probable_covid_1300731000000106, flucats_question_probable_covid_1321301000000101, flucats_question_probable_covid_1322781000000102, flucats_question_probable_covid_1324601000000106, flucats_question_oxygen_saturation_1259025002, flucats_question_oxygen_saturation_1363901000000105, flucats_question_oxygen_saturation_149761000000108, flucats_question_oxygen_saturation_162737002, flucats_question_oxygen_saturation_162742005, flucats_question_oxygen_saturation_182713008, flucats_question_oxygen_saturation_182714002, flucats_question_oxygen_saturation_201651000000108, flucats_question_oxygen_saturation_201661000000106, flucats_question_oxygen_saturation_240051000000102, flucats_question_oxygen_saturation_243011000000108, flucats_question_oxygen_saturation_243136002, flucats_question_oxygen_saturation_243137006, flucats_question_oxygen_saturation_243177003, flucats_question_oxygen_saturation_243178008, flucats_question_oxygen_saturation_250554003, flucats_question_oxygen_saturation_252465000, flucats_question_oxygen_saturation_252568001, flucats_question_oxygen_saturation_276732005, flucats_question_oxygen_saturation_276855002, flucats_question_oxygen_saturation_304577004, flucats_question_oxygen_saturation_315041000, flucats_question_oxygen_saturation_371907003, flucats_question_oxygen_saturation_371908008, flucats_question_oxygen_saturation_391893003, flucats_question_oxygen_saturation_397815001, flucats_question_oxygen_saturation_397867002, flucats_question_oxygen_saturation_397957008, flucats_question_oxygen_saturation_398077001, flucats_question_oxygen_saturation_398287006, flucats_question_oxygen_saturation_426990007, flucats_question_oxygen_saturation_427064004, flucats_question_oxygen_saturation_429253002, flucats_question_oxygen_saturation_57485005, flucats_question_oxygen_saturation_699463009, flucats_question_oxygen_saturation_71786000, flucats_question_oxygen_saturation_788538002, flucats_question_oxygen_saturation_802801000000109, flucats_question_oxygen_saturation_861341000000108, flucats_question_oxygen_saturation_870533002, flucats_question_temperature_164300005, flucats_question_temperature_164303007, flucats_question_temperature_315632006, flucats_question_numeric_value_oxygen_saturation_431314004_value, flucats_question_numeric_value_oxygen_saturation_431314004, flucats_question_numeric_value_oxygen_saturation_852651000000100_value, flucats_question_numeric_value_oxygen_saturation_852651000000100, flucats_question_numeric_value_oxygen_saturation_852661000000102_value, flucats_question_numeric_value_oxygen_saturation_852661000000102, flucats_question_numeric_value_oxygen_saturation_866661000000106_value, flucats_question_numeric_value_oxygen_saturation_866661000000106, flucats_question_numeric_value_oxygen_saturation_866681000000102_value, flucats_question_numeric_value_oxygen_saturation_866681000000102, flucats_question_numeric_value_oxygen_saturation_866701000000100_value, flucats_question_numeric_value_oxygen_saturation_866701000000100, flucats_question_numeric_value_oxygen_saturation_866721000000109_value, flucats_question_numeric_value_oxygen_saturation_866721000000109, flucats_question_numeric_value_oxygen_saturation_927981000000106_value, flucats_question_numeric_value_oxygen_saturation_927981000000106, flucats_question_numeric_value_temperature_703421000_value, flucats_question_numeric_value_temperature_703421000, flucats_question_causing_clinical_concern_162666005, flucats_question_clinical_concern_note_37331000000100, flucats_question_dehydration_or_shock_15527001, flucats_question_dehydration_or_shock_162685008, flucats_question_dehydration_or_shock_312450001, flucats_question_dehydration_or_shock_787041000000101, flucats_question_dehydration_or_shock_787051000000103, flucats_question_dehydration_or_shock_894921000000102, flucats_question_numeric_value_dehydration_or_shock_15527001_value, flucats_question_numeric_value_dehydration_or_shock_15527001, flucats_question_numeric_value_dehydration_or_shock_787041000000101_value, flucats_question_numeric_value_dehydration_or_shock_787041000000101, flucats_question_numeric_value_dehydration_or_shock_787051000000103_value, flucats_question_numeric_value_dehydration_or_shock_787051000000103) %>% filter(flucats_template==1)
 
 
 step <- c("Total number of unique patients: ", "Total number of encounters over the time period: ")
 
 attrition <- data.frame(step) %>% 
   mutate(numbers = case_when(step == "Total number of unique patients: " ~ length(unique(df$patient_id)),
-                           step == "Total number of encounters over the time period: " ~ nrow(df)))
+                             step == "Total number of encounters over the time period: " ~ nrow(df)))
 
 # round all values in attrition 'numbers' column to the nearest 10
 attrition$numbers <- round(attrition$numbers, -1)
@@ -29,7 +29,7 @@ rm(attrition)
 df$encounter_id <- 1:nrow(df)
 
 histogram_age <- qplot(
-  df$age,
+  df$age_band,
   main = "Age distribution of cases",
   geom = "histogram",
   binwidth = 5,
@@ -69,63 +69,85 @@ plot(flucats_week)
 dev.off()
 library(purrr)
 
-# for each column that starts with flucats_question but doesnt end in numeric_value print the unique values
-df %>% 
-  select(starts_with("flucats_question")) %>%
-  select(-ends_with("numeric_value"))%>%
-  map(~unique(.x))%>% 
-  map(~print(.x))
+# for each column that starts with flucats_question but doesnt end in numeric_value print the 
+# unique values
+# df %>% 
+#  select(starts_with("flucats_question")) %>%
+# select(-ends_with("numeric_value"))%>%
+#  map(~unique(.x))%>% 
+#  map(~print(.x))
 
 
-df$flucats_question_35_code <- as.integer(df$flucats_question_35_code)
-df$flucats_question_30_86290005_code <- as.integer(df$flucats_question_30_86290005_code)
-df$flucats_question_30_431314004_code <- as.integer(df$flucats_question_30_431314004_code)
-df$flucats_question_7_code <- as.integer(df$flucats_question_7_code)
-df$flucats_question_36_code <- as.integer(df$flucats_question_36_code)
-df$flucats_question_37_162701007_code <- as.integer(df$flucats_question_37_162701007_code)
-df$flucats_question_37_162705003_code <- as.integer(df$flucats_question_37_162705003_code)
-df$flucats_question_37_268913004_code <- as.integer(df$flucats_question_37_268913004_code)
-df$flucats_question_37_162702000_code <- as.integer(df$flucats_question_37_162702000_code)
-df$flucats_question_37_162704004_code <- as.integer(df$flucats_question_37_162704004_code)
+#df$flucats_question_35_code <- as.integer(df$flucats_question_35_code)
+#df$flucats_question_30_86290005_code <- as.integer(df$flucats_question_30_86290005_code)
+#df$flucats_question_30_431314004_code <- as.integer(df$flucats_question_30_431314004_code)
+#df$flucats_question_7_code <- as.integer(df$flucats_question_7_code)
+#df$flucats_question_36_code <- as.integer(df$flucats_question_36_code)
+#df$flucats_question_37_162701007_code <- as.integer(df$flucats_question_37_162701007_code)
+#df$flucats_question_37_162705003_code <- as.integer(df$flucats_question_37_162705003_code)
+#df$flucats_question_37_268913004_code <- as.integer(df$flucats_question_37_268913004_code)
+#df$flucats_question_37_162702000_code <- as.integer(df$flucats_question_37_162702000_code)
+#df$flucats_question_37_162704004_code <- as.integer(df$flucats_question_37_162704004_code)
 
 
 #FluCATs 1: Respiratory distress
 df <- df %>% 
-  mutate(flucats_a = case_when(flucats_question_35_code == 162892000 ~ "respiratory distress",
-                               flucats_question_35_code == 162889004 ~ "normal respiration",
-                               is.na(flucats_question_35_code) ~"NA",
-                                     TRUE ~ "other"),
-         flucats_b = case_when(flucats_question_30_86290005_code == 86290005 & age <1 & flucats_question_30_86290005_numeric_value >=50 & !is.na(flucats_question_30_86290005_numeric_value)~ "increased RR",
-                               flucats_question_30_86290005_code == 86290005 & age >=1 & age <16 & flucats_question_30_86290005_numeric_value >=40 & !is.na(flucats_question_30_86290005_numeric_value)~ "increased RR",
-                               flucats_question_30_86290005_code == 86290005 & age >=16 & flucats_question_30_86290005_numeric_value >=30 & !is.na(flucats_question_30_86290005_numeric_value)~ "increased RR",
+  mutate(flucats_a = case_when(flucats_question_severe_respiratory_distress_162892000 == 1 ~ "yes", 
+                               TRUE ~ "no"),
+         flucats_b = case_when(flucats_question_respiratory_rate_162916002 ==1 ~ "yes",   
+                               
+                               age_band <1 & flucats_question_numeric_value_respiratory_rate_250810003_value >=50 & !is.na(flucats_question_numeric_value_respiratory_rate_250810003_value) ~ "yes",
+                               age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_250810003_value >=40 & !is.na(flucats_question_numeric_value_respiratory_rate_250810003_value) ~ "yes",
+                               age_band >=16 & flucats_question_numeric_value_respiratory_rate_250810003_value >=30 & !is.na(flucats_question_numeric_value_respiratory_rate_250810003_value) ~ "yes",
                                #For question 30 we also have code 431314004 (peripheral O2 saturation)
                                
-                               flucats_question_30_86290005_code == 86290005 & age <1 & flucats_question_30_86290005_numeric_value <50 & !is.na(flucats_question_30_86290005_numeric_value)~ "normal RR",
-                               flucats_question_30_86290005_code == 86290005 & age >=1 & age <16 & flucats_question_30_86290005_numeric_value <40 & !is.na(flucats_question_30_86290005_numeric_value)~ "normal RR",
-                               flucats_question_30_86290005_code == 86290005 & age >=16 & flucats_question_30_86290005_numeric_value <30 & !is.na(flucats_question_30_86290005_numeric_value)~ "normal RR",
+                               age_band <1 & flucats_question_numeric_value_respiratory_rate_271625008_value <50 & !is.na(flucats_question_numeric_value_respiratory_rate_271625008_value)~ "yes",
+                               age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_271625008_value <40 & !is.na(flucats_question_numeric_value_respiratory_rate_271625008_value)~ "yes",
+                               age_band >=16 & flucats_question_numeric_value_respiratory_rate_271625008_value <30 & !is.na(flucats_question_numeric_value_respiratory_rate_271625008_value)~ "yes",
                                
-                               flucats_question_30_86290005_code == 86290005 & age <1 & is.na(flucats_question_30_86290005_numeric_value)~ "RR code = 86290005 but RR value missing",
-                               flucats_question_30_86290005_code == 86290005 & age >=1 & age <16 & is.na(flucats_question_30_86290005_numeric_value)~ "RR code = 86290005 but RR value missing",
-                               flucats_question_30_86290005_code == 86290005 & age >=16 & is.na(flucats_question_30_86290005_numeric_value)~ "RR code = 86290005 but RR value missing"
-                               ),
-         flucats_c = case_when(flucats_question_30_431314004_code == 431314004 & flucats_question_30_431314004_numeric_value <=92 ~ "O2 saturation <=92%",
-                               flucats_question_30_431314004_code == 431314004 & flucats_question_30_431314004_numeric_value >92 ~ "O2 saturation >92%",
-                               flucats_question_30_431314004_code == 431314004 & is.na(flucats_question_30_431314004_numeric_value) ~ "code = 431314004 but value missing"),
+                               age_band <1 & flucats_question_numeric_value_respiratory_rate_86290005_value <50 & !is.na(flucats_question_numeric_value_respiratory_rate_86290005_value)~ "yes",
+                               age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_86290005_value <40 & !is.na(flucats_question_numeric_value_respiratory_rate_86290005_value)~ "yes",
+                               age_band >=16 & flucats_question_numeric_value_respiratory_rate_86290005_value <30 & !is.na(flucats_question_numeric_value_respiratory_rate_86290005_value)~ "yes",
+
+                               age_band <1 & flucats_question_numeric_value_respiratory_rate_927961000000102_value <50 & !is.na(flucats_question_numeric_value_respiratory_rate_927961000000102_value)~ "yes",
+                               age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_927961000000102_value <40 & !is.na(flucats_question_numeric_value_respiratory_rate_927961000000102_value)~ "yes",
+                               age_band >=16 & flucats_question_numeric_value_respiratory_rate_927961000000102_value <30 & !is.na(flucats_question_numeric_value_respiratory_rate_927961000000102_value)~ "yes",
+                               
+                               TRUE ~ "no"),
+         flucats_c = case_when(!is.na(flucats_question_numeric_value_oxygen_saturation_431314004_value) & flucats_question_numeric_value_oxygen_saturation_431314004_value <=92 ~ "yes",
+                               !is.na(flucats_question_numeric_value_oxygen_saturation_852651000000100_value) & flucats_question_numeric_value_oxygen_saturation_852651000000100_value <=92 ~ "yes",
+                               !is.na(flucats_question_numeric_value_oxygen_saturation_852661000000102_value) & flucats_question_numeric_value_oxygen_saturation_852661000000102_value <=92 ~ "yes",
+                               !is.na(flucats_question_numeric_value_oxygen_saturation_866661000000106_value) & flucats_question_numeric_value_oxygen_saturation_866661000000106_value <=92 ~ "yes",
+                               !is.na(flucats_question_numeric_value_oxygen_saturation_866681000000102_value) & flucats_question_numeric_value_oxygen_saturation_866681000000102_value <=92 ~ "yes",
+                               !is.na(flucats_question_numeric_value_oxygen_saturation_866701000000100_value) & flucats_question_numeric_value_oxygen_saturation_866701000000100_value <=92 ~ "yes",
+                               !is.na(flucats_question_numeric_value_oxygen_saturation_852651000000100_value) & flucats_question_numeric_value_oxygen_saturation_852651000000100_value <=92 ~ "yes",
+                               !is.na(flucats_question_numeric_value_oxygen_saturation_866721000000109_value) & flucats_question_numeric_value_oxygen_saturation_866721000000109_value <=92 ~ "yes",
+                               !is.na(flucats_question_numeric_value_oxygen_saturation_927981000000106_value) & flucats_question_numeric_value_oxygen_saturation_927981000000106_value <=92 ~ "yes",
+
+                               TRUE ~ "no"),
          
          
-         flucats_d = case_when(!is.na(flucats_question_7_code) ~ flucats_question_7_code,
-                               is.na(flucats_question_7_code) ~ flucats_question_7_code),
+         flucats_d = case_when(flucats_question_respiratory_exhaustion_1023001 == 1 ~ "yes", 
+                               flucats_question_respiratory_exhaustion_162896002 == 1 ~ "yes", 
+                               flucats_question_respiratory_exhaustion_162900004 == 1 ~ "yes", 
+                               flucats_question_respiratory_exhaustion_162901000 == 1 ~ "yes", 
+                               flucats_question_respiratory_exhaustion_207053005 == 1 ~ "yes", 
+                               flucats_question_respiratory_exhaustion_268927009 == 1 ~ "yes", 
+                               TRUE ~ "no"),
          
-         flucats_e = case_when(flucats_question_36_code == 162685008 ~ "dehydrated",
-                               flucats_question_36_code == 312450001 ~ "not dehydrated"),
+         flucats_e = case_when(flucats_question_dehydration_or_shock_162685008 == 1 ~ "yes",
+                               TRUE ~ "no"),
          
-         flucats_f = case_when(flucats_question_37_162701007_code == 162701007 ~ "fully conscious",
-                               flucats_question_37_162705003_code == 162705003 ~ "semiconscious",
-                               flucats_question_37_268913004_code == 268913004 ~ "unconscious/comatose",
-                               flucats_question_37_162702000_code == 162702000 ~ "162702000",
-                               flucats_question_37_162704004_code == 162704004 ~ "162704004",
-                               TRUE ~ "NA"))
-         
+         flucats_f = case_when(flucats_question_altered_conscious_level_162702000 ==1 ~ "yes",
+                               flucats_question_altered_conscious_level_162704004 ==1 ~ "yes",
+                               flucats_question_altered_conscious_level_162705003 ==1 ~ "yes",
+                               flucats_question_altered_conscious_level_268913004 ==1 ~ "yes",
+                               TRUE ~ "no"),
+                               
+         flucats_g = case_when(flucats_question_causing_clinical_concern_162666005 ==1 ~ "yes",
+                               !is.na(flucats_question_clinical_concern_note_37331000000100) ~ "yes",
+                               TRUE ~ "no"))
+
 
 
 sex <- df[!duplicated(df$patient_id),]$sex
@@ -155,6 +177,9 @@ flucat_e_table <- round(flucat_e_table, -1)
 flucat_f_table <- table(df$flucats_f)
 flucat_f_table <- round(flucat_f_table, -1)
 
+flucat_g_table <- table(df$flucats_g)
+flucat_g_table <- round(flucat_g_table, -1)
+
 
 write.csv(flucat_a_table, "output/flucat_a.csv")#moderately sensitive: specify in YAML
 write.csv(flucat_b_table, "output/flucat_b.csv")
@@ -162,6 +187,7 @@ write.csv(flucat_c_table, "output/flucat_c.csv")
 write.csv(flucat_d_table, "output/flucat_d.csv")
 write.csv(flucat_e_table, "output/flucat_e.csv")
 write.csv(flucat_f_table, "output/flucat_f.csv")
+write.csv(flucat_f_table, "output/flucat_g.csv")
 
 write.csv(sex_table, "output/sex_table.csv")
 write.csv(region_table, "output/region_table.csv")
