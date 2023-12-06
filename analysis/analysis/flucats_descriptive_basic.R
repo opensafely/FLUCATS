@@ -259,6 +259,10 @@ attrition <- data.frame(step) %>%
   mutate(numbers = case_when(step == "Total number of unique patients: " ~ length(unique(df$patient_id)),
                              step == "Total number of encounters over the time period: " ~ nrow(df)))
 
+# remove any rows in attrition where number column <=7
+attrition <- attrition %>% 
+  filter(numbers > 7)
+
 # round all values in attrition 'numbers' column to the nearest 10
 attrition$numbers <- round(attrition$numbers, -1)
 
@@ -271,33 +275,70 @@ rm(attrition)
 #Generate an encounter ID for each row of the data (assuming that there is no duplication of rows)
 df$encounter_id <- 1:nrow(df)
 
-histogram_age <- ggplot(df, aes(x = age_band)) +
-  geom_histogram(stat = "count", aes(y = ..count..), fill = "blue", color = "red", alpha = 0.2) +
-  labs(title = "Age Distribution of Cases", x = "Age Band", y = "Count") +
+
+# Plot age band counts
+# Step 1: Aggregate the data
+age_band_counts <- df %>%
+  count(age_band)
+
+# Step 2: Filter out age bands with counts <= 7
+filtered_age_band_counts <- age_band_counts %>%
+  filter(n > 7)
+
+# Step 3: Round counts of remaining age bands to the nearest 5
+filtered_age_band_counts$n_rounded <- round(filtered_age_band_counts$n / 5) * 5
+
+# Step 4: Plot the histogram with the filtered and rounded data
+histogram_age <- ggplot(filtered_age_band_counts, aes(x = age_band, y = n_rounded)) +
+  geom_bar(stat = "identity", fill = "blue", color = "red", alpha = 0.2) +
+  labs(title = "Age Distribution of Cases", x = "Age Band", y = "Rounded Count") +
   theme(plot.title = element_text(color = "black", size = 14, face = "bold"))
 
+# Step 5: Save the plot and underlaying data
 png(filename="output/results/age_hist.png")#moderately sensitive: specify in YAML
 plot(histogram_age)
 dev.off()
 
+# drop the non-rounded column
+filtered_age_band_counts <- filtered_age_band_counts %>%
+  select(-n)
+write.csv(filtered_age_band_counts, "output/results/age_hist.csv")#moderately sensitive: specify in YAML
+
 # convert flucats_template_date to date format
 df$flucats_template_date <- as.Date(df$flucats_template_date, format = "%Y-%m-%d")
 
-#Plot weekly distribution of FLU-CATs encounters
+# Step 1: Aggregate the data by week
 df <- df %>% 
-  mutate(template_week = week(flucats_template_date))
+  mutate(template_week = week(ymd(flucats_template_date)))
 
+week_counts <- df %>%
+  count(template_week)
 
-flucats_week <- ggplot(df, aes(x = template_week)) +
-  geom_bar(fill = I("blue"),
-           col = I("red"),
-           alpha = I(.2)) + xlab("Week number (of calendar year)") + labs(title = "Week number (of calendar year)") +
-  theme(plot.title = element_text(color = "black", size = 14, face = "bold")) +
-  theme(plot.title = element_text(hjust = 0.5))
+# Step 2: Filter out weeks with counts <= 7
+filtered_week_counts <- week_counts %>%
+  filter(n > 7)
 
-png(filename="output/results/weekly_template.png")#moderately sensitive: specify in YAML
+# Step 3: Round counts of remaining weeks to the nearest 5
+filtered_week_counts$n_rounded <- round(filtered_week_counts$n / 5) * 5
+
+# Step 4: Plot the histogram with the filtered and rounded data
+flucats_week <- ggplot(filtered_week_counts, aes(x = template_week, y = n_rounded)) +
+  geom_bar(stat = "identity", fill = "blue", color = "red", alpha = 0.2) +
+  xlab("Week number (of calendar year)") +
+  ylab("Count") +
+  labs(title = "Week number (of calendar year)") +
+  theme(plot.title = element_text(color = "black", size = 14, face = "bold"))
+
+# Save the plot
+png(filename="output/results/weekly_template.png")
 plot(flucats_week)
 dev.off()
+
+# Step 5: Output the histogram data as a table
+filtered_week_counts <- filtered_week_counts %>%
+  select(-n)
+write.csv(filtered_week_counts, "output/results/weekly_template.csv", row.names = FALSE)
+
 library(purrr)
 
 # for each column that starts with flucats_question but doesnt end in numeric_value print the 
@@ -384,32 +425,50 @@ df <- df %>%
 sex <- df[!duplicated(df$patient_id),]$sex
 region <- df[!duplicated(df$patient_id),]$region
 
-sex_table <- table(sex)
-sex_table <- round(sex_table, -1)
+sex_table <- as.data.frame(table(sex))
+sex_table <- sex_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-region_table <- table(region)
-region_table <- round(region_table, -1)
+region_table <- as.data.frame(table(region))
+region_table <- region_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_a_table <- table(df$flucats_a)
-flucat_a_table <- round(flucat_a_table, -1)
+flucat_a_table <- as.data.frame(table(df$flucats_a))
+flucat_a_table <- flucat_a_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_b_table <- table(df$flucats_b)
-flucat_b_table <- round(flucat_b_table, -1)
+flucat_b_table <- as.data.frame(table(df$flucats_b))
+flucat_b_table <- flucat_b_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_c_table <- table(df$flucats_c)
-flucat_c_table <- round(flucat_c_table, -1)
+flucat_c_table <- as.data.frame(table(df$flucats_c))
+flucat_c_table <- flucat_c_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_d_table <- table(df$flucats_d)
-flucat_d_table <- round(flucat_d_table, -1)
+flucat_d_table <- as.data.frame(table(df$flucats_d))
+flucat_d_table <- flucat_d_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_e_table <- table(df$flucats_e)
-flucat_e_table <- round(flucat_e_table, -1)
+flucat_e_table <- as.data.frame(table(df$flucats_e))
+flucat_e_table <- flucat_e_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_f_table <- table(df$flucats_f)
-flucat_f_table <- round(flucat_f_table, -1)
+flucat_f_table <- as.data.frame(table(df$flucats_f))
+flucat_f_table <- flucat_f_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_g_table <- table(df$flucats_g)
-flucat_g_table <- round(flucat_g_table, -1)
+flucat_g_table <- as.data.frame(table(df$flucats_g))
+flucat_g_table <- flucat_g_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
 
 write.csv(flucat_a_table, "output/results/flucat_a.csv")#moderately sensitive: specify in YAML
