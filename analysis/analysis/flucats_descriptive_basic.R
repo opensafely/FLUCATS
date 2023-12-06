@@ -5,9 +5,10 @@ library(dplyr)
 library(ggplot2)
 library(lubridate)
 
+dir.create("output/results", showWarnings = FALSE)
 
 #Import the 16 Flu-CATs monthly files
-df <- read_csv("output/joined/full/input_all.csv") %>% select(patient_id, date, flucats_template, flucats_template_date, flucats_template_occurences, sex, practice, bmi, bmi_date_measured, bmi_primis, asthma, addisons_hypoadrenalism, chronic_heart_disease, chronic_respiratory_disease, ckd_primis_stage, renal_disease, ckd35_or_renal_disease, ckd_os, liver_disease, pregnant, diabetes, gestational_diabetes, obesity, mental_illness, neurological_disorder, hypertension, pneumonia, immunosuppression_disorder, immunosuppression_chemo, immunosuppression_medication, splenic_disease, shield, nonshield, statins, hospital_admission, hospital_admission_date, hospital_admission_code, icu_admission, icu_admission_code, icu_admission_date, icu_admission_code_date, died_any_pc, covadm1_dat, covadm2_dat, pfd1rx_dat, pfd2rx_dat, azd1rx_dat, azd2rx_dat, covrx1_dat, covrx2_dat, covadm1, covadm2, pfd1rx, pfd2rx, azd1rx, azd2rx, covrx1, covrx2, eth_notgiptref_dat, eth_notstated_dat, eth_norecord_dat, ethnicity_opensafely, ethnicity, non_eth2001_dat, age_band, homeless, residential_care, region, imdQ5, flucats_question_altered_conscious_level_162701007, flucats_question_altered_conscious_level_162702000, flucats_question_altered_conscious_level_162704004, flucats_question_altered_conscious_level_162705003, flucats_question_altered_conscious_level_268913004, flucats_question_blood_pressure_163020007,  flucats_question_blood_pressure_163021006, flucats_question_blood_pressure_163025002, flucats_question_blood_pressure_163026001, flucats_question_blood_pressure_163027005, flucats_question_blood_pressure_163028000, flucats_question_blood_pressure_163029008, flucats_question_blood_pressure_163030003, flucats_question_blood_pressure_163031004, flucats_question_blood_pressure_163032006, flucats_question_blood_pressure_163036009, flucats_question_blood_pressure_163037000, flucats_question_blood_pressure_163053002, flucats_question_blood_pressure_170581003, flucats_question_blood_pressure_170582005, flucats_question_blood_pressure_274283008, flucats_question_blood_pressure_310357009, flucats_question_severe_respiratory_distress_162892000, flucats_question_respiratory_exhaustion_1023001, flucats_question_respiratory_exhaustion_162889004, flucats_question_respiratory_exhaustion_162896002, flucats_question_respiratory_exhaustion_162900004, flucats_question_respiratory_exhaustion_162901000, flucats_question_respiratory_exhaustion_207053005, flucats_question_respiratory_exhaustion_268927009, flucats_question_who_performance_score_129072006, flucats_question_who_performance_score_160680006, flucats_question_who_performance_score_160684002, flucats_question_who_performance_score_160685001, flucats_question_heart_rate_162986007, flucats_question_heart_rate_162990009, flucats_question_heart_rate_162992001, flucats_question_respiratory_rate_162913005, flucats_question_respiratory_rate_162914004, flucats_question_respiratory_rate_162915003, flucats_question_respiratory_rate_162916002, flucats_question_inspired_oxygen_427081008, flucats_question_inspired_oxygen_698833004, flucats_question_numeric_value_heart_rate_422119006_value, flucats_question_numeric_value_heart_rate_422119006, flucats_question_numeric_value_heart_rate_429525003_value, flucats_question_numeric_value_heart_rate_429525003, flucats_question_numeric_value_heart_rate_429614003_value, flucats_question_numeric_value_heart_rate_429614003, flucats_question_numeric_value_heart_rate_78564009_value, flucats_question_numeric_value_heart_rate_78564009, flucats_question_numeric_value_heart_rate_843941000000100_value, flucats_question_numeric_value_heart_rate_843941000000100, flucats_question_numeric_value_respiratory_rate_250810003_value, flucats_question_numeric_value_respiratory_rate_250810003, flucats_question_numeric_value_respiratory_rate_271625008_value, flucats_question_numeric_value_respiratory_rate_271625008, flucats_question_numeric_value_respiratory_rate_86290005_value, flucats_question_numeric_value_respiratory_rate_86290005, flucats_question_numeric_value_respiratory_rate_927961000000102_value, flucats_question_numeric_value_respiratory_rate_927961000000102, flucats_question_numeric_value_inspired_oxygen_427081008_value, flucats_question_numeric_value_inspired_oxygen_427081008, flucats_question_numeric_value_inspired_oxygen_698833004_value, flucats_question_numeric_value_inspired_oxygen_698833004, flucats_question_suspected_covid_1008541000000105, flucats_question_suspected_covid_1029481000000103, flucats_question_suspected_covid_1240451000000106, flucats_question_suspected_covid_1240511000000106, flucats_question_suspected_covid_1240581000000104, flucats_question_suspected_covid_1300721000000109, flucats_question_suspected_covid_1300731000000106, flucats_question_suspected_covid_1321301000000101, flucats_question_suspected_covid_1322781000000102, flucats_question_suspected_covid_1324601000000106, flucats_question_suspected_covid_204351000000100, flucats_question_suspected_covid_50321000237103, flucats_question_suspected_covid_51631000237101, flucats_question_suspected_covid_817111000000102, flucats_question_suspected_covid_871553007, flucats_question_suspected_covid_871555000, flucats_question_suspected_covid_871556004, flucats_question_suspected_covid_871557008, flucats_question_suspected_covid_871558003, flucats_question_suspected_covid_871559006, flucats_question_suspected_covid_871560001, flucats_question_suspected_covid_871562009, flucats_question_suspected_covid_906711000000107, flucats_question_suspected_covid_906721000000101, flucats_question_suspected_covid_933791000000101, flucats_question_probable_covid_1240581000000104, flucats_question_probable_covid_1300721000000109, flucats_question_probable_covid_1300731000000106, flucats_question_probable_covid_1321301000000101, flucats_question_probable_covid_1322781000000102, flucats_question_probable_covid_1324601000000106, flucats_question_oxygen_saturation_1259025002, flucats_question_oxygen_saturation_1363901000000105, flucats_question_oxygen_saturation_149761000000108, flucats_question_oxygen_saturation_162737002, flucats_question_oxygen_saturation_162742005, flucats_question_oxygen_saturation_182713008, flucats_question_oxygen_saturation_182714002, flucats_question_oxygen_saturation_201651000000108, flucats_question_oxygen_saturation_201661000000106, flucats_question_oxygen_saturation_240051000000102, flucats_question_oxygen_saturation_243011000000108, flucats_question_oxygen_saturation_243136002, flucats_question_oxygen_saturation_243137006, flucats_question_oxygen_saturation_243177003, flucats_question_oxygen_saturation_243178008, flucats_question_oxygen_saturation_250554003, flucats_question_oxygen_saturation_252465000, flucats_question_oxygen_saturation_252568001, flucats_question_oxygen_saturation_276732005, flucats_question_oxygen_saturation_276855002, flucats_question_oxygen_saturation_304577004, flucats_question_oxygen_saturation_315041000, flucats_question_oxygen_saturation_371907003, flucats_question_oxygen_saturation_371908008, flucats_question_oxygen_saturation_391893003, flucats_question_oxygen_saturation_397815001, flucats_question_oxygen_saturation_397867002, flucats_question_oxygen_saturation_397957008, flucats_question_oxygen_saturation_398077001, flucats_question_oxygen_saturation_398287006, flucats_question_oxygen_saturation_426990007, flucats_question_oxygen_saturation_427064004, flucats_question_oxygen_saturation_429253002, flucats_question_oxygen_saturation_57485005, flucats_question_oxygen_saturation_699463009, flucats_question_oxygen_saturation_71786000, flucats_question_oxygen_saturation_788538002, flucats_question_oxygen_saturation_802801000000109, flucats_question_oxygen_saturation_861341000000108, flucats_question_oxygen_saturation_870533002, flucats_question_temperature_164300005, flucats_question_temperature_164303007, flucats_question_temperature_315632006, flucats_question_numeric_value_oxygen_saturation_431314004_value, flucats_question_numeric_value_oxygen_saturation_431314004, flucats_question_numeric_value_oxygen_saturation_852651000000100_value, flucats_question_numeric_value_oxygen_saturation_852651000000100, flucats_question_numeric_value_oxygen_saturation_852661000000102_value, flucats_question_numeric_value_oxygen_saturation_852661000000102, flucats_question_numeric_value_oxygen_saturation_866661000000106_value, flucats_question_numeric_value_oxygen_saturation_866661000000106, flucats_question_numeric_value_oxygen_saturation_866681000000102_value, flucats_question_numeric_value_oxygen_saturation_866681000000102, flucats_question_numeric_value_oxygen_saturation_866701000000100_value, flucats_question_numeric_value_oxygen_saturation_866701000000100, flucats_question_numeric_value_oxygen_saturation_866721000000109_value, flucats_question_numeric_value_oxygen_saturation_866721000000109, flucats_question_numeric_value_oxygen_saturation_927981000000106_value, flucats_question_numeric_value_oxygen_saturation_927981000000106, flucats_question_numeric_value_temperature_703421000_value, flucats_question_numeric_value_temperature_703421000, flucats_question_causing_clinical_concern_162666005, flucats_question_clinical_concern_note_37331000000100, flucats_question_dehydration_or_shock_15527001, flucats_question_dehydration_or_shock_162685008, flucats_question_dehydration_or_shock_312450001, flucats_question_dehydration_or_shock_787041000000101, flucats_question_dehydration_or_shock_787051000000103, flucats_question_dehydration_or_shock_894921000000102, flucats_question_numeric_value_dehydration_or_shock_15527001_value, flucats_question_numeric_value_dehydration_or_shock_15527001, flucats_question_numeric_value_dehydration_or_shock_787041000000101_value, flucats_question_numeric_value_dehydration_or_shock_787041000000101, flucats_question_numeric_value_dehydration_or_shock_787051000000103_value, flucats_question_numeric_value_dehydration_or_shock_787051000000103) %>% filter(flucats_template==1)
+df <- read_csv("output/joined/full/input_all.csv", guess_max=10000) 
 
 
 step <- c("Total number of unique patients: ", "Total number of encounters over the time period: ")
@@ -16,57 +17,86 @@ attrition <- data.frame(step) %>%
   mutate(numbers = case_when(step == "Total number of unique patients: " ~ length(unique(df$patient_id)),
                              step == "Total number of encounters over the time period: " ~ nrow(df)))
 
+# remove any rows in attrition where number column <=7
+attrition <- attrition %>% 
+  filter(numbers > 7)
+
 # round all values in attrition 'numbers' column to the nearest 10
 attrition$numbers <- round(attrition$numbers, -1)
 
 
 #Save output
-write.csv(attrition, "output/attrition.csv")#moderately sensitive: specify in YAML
+write.csv(attrition, "output/results/attrition.csv")#moderately sensitive: specify in YAML
 rm(attrition)
 
 ##Reporting numbers by encounter NOT by patient as each encounter is considered a unique episode
 #Generate an encounter ID for each row of the data (assuming that there is no duplication of rows)
 df$encounter_id <- 1:nrow(df)
 
-histogram_age <- qplot(
-  df$age_band,
-  main = "Age distribution of cases",
-  geom = "histogram",
-  binwidth = 5,
-  xlab = "Age (years)",
-  ylab = "Frequency",
-  fill = I("blue"),
-  col = I("red"),
-  alpha = I(.2),
-  xlim = c(0, 120)
-)
 
-histogram_age <- histogram_age + labs(title = "Age distribution of cases") + 
-  theme(plot.title = element_text(color = "black", size = 14, face = "bold")) +
-  theme(plot.title = element_text(hjust = 0.5))
+# Plot age band counts
+# Step 1: Aggregate the data
+age_band_counts <- df %>%
+  count(age_band)
 
-png(filename="output/age_hist.png")#moderately sensitive: specify in YAML
+# Step 2: Filter out age bands with counts <= 7
+filtered_age_band_counts <- age_band_counts %>%
+  filter(n > 7)
+
+# Step 3: Round counts of remaining age bands to the nearest 5
+filtered_age_band_counts$n_rounded <- round(filtered_age_band_counts$n / 5) * 5
+
+# Step 4: Plot the histogram with the filtered and rounded data
+histogram_age <- ggplot(filtered_age_band_counts, aes(x = age_band, y = n_rounded)) +
+  geom_bar(stat = "identity", fill = "blue", color = "red", alpha = 0.2) +
+  labs(title = "Age Distribution of Cases", x = "Age Band", y = "Rounded Count") +
+  theme(plot.title = element_text(color = "black", size = 14, face = "bold"))
+
+# Step 5: Save the plot and underlaying data
+png(filename="output/results/age_hist.png")#moderately sensitive: specify in YAML
 plot(histogram_age)
 dev.off()
+
+# drop the non-rounded column
+filtered_age_band_counts <- filtered_age_band_counts %>%
+  select(-n)
+write.csv(filtered_age_band_counts, "output/results/age_hist.csv")#moderately sensitive: specify in YAML
 
 # convert flucats_template_date to date format
 df$flucats_template_date <- as.Date(df$flucats_template_date, format = "%Y-%m-%d")
 
-#Plot weekly distribution of FLU-CATs encounters
+# Step 1: Aggregate the data by week
 df <- df %>% 
-  mutate(template_week = week(flucats_template_date))
+  mutate(template_week = week(ymd(flucats_template_date)))
 
+week_counts <- df %>%
+  count(template_week)
 
-flucats_week <- ggplot(df, aes(x = template_week)) +
-  geom_bar(fill = I("blue"),
-           col = I("red"),
-           alpha = I(.2)) + xlab("Week number (of calendar year)") + labs(title = "Week number (of calendar year)") +
-  theme(plot.title = element_text(color = "black", size = 14, face = "bold")) +
-  theme(plot.title = element_text(hjust = 0.5))
+# Step 2: Filter out weeks with counts <= 7
+filtered_week_counts <- week_counts %>%
+  filter(n > 7)
 
-png(filename="output/weekly_template.png")#moderately sensitive: specify in YAML
+# Step 3: Round counts of remaining weeks to the nearest 5
+filtered_week_counts$n_rounded <- round(filtered_week_counts$n / 5) * 5
+
+# Step 4: Plot the histogram with the filtered and rounded data
+flucats_week <- ggplot(filtered_week_counts, aes(x = template_week, y = n_rounded)) +
+  geom_bar(stat = "identity", fill = "blue", color = "red", alpha = 0.2) +
+  xlab("Week number (of calendar year)") +
+  ylab("Count") +
+  labs(title = "Week number (of calendar year)") +
+  theme(plot.title = element_text(color = "black", size = 14, face = "bold"))
+
+# Save the plot
+png(filename="output/results/weekly_template.png")
 plot(flucats_week)
 dev.off()
+
+# Step 5: Output the histogram data as a table
+filtered_week_counts <- filtered_week_counts %>%
+  select(-n)
+write.csv(filtered_week_counts, "output/results/weekly_template.csv", row.names = FALSE)
+
 library(purrr)
 
 # for each column that starts with flucats_question but doesnt end in numeric_value print the 
@@ -153,41 +183,59 @@ df <- df %>%
 sex <- df[!duplicated(df$patient_id),]$sex
 region <- df[!duplicated(df$patient_id),]$region
 
-sex_table <- table(sex)
-sex_table <- round(sex_table, -1)
+sex_table <- as.data.frame(table(sex))
+sex_table <- sex_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-region_table <- table(region)
-region_table <- round(region_table, -1)
+region_table <- as.data.frame(table(region))
+region_table <- region_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_a_table <- table(df$flucats_a)
-flucat_a_table <- round(flucat_a_table, -1)
+flucat_a_table <- as.data.frame(table(df$flucats_a))
+flucat_a_table <- flucat_a_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_b_table <- table(df$flucats_b)
-flucat_b_table <- round(flucat_b_table, -1)
+flucat_b_table <- as.data.frame(table(df$flucats_b))
+flucat_b_table <- flucat_b_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_c_table <- table(df$flucats_c)
-flucat_c_table <- round(flucat_c_table, -1)
+flucat_c_table <- as.data.frame(table(df$flucats_c))
+flucat_c_table <- flucat_c_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_d_table <- table(df$flucats_d)
-flucat_d_table <- round(flucat_d_table, -1)
+flucat_d_table <- as.data.frame(table(df$flucats_d))
+flucat_d_table <- flucat_d_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_e_table <- table(df$flucats_e)
-flucat_e_table <- round(flucat_e_table, -1)
+flucat_e_table <- as.data.frame(table(df$flucats_e))
+flucat_e_table <- flucat_e_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_f_table <- table(df$flucats_f)
-flucat_f_table <- round(flucat_f_table, -1)
+flucat_f_table <- as.data.frame(table(df$flucats_f))
+flucat_f_table <- flucat_f_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
-flucat_g_table <- table(df$flucats_g)
-flucat_g_table <- round(flucat_g_table, -1)
+flucat_g_table <- as.data.frame(table(df$flucats_g))
+flucat_g_table <- flucat_g_table %>%
+  filter(Freq > 7) %>%
+  mutate(Freq = round(Freq, -1))
 
 
-write.csv(flucat_a_table, "output/flucat_a.csv")#moderately sensitive: specify in YAML
-write.csv(flucat_b_table, "output/flucat_b.csv")
-write.csv(flucat_c_table, "output/flucat_c.csv")
-write.csv(flucat_d_table, "output/flucat_d.csv")
-write.csv(flucat_e_table, "output/flucat_e.csv")
-write.csv(flucat_f_table, "output/flucat_f.csv")
-write.csv(flucat_f_table, "output/flucat_g.csv")
+write.csv(flucat_a_table, "output/results/flucat_a.csv")#moderately sensitive: specify in YAML
+write.csv(flucat_b_table, "output/results/flucat_b.csv")
+write.csv(flucat_c_table, "output/results/flucat_c.csv")
+write.csv(flucat_d_table, "output/results/flucat_d.csv")
+write.csv(flucat_e_table, "output/results/flucat_e.csv")
+write.csv(flucat_f_table, "output/results/flucat_f.csv")
+write.csv(flucat_f_table, "output/results/flucat_g.csv")
 
-write.csv(sex_table, "output/sex_table.csv")
-write.csv(region_table, "output/region_table.csv")
+write.csv(sex_table, "output/results/sex_table.csv")
+write.csv(region_table, "output/results/region_table.csv")
