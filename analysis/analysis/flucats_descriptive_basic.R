@@ -5,6 +5,7 @@ library(dplyr)
 library(ggplot2)
 library(lubridate)
 
+dir.create("output/results", showWarnings = FALSE)
 
 #Import the 16 Flu-CATs monthly files
 df <- read_csv("output/joined/full/input_all.csv", guess_max=10000) %>% 
@@ -263,7 +264,7 @@ attrition$numbers <- round(attrition$numbers, -1)
 
 
 #Save output
-write.csv(attrition, "output/attrition.csv")#moderately sensitive: specify in YAML
+write.csv(attrition, "output/results/attrition.csv")#moderately sensitive: specify in YAML
 rm(attrition)
 
 ##Reporting numbers by encounter NOT by patient as each encounter is considered a unique episode
@@ -275,7 +276,7 @@ histogram_age <- ggplot(df, aes(x = age_band)) +
   labs(title = "Age Distribution of Cases", x = "Age Band", y = "Count") +
   theme(plot.title = element_text(color = "black", size = 14, face = "bold"))
 
-png(filename="output/age_hist.png")#moderately sensitive: specify in YAML
+png(filename="output/results/age_hist.png")#moderately sensitive: specify in YAML
 plot(histogram_age)
 dev.off()
 
@@ -294,7 +295,7 @@ flucats_week <- ggplot(df, aes(x = template_week)) +
   theme(plot.title = element_text(color = "black", size = 14, face = "bold")) +
   theme(plot.title = element_text(hjust = 0.5))
 
-png(filename="output/weekly_template.png")#moderately sensitive: specify in YAML
+png(filename="output/results/weekly_template.png")#moderately sensitive: specify in YAML
 plot(flucats_week)
 dev.off()
 library(purrr)
@@ -411,13 +412,13 @@ flucat_g_table <- table(df$flucats_g)
 flucat_g_table <- round(flucat_g_table, -1)
 
 
-write.csv(flucat_a_table, "output/flucat_a.csv")#moderately sensitive: specify in YAML
-write.csv(flucat_b_table, "output/flucat_b.csv")
-write.csv(flucat_c_table, "output/flucat_c.csv")
-write.csv(flucat_d_table, "output/flucat_d.csv")
-write.csv(flucat_e_table, "output/flucat_e.csv")
-write.csv(flucat_f_table, "output/flucat_f.csv")
-write.csv(flucat_f_table, "output/flucat_g.csv")
+write.csv(flucat_a_table, "output/results/flucat_a.csv")#moderately sensitive: specify in YAML
+write.csv(flucat_b_table, "output/results/flucat_b.csv")
+write.csv(flucat_c_table, "output/results/flucat_c.csv")
+write.csv(flucat_d_table, "output/results/flucat_d.csv")
+write.csv(flucat_e_table, "output/results/flucat_e.csv")
+write.csv(flucat_f_table, "output/results/flucat_f.csv")
+write.csv(flucat_f_table, "output/results/flucat_g.csv")
 
-write.csv(sex_table, "output/sex_table.csv")
-write.csv(region_table, "output/region_table.csv")
+write.csv(sex_table, "output/results/sex_table.csv")
+write.csv(region_table, "output/results/region_table.csv")

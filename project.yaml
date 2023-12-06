@@ -1688,12 +1688,12 @@ actions:
     needs: [combined_input_files]
     outputs:
       moderately_sensitive:
-        attrition: output/attrition.csv
-        histogram_age: output/age_hist.png
-        date_plot: output/weekly_template.png
-        flucat_tables: output/flucat*.csv
-        sex_table: output/sex_table.csv
-        region_table: output/region_table.csv
+        attrition: output/results/attrition.csv
+        histogram_age: output/results/age_hist.png
+        date_plot: output/results/weekly_template.png
+        flucat_tables: output/results/flucat*.csv
+        sex_table: output/results/sex_table.csv
+        region_table: output/results/region_table.csv
 
 
   
