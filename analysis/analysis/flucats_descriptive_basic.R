@@ -270,22 +270,10 @@ rm(attrition)
 #Generate an encounter ID for each row of the data (assuming that there is no duplication of rows)
 df$encounter_id <- 1:nrow(df)
 
-histogram_age <- qplot(
-  df$age_band,
-  main = "Age distribution of cases",
-  geom = "histogram",
-  binwidth = 5,
-  xlab = "Age (years)",
-  ylab = "Frequency",
-  fill = I("blue"),
-  col = I("red"),
-  alpha = I(.2),
-  xlim = c(0, 120)
-)
-
-histogram_age <- histogram_age + labs(title = "Age distribution of cases") + 
-  theme(plot.title = element_text(color = "black", size = 14, face = "bold")) +
-  theme(plot.title = element_text(hjust = 0.5))
+histogram_age <- ggplot(df, aes(x = age_band)) +
+  geom_histogram(stat = "count", aes(y = ..count..), fill = "blue", color = "red", alpha = 0.2) +
+  labs(title = "Age Distribution of Cases", x = "Age Band", y = "Count") +
+  theme(plot.title = element_text(color = "black", size = 14, face = "bold"))
 
 png(filename="output/age_hist.png")#moderately sensitive: specify in YAML
 plot(histogram_age)
