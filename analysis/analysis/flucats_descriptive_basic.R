@@ -126,22 +126,22 @@ df <- df %>%
                                TRUE ~ "no"),
          flucats_b = case_when(flucats_question_respiratory_rate_162916002 ==1 ~ "yes",   
                                
-                               age_band <1 & flucats_question_numeric_value_respiratory_rate_250810003_value >=50 & flucats_question_numeric_value_respiratory_rate_250810003_value > 0 ~ "yes",
-                               age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_250810003_value >=40 & flucats_question_numeric_value_respiratory_rate_250810003_value > 0 ~ "yes",
-                               age_band >=16 & flucats_question_numeric_value_respiratory_rate_250810003_value >=30 & flucats_question_numeric_value_respiratory_rate_250810003_value > 0 ~ "yes",
+                              #  age_band <1 & flucats_question_numeric_value_respiratory_rate_250810003_value >=50 & flucats_question_numeric_value_respiratory_rate_250810003_value > 0 ~ "yes",
+                              #  age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_250810003_value >=40 & flucats_question_numeric_value_respiratory_rate_250810003_value > 0 ~ "yes",
+                               age_band != "missing" & flucats_question_numeric_value_respiratory_rate_250810003_value >=30 & flucats_question_numeric_value_respiratory_rate_250810003_value > 0 ~ "yes",
                                #For question 30 we also have code 431314004 (peripheral O2 saturation)
                                
-                               age_band <1 & flucats_question_numeric_value_respiratory_rate_271625008_value <50 & flucats_question_numeric_value_respiratory_rate_271625008_value > 0 ~ "yes",
-                               age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_271625008_value <40 & flucats_question_numeric_value_respiratory_rate_271625008_value > 0 ~ "yes",
-                               age_band >=16 & flucats_question_numeric_value_respiratory_rate_271625008_value <30 & flucats_question_numeric_value_respiratory_rate_271625008_value > 0 ~ "yes",
+                              #  age_band <1 & flucats_question_numeric_value_respiratory_rate_271625008_value <50 & flucats_question_numeric_value_respiratory_rate_271625008_value > 0 ~ "yes",
+                              #  age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_271625008_value <40 & flucats_question_numeric_value_respiratory_rate_271625008_value > 0 ~ "yes",
+                               age_band != "missing" & flucats_question_numeric_value_respiratory_rate_271625008_value <30 & flucats_question_numeric_value_respiratory_rate_271625008_value > 0 ~ "yes",
                                
-                               age_band <1 & flucats_question_numeric_value_respiratory_rate_86290005_value <50 & flucats_question_numeric_value_respiratory_rate_86290005_value > 0 ~ "yes",
-                               age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_86290005_value <40 & flucats_question_numeric_value_respiratory_rate_86290005_value > 0 ~ "yes",
-                               age_band >=16 & flucats_question_numeric_value_respiratory_rate_86290005_value <30 & flucats_question_numeric_value_respiratory_rate_86290005_value > 0 ~ "yes",
+                              #  age_band <1 & flucats_question_numeric_value_respiratory_rate_86290005_value <50 & flucats_question_numeric_value_respiratory_rate_86290005_value > 0 ~ "yes",
+                              #  age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_86290005_value <40 & flucats_question_numeric_value_respiratory_rate_86290005_value > 0 ~ "yes",
+                               age_band != "missing" & flucats_question_numeric_value_respiratory_rate_86290005_value <30 & flucats_question_numeric_value_respiratory_rate_86290005_value > 0 ~ "yes",
 
-                               age_band <1 & flucats_question_numeric_value_respiratory_rate_927961000000102_value <50 & flucats_question_numeric_value_respiratory_rate_927961000000102_value > 0 ~ "yes",
-                               age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_927961000000102_value <40 & flucats_question_numeric_value_respiratory_rate_927961000000102_value > 0 ~ "yes",
-                               age_band >=16 & flucats_question_numeric_value_respiratory_rate_927961000000102_value <30 & flucats_question_numeric_value_respiratory_rate_927961000000102_value > 0 ~ "yes",
+                              #  age_band <1 & flucats_question_numeric_value_respiratory_rate_927961000000102_value <50 & flucats_question_numeric_value_respiratory_rate_927961000000102_value > 0 ~ "yes",
+                              #  age_band >=1 & age_band <16 & flucats_question_numeric_value_respiratory_rate_927961000000102_value <40 & flucats_question_numeric_value_respiratory_rate_927961000000102_value > 0 ~ "yes",
+                               age_band != "missing" & flucats_question_numeric_value_respiratory_rate_927961000000102_value <30 & flucats_question_numeric_value_respiratory_rate_927961000000102_value > 0 ~ "yes",
                                
                                TRUE ~ "no"),
          flucats_c = case_when(flucats_question_numeric_value_oxygen_saturation_431314004_value > 0 & flucats_question_numeric_value_oxygen_saturation_431314004_value <=92 ~ "yes",
