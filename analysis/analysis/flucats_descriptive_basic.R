@@ -235,7 +235,7 @@ write.csv(flucat_c_table, "output/results/flucat_c.csv")
 write.csv(flucat_d_table, "output/results/flucat_d.csv")
 write.csv(flucat_e_table, "output/results/flucat_e.csv")
 write.csv(flucat_f_table, "output/results/flucat_f.csv")
-write.csv(flucat_f_table, "output/results/flucat_g.csv")
+write.csv(flucat_g_table, "output/results/flucat_g.csv")
 
 write.csv(sex_table, "output/results/sex_table.csv")
 write.csv(region_table, "output/results/region_table.csv")
