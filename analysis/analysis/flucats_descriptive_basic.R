@@ -43,8 +43,8 @@ age_band_counts <- df %>%
 filtered_age_band_counts <- age_band_counts %>%
   filter(n > 7)
 
-# Step 3: Round counts of remaining age bands to the nearest 5
-filtered_age_band_counts$n_rounded <- round(filtered_age_band_counts$n / 5) * 5
+# Step 3: Round counts of remaining age bands to the nearest 10
+filtered_age_band_counts$n_rounded <- round(filtered_age_band_counts$n / 10) * 10
 
 # Step 4: Plot the histogram with the filtered and rounded data
 histogram_age <- ggplot(filtered_age_band_counts, aes(x = age_band, y = n_rounded)) +
@@ -76,8 +76,8 @@ week_counts <- df %>%
 filtered_week_counts <- week_counts %>%
   filter(n > 7)
 
-# Step 3: Round counts of remaining weeks to the nearest 5
-filtered_week_counts$n_rounded <- round(filtered_week_counts$n / 5) * 5
+# Step 3: Round counts of remaining weeks to the nearest 10
+filtered_week_counts$n_rounded <- round(filtered_week_counts$n / 10) * 10
 
 # Step 4: Plot the histogram with the filtered and rounded data
 flucats_week <- ggplot(filtered_week_counts, aes(x = template_week, y = n_rounded)) +
@@ -235,7 +235,7 @@ write.csv(flucat_c_table, "output/results/flucat_c.csv")
 write.csv(flucat_d_table, "output/results/flucat_d.csv")
 write.csv(flucat_e_table, "output/results/flucat_e.csv")
 write.csv(flucat_f_table, "output/results/flucat_f.csv")
-write.csv(flucat_f_table, "output/results/flucat_g.csv")
+write.csv(flucat_g_table, "output/results/flucat_g.csv")
 
 write.csv(sex_table, "output/results/sex_table.csv")
 write.csv(region_table, "output/results/region_table.csv")
