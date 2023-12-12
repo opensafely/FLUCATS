@@ -43,8 +43,8 @@ age_band_counts <- df %>%
 filtered_age_band_counts <- age_band_counts %>%
   filter(n > 7)
 
-# Step 3: Round counts of remaining age bands to the nearest 5
-filtered_age_band_counts$n_rounded <- round(filtered_age_band_counts$n / 5) * 5
+# Step 3: Round counts of remaining age bands to the nearest 10
+filtered_age_band_counts$n_rounded <- round(filtered_age_band_counts$n / 10) * 10
 
 # Step 4: Plot the histogram with the filtered and rounded data
 histogram_age <- ggplot(filtered_age_band_counts, aes(x = age_band, y = n_rounded)) +
@@ -76,8 +76,8 @@ week_counts <- df %>%
 filtered_week_counts <- week_counts %>%
   filter(n > 7)
 
-# Step 3: Round counts of remaining weeks to the nearest 5
-filtered_week_counts$n_rounded <- round(filtered_week_counts$n / 5) * 5
+# Step 3: Round counts of remaining weeks to the nearest 10
+filtered_week_counts$n_rounded <- round(filtered_week_counts$n / 10) * 10
 
 # Step 4: Plot the histogram with the filtered and rounded data
 flucats_week <- ggplot(filtered_week_counts, aes(x = template_week, y = n_rounded)) +
