@@ -45,8 +45,8 @@
     "opensafely-ace-inhibitor-medications.csv": {
       "id": "opensafely/ace-inhibitor-medications/2020-05-19",
       "url": "https://www.opencodelists.org/codelist/opensafely/ace-inhibitor-medications/2020-05-19/",
-      "downloaded_at": "2023-11-17 09:59:08.060765Z",
-      "sha": "643c61c5ab865a7c91ee1e8ee3b8fc22de0abefc"
+      "downloaded_at": "2023-12-13 15:33:30.191556Z",
+      "sha": "5575c56cbd5c015a7ad344c525994e87377c6120"
     },
     "primis-covid19-vacc-uptake-bmi.csv": {
       "id": "primis-covid19-vacc-uptake/bmi/v1",
@@ -75,8 +75,8 @@
     "primis-covid19-vacc-uptake-astrxm2.csv": {
       "id": "primis-covid19-vacc-uptake/astrxm2/v1.5.3",
       "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/astrxm2/v1.5.3/",
-      "downloaded_at": "2023-11-21 09:20:18.470507Z",
-      "sha": "9614ab29a19eb4466440a7d355dccecba7b2f663"
+      "downloaded_at": "2023-12-13 15:33:31.009579Z",
+      "sha": "49551a5f436fa3ad668253b25316b45cc1cd53a9"
     },
     "primis-covid19-vacc-uptake-chd_cov.csv": {
       "id": "primis-covid19-vacc-uptake/chd_cov/v1.2.1",
@@ -111,8 +111,8 @@
     "primis-covid19-vacc-uptake-immrx.csv": {
       "id": "primis-covid19-vacc-uptake/immrx/v.1.5.3",
       "url": "https://www.opencodelists.org/codelist/primis-covid19-vacc-uptake/immrx/v.1.5.3/",
-      "downloaded_at": "2023-11-21 09:20:19.772584Z",
-      "sha": "48b035b2cc15946aa1b8f66fa2c31dc3cfdbc938"
+      "downloaded_at": "2023-12-13 15:33:32.345199Z",
+      "sha": "05865ff1837eac521f85c28fac10fda3c05d3692"
     },
     "primis-covid19-vacc-uptake-dxt_chemo_cod.csv": {
       "id": "primis-covid19-vacc-uptake/dxt_chemo_cod/v.1.5.3",
@@ -237,8 +237,8 @@
     "opensafely-statin-medication.csv": {
       "id": "opensafely/statin-medication/2020-04-20",
       "url": "https://www.opencodelists.org/codelist/opensafely/statin-medication/2020-04-20/",
-      "downloaded_at": "2023-11-17 09:59:14.912105Z",
-      "sha": "02c75fb7c4fa8ca7f0e86be819a7043707aa8768"
+      "downloaded_at": "2023-12-13 15:33:36.151000Z",
+      "sha": "5451bfb2040bf2b589f2a59c1ebd61e2670f558b"
     },
     "user-Louis-flucats-altered-conscious-level.csv": {
       "id": "user/Louis/flucats-altered-conscious-level/05a9010c",
