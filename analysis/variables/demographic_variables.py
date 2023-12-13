@@ -13,7 +13,8 @@ demographic_variables = dict(
     age_band=patients.categorised_as(
         {
             "missing": "DEFAULT",
-            "<16": """ age >= 0 AND age < 16""",
+            "<1": """ age ==0""",
+            "1-16": """ age >= 1 AND age < 16""",
             "16-19": """ age >=  16 AND age < 20""",
             "20-29": """ age >=  20 AND age < 30""",
             "30-39": """ age >=  30 AND age < 40""",
@@ -28,9 +29,10 @@ demographic_variables = dict(
             "category": {
                 "ratios": {
                     "missing": 0.005,
-                    "<16": 0.0625,
+                    "<1": 0.0625,
+                    "1-16": 0.0625,
                     "16-19": 0.0625,
-                    "20-29": 0.125,
+                    "20-29": 0.0625,
                     "30-39": 0.125,
                     "40-49": 0.125,
                     "50-59": 0.125,
