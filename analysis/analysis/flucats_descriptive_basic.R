@@ -175,7 +175,7 @@ df <- df %>%
                                TRUE ~ "no"),
                                
          flucats_g = case_when(flucats_question_causing_clinical_concern_162666005 ==1 ~ "yes",
-                               !is.na(flucats_question_clinical_concern_note_37331000000100) ~ "yes",
+                               flucats_question_clinical_concern_note_37331000000100 ==1 ~ "yes",
                                TRUE ~ "no"))
 
 
