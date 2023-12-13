@@ -14,7 +14,7 @@ demographic_variables = dict(
         {
             "missing": "DEFAULT",
             "<16": """ age >= 0 AND age < 16""",
-            "16-20": """ age >=  16 AND age < 20""",
+            "16-19": """ age >=  16 AND age < 20""",
             "20-29": """ age >=  20 AND age < 30""",
             "30-39": """ age >=  30 AND age < 40""",
             "40-49": """ age >=  40 AND age < 50""",
@@ -28,7 +28,8 @@ demographic_variables = dict(
             "category": {
                 "ratios": {
                     "missing": 0.005,
-                    "18-19": 0.125,
+                    "<16": 0.0625,
+                    "16-19": 0.0625,
                     "20-29": 0.125,
                     "30-39": 0.125,
                     "40-49": 0.125,
