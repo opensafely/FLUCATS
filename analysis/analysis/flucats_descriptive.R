@@ -270,22 +270,21 @@ h_perc <- round((hospital/total)*100, 2)
 demographics <- data.frame(f_perc, m_perc, c_perc, a_perc, h_perc)
 write.csv(demographics, "output/results/demographics.csv")
 
+df <- df %>% 
+  mutate(flucats_template_date = as.Date(flucats_template_date, format = "%m/%d/%y"),
+         bmi_date_measured = as.Date(bmi_date_measured, format = "%m/%d/%y"),
+         hospital_admission_date = as.Date(hospital_admission_date, format = "%m/%d/%y"),
+         icu_admission_date = as.Date(icu_admission_date, format = "%m/%d/%y"),
+         died_any_date_pc = as.Date(died_any_date_pc, format = "%m/%d/%y"),
+         covadm1_dat = as.Date(covadm1_dat, format = "%m/%d/%y"),
+         covadm2_dat = as.Date(covadm2_dat, format = "%m/%d/%y"),
+         pfd1rx_dat = as.Date(pfd1rx_dat, format = "%m/%d/%y"),
+         pfd2rx_dat = as.Date(pfd2rx_dat, format = "%m/%d/%y"),
+         azd1rx_dat = as.Date(azd1rx_dat, format = "%m/%d/%y"),
+         azd2rx_dat = as.Date(azd2rx_dat, format = "%m/%d/%y"),
+         covrx1_dat = as.Date(covrx1_dat, format = "%m/%d/%y"),
+         covrx2_dat = as.Date(covrx2_dat, format = "%m/%d/%y"))
 
-#Assumes the date variables are saved in date format
-#If not, uncomment the code below
-# df <- df %>% 
-#   mutate(flucats_template_date = as.Date(flucats_template_date, format = "%m/%d/%y"),
-#          bmi_date_measured = as.Date(bmi_date_measured, format = "%m/%d/%y"),
-#          icu_admission_date = as.Date(icu_admission_date, format = "%m/%d/%y"),
-#          died_any_date_pc = as.Date(died_any_date_pc, format = "%m/%d/%y"),
-#          covadm1_dat = as.Date(covadm1_dat, format = "%m/%d/%y"),
-#          covadm2_dat = as.Date(covadm2_dat, format = "%m/%d/%y"),
-#          pfd1rx_dat = as.Date(pfd1rx_dat, format = "%m/%d/%y"),
-#          pfd2rx_dat = as.Date(pfd2rx_dat, format = "%m/%d/%y"),
-#          azd1rx_dat = as.Date(azd1rx_dat, format = "%m/%d/%y"),
-#          azd2rx_dat = as.Date(azd2rx_dat, format = "%m/%d/%y"),
-#          covrx1_dat = as.Date(covrx1_dat, format = "%m/%d/%y"),
-#          covrx2_dat = as.Date(covrx2_dat, format = "%m/%d/%y"))
 
 ##Define outcomes
 #Primary outcomes: Hospital admission within 24 hours of GP assessment, and death 30 days from GP assessment date
