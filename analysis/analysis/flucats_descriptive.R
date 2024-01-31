@@ -244,6 +244,8 @@ write.csv(region_table, "output/results/region_table.csv")
 #Continue from flucats_descriptive_basic.R
 #This script requires the flucats criteria variables created in the above program
 library(dplyr)
+
+
 #Basic demographic characteristics
 
 total <- length(df$patient_id)
@@ -265,7 +267,9 @@ a_perc <- round((adult/total)*100, 2)
 hospital <- length(df$hospital_admission[df$hospital_admission == 1])
 h_perc <- round((hospital/total)*100, 2)
 
-#Could we have the values for the above printed as well please?
+demographics <- data.frame(f_perc, m_perc, c_perc, a_perc, h_perc)
+write.csv(demographics, "output/results/demographics.csv")
+
 
 #Assumes the date variables are saved in date format
 #If not, uncomment the code below

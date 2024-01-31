@@ -1696,3 +1696,4 @@ actions:
         flucat_tables: output/results/flucat*.csv
         sex_table: output/results/sex_table.csv
         region_table: output/results/region_table.csv
+        demographics: output/results/demographics.csv
