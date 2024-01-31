@@ -246,9 +246,10 @@ write.csv(region_table, "output/results/region_table.csv")
 library(dplyr)
 #Basic demographic characteristics
 
-female <- length(df$gender[df$gender == "Female"])
+total <- length(df$patient_id)
+female <- length(df$sex[df$sex == "Female"])
 f_perc <- round((female/total)*100, 2)
-male <- length(df$gender[df$gender == "Male"])
+male <- length(df$sex[df$sex == "Male"])
 m_perc <- round((male/total)*100, 2)
 
 child <- length(df$category[df$category == "Child"])
