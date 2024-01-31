@@ -289,15 +289,18 @@ df <- df %>%
 ##Define outcomes
 #Primary outcomes: Hospital admission within 24 hours of GP assessment, and death 30 days from GP assessment date
 df <- df %>% 
-  mutate(hosp_24h <- case_when((flucats_template_date - hospital_admission_date)>=0 & (flucats_template_date - hospital_admission_date)<=1 ~ 1,
-                               TRUE ~ 0),
-         death_30d_pc <- case_when((flucats_template_date - died_any_date)>=0 & (flucats_template_date - died_any_date)<=30 ~ 1,
-                                TRUE ~ 0),#Died due to any cause
-         death_30d_ons <- case_when((flucats_template_date - covid_related_death_date)>=0 & (flucats_template_date - covid_related_death_date)<=30 ~ 1,
-                                   TRUE ~ 0))#Died due to COVID-19
+  mutate(hosp_24h = case_when(
+    (flucats_template_date - hospital_admission_date) >= 0 & (flucats_template_date - hospital_admission_date) <= 1 ~ 1,
+    TRUE ~ 0
+    ),
+         death_30d_pc = case_when((flucats_template_date - died_any_date) >= 0 & (flucats_template_date - died_any_date) <= 30 ~ 1,
+                                TRUE ~ 0), # Died due to any cause
+         death_30d_ons = case_when((flucats_template_date - covid_related_death_date) >= 0 & (flucats_template_date - covid_related_death_date) <= 30 ~ 1,
+                                   TRUE ~ 0) # Died due to COVID-19
+         )
 #Secondary outcomes: ICU admission during primary hospital admission, LoS
 df <- df %>% 
-  mutate(icu_adm <- case_when(hosp_24h == 1 & icu_admission == 1 & (icu_admission >= hospital_admission_date) ~ 1,
+  mutate(icu_adm = case_when(hosp_24h == 1 & icu_admission == 1 & (icu_admission >= hospital_admission_date) ~ 1,
                               TRUE ~ 0))
 
 #Various tables
