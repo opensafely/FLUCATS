@@ -1683,8 +1683,8 @@ actions:
         attrition: output/died_any_counts.csv
         test: output/*_test_counts.csv
         
-  generate_first_outputs:
-    run: r:latest analysis/analysis/flucats_descriptive_basic.R
+  descriptive_tables:
+    run: r:latest analysis/analysis/flucats_descriptive.R
     needs: [combined_input_files]
     outputs:
       moderately_sensitive:
@@ -1696,6 +1696,3 @@ actions:
         flucat_tables: output/results/flucat*.csv
         sex_table: output/results/sex_table.csv
         region_table: output/results/region_table.csv
-
-
-  
