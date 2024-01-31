@@ -252,6 +252,11 @@ f_perc <- round((female/total)*100, 2)
 male <- length(df$sex[df$sex == "Male"])
 m_perc <- round((male/total)*100, 2)
 
+# set anyone under 16 to be a child
+df <- df %>% 
+  mutate(category = case_when(age < 16 ~ "Child",
+                              TRUE ~ "Adult"))
+
 child <- length(df$category[df$category == "Child"])
 c_perc <- round((child/total)*100, 2)
 adult <- length(df$category[df$category == "Adult"])
