@@ -262,7 +262,7 @@ c_perc <- round((child/total)*100, 2)
 adult <- length(df$category[df$category == "Adult"])
 a_perc <- round((adult/total)*100, 2)
 
-hospital <- length(df$emergadm_term[df$emergadm_term != ""])
+hospital <- length(df$hospital_admission[df$hospital_admission == 1])
 h_perc <- round((hospital/total)*100, 2)
 
 #Could we have the values for the above printed as well please?
