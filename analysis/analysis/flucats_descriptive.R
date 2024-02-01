@@ -319,6 +319,9 @@ tab1 <- tableby(includeNA(hosp_24h) ~ age + includeNA(sex) + bmi + bmi_primis + 
                 + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
                 , data = df, test=FALSE, total=TRUE)
 table1 <- summary(tab1, text = T) #Need to print this summary output
+table1 <- as.data.frame(table1)
+write.csv(table1, "output/results/table1.csv")
+
 
 #Table 2: demographics by death within 30 days of GP consultation (primary care record)
 tab2 <- tableby(includeNA(death_30d_pc) ~ age + includeNA(sex) + bmi + bmi_primis + includeNA(asthma) + includeNA(addisons_hypoadrenalism)
@@ -333,7 +336,9 @@ tab2 <- tableby(includeNA(death_30d_pc) ~ age + includeNA(sex) + bmi + bmi_primi
                 + includeNA(ethnicity_opensafely) + includeNA(ethnicity) + includeNA(age_band) + includeNA(homeless)
                 + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
                 , data = df, test=FALSE, total=TRUE)
-table2 <- summary(tab2, text = T) #Need to print this summary output
+table2 <- summary(tab2, text = T) #Need to print this summary output\
+table2 <- as.data.frame(table2)
+write_csv(table2, "output/results/table2.csv")
 
 #Table 3: demographics by death within 30 days of GP consultation (ONS record)
 tab3 <- tableby(includeNA(death_30d_ons) ~ age + includeNA(sex) + bmi + bmi_primis + includeNA(asthma) + includeNA(addisons_hypoadrenalism)
@@ -349,7 +354,8 @@ tab3 <- tableby(includeNA(death_30d_ons) ~ age + includeNA(sex) + bmi + bmi_prim
                 + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
                 , data = df, test=FALSE, total=TRUE)
 table3 <- summary(tab3, text = T) #Need to print this summary output
-
+table3 <- as.data.frame(table3)
+write_csv(table3, "output/results/table3.csv")
 
 #Table 4: demographics by ICU admission
 tab4 <- tableby(includeNA(icu_adm) ~ age + includeNA(sex) + bmi + bmi_primis + includeNA(asthma) + includeNA(addisons_hypoadrenalism)
@@ -365,6 +371,8 @@ tab4 <- tableby(includeNA(icu_adm) ~ age + includeNA(sex) + bmi + bmi_primis + i
                 + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
                 , data = df, test=FALSE, total=TRUE)
 table4 <- summary(tab4, text = T) #Need to print this summary output
+table4 <- as.data.frame(table4)
+write_csv(table4, "output/results/table4.csv")
 
 #######################################################################
 #Repeat of above but for each FluCATs criteria and total CATs score
