@@ -249,9 +249,9 @@ library(dplyr)
 #Basic demographic characteristics
 
 total <- length(df$patient_id)
-female <- length(df$sex[df$sex == "Female"])
+female <- length(df$sex[df$sex == "F"])
 f_perc <- round((female/total)*100, 2)
-male <- length(df$sex[df$sex == "Male"])
+male <- length(df$sex[df$sex == "M"])
 m_perc <- round((male/total)*100, 2)
 
 # set anyone under 16 to be a child
