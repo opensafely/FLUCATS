@@ -403,6 +403,7 @@ df_child <- df %>%
 df_adult <- df %>% 
   filter(age>=16)
 
+
 df <- df %>% 
   mutate(total_CAT = flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g)
 
@@ -410,29 +411,37 @@ df <- df %>%
 #CHILD
 tab5_c <- tableby(includeNA(hosp_24h) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_child, test=FALSE, total=TRUE)
 table5_c <- summary(tab5_c, text = T)
+write.csv(table5_c, "output/results/table5_c.csv", row.names = TRUE)
 
 tab6_c <- tableby(includeNA(death_30d_pc) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_child, test=FALSE, total=TRUE)
 table6_c <- summary(tab6_c, text = T)
+write.csv(table6_c, "output/results/table6_c.csv", row.names = TRUE)
 
 tab7_c <- tableby(includeNA(death_30d_ons) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_child, test=FALSE, total=TRUE)
 table7_c <- summary(tab7_c, text = T)
+write.csv(table7_c, "output/results/table7_c.csv", row.names = TRUE)
 
 tab8_c <- tableby(includeNA(icu_adm) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_child, test=FALSE, total=TRUE)
 table8_c <- summary(tab8_c, text = T)
+write.csv(table8_c, "output/results/table8_c.csv", row.names = TRUE)
 
 #Table 5-8: flucats criteria by outcome 
 #ADULT
 tab5_a <- tableby(includeNA(hosp_24h) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_adult, test=FALSE, total=TRUE)
 table5_a <- summary(tab5_a, text = T)
+write.csv(table5_a, "output/results/table5_a.csv", row.names = TRUE)
 
 tab6_a <- tableby(includeNA(death_30d_pc) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_adult, test=FALSE, total=TRUE)
 table6_a <- summary(tab6_a, text = T)
+write.csv(table6_a, "output/results/table6_a.csv", row.names = TRUE)
 
 tab7_a <- tableby(includeNA(death_30d_ons) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_adult, test=FALSE, total=TRUE)
 table7_a <- summary(tab7_a, text = T)
+write.csv(table7_a, "output/results/table7_a.csv", row.names = TRUE)
 
 tab8_a <- tableby(includeNA(icu_adm) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_adult, test=FALSE, total=TRUE)
 table8_a <- summary(tab8_a, text = T)
+write.csv(table8_a, "output/results/table8_a.csv", row.names = TRUE)
 
 #######################################################################
 
