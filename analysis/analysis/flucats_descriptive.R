@@ -4,6 +4,7 @@ library(readr)
 library(dplyr)
 library(ggplot2)
 library(lubridate)
+library(arsenal)
 
 dir.create("output/results", showWarnings = FALSE)
 
@@ -304,7 +305,7 @@ df <- df %>%
                               TRUE ~ 0))
 
 #Various tables
-#Table 1: demographics by hospitalisation
+# Table 1: demographics by hospitalisation
 tab1 <- tableby(includeNA(hosp_24h) ~ age + includeNA(sex) + bmi + bmi_primis + includeNA(asthma) + includeNA(addisons_hypoadrenalism)
                 + includeNA(chronic_heart_disease) + includeNA(chronic_respiratory_disease) + includeNA(ckd_primis_stage) + includeNA(renal_disease)
                 + includeNA(ckd35_or_renal_disease) + includeNA(ckd_os) + includeNA(liver_disease) + includeNA(pregnant)
@@ -315,7 +316,7 @@ tab1 <- tableby(includeNA(hosp_24h) ~ age + includeNA(sex) + bmi + bmi_primis + 
                 + includeNA(covadm1) + includeNA(covadm2) + includeNA(pfd1rx) + includeNA(pfd2rx)
                 + includeNA(azd1rx) + includeNA(azd2rx) + includeNA(covrx1) + includeNA(covrx2)
                 + includeNA(ethnicity_opensafely) + includeNA(ethnicity) + includeNA(age_band) + includeNA(homeless)
-                + includeNA(residential_care) + includeNA(region) + includeNA() + includeNA(imdQ5)
+                + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
                 , data = df, test=FALSE, total=TRUE)
 table1 <- summary(tab1, text = T) #Need to print this summary output
 
@@ -330,7 +331,7 @@ tab2 <- tableby(includeNA(death_30d_pc) ~ age + includeNA(sex) + bmi + bmi_primi
                 + includeNA(covadm1) + includeNA(covadm2) + includeNA(pfd1rx) + includeNA(pfd2rx)
                 + includeNA(azd1rx) + includeNA(azd2rx) + includeNA(covrx1) + includeNA(covrx2)
                 + includeNA(ethnicity_opensafely) + includeNA(ethnicity) + includeNA(age_band) + includeNA(homeless)
-                + includeNA(residential_care) + includeNA(region) + includeNA() + includeNA(imdQ5)
+                + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
                 , data = df, test=FALSE, total=TRUE)
 table2 <- summary(tab2, text = T) #Need to print this summary output
 
@@ -345,7 +346,7 @@ tab3 <- tableby(includeNA(death_30d_ons) ~ age + includeNA(sex) + bmi + bmi_prim
                 + includeNA(covadm1) + includeNA(covadm2) + includeNA(pfd1rx) + includeNA(pfd2rx)
                 + includeNA(azd1rx) + includeNA(azd2rx) + includeNA(covrx1) + includeNA(covrx2)
                 + includeNA(ethnicity_opensafely) + includeNA(ethnicity) + includeNA(age_band) + includeNA(homeless)
-                + includeNA(residential_care) + includeNA(region) + includeNA() + includeNA(imdQ5)
+                + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
                 , data = df, test=FALSE, total=TRUE)
 table3 <- summary(tab3, text = T) #Need to print this summary output
 
@@ -361,7 +362,7 @@ tab4 <- tableby(includeNA(icu_adm) ~ age + includeNA(sex) + bmi + bmi_primis + i
                 + includeNA(covadm1) + includeNA(covadm2) + includeNA(pfd1rx) + includeNA(pfd2rx)
                 + includeNA(azd1rx) + includeNA(azd2rx) + includeNA(covrx1) + includeNA(covrx2)
                 + includeNA(ethnicity_opensafely) + includeNA(ethnicity) + includeNA(age_band) + includeNA(homeless)
-                + includeNA(residential_care) + includeNA(region) + includeNA() + includeNA(imdQ5)
+                + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
                 , data = df, test=FALSE, total=TRUE)
 table4 <- summary(tab4, text = T) #Need to print this summary output
 
