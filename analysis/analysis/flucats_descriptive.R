@@ -300,7 +300,7 @@ df <- df %>%
          )
 #Secondary outcomes: ICU admission during primary hospital admission, LoS
 df <- df %>% 
-  mutate(icu_adm = case_when(hosp_24h == 1 & icu_admission == 1 & (icu_admission >= hospital_admission_date) ~ 1,
+  mutate(icu_adm = case_when(hosp_24h == 1 & icu_admission == 1 & (icu_admission_date >= hospital_admission_date) ~ 1,
                               TRUE ~ 0))
 
 #Various tables
