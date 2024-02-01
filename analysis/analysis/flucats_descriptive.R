@@ -445,30 +445,36 @@ write.csv(table8_a, "output/results/table8_a.csv", row.names = TRUE)
 
 #######################################################################
 
+saveSummary <- function(model, filename) {
+  sink(filename)
+  print(summary(model))
+  sink()
+}
+
+
 #Logistic regression for each outcome where FluCATs criteria are modelled independently
 #CHILD
 model_hosp_c <- glm( hosp_24h ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_child, family = binomial)
-table9_c <- summary(model_hosp_c)
+saveSummary(model_hosp_c, "output/results/table9_c.txt")
 
 model_death_pc_c <- glm(death_30d_pc ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_child, family = binomial)
-table10_c <- summary(model_death_pc_c)
+saveSummary(model_death_pc_c, "output/results/table10_c.txt")
 
 model_death_ons_c <- glm(death_30d_ons ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_child, family = binomial)
-table11_c <- summary(model_death_ons_c)
+saveSummary(model_death_ons_c, "output/results/table11_c.txt")
 
 model_icu_c <- glm(icu_adm ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_child, family = binomial)
-table12_c <- summary(model_icu_c)
+saveSummary(model_icu_c, "output/results/table12_c.txt")
 
 #ADULT
 model_hosp_a <- glm( hosp_24h ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
-table9_a <- summary(model_hosp_a)
+saveSummary(model_hosp_a, "output/results/table9_a.txt")
 
 model_death_pc_a <- glm(death_30d_pc ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
-table10_a <- summary(model_death_pc_a)
+saveSummary(model_death_pc_a, "output/results/table10_a.txt")
 
 model_death_ons_a <- glm(death_30d_ons ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
-table11_a <- summary(model_death_ons_a)
+saveSummary(model_death_ons_a, "output/results/table11_a.txt")
 
 model_icu_a <- glm(icu_adm ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
-table12_a <- summary(model_icu_a)
-
+saveSummary(model_icu_a, "output/results/table12_a.txt")
