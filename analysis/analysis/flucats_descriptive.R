@@ -380,6 +380,23 @@ write_csv(table4, "output/results/table4.csv")
 #Generate total CATs score for each encounter
 #Need to stratify by 'adult'/'child' status
 
+# convert all flucats variables to binary
+df <- df %>% 
+  mutate(flucats_a = case_when(flucats_a == "yes" ~ 1,
+                               TRUE ~ 0),
+         flucats_b = case_when(flucats_b == "yes" ~ 1,
+                               TRUE ~ 0),
+         flucats_c = case_when(flucats_c == "yes" ~ 1,
+                               TRUE ~ 0),
+         flucats_d = case_when(flucats_d == "yes" ~ 1,
+                               TRUE ~ 0),
+         flucats_e = case_when(flucats_e == "yes" ~ 1,
+                               TRUE ~ 0),
+         flucats_f = case_when(flucats_f == "yes" ~ 1,
+                               TRUE ~ 0),
+         flucats_g = case_when(flucats_g == "yes" ~ 1,
+                               TRUE ~ 0))
+
 df_child <- df %>% 
   filter(age<16)
 
