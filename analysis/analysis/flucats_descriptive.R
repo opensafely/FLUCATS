@@ -358,11 +358,9 @@ summarise_and_export_data <- function(df, variables, output_file, split_by = NUL
         df[[var]] <- as.factor(df[[var]])
       }
   
-
-      levels <- unique(as.character(df[[var]]))
-      # levels <- levels[!is.na(levels)]
-      counts <- as.numeric(table(df[[var]]))
-
+      table_results <- table(df[[var]])
+      levels = as.character(names(table_results))
+      counts = as.numeric(table_results)
       var_vector <- rep(var, length(levels))
       mean_vector <- rep("-", length(levels))
       sd_vector <- rep("-", length(levels))
