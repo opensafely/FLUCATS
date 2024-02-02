@@ -49,3 +49,10 @@ prediction_icu_a <- predict.glm(icu_adult, df_adult, type = "response")
 mroc_icu_adult <- roc(df_adult$icu_adm, prediction_icu_a, plot = T)#Save plot
 auc_icu_adult <- auc(mroc_icu_adult) #print value
 
+
+# save aucs for each outcome in a df
+aucs <- data.frame(auc_hosp_child, auc_hosp_adult, auc_dpc_child, auc_dpc_adult, auc_ons_child, auc_ons_adult, auc_icu_child, auc_icu_adult)
+
+colnames(aucs) <- c("hosp_child", "hosp_adult", "dpc_child", "dpc_adult", "ons_child", "ons_adult", "icu_child", "icu_adult")
+
+write.csv(aucs, "output/results/aucs.csv")
