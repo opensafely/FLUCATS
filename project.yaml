@@ -1683,10 +1683,12 @@ actions:
         attrition: output/died_any_counts.csv
         test: output/*_test_counts.csv
         
-  generate_first_outputs:
-    run: r:latest analysis/analysis/flucats_descriptive_basic.R
+  descriptive_tables:
+    run: r:latest analysis/analysis/flucats_descriptive.R
     needs: [combined_input_files]
     outputs:
+      highly_sensitive:
+        flucat_tables: output/input_all_edited.csv
       moderately_sensitive:
         attrition: output/results/attrition.csv
         histogram_age: output/results/age_hist.png
@@ -1696,6 +1698,15 @@ actions:
         flucat_tables: output/results/flucat*.csv
         sex_table: output/results/sex_table.csv
         region_table: output/results/region_table.csv
+        demographics: output/results/demographics.csv
+        tables: output/results/table*.csv
+        tables_txt: output/results/table*.txt
 
+  discrimination:
+      run: r:latest analysis/analysis/flucatsValidation_discrimination.R
+      needs: [descriptive_tables]
+      outputs:
+        moderately_sensitive:
+          aucs: output/results/aucs.csv
+          roc: output/results/roc*.csv
 
-  
