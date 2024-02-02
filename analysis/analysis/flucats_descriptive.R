@@ -356,8 +356,18 @@ summarise_and_export_data <- function(df, variables, output_file, split_by = NUL
       counts <- as.numeric(table(df[[var]]))
 
       var_vector <- rep(var, length(levels))
+      mean_vector <- rep("-", length(levels))
+      sd_vector <- rep("-", length(levels))
+
+      print(var_vector)
+      print('---')
+      print(levels)
+      print('---')
+      print(counts)
+      print('---')
+      print(mean_vector)
     
-      df_levels <- data.frame(category = var_vector, category_value = levels, count = counts, mean = "-", sd = "-")
+      df_levels <- data.frame(category = var_vector, category_value = levels, count = counts, mean = mean_vector, sd = sd_vector)
       
       if (sum(is.na(df[[var]])) > 0) {
         df_levels <- rbind(df_levels, data.frame(category = var, category_value = "Missing", count = sum(is.na(df[[var]])), mean = "-", sd = "-"))
