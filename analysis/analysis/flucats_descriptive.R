@@ -2,9 +2,9 @@
 
 library(readr)
 library(dplyr)
+library(tidyr)
 library(ggplot2)
 library(lubridate)
-library(arsenal)
 
 dir.create("output/results", showWarnings = FALSE)
 
@@ -304,75 +304,99 @@ df <- df %>%
   mutate(icu_adm = case_when(hosp_24h == 1 & icu_admission == 1 & (icu_admission_date >= hospital_admission_date) ~ 1,
                               TRUE ~ 0))
 
-#Various tables
-# Table 1: demographics by hospitalisation
-tab1 <- tableby(includeNA(hosp_24h) ~ age + includeNA(sex) + bmi + bmi_primis + includeNA(asthma) + includeNA(addisons_hypoadrenalism)
-                + includeNA(chronic_heart_disease) + includeNA(chronic_respiratory_disease) + includeNA(ckd_primis_stage) + includeNA(renal_disease)
-                + includeNA(ckd35_or_renal_disease) + includeNA(ckd_os) + includeNA(liver_disease) + includeNA(pregnant)
-                + includeNA(diabetes) + includeNA(gestational_diabetes) + includeNA(obesity) + includeNA(mental_illness)
-                + includeNA(neurological_disorder) + includeNA(hypertension) + includeNA(pneumonia) + includeNA(immunosuppression_disorder)
-                + includeNA(immunosuppression_chemo) + includeNA(splenic_disease) + includeNA(shield) + includeNA(nonshield)
-                + includeNA(statins) + includeNA(splenic_disease) + includeNA(shield) + includeNA(nonshield)
-                + includeNA(covadm1) + includeNA(covadm2) + includeNA(pfd1rx) + includeNA(pfd2rx)
-                + includeNA(azd1rx) + includeNA(azd2rx) + includeNA(covrx1) + includeNA(covrx2)
-                + includeNA(ethnicity_opensafely) + includeNA(ethnicity) + includeNA(age_band) + includeNA(homeless)
-                + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
-                , data = df, test=FALSE, total=TRUE)
-table1 <- summary(tab1, text = T) #Need to print this summary output
-table1 <- as.data.frame(table1)
-write.csv(table1, "output/results/table1.csv")
+# convert age to numeric
+df$age <- as.numeric(df$age)
 
+# List of columns to convert to factors
+columns_to_factor <- c("asthma", "addisons_hypoadrenalism", "chronic_heart_disease",
+                       "chronic_respiratory_disease", "ckd_primis_stage", "renal_disease",
+                       "ckd35_or_renal_disease", "ckd_os", "liver_disease", "pregnant",
+                       "diabetes", "gestational_diabetes", "obesity", "mental_illness",
+                       "neurological_disorder", "hypertension", "pneumonia",
+                       "immunosuppression_disorder", "immunosuppression_chemo",
+                       "splenic_disease", "shield", "nonshield", "statins", "covadm1",
+                       "covadm2", "pfd1rx", "pfd2rx", "azd1rx", "azd2rx", "covrx1", 
+                       "covrx2", "ethnicity_opensafely", "ethnicity", "homeless",
+                       "residential_care", "imdQ5")
+
+# Convert all specified columns to factors
+df <- df %>%
+  mutate(across(all_of(columns_to_factor), as.factor))
+
+# for numeric variables, set 0 to NA
+df$bmi <- ifelse(df$bmi == 0, NA, df$bmi)
+df$bmi_primis <- ifelse(df$bmi_primis == 0, NA, df$bmi_primis)
+
+variables <- c("age","age_band","sex","region","bmi","bmi_primis","asthma","addisons_hypoadrenalism",
+               "chronic_heart_disease","chronic_respiratory_disease","ckd_primis_stage",
+               "renal_disease","ckd35_or_renal_disease","ckd_os","liver_disease","pregnant",
+               "diabetes","gestational_diabetes","obesity","mental_illness",
+               "neurological_disorder","hypertension","pneumonia","immunosuppression_disorder",
+               "immunosuppression_chemo","splenic_disease","shield","nonshield",
+               "statins","covadm1","covadm2","pfd1rx","pfd2rx",
+               "azd1rx","azd2rx","covrx1", "covrx2",
+               "ethnicity_opensafely","ethnicity","homeless",
+               "residential_care","imdQ5")
+
+#Various tables
+
+summarise_and_export_data <- function(df, variables, output_file, split_by = NULL) {
+  
+  summarise_data <- function(df, var) {
+    if (is.numeric(df[[var]])) {
+      data_frame <- data.frame(category = var, category_value = "Mean", count = sum(!is.na(df[[var]])), mean = mean(df[[var]], na.rm = TRUE), sd = sd(df[[var]], na.rm = TRUE))
+      
+      if (sum(is.na(df[[var]])) > 0) {
+        data_frame <- rbind(data_frame, data.frame(category = var, category_value = "Missing", count = sum(is.na(df[[var]])), mean = "-", sd="-"))
+      }
+    } else {
+      levels <- unique(as.character(df[[var]]))
+      levels <- levels[!is.na(levels)]
+      counts <- as.numeric(table(df[[var]]))
+      df_levels <- data.frame(category = var, category_value = levels, count = counts, mean = "-", sd = "-")
+
+      if (sum(is.na(df[[var]])) > 0) {
+        df_levels <- rbind(df_levels, data.frame(category = var, category_value = "Missing", count = sum(is.na(df[[var]])), mean = "-", sd = "-"))
+      }
+      data_frame <- df_levels
+    }
+    return(data_frame)
+  }
+  
+  process_subset <- function(subset_df) {
+    results_list <- lapply(variables, function(var) summarise_data(subset_df, var))
+    summary_table <- do.call(rbind, results_list)
+    return(summary_table)
+  }
+  
+  if (!is.null(split_by) && split_by %in% names(df)) {
+    unique_values <- unique(df[[split_by]])
+    all_summaries <- lapply(unique_values, function(val) {
+      subset_df <- df[df[[split_by]] == val, ]
+      subset_summary <- process_subset(subset_df)
+      subset_summary$outcome <- as.character(val)
+      return(subset_summary)
+    })
+    final_summary <- do.call(rbind, all_summaries)
+  } else {
+    final_summary <- process_subset(df)
+  }
+  
+  write.csv(final_summary, output_file, row.names = FALSE)
+}
+
+# Table 1: demographics by hospitalisation
+summarise_and_export_data(df, variables, "output/results/table_1.csv", split_by="hosp_24h")
 
 #Table 2: demographics by death within 30 days of GP consultation (primary care record)
-tab2 <- tableby(includeNA(death_30d_pc) ~ age + includeNA(sex) + bmi + bmi_primis + includeNA(asthma) + includeNA(addisons_hypoadrenalism)
-                + includeNA(chronic_heart_disease) + includeNA(chronic_respiratory_disease) + includeNA(ckd_primis_stage) + includeNA(renal_disease)
-                + includeNA(ckd35_or_renal_disease) + includeNA(ckd_os) + includeNA(liver_disease) + includeNA(pregnant)
-                + includeNA(diabetes) + includeNA(gestational_diabetes) + includeNA(obesity) + includeNA(mental_illness)
-                + includeNA(neurological_disorder) + includeNA(hypertension) + includeNA(pneumonia) + includeNA(immunosuppression_disorder)
-                + includeNA(immunosuppression_chemo) + includeNA(splenic_disease) + includeNA(shield) + includeNA(nonshield)
-                + includeNA(statins) + includeNA(splenic_disease) + includeNA(shield) + includeNA(nonshield)
-                + includeNA(covadm1) + includeNA(covadm2) + includeNA(pfd1rx) + includeNA(pfd2rx)
-                + includeNA(azd1rx) + includeNA(azd2rx) + includeNA(covrx1) + includeNA(covrx2)
-                + includeNA(ethnicity_opensafely) + includeNA(ethnicity) + includeNA(age_band) + includeNA(homeless)
-                + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
-                , data = df, test=FALSE, total=TRUE)
-table2 <- summary(tab2, text = T) #Need to print this summary output\
-table2 <- as.data.frame(table2)
-write_csv(table2, "output/results/table2.csv")
+summarise_and_export_data(df, variables, "output/results/table_2.csv", split_by="death_30d_pc")
 
 #Table 3: demographics by death within 30 days of GP consultation (ONS record)
-tab3 <- tableby(includeNA(death_30d_ons) ~ age + includeNA(sex) + bmi + bmi_primis + includeNA(asthma) + includeNA(addisons_hypoadrenalism)
-                + includeNA(chronic_heart_disease) + includeNA(chronic_respiratory_disease) + includeNA(ckd_primis_stage) + includeNA(renal_disease)
-                + includeNA(ckd35_or_renal_disease) + includeNA(ckd_os) + includeNA(liver_disease) + includeNA(pregnant)
-                + includeNA(diabetes) + includeNA(gestational_diabetes) + includeNA(obesity) + includeNA(mental_illness)
-                + includeNA(neurological_disorder) + includeNA(hypertension) + includeNA(pneumonia) + includeNA(immunosuppression_disorder)
-                + includeNA(immunosuppression_chemo) + includeNA(splenic_disease) + includeNA(shield) + includeNA(nonshield)
-                + includeNA(statins) + includeNA(splenic_disease) + includeNA(shield) + includeNA(nonshield)
-                + includeNA(covadm1) + includeNA(covadm2) + includeNA(pfd1rx) + includeNA(pfd2rx)
-                + includeNA(azd1rx) + includeNA(azd2rx) + includeNA(covrx1) + includeNA(covrx2)
-                + includeNA(ethnicity_opensafely) + includeNA(ethnicity) + includeNA(age_band) + includeNA(homeless)
-                + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
-                , data = df, test=FALSE, total=TRUE)
-table3 <- summary(tab3, text = T) #Need to print this summary output
-table3 <- as.data.frame(table3)
-write_csv(table3, "output/results/table3.csv")
+summarise_and_export_data(df, variables, "output/results/table_3.csv", split_by="death_30d_ons")
 
 #Table 4: demographics by ICU admission
-tab4 <- tableby(includeNA(icu_adm) ~ age + includeNA(sex) + bmi + bmi_primis + includeNA(asthma) + includeNA(addisons_hypoadrenalism)
-                + includeNA(chronic_heart_disease) + includeNA(chronic_respiratory_disease) + includeNA(ckd_primis_stage) + includeNA(renal_disease)
-                + includeNA(ckd35_or_renal_disease) + includeNA(ckd_os) + includeNA(liver_disease) + includeNA(pregnant)
-                + includeNA(diabetes) + includeNA(gestational_diabetes) + includeNA(obesity) + includeNA(mental_illness)
-                + includeNA(neurological_disorder) + includeNA(hypertension) + includeNA(pneumonia) + includeNA(immunosuppression_disorder)
-                + includeNA(immunosuppression_chemo) + includeNA(splenic_disease) + includeNA(shield) + includeNA(nonshield)
-                + includeNA(statins) + includeNA(splenic_disease) + includeNA(shield) + includeNA(nonshield)
-                + includeNA(covadm1) + includeNA(covadm2) + includeNA(pfd1rx) + includeNA(pfd2rx)
-                + includeNA(azd1rx) + includeNA(azd2rx) + includeNA(covrx1) + includeNA(covrx2)
-                + includeNA(ethnicity_opensafely) + includeNA(ethnicity) + includeNA(age_band) + includeNA(homeless)
-                + includeNA(residential_care) + includeNA(region) + includeNA(imdQ5)
-                , data = df, test=FALSE, total=TRUE)
-table4 <- summary(tab4, text = T) #Need to print this summary output
-table4 <- as.data.frame(table4)
-write_csv(table4, "output/results/table4.csv")
+summarise_and_export_data(df, variables, "output/results/table_4.csv", split_by="icu_adm")
+
 
 #######################################################################
 #Repeat of above but for each FluCATs criteria and total CATs score
@@ -397,51 +421,34 @@ df <- df %>%
          flucats_g = case_when(flucats_g == "yes" ~ 1,
                                TRUE ~ 0))
 
+df <- df %>% 
+  mutate(total_CAT = flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g)
+
+
 df_child <- df %>% 
   filter(age<16)
 
 df_adult <- df %>% 
   filter(age>=16)
 
-
-df <- df %>% 
-  mutate(total_CAT = flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g)
+flucats_vars <- c("total_CAT", "flucats_a", "flucats_b", "flucats_c", "flucats_d", "flucats_e", "flucats_f", "flucats_g")
 
 #Table 5-8: flucats criteria by outcome 
 #CHILD
-tab5_c <- tableby(includeNA(hosp_24h) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_child, test=FALSE, total=TRUE)
-table5_c <- summary(tab5_c, text = T)
-write.csv(table5_c, "output/results/table5_c.csv", row.names = TRUE)
+summarise_and_export_data(df_child, flucats_vars, "output/results/table_5_c.csv", split_by="hosp_24h")
+summarise_and_export_data(df_child, flucats_vars, "output/results/table_6_c.csv", split_by="death_30d_pc")
+summarise_and_export_data(df_child, flucats_vars, "output/results/table_7_c.csv", split_by="death_30d_ons")
+summarise_and_export_data(df_child, flucats_vars, "output/results/table_8_c.csv", split_by="icu_adm")
 
-tab6_c <- tableby(includeNA(death_30d_pc) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_child, test=FALSE, total=TRUE)
-table6_c <- summary(tab6_c, text = T)
-write.csv(table6_c, "output/results/table6_c.csv", row.names = TRUE)
-
-tab7_c <- tableby(includeNA(death_30d_ons) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_child, test=FALSE, total=TRUE)
-table7_c <- summary(tab7_c, text = T)
-write.csv(table7_c, "output/results/table7_c.csv", row.names = TRUE)
-
-tab8_c <- tableby(includeNA(icu_adm) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_child, test=FALSE, total=TRUE)
-table8_c <- summary(tab8_c, text = T)
-write.csv(table8_c, "output/results/table8_c.csv", row.names = TRUE)
 
 #Table 5-8: flucats criteria by outcome 
 #ADULT
-tab5_a <- tableby(includeNA(hosp_24h) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_adult, test=FALSE, total=TRUE)
-table5_a <- summary(tab5_a, text = T)
-write.csv(table5_a, "output/results/table5_a.csv", row.names = TRUE)
 
-tab6_a <- tableby(includeNA(death_30d_pc) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_adult, test=FALSE, total=TRUE)
-table6_a <- summary(tab6_a, text = T)
-write.csv(table6_a, "output/results/table6_a.csv", row.names = TRUE)
+summarise_and_export_data(df_adult, flucats_vars, "output/results/table_5_a.csv", split_by="hosp_24h")
+summarise_and_export_data(df_adult, flucats_vars, "output/results/table_6_a.csv", split_by="death_30d_pc")
+summarise_and_export_data(df_adult, flucats_vars, "output/results/table_7_a.csv", split_by="death_30d_ons")
+summarise_and_export_data(df_adult, flucats_vars, "output/results/table_8_a.csv", split_by="icu_adm")
 
-tab7_a <- tableby(includeNA(death_30d_ons) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_adult, test=FALSE, total=TRUE)
-table7_a <- summary(tab7_a, text = T)
-write.csv(table7_a, "output/results/table7_a.csv", row.names = TRUE)
-
-tab8_a <- tableby(includeNA(icu_adm) ~ includeNA(total_CAT) + includeNA(flucats_a) + includeNA(flucats_b) + includeNA(flucats_c) + includeNA(flucats_d) + includeNA(flucats_e) + includeNA(flucats_f) + includeNA(flucats_g), data = df_adult, test=FALSE, total=TRUE)
-table8_a <- summary(tab8_a, text = T)
-write.csv(table8_a, "output/results/table8_a.csv", row.names = TRUE)
 
 #######################################################################
 
