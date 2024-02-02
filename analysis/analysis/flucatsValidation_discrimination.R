@@ -11,7 +11,7 @@ hosp_child <- glm(hosp_24h ~ total_CAT, data = df_child ,family = "binomial")
 prediction_hosp_c <- predict.glm(hosp_child, df_child, type = "response")
 mroc_hosp_child <- roc(df_child$hosp_24h, prediction_hosp_c, plot = T)
 roc_data_hosp_child <- data.frame(
-  specificity = 1 - mroc_hosp_child$specificities,
+  fpr = 1 - mroc_hosp_child$specificities,
   sensitivity = mroc_hosp_child$sensitivities,
   thresholds = mroc_hosp_child$thresholds
 )
@@ -22,7 +22,7 @@ hosp_adult <- glm(hosp_24h ~ total_CAT, data = df_adult ,family = "binomial")
 prediction_hosp_a <- predict.glm(hosp_adult, df_adult, type = "response")
 mroc_hosp_adult <- roc(df_adult$hosp_24h, prediction_hosp_a, plot = T)
 roc_data_hosp_adult <- data.frame(
-  specificity = 1 - mroc_hosp_adult$specificities,
+  fpr = 1 - mroc_hosp_adult$specificities,
   sensitivity = mroc_hosp_adult$sensitivities,
   thresholds = mroc_hosp_adult$thresholds
 )
@@ -33,7 +33,7 @@ auc_hosp_adult <- auc(mroc_hosp_adult)
 # prediction_dpc_c <- predict.glm(death_child_pc, df_child, type = "response")
 # mroc_dpc_child <- roc(df_child$death_30d_pc, prediction_dpc_c, plot = T)
 # roc_data_dpc_child <- data.frame(
-#   specificity = 1 - mroc_dpc_child$specificities,
+#   fpr = 1 - mroc_dpc_child$specificities,
 #   sensitivity = mroc_dpc_child$sensitivities,
 #   thresholds = mroc_dpc_child$thresholds
 # )
@@ -44,7 +44,7 @@ auc_hosp_adult <- auc(mroc_hosp_adult)
 # prediction_dpc_a <- predict.glm(death_adult_pc, df_adult, type = "response")
 # mroc_dpc_adult <- roc(df_adult$death_30d_pc, prediction_dpc_a, plot = T)
 # roc_data_dpc_adult <- data.frame(
-#   specificity = 1 - mroc_dpc_adult$specificities,
+#   fpr = 1 - mroc_dpc_adult$specificities,
 #   sensitivity = mroc_dpc_adult$sensitivities,
 #   thresholds = mroc_dpc_adult$thresholds
 # )
@@ -57,7 +57,7 @@ auc_hosp_adult <- auc(mroc_hosp_adult)
 # prediction_ons_c <- predict.glm(death_child_ons, df_child, type = "response")
 # mroc_ons_child <- roc(df_child$death_30d_ons, prediction_ons_c, plot = T)
 # roc_data_ons_child <- data.frame(
-#   specificity = 1 - mroc_ons_child$specificities,
+#   fpr = 1 - mroc_ons_child$specificities,
 #   sensitivity = mroc_ons_child$sensitivities,
 #   thresholds = mroc_ons_child$thresholds
 # )
@@ -68,7 +68,7 @@ auc_hosp_adult <- auc(mroc_hosp_adult)
 # prediction_ons_a <- predict.glm(death_adult_ons, df_adult, type = "response")
 # mroc_ons_adult <- roc(df_adult$death_30d_ons, prediction_ons_a, plot = T)
 # roc_data_ons_adult <- data.frame(
-#   specificity = 1 - mroc_ons_adult$specificities,
+#   fpr = 1 - mroc_ons_adult$specificities,
 #   sensitivity = mroc_ons_adult$sensitivities,
 #   thresholds = mroc_ons_adult$thresholds
 # )
@@ -80,7 +80,7 @@ auc_hosp_adult <- auc(mroc_hosp_adult)
 # prediction_icu_c <- predict.glm(icu_child, df_child, type = "response")
 # mroc_icu_child <- roc(df_child$icu_adm, prediction_icu_c, plot = T)
 # roc_data_icu_child <- data.frame(
-#   specificity = 1 - mroc_icu_child$specificities,
+#   fpr = 1 - mroc_icu_child$specificities,
 #   sensitivity = mroc_icu_child$sensitivities,
 #   thresholds = mroc_icu_child$thresholds
 # )
@@ -91,7 +91,7 @@ auc_hosp_adult <- auc(mroc_hosp_adult)
 # prediction_icu_a <- predict.glm(icu_adult, df_adult, type = "response")
 # mroc_icu_adult <- roc(df_adult$icu_adm, prediction_icu_a, plot = T)
 # roc_data_icu_adult <- data.frame(
-#   specificity = 1 - mroc_icu_adult$specificities,
+#   fpr = 1 - mroc_icu_adult$specificities,
 #   sensitivity = mroc_icu_adult$sensitivities,
 #   thresholds = mroc_icu_adult$thresholds
 # )
