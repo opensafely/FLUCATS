@@ -268,7 +268,7 @@ a_perc <- round((adult/total)*100, 2)
 hospital <- length(df$hospital_admission[df$hospital_admission == 1])
 h_perc <- round((hospital/total)*100, 2)
 
-demographics <- data.frame(f_perc, m_perc, c_perc, a_perc, h_perc)
+demographics <- data.frame(female, f_perc, male, m_perc, child, c_perc, adult, a_perc, hospital, h_perc)
 write.csv(demographics, "output/results/demographics.csv")
 
 df <- df %>% 
