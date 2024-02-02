@@ -1,6 +1,10 @@
 #Continuing from flucatsValidation.R
 library(pROC)
-  
+
+# read df child from csv
+df_child <- read.csv("output/input_all_edited.csv")
+
+
 #Separate models for each outcome, by child/adult status
 hosp_child <- glm(hosp_24h ~ total_CAT, data = df_child ,family = "binomial")
 prediction_hosp_c <- predict.glm(hosp_child, df_child, type = "response")
