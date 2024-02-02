@@ -307,7 +307,7 @@ df <- df %>%
                               TRUE ~ 0))
 
 # save table of outcomes
-outcomes <- data.frame(hosp_24h = sum(df$hosp_24h), death_30d_pc = sum(df$death_30d_pc), death_30d_ons = sum(df$death_30d_ons), covid_death_30d_ons, icu_adm = sum(df$icu_adm))
+outcomes <- data.frame(hosp_24h = sum(df$hosp_24h), death_30d_pc = sum(df$death_30d_pc), death_30d_ons = sum(df$death_30d_ons), covid_death_30d_ons=sum(df$covid_death_30d_ons), icu_adm = sum(df$icu_adm))
 write.csv(outcomes, "output/results/outcomes.csv")
 
 # convert age to numeric
