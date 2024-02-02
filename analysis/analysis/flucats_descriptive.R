@@ -485,3 +485,6 @@ saveSummary(model_death_ons_a, "output/results/table11_a.txt")
 
 model_icu_a <- glm(icu_adm ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
 saveSummary(model_icu_a, "output/results/table12_a.txt")
+
+
+write.csv(df, "output/input_all_edited.csv", row.names = FALSE)
