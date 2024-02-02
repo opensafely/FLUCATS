@@ -251,8 +251,11 @@ library(dplyr)
 
 total <- length(df$patient_id)
 female <- length(df$sex[df$sex == "F"])
+female <- round(female/5) * 5
+
 f_perc <- round((female/total)*100, 2)
 male <- length(df$sex[df$sex == "M"])
+male <- round(male/5) * 5
 m_perc <- round((male/total)*100, 2)
 
 # set anyone under 16 to be a child
@@ -261,15 +264,18 @@ df <- df %>%
                               TRUE ~ "Adult"))
 
 child <- length(df$category[df$category == "Child"])
+child <- round(child/5) * 5
 c_perc <- round((child/total)*100, 2)
 adult <- length(df$category[df$category == "Adult"])
+adult <- round(adult/5) * 5
 a_perc <- round((adult/total)*100, 2)
 
 hospital <- length(df$hospital_admission[df$hospital_admission == 1])
+hospital <- round(hospital/5) * 5
 h_perc <- round((hospital/total)*100, 2)
 
 demographics <- data.frame(female, f_perc, male, m_perc, child, c_perc, adult, a_perc, hospital, h_perc)
-write.csv(demographics, "output/results/demographics.csv")
+write.csv(demographics, "output/results/demographics.csv", row.names = FALSE)
 
 df <- df %>% 
   mutate(flucats_template_date = as.Date(flucats_template_date, format = "%m/%d/%y"),
@@ -308,7 +314,13 @@ df <- df %>%
 
 # save table of outcomes
 outcomes <- data.frame(hosp_24h = sum(df$hosp_24h), death_30d_pc = sum(df$death_30d_pc), death_30d_ons = sum(df$death_30d_ons), covid_death_30d_ons=sum(df$covid_death_30d_ons), icu_adm = sum(df$icu_adm))
-write.csv(outcomes, "output/results/outcomes.csv")
+
+# set any values <=7 to 0 and then round to the nearest 5
+outcomes <- outcomes %>%
+  mutate_all(~ifelse(. <= 7, 0, .)) %>%
+  mutate_all(~round(./5) * 5)
+
+write.csv(outcomes, "output/results/outcomes.csv", row.names = FALSE)
 
 # convert age to numeric
 df$age <- as.numeric(df$age)
@@ -351,10 +363,28 @@ summarise_and_export_data <- function(df, variables, output_file, split_by = NUL
   
   summarise_data <- function(df, var) {
     if (is.numeric(df[[var]])) {
-      data_frame <- data.frame(category = var, category_value = "Mean", count = sum(!is.na(df[[var]])), mean = mean(df[[var]], na.rm = TRUE), sd = sd(df[[var]], na.rm = TRUE))
+      count = sum(!is.na(df[[var]]))
+      # if count is <=7 set to 0. Round to nearest 5.
+      if (count <= 7) {
+        mean = 0
+        sd = 0
+        count = 0
+      } else {
+        count = round(count/5) * 5
+        mean = round(mean(df[[var]], na.rm = TRUE), 2)
+        sd = round(sd(df[[var]], na.rm = TRUE), 2)
+      }
+
+      data_frame <- data.frame(category = var, category_value = "Mean", count = count, mean = mean, sd = sd)
       
       if (sum(is.na(df[[var]])) > 0) {
-        data_frame <- rbind(data_frame, data.frame(category = var, category_value = "Missing", count = sum(is.na(df[[var]])), mean = "-", sd="-"))
+        count = sum(is.na(df[[var]]))
+        if (count <= 7) {
+          count = 0
+        } else {
+          count = round(count/5) * 5
+        }
+        data_frame <- rbind(data_frame, data.frame(category = var, category_value = "Missing", count = count, mean = "-", sd="-"))
       }
     } else {
      
@@ -367,18 +397,13 @@ summarise_and_export_data <- function(df, variables, output_file, split_by = NUL
       table_results <- table(df[[var]])
       levels = as.character(names(table_results))
       counts = as.numeric(table_results)
+
+      counts <- ifelse(counts <= 7, 0, counts)
+      counts <- round(counts/5) * 5
+
       var_vector <- rep(var, length(levels))
       mean_vector <- rep("-", length(levels))
-      sd_vector <- rep("-", length(levels))
-
-      print(var_vector)
-      print('---')
-      print(levels)
-      print('---')
-      print(counts)
-      print('---')
-      print(mean_vector)
-    
+      sd_vector <- rep("-", length(levels))    
       df_levels <- data.frame(category = var_vector, category_value = levels, count = counts, mean = mean_vector, sd = sd_vector)
       
       data_frame <- df_levels
@@ -496,6 +521,9 @@ saveSummary(model_death_ons_c, "output/results/table11_c.txt")
 model_icu_c <- glm(icu_adm ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_child, family = binomial)
 saveSummary(model_icu_c, "output/results/table12_c.txt")
 
+model_covid_death_ons_c <- glm(covid_death_30d_ons ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_child, family = binomial)
+saveSummary(model_covid_death_ons_c, "output/results/table13_c.txt")
+
 #ADULT
 model_hosp_a <- glm( hosp_24h ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
 saveSummary(model_hosp_a, "output/results/table9_a.txt")
@@ -508,6 +536,9 @@ saveSummary(model_death_ons_a, "output/results/table11_a.txt")
 
 model_icu_a <- glm(icu_adm ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
 saveSummary(model_icu_a, "output/results/table12_a.txt")
+
+model_covid_death_ons_a <- glm(covid_death_30d_ons ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
+saveSummary(model_covid_death_ons_a, "output/results/table13_a.txt")
 
 
 write.csv(df, "output/input_all_edited.csv", row.names = FALSE)
