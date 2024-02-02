@@ -1701,6 +1701,7 @@ actions:
         demographics: output/results/demographics.csv
         tables: output/results/table*.csv
         tables_txt: output/results/table*.txt
+        outcomes: output/results/outcomes.csv
 
   discrimination:
       run: r:latest analysis/analysis/flucatsValidation_discrimination.R
