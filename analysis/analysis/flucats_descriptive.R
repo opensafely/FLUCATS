@@ -366,7 +366,15 @@ summarise_and_export_data <- function(df, variables, output_file, split_by = NUL
       var_vector <- rep(var, length(levels))
       mean_vector <- rep("-", length(levels))
       sd_vector <- rep("-", length(levels))
-  
+
+      print(var_vector)
+      print('---')
+      print(levels)
+      print('---')
+      print(counts)
+      print('---')
+      print(mean_vector)
+    
       df_levels <- data.frame(category = var_vector, category_value = levels, count = counts, mean = mean_vector, sd = sd_vector)
       
       data_frame <- df_levels
