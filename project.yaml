@@ -1687,6 +1687,8 @@ actions:
     run: r:latest analysis/analysis/flucats_descriptive.R
     needs: [combined_input_files]
     outputs:
+      highly_sensitive:
+        flucat_tables: output/input_all_edited.csv
       moderately_sensitive:
         attrition: output/results/attrition.csv
         histogram_age: output/results/age_hist.png
@@ -1697,3 +1699,6 @@ actions:
         sex_table: output/results/sex_table.csv
         region_table: output/results/region_table.csv
         demographics: output/results/demographics.csv
+        tables: output/results/table*.csv
+        tables_txt: output/results/table*.txt
+
