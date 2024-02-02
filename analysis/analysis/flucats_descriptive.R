@@ -315,12 +315,26 @@ df <- df %>%
 # save table of outcomes
 outcomes <- data.frame(hosp_24h = sum(df$hosp_24h), death_30d_pc = sum(df$death_30d_pc), death_30d_ons = sum(df$death_30d_ons), covid_death_30d_ons=sum(df$covid_death_30d_ons), icu_adm = sum(df$icu_adm))
 
+outcomes_child <- df %>% 
+  filter(category == "Child") %>% 
+  summarise(hosp_24h = sum(hosp_24h), death_30d_pc = sum(death_30d_pc), death_30d_ons = sum(death_30d_ons), covid_death_30d_ons=sum(covid_death_30d_ons), icu_adm = sum(icu_adm))
+
+outcomes_adult <- df %>%
+  filter(category == "Adult") %>% 
+  summarise(hosp_24h = sum(hosp_24h), death_30d_pc = sum(death_30d_pc), death_30d_ons = sum(death_30d_ons), covid_death_30d_ons=sum(covid_death_30d_ons), icu_adm = sum(icu_adm))
+
+outcomes <- rbind(outcomes, outcomes_child, outcomes_adult)
+
+
 # set any values <=7 to 0 and then round to the nearest 5
 outcomes <- outcomes %>%
   mutate_all(~ifelse(. <= 7, 0, .)) %>%
   mutate_all(~round(./5) * 5)
 
-write.csv(outcomes, "output/results/outcomes.csv", row.names = FALSE)
+
+rownames(outcomes) <- c("Total", "Child", "Adult")
+
+write.csv(outcomes, "output/results/outcomes.csv", row.names = TRUE)
 
 # convert age to numeric
 df$age <- as.numeric(df$age)
