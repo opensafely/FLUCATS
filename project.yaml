@@ -1702,3 +1702,10 @@ actions:
         tables: output/results/table*.csv
         tables_txt: output/results/table*.txt
 
+  discrimination:
+      run: r:latest analysis/analysis/flucatsValidation_discrimination.R
+      needs: [descriptive_tables]
+      outputs:
+        moderately_sensitive:
+          aucs: output/results/aucs.csv
+
