@@ -319,6 +319,7 @@ columns_to_factor <- c("asthma", "addisons_hypoadrenalism", "chronic_heart_disea
                        "covrx2", "ethnicity_opensafely", "ethnicity", "homeless",
                        "residential_care", "imdQ5")
 
+
 # Convert all specified columns to factors
 df <- df %>%
   mutate(across(all_of(columns_to_factor), as.factor))
@@ -353,8 +354,11 @@ summarise_and_export_data <- function(df, variables, output_file, split_by = NUL
       levels <- unique(as.character(df[[var]]))
       levels <- levels[!is.na(levels)]
       counts <- as.numeric(table(df[[var]]))
-      df_levels <- data.frame(category = var, category_value = levels, count = counts, mean = "-", sd = "-")
 
+      var_vector <- rep(var, length(levels))
+    
+      df_levels <- data.frame(category = var_vector, category_value = levels, count = counts, mean = "-", sd = "-")
+      
       if (sum(is.na(df[[var]])) > 0) {
         df_levels <- rbind(df_levels, data.frame(category = var, category_value = "Missing", count = sum(is.na(df[[var]])), mean = "-", sd = "-"))
       }
