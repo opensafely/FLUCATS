@@ -251,8 +251,11 @@ library(dplyr)
 
 total <- length(df$patient_id)
 female <- length(df$sex[df$sex == "F"])
+female <- round(female/5) * 5
+
 f_perc <- round((female/total)*100, 2)
 male <- length(df$sex[df$sex == "M"])
+male <- round(male/5) * 5
 m_perc <- round((male/total)*100, 2)
 
 # set anyone under 16 to be a child
@@ -261,15 +264,18 @@ df <- df %>%
                               TRUE ~ "Adult"))
 
 child <- length(df$category[df$category == "Child"])
+child <- round(child/5) * 5
 c_perc <- round((child/total)*100, 2)
 adult <- length(df$category[df$category == "Adult"])
+adult <- round(adult/5) * 5
 a_perc <- round((adult/total)*100, 2)
 
 hospital <- length(df$hospital_admission[df$hospital_admission == 1])
+hospital <- round(hospital/5) * 5
 h_perc <- round((hospital/total)*100, 2)
 
 demographics <- data.frame(female, f_perc, male, m_perc, child, c_perc, adult, a_perc, hospital, h_perc)
-write.csv(demographics, "output/results/demographics.csv")
+write.csv(demographics, "output/results/demographics.csv", row.names = FALSE)
 
 df <- df %>% 
   mutate(flucats_template_date = as.Date(flucats_template_date, format = "%m/%d/%y"),
