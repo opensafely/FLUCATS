@@ -294,10 +294,12 @@ df <- df %>%
     (flucats_template_date - hospital_admission_date) >= 0 & (flucats_template_date - hospital_admission_date) <= 1 ~ 1,
     TRUE ~ 0
     ),
-         death_30d_pc = case_when((flucats_template_date - died_any_date) >= 0 & (flucats_template_date - died_any_date) <= 30 ~ 1,
-                                TRUE ~ 0), # Died due to any cause
-         death_30d_ons = case_when((flucats_template_date - covid_related_death_date) >= 0 & (flucats_template_date - covid_related_death_date) <= 30 ~ 1,
-                                   TRUE ~ 0) # Died due to COVID-19
+         death_30d_pc = case_when((flucats_template_date - died_any_date_pc) >= 0 & (flucats_template_date - died_any_date_pc) <= 30 ~ 1,
+                                TRUE ~ 0), # Died due to any cause (primary care record)
+         death_30d_ons = case_when((flucats_template_date - died_any_date) >= 0 & (flucats_template_date - died_any_date) <= 30 ~ 1,
+                                   TRUE ~ 0), # Died due to any cause (ons deaths record)
+         covid_death_30d_ons = case_when((flucats_template_date - covid_related_death_date) >= 0 & (flucats_template_date - covid_related_death_date) <= 30 ~ 1,
+                                   TRUE ~ 0) # Died due to COVID-19 (ons deaths record)
          )
 #Secondary outcomes: ICU admission during primary hospital admission, LoS
 df <- df %>% 
@@ -305,7 +307,7 @@ df <- df %>%
                               TRUE ~ 0))
 
 # save table of outcomes
-outcomes <- data.frame(hosp_24h = sum(df$hosp_24h), death_30d_pc = sum(df$death_30d_pc), death_30d_ons = sum(df$death_30d_ons), icu_adm = sum(df$icu_adm))
+outcomes <- data.frame(hosp_24h = sum(df$hosp_24h), death_30d_pc = sum(df$death_30d_pc), death_30d_ons = sum(df$death_30d_ons), covid_death_30d_ons, icu_adm = sum(df$icu_adm))
 write.csv(outcomes, "output/results/outcomes.csv")
 
 # convert age to numeric
