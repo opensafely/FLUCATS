@@ -2,7 +2,9 @@
 library(pROC)
 
 # read df child from csv
-df_child <- read.csv("output/input_all_edited.csv")
+df <- read.csv("output/input_all_edited.csv")
+df_child <- df[df$category == "Child",]
+df_adult <- df[df$category == "Adult",]
 
 #Separate models for each outcome, by child/adult status
 hosp_child <- glm(hosp_24h ~ total_CAT, data = df_child ,family = "binomial")
