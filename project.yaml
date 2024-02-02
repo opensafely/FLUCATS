@@ -1708,4 +1708,5 @@ actions:
       outputs:
         moderately_sensitive:
           aucs: output/results/aucs.csv
+          roc: output/results/roc*.csv
 
