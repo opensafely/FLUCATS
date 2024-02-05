@@ -18,9 +18,9 @@ saveSummary(hosp_child, "output/results/hosp_child_summary.txt")
 prediction_hosp_c <- predict.glm(hosp_child, df_child, type = "response")
 mroc_hosp_child <- roc(df_child$hosp_24h, prediction_hosp_c, plot = T)
 roc_data_hosp_child <- data.frame(
-  fpr = 1 - mroc_hosp_child$specificities,
-  sensitivity = mroc_hosp_child$sensitivities,
-  thresholds = mroc_hosp_child$thresholds
+  fpr = round(1 - mroc_hosp_child$specificities, 4),
+  sensitivity = round(mroc_hosp_child$sensitivities, 4),
+  thresholds = round(mroc_hosp_child$thresholds, 4)
 )
 write.csv(roc_data_hosp_child, "output/results/roc_data_hosp_child.csv")
 auc_hosp_child <- auc(mroc_hosp_child)
@@ -30,9 +30,9 @@ saveSummary(hosp_adult, "output/results/hosp_adult_summary.txt")
 prediction_hosp_a <- predict.glm(hosp_adult, df_adult, type = "response")
 mroc_hosp_adult <- roc(df_adult$hosp_24h, prediction_hosp_a, plot = T)
 roc_data_hosp_adult <- data.frame(
-  fpr = 1 - mroc_hosp_adult$specificities,
-  sensitivity = mroc_hosp_adult$sensitivities,
-  thresholds = mroc_hosp_adult$thresholds
+  fpr = round(1 - mroc_hosp_adult$specificities, 4),
+  sensitivity = round(mroc_hosp_adult$sensitivities, 4),
+  thresholds = round(mroc_hosp_adult$thresholds, 4)
 )
 write.csv(roc_data_hosp_adult, "output/results/roc_data_hosp_adult.csv")
 auc_hosp_adult <- auc(mroc_hosp_adult)
