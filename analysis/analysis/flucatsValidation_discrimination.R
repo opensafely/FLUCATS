@@ -1,6 +1,12 @@
 #Continuing from flucatsValidation.R
 library(pROC)
 
+saveSummary <- function(model, filename) {
+  sink(filename)
+  print(summary(model))
+  sink()
+}
+
 # read df child from csv
 df <- read.csv("output/input_all_edited.csv")
 df_child <- df[df$category == "Child",]
@@ -8,6 +14,7 @@ df_adult <- df[df$category == "Adult",]
 
 #Separate models for each outcome, by child/adult status
 hosp_child <- glm(hosp_24h ~ total_CAT, data = df_child ,family = "binomial")
+saveSummary(hosp_child, "output/results/hosp_child_summary.txt")
 prediction_hosp_c <- predict.glm(hosp_child, df_child, type = "response")
 mroc_hosp_child <- roc(df_child$hosp_24h, prediction_hosp_c, plot = T)
 roc_data_hosp_child <- data.frame(
@@ -19,6 +26,7 @@ write.csv(roc_data_hosp_child, "output/results/roc_data_hosp_child.csv")
 auc_hosp_child <- auc(mroc_hosp_child)
 
 hosp_adult <- glm(hosp_24h ~ total_CAT, data = df_adult ,family = "binomial")
+saveSummary(hosp_adult, "output/results/hosp_adult_summary.txt")
 prediction_hosp_a <- predict.glm(hosp_adult, df_adult, type = "response")
 mroc_hosp_adult <- roc(df_adult$hosp_24h, prediction_hosp_a, plot = T)
 roc_data_hosp_adult <- data.frame(
