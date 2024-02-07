@@ -360,6 +360,11 @@ df <- df %>%
 df$bmi <- ifelse(df$bmi == 0, NA, df$bmi)
 df$bmi_primis <- ifelse(df$bmi_primis == 0, NA, df$bmi_primis)
 
+df$bmi <- ifelse(df$bmi > 50, NA, df$bmi)
+df$bmi_primis <- ifelse(df$bmi_primis > 50, NA, df$bmi_primis)
+
+
+
 variables <- c("age","age_band","sex","region","bmi","bmi_primis","asthma","addisons_hypoadrenalism",
                "chronic_heart_disease","chronic_respiratory_disease","ckd_primis_stage",
                "renal_disease","ckd35_or_renal_disease","ckd_os","liver_disease","pregnant",
