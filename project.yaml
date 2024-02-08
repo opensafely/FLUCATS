@@ -1703,6 +1703,12 @@ actions:
         tables_txt: output/results/table*.txt
         outcomes: output/results/outcomes.csv
         
+  hosp_adm_breakdown:
+    run: python:latest python analysis/analysis/hospital_admission_breakdown.py
+    needs: [descriptive_tables]
+    outputs:
+      moderately_sensitive:
+        attrition: output/results/hospitals_admission_breakdown.csv
 
   discrimination:
       run: r:latest analysis/analysis/flucatsValidation_discrimination.R
