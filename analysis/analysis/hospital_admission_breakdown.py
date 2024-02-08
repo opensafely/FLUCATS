@@ -4,10 +4,12 @@ import pandas as pd
 df = pd.read_csv('output/input_all_edited.csv')
 
 hosp_within_24hrs = df[df["hosp_24h"] == 1]
-print(len(hosp_within_24hrs))
-hosp_codes = hosp_within_24hrs["hospital_admission_code"]
-# remove NaNs
-hosp_codes = hosp_codes.dropna()
-print(hosp_codes.value_counts())
 
-codes.to_csv('output/results/hospital_admission_breakdown.csv')
+hosp_codes = hosp_within_24hrs["hospital_admission_code"]
+
+hosp_codes = hosp_codes.dropna()
+counts = hosp_codes.value_counts()
+counts[counts <= 7] = 0
+
+counts = counts.apply(lambda x: round(x/5)*5)
+counts.to_csv('output/results/hospital_admission_breakdown.csv')
