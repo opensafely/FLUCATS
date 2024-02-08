@@ -491,6 +491,11 @@ df <- df %>%
 df <- df %>% 
   mutate(total_CAT = flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g)
 
+columns_to_factor <- c("flucats_a", "flucats_b", "flucats_c", "flucats_d", "flucats_e", "flucats_f", "flucats_g", "total_CAT")
+
+df <- df %>%
+  mutate(across(all_of(columns_to_factor), as.factor))
+
 
 df_child <- df %>% 
   filter(age<16)
@@ -518,6 +523,15 @@ summarise_and_export_data(df_adult, flucats_vars, "output/results/table_8_a.csv"
 
 
 #######################################################################
+
+
+
+df_adult <- df_adult %>%
+  mutate(across(all_of(columns_to_factor), as.numeric))
+
+df_child <- df_child %>%
+  mutate(across(all_of(columns_to_factor), as.numeric))
+
 
 saveSummary <- function(model, filename) {
   sink(filename)
