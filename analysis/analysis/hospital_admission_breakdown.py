@@ -5,6 +5,9 @@ df = pd.read_csv('output/input_all_edited.csv')
 
 hosp_within_24hrs = df[df["hosp_24h"] == 1]
 print(len(hosp_within_24hrs))
-codes = hosp_within_24hrs["hospital_admission_code"].value_counts()
+hosp_codes = hosp_within_24hrs["hospital_admission_code"]
+# remove NaNs
+hosp_codes = hosp_codes.dropna()
+print(hosp_codes.value_counts())
 
 codes.to_csv('output/results/hospital_admission_breakdown.csv')
