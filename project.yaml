@@ -1708,7 +1708,7 @@ actions:
     needs: [descriptive_tables]
     outputs:
       moderately_sensitive:
-        attrition: output/results/hospital_admission_breakdown*.csv
+        attrition: output/results/hospital_admission_cov_status*.csv
 
 
   discrimination:

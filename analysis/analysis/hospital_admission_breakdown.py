@@ -30,12 +30,12 @@ hosp_codes = hosp_codes.dropna()
 
 counts = hosp_within_24hrs.groupby(
     ["probable_covid", "suspected_covid", "probable_or_suspected_covid"]
-)["hospital_admission_code"].value_counts()
+)["hospital_admission"].value_counts()
 
-counts.to_csv("output/results/hospital_admission_breakdown.csv")
+counts.to_csv("output/results/hospital_admission_cov_status.csv")
 
 counts[counts <= 7] = np.nan
 counts = counts.dropna()
 
 counts = counts.apply(lambda x: round(x / 5) * 5)
-counts.to_csv("output/results/hospital_admission_breakdown_redacted.csv")
+counts.to_csv("output/results/hospital_admission_cov_status_redacted.csv")
