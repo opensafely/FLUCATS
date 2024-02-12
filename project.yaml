@@ -1708,7 +1708,8 @@ actions:
     needs: [descriptive_tables]
     outputs:
       moderately_sensitive:
-        attrition: output/results/hospital_admission_breakdown.csv
+        attrition: output/results/hospital_admission_breakdown*.csv
+
 
   discrimination:
       run: r:latest analysis/analysis/flucatsValidation_discrimination.R
