@@ -20,6 +20,13 @@ df["probable_or_suspected_covid"] = (df["probable_covid"] == 1) | (
 )
 df["probable_or_suspected_covid"] = df["probable_or_suspected_covid"].astype(int)
 
+# save df with value counts of each column - prob covid, suspected covid, prob or suspected covid
+df[["probable_covid", "suspected_covid", "probable_or_suspected_covid"]].apply(
+    pd.Series.value_counts
+).to_csv("output/results/cov_status_value_counts.csv")
+
+
+
 
 hosp_within_24hrs = df[df["hosp_24h"] == 1]
 
@@ -30,7 +37,7 @@ hosp_codes = hosp_codes.dropna()
 
 counts = hosp_within_24hrs.groupby(
     ["probable_covid", "suspected_covid", "probable_or_suspected_covid"]
-)["hospital_admission"].value_counts()
+)["hosp_24h"].value_counts()
 
 counts.to_csv("output/results/hospital_admission_cov_status.csv")
 
