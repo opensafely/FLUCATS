@@ -1710,6 +1710,7 @@ actions:
       moderately_sensitive:
         attrition: output/results/hospital_admission_cov_status*.csv
         cov_status: output/results/cov_status_value_counts.csv
+        cov_status_by_code: output/results/*covid_value_counts.csv
 
 
   discrimination:
