@@ -292,14 +292,29 @@ df <- df %>%
          covrx1_dat = as.Date(covrx1_dat, format = "%m/%d/%y"),
          covrx2_dat = as.Date(covrx2_dat, format = "%m/%d/%y"))
 
+# Define suspected and probable COVID-19
+df <- df %>% 
+    mutate(suspected_covid = rowSums(select(., starts_with("flucats_question_suspected_covid"))) > 0,
+           probable_covid = rowSums(select(., starts_with("flucats_question_probable_covid"))) > 0)
 
 ##Define outcomes
 #Primary outcomes: Hospital admission within 24 hours of GP assessment, and death 30 days from GP assessment date
+
+
 df <- df %>% 
   mutate(hosp_24h = case_when(
     (flucats_template_date - hospital_admission_date) >= 0 & (flucats_template_date - hospital_admission_date) <= 1 ~ 1,
     TRUE ~ 0
     ),
+    hosp_24h_susp_cov = case_when(
+    (flucats_template_date - hospital_admission_date) >= 0 & (flucats_template_date - hospital_admission_date) <= 1 & (suspected_covid==1) ~ 1,
+    TRUE ~ 0
+    ),
+    hosp_24h_prob_cov = case_when(
+    (flucats_template_date - hospital_admission_date) >= 0 & (flucats_template_date - hospital_admission_date) <= 1 & (probable_covid==1) ~ 1,
+    TRUE ~ 0
+    ),
+    
          death_30d_pc = case_when((flucats_template_date - died_any_date_pc) >= 0 & (flucats_template_date - died_any_date_pc) <= 30 ~ 1,
                                 TRUE ~ 0), # Died due to any cause (primary care record)
          death_30d_ons = case_when((flucats_template_date - died_any_date) >= 0 & (flucats_template_date - died_any_date) <= 30 ~ 1,
@@ -313,15 +328,15 @@ df <- df %>%
                               TRUE ~ 0))
 
 # save table of outcomes
-outcomes <- data.frame(hosp_24h = sum(df$hosp_24h), death_30d_pc = sum(df$death_30d_pc), death_30d_ons = sum(df$death_30d_ons), covid_death_30d_ons=sum(df$covid_death_30d_ons), icu_adm = sum(df$icu_adm))
+outcomes <- data.frame(hosp_24h = sum(df$hosp_24h), hosp_24h_prob_cov = sum(df$hosp_24h_prob_cov), hosp_24h_susp_cov = sum(df$hosp_24h_susp_cov), death_30d_pc = sum(df$death_30d_pc), death_30d_ons = sum(df$death_30d_ons), covid_death_30d_ons=sum(df$covid_death_30d_ons), icu_adm = sum(df$icu_adm))
 
 outcomes_child <- df %>% 
   filter(category == "Child") %>% 
-  summarise(hosp_24h = sum(hosp_24h), death_30d_pc = sum(death_30d_pc), death_30d_ons = sum(death_30d_ons), covid_death_30d_ons=sum(covid_death_30d_ons), icu_adm = sum(icu_adm))
+  summarise(hosp_24h = sum(hosp_24h), hosp_24h_prob_cov = sum(df$hosp_24h_prob_cov), death_30d_pc = sum(death_30d_pc), death_30d_ons = sum(death_30d_ons), covid_death_30d_ons=sum(covid_death_30d_ons), icu_adm = sum(icu_adm))
 
 outcomes_adult <- df %>%
   filter(category == "Adult") %>% 
-  summarise(hosp_24h = sum(hosp_24h), death_30d_pc = sum(death_30d_pc), death_30d_ons = sum(death_30d_ons), covid_death_30d_ons=sum(covid_death_30d_ons), icu_adm = sum(icu_adm))
+  summarise(hosp_24h = sum(hosp_24h), hosp_24h_prob_cov = sum(df$hosp_24h_prob_cov), death_30d_pc = sum(death_30d_pc), death_30d_ons = sum(death_30d_ons), covid_death_30d_ons=sum(covid_death_30d_ons), icu_adm = sum(icu_adm))
 
 outcomes <- rbind(outcomes, outcomes_child, outcomes_adult)
 
@@ -455,6 +470,10 @@ summarise_and_export_data <- function(df, variables, output_file, split_by = NUL
 # Table 1: demographics by hospitalisation
 summarise_and_export_data(df, variables, "output/results/table_1.csv", split_by="hosp_24h")
 
+summarise_and_export_data(df, variables, "output/results/table_1_susp_cov.csv", split_by="hosp_24h_susp_cov")
+
+summarise_and_export_data(df, variables, "output/results/table_1_prob_cov.csv", split_by="hosp_24h_prob_cov")
+
 #Table 2: demographics by death within 30 days of GP consultation (primary care record)
 summarise_and_export_data(df, variables, "output/results/table_2.csv", split_by="death_30d_pc")
 
@@ -508,6 +527,8 @@ flucats_vars <- c("total_CAT", "flucats_a", "flucats_b", "flucats_c", "flucats_d
 #Table 5-8: flucats criteria by outcome 
 #CHILD
 summarise_and_export_data(df_child, flucats_vars, "output/results/table_5_c.csv", split_by="hosp_24h")
+summarise_and_export_data(df_child, flucats_vars, "output/results/table_5_c_susp_cov.csv", split_by="hosp_24h_susp_cov")
+summarise_and_export_data(df_child, flucats_vars, "output/results/table_5_c_prob_cov.csv", split_by="hosp_24h_prob_cov")
 summarise_and_export_data(df_child, flucats_vars, "output/results/table_6_c.csv", split_by="death_30d_pc")
 summarise_and_export_data(df_child, flucats_vars, "output/results/table_7_c.csv", split_by="death_30d_ons")
 summarise_and_export_data(df_child, flucats_vars, "output/results/table_8_c.csv", split_by="icu_adm")
@@ -517,6 +538,8 @@ summarise_and_export_data(df_child, flucats_vars, "output/results/table_8_c.csv"
 #ADULT
 
 summarise_and_export_data(df_adult, flucats_vars, "output/results/table_5_a.csv", split_by="hosp_24h")
+summarise_and_export_data(df_adult, flucats_vars, "output/results/table_5_a_susp_cov.csv", split_by="hosp_24h_susp_cov")
+summarise_and_export_data(df_adult, flucats_vars, "output/results/table_5_a_prob_cov.csv", split_by="hosp_24h_prob_cov")
 summarise_and_export_data(df_adult, flucats_vars, "output/results/table_6_a.csv", split_by="death_30d_pc")
 summarise_and_export_data(df_adult, flucats_vars, "output/results/table_7_a.csv", split_by="death_30d_ons")
 summarise_and_export_data(df_adult, flucats_vars, "output/results/table_8_a.csv", split_by="icu_adm")
@@ -545,6 +568,9 @@ saveSummary <- function(model, filename) {
 model_hosp_c <- glm( hosp_24h ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_child, family = binomial)
 saveSummary(model_hosp_c, "output/results/table9_c.txt")
 
+model_hosp_c_susp_cov <- glm( hosp_24h_susp_cov ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_child, family = binomial)
+saveSummary(model_hosp_c_susp_cov, "output/results/table9_c_susp_cov.txt")
+
 model_death_pc_c <- glm(death_30d_pc ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_child, family = binomial)
 saveSummary(model_death_pc_c, "output/results/table10_c.txt")
 
@@ -560,6 +586,12 @@ saveSummary(model_covid_death_ons_c, "output/results/table13_c.txt")
 #ADULT
 model_hosp_a <- glm( hosp_24h ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
 saveSummary(model_hosp_a, "output/results/table9_a.txt")
+
+model_hosp_a_susp_cov <- glm( hosp_24h_susp_cov ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
+saveSummary(model_hosp_a_susp_cov, "output/results/table9_a_susp_cov.txt")
+
+model_hosp_a_prob_cov <- glm( hosp_24h_prob_cov ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
+saveSummary(model_hosp_a_prob_cov, "output/results/table9_a_prob_cov.txt")
 
 model_death_pc_a <- glm(death_30d_pc ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g, data = df_adult, family = binomial)
 saveSummary(model_death_pc_a, "output/results/table10_a.txt")
