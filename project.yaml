@@ -1718,7 +1718,7 @@ actions:
       needs: [descriptive_tables]
       outputs:
         moderately_sensitive:
-          aucs: output/results/aucs.csv
+          aucs: output/results/aucs*.csv
           roc: output/results/roc*.csv
           summary: output/results/*summary.txt
 
