@@ -4,6 +4,7 @@ library(predtools)
 library(dplyr)
 
 source("analysis/analysis/flucats_descriptive.R")
+source("analysis/analysis/flucatsValidation_discrimination.R")
 
 
 
@@ -20,18 +21,6 @@ df_adult <- df_adult %>%
   mutate(severe_outcome = case_when(covid_death_30d_ons == 1| icu_adm ==1 ~ 1,
                                      TRUE ~ 0))# composite severe outcome
 
-fit_model <- function(formula, data, family) {
-  tryCatch({
-    model <- glm(formula, data = data, family = family)
-    if (!model$converged) {
-      stop("Model did not converge")
-    }
-    return(model)
-  }, error = function(e) {
-    warning(paste("Error in fitting model:", e))
-    return(NULL)
-  })
-}
 
 
 #Various tables
@@ -104,7 +93,7 @@ if (!is.null(severe_o)) {
 
   auc_so_adult <- auc(mroc_severe_outcome) 
   auc_so_ci <- ci.auc(mroc_severe_outcome)
-  so_ci_str <- paste0(round(auc_so_ci$lower, 2), " - ", round(auc_so_ci$upper, 2))
+  auc_so_ci_str <- paste0(round(auc_so_ci[1], 3), " (", round(auc_so_ci[2], 3), " - ", round(auc_so_ci[3], 3), ")")
 
   aucs_so <- data.frame(auc_so_adult, auc_so_ci_str)
   colnames(aucs_so) <- c("auc", "ci")

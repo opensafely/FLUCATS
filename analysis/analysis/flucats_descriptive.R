@@ -559,9 +559,13 @@ df_child <- df_child %>%
 
 
 saveSummary <- function(model, filename) {
-  sink(filename)
-  print(summary(model))
-  sink()
+  if (!is.null(model)) {
+    sink(filename)
+    print(summary(model))
+    sink()
+  } else {
+    write.csv(data.frame(), filename)
+  }
 }
 
 
