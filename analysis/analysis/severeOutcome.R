@@ -102,10 +102,11 @@ if (!is.null(severe_o)) {
   )
   write.csv(roc_data_severe_outcome, "output/results/roc_data_severe_outcome.csv")
 
-  auc_so_adult <- auc(mroc_severe_outcome) #print value
-  auc_so_ci <- ci.auc(mroc_severe_outcome) #print value
+  auc_so_adult <- auc(mroc_severe_outcome) 
+  auc_so_ci <- ci.auc(mroc_severe_outcome)
+  so_ci_str <- paste0(round(auc_so_ci$lower, 2), " - ", round(auc_so_ci$upper, 2))
 
-  aucs_so <- data.frame(auc_so_adult, ci_so_adult = auc_so_ci)
+  aucs_so <- data.frame(auc_so_adult, auc_so_ci_str)
   colnames(aucs_so) <- c("auc", "ci")
   write.csv(aucs_so, "output/results/aucs_so.csv")
 
