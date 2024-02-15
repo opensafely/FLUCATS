@@ -56,7 +56,7 @@ write.csv(roc_data_hosp_child_prob_cov, "output/results/roc_data_hosp_child_prob
 
 
 auc_hosp_child <- auc(mroc_hosp_child)
-auc_hosp_child_ci <- ci.auc(mroc_hosp_adult)
+auc_hosp_child_ci <- ci.auc(mroc_hosp_child)
 
 auc_hosp_child_susp_cov <- auc(mroc_hosp_child_susp_cov)
 aur_hosp_child_susp_cov_ci <- ci.auc(mroc_hosp_child_susp_cov)
