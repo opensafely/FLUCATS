@@ -332,11 +332,13 @@ outcomes <- data.frame(hosp_24h = sum(df$hosp_24h), hosp_24h_prob_cov = sum(df$h
 
 outcomes_child <- df %>% 
   filter(category == "Child") %>% 
-  summarise(hosp_24h = sum(hosp_24h), hosp_24h_prob_cov = sum(df$hosp_24h_prob_cov), death_30d_pc = sum(death_30d_pc), death_30d_ons = sum(death_30d_ons), covid_death_30d_ons=sum(covid_death_30d_ons), icu_adm = sum(icu_adm))
+  summarise(hosp_24h = sum(hosp_24h), hosp_24h_prob_cov = sum(df$hosp_24h_prob_cov), hosp_24h_susp_cov = sum(df$hosp_24h_susp_cov),death_30d_pc = sum(death_30d_pc), death_30d_ons = sum(death_30d_ons), covid_death_30d_ons=sum(covid_death_30d_ons), icu_adm = sum(icu_adm))
 
 outcomes_adult <- df %>%
   filter(category == "Adult") %>% 
-  summarise(hosp_24h = sum(hosp_24h), hosp_24h_prob_cov = sum(df$hosp_24h_prob_cov), death_30d_pc = sum(death_30d_pc), death_30d_ons = sum(death_30d_ons), covid_death_30d_ons=sum(covid_death_30d_ons), icu_adm = sum(icu_adm))
+  summarise(hosp_24h = sum(hosp_24h), hosp_24h_prob_cov = sum(df$hosp_24h_prob_cov), hosp_24h_susp_cov = sum(df$hosp_24h_susp_cov),death_30d_pc = sum(death_30d_pc), death_30d_ons = sum(death_30d_ons), covid_death_30d_ons=sum(covid_death_30d_ons), icu_adm = sum(icu_adm))
+
+
 
 outcomes <- rbind(outcomes, outcomes_child, outcomes_adult)
 
