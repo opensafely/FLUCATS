@@ -57,12 +57,17 @@ write.csv(roc_data_hosp_child_prob_cov, "output/results/roc_data_hosp_child_prob
 
 auc_hosp_child <- auc(mroc_hosp_child)
 auc_hosp_child_ci <- ci.auc(mroc_hosp_child)
+hosp_child_ci_str <-  paste("(", round(auc_hosp_child_ci$lower, 2), "-", round(auc_hosp_child_ci$upper, 2), ")", sep = "")
+
 
 auc_hosp_child_susp_cov <- auc(mroc_hosp_child_susp_cov)
-aur_hosp_child_susp_cov_ci <- ci.auc(mroc_hosp_child_susp_cov)
+auc_hosp_child_susp_cov_ci <- ci.auc(mroc_hosp_child_susp_cov)
+hosp_child_susp_cov_ci_str <-  paste("(", round(auc_hosp_child_susp_cov_ci$lower, 2), "-", round(auc_hosp_child_susp_cov_ci$upper, 2), ")", sep = "")
+
 
 auc_hosp_child_prob_cov <- auc(mroc_hosp_child_prob_cov)
-aur_hosp_child_prob_cov_ci <- ci.auc(mroc_hosp_child_prob_cov)
+auc_hosp_child_prob_cov_ci <- ci.auc(mroc_hosp_child_prob_cov)
+hosp_child_prob_cov_ci_str <-  paste("(", round(auc_hosp_child_prob_cov_ci$lower, 2), "-", round(auc_hosp_child_prob_cov_ci$upper, 2), ")", sep = "")
 
 hosp_adult <- glm(hosp_24h ~ total_CAT, data = df_adult ,family = "binomial")
 saveSummary(hosp_adult, "output/results/hosp_adult_summary.txt")
@@ -107,12 +112,15 @@ write.csv(roc_data_hosp_adult_prob_cov, "output/results/roc_data_hosp_adult_prob
 
 auc_hosp_adult <- auc(mroc_hosp_adult)
 auc_hosp_adult_ci <- ci.auc(mroc_hosp_adult)
+hospital_adult_ci_str <-  paste("(", round(auc_hosp_adult_ci$lower, 2), "-", round(auc_hosp_adult_ci$upper, 2), ")", sep = "")
 
 auc_hosp_adult_susp_cov <- auc(mroc_hosp_adult_susp_cov)
 auc_hosp_adult_susp_cov_ci <- ci.auc(mroc_hosp_adult_susp_cov)
+auc_hosp_adult_susp_cov_ci_str <-  paste("(", round(auc_hosp_adult_susp_cov_ci$lower, 2), "-", round(auc_hosp_adult_susp_cov_ci$upper, 2), ")", sep = "")
 
 auc_hosp_adult_prob_cov <- auc(mroc_hosp_adult_prob_cov)
 auc_hosp_adult_prob_cov_ci <- ci.auc(mroc_hosp_adult_prob_cov)
+auc_hosp_adult_prob_cov_ci_str <-  paste("(", round(auc_hosp_adult_prob_cov_ci$lower, 2), "-", round(auc_hosp_adult_prob_cov_ci$upper, 2), ")", sep = "")
 
 # death_child_pc <- glm(death_30d_pc ~ total_CAT, data = df_child ,family = "binomial")
 # prediction_dpc_c <- predict.glm(death_child_pc, df_child, type = "response")
@@ -184,9 +192,9 @@ auc_hosp_adult_prob_cov_ci <- ci.auc(mroc_hosp_adult_prob_cov)
 # auc_icu_adult <- auc(mroc_icu_adult)
 
 
-aucs <- data.frame(auc_hosp_child, auc_hosp_adult, auc_hosp_child_ci, auc_hosp_adult_ci)
-aucs_susp_cov <- data.frame(auc_hosp_child_susp_cov, auc_hosp_adult_susp_cov, auc_hosp_child_susp_cov_ci, auc_hosp_adult_susp_cov_ci)
-aucs_prob_cov <- data.frame(auc_hosp_child_prob_cov, auc_hosp_adult_prob_cov, auc_hosp_child_prob_cov_ci, auc_hosp_adult_prob_cov_ci)
+aucs <- data.frame(auc_hosp_child, auc_hosp_adult, auc_hosp_child_ci, auc_hosp_adult_ci_str)
+aucs_susp_cov <- data.frame(auc_hosp_child_susp_cov, auc_hosp_adult_susp_cov, auc_hosp_child_susp_cov_ci_str, auc_hosp_adult_susp_cov_ci_str)
+aucs_prob_cov <- data.frame(auc_hosp_child_prob_cov, auc_hosp_adult_prob_cov, auc_hosp_child_prob_cov_ci_str, auc_hosp_adult_prob_cov_ci_str)
 
 
 colnames(aucs) <- c("hosp_child", "hosp_adult", "ci_hosp_child", "ci_hosp_adult")
