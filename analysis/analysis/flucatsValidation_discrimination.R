@@ -54,9 +54,15 @@ write.csv(roc_data_hosp_child_prob_cov, "output/results/roc_data_hosp_child_prob
 
 
 
+
 auc_hosp_child <- auc(mroc_hosp_child)
+auc_hosp_child_ci <- ci.auc(mroc_hosp_adult)
+
 auc_hosp_child_susp_cov <- auc(mroc_hosp_child_susp_cov)
+aur_hosp_child_susp_cov_ci <- ci.auc(mroc_hosp_child_susp_cov)
+
 auc_hosp_child_prob_cov <- auc(mroc_hosp_child_prob_cov)
+aur_hosp_child_prob_cov_ci <- ci.auc(mroc_hosp_child_prob_cov)
 
 hosp_adult <- glm(hosp_24h ~ total_CAT, data = df_adult ,family = "binomial")
 saveSummary(hosp_adult, "output/results/hosp_adult_summary.txt")
@@ -100,8 +106,13 @@ roc_data_hosp_adult_prob_cov <- data.frame(
 write.csv(roc_data_hosp_adult_prob_cov, "output/results/roc_data_hosp_adult_prob_cov.csv")
 
 auc_hosp_adult <- auc(mroc_hosp_adult)
+auc_hosp_adult_ci <- ci.auc(mroc_hosp_adult)
+
 auc_hosp_adult_susp_cov <- auc(mroc_hosp_adult_susp_cov)
+aur_hosp_adult_susp_cov_ci <- ci.auc(mroc_hosp_adult_susp_cov)
+
 auc_hosp_adult_prob_cov <- auc(mroc_hosp_adult_prob_cov)
+aur_hosp_adult_prob_cov_ci <- ci.auc(mroc_hosp_adult_prob_cov)
 
 # death_child_pc <- glm(death_30d_pc ~ total_CAT, data = df_child ,family = "binomial")
 # prediction_dpc_c <- predict.glm(death_child_pc, df_child, type = "response")
@@ -173,14 +184,17 @@ auc_hosp_adult_prob_cov <- auc(mroc_hosp_adult_prob_cov)
 # auc_icu_adult <- auc(mroc_icu_adult)
 
 
-aucs <- data.frame(auc_hosp_child, auc_hosp_adult)
-aucs_susp_cov <- data.frame(auc_hosp_child_susp_cov, auc_hosp_adult_susp_cov)
-aucs_prob_cov <- data.frame(auc_hosp_child_prob_cov, auc_hosp_adult_prob_cov)
+aucs <- data.frame(auc_hosp_child, auc_hosp_adult, ci_hosp_child = auc_hosp_child_ci, 
+  ci_hosp_adult = auc_hosp_adult_ci)
+aucs_susp_cov <- data.frame(auc_hosp_child_susp_cov, auc_hosp_adult_susp_cov, ci_hosp_child_susp_cov = aur_hosp_child_susp_cov_ci, 
+  ci_hosp_adult_susp_cov = aur_hosp_adult_susp_cov_ci)
+aucs_prob_cov <- data.frame(auc_hosp_child_prob_cov, auc_hosp_adult_prob_cov, ci_hosp_child_prob_cov = aur_hosp_child_prob_cov_ci, 
+  ci_hosp_adult_prob_cov = aur_hosp_adult_prob_cov_ci)
 
 
-colnames(aucs) <- c("hosp_child", "hosp_adult")
-colnames(aucs_susp_cov) <- c("hosp_child_susp_cov", "hosp_adult_susp_cov")
-colnames(aucs_prob_cov) <- c("hosp_child_prob_cov", "hosp_adult_prob_cov")
+colnames(aucs) <- c("hosp_child", "hosp_adult", "ci_hosp_child", "ci_hosp_adult")
+colnames(aucs_susp_cov) <- c("hosp_child_susp_cov", "hosp_adult_susp_cov", "ci_hosp_child_susp_cov", "ci_hosp_adult_susp_cov")
+colnames(aucs_prob_cov) <- c("hosp_child_prob_cov", "hosp_adult_prob_cov", "ci_hosp_child_prob_cov", "ci_hosp_adult_prob_cov")
 
 write.csv(aucs, "output/results/aucs.csv")
 write.csv(aucs_susp_cov, "output/results/aucs_susp_cov.csv")
