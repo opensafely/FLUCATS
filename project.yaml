@@ -1732,3 +1732,11 @@ actions:
           roc: output/results/ro*.csv
           aucs: output/results/auc*.csv
           # calibration: output/results/calibration*.csv
+
+
+  adjustedModels:
+      run: r:latest analysis/analysis/adjustedModels.R
+      needs: [descriptive_tables]
+      outputs:
+        moderately_sensitive:
+          tables: output/results/adju*.txt
