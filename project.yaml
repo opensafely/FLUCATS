@@ -1741,3 +1741,12 @@ actions:
       outputs:
         moderately_sensitive:
           tables: output/results/adju*.txt
+
+
+  isaric:
+      run: r:latest analysis/analysis/isaric4c.R
+      needs: [descriptive_tables]
+      outputs:
+        moderately_sensitive:
+          tables: output/results/isaric*.csv
+          txt: output/results/isaric*.txt
