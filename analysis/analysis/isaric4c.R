@@ -91,9 +91,18 @@ df <- df %>%
 df <- df %>% 
   mutate(isaric_tot = sum(age_categ + sex_cat + comorb_cat + resp_rate_cat + o2sat_cat))
 
+fit_model_if_two_factors <- function(df, y_var, ...){
+  if(length(unique(df[[y_var]])) >= 2){
+    formula <- as.formula(paste(y_var, "~", paste(list(...), collapse = " + ")))
+    model <- glm(formula, data = df, family = binomial)
+    return(model)
+  } else {
+    return(NULL)
+  }
+}
 
 #Check discrimination and calibration of the total ISARIC score
-isaric_mod <- fit_model(hosp_24h ~ isaric_tot, data = df ,family = "binomial")
+isaric_mod <- fit_model_if_two_factors(df, "hosp_24h", "isaric_tot")
 saveSummary(isaric_mod, "output/results/isaric_mod_hosp_24h.txt")
 
 if (!is.null(isaric_mod)) {
@@ -126,7 +135,7 @@ if (!is.null(isaric_mod)) {
 }
 
 
-isaric_mod <- fit_model(covid_hosp ~ isaric_tot, data = df ,family = "binomial")
+isaric_mod <- fit_model_if_two_factors(df, "covid_hosp", "isaric_tot")
 saveSummary(isaric_mod, "output/results/isaric_mod_covid_hosp.txt")
 
 if (!is.null(isaric_mod)) {
