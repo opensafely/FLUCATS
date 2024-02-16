@@ -1,10 +1,17 @@
 #Continuing from flucatsValidation.R
 library(pROC)
+library(predtools)
 
 source("analysis/analysis/utils.R")
 
 # read df child from csv
 df <- read.csv("output/input_all_edited.csv")
+
+df$suspected_covid <- as.integer(rowSums(df[, grepl("flucats_question_suspected_covid", names(df))] == 1) > 0)
+
+# create covid_hosp variable - suspected_covid and hosp_24h
+df$covid_hosp <- ifelse(df$suspected_covid == 1 & df$hosp_24h == 1, 1, 0)
+
 df_child <- df[df$category == "Child",]
 df_adult <- df[df$category == "Adult",]
 
@@ -31,11 +38,16 @@ if (!is.null(hosp_child)) {
   auc_hosp_child <- auc(mroc_hosp_child)
   auc_hosp_child_ci <- ci.auc(mroc_hosp_child)
   auc_hosp_child_ci_str <-  paste("(", round(auc_hosp_child_ci[1], 2), "-", round(auc_hosp_child_ci[2], 2), ")", sep = "")
+  calibration <- calibration_plot(data = df_child, obs = "hosp_24h", pred = "prediction_hosp_c", data_summary =  T)
+  write.csv(calibration$data_summary, "output/results/calibration_hosp_child.csv")
+
+
 
 } else {
   write.csv(data.frame(), "output/results/roc_data_hosp_child.csv")
   auc_hosp_child <- NA
   auc_hosp_child_ci_str <- NA
+  write.csv(data.frame(), "output/results/calibration_hosp_child.csv")
 }
 
 
@@ -52,11 +64,14 @@ if (!is.null(hosp_child_susp_cov)) {
   auc_hosp_child_susp_cov <- auc(mroc_hosp_child_susp_cov)
   auc_hosp_child_susp_cov_ci <- ci.auc(mroc_hosp_child_susp_cov)
   auc_hosp_child_susp_cov_ci_str <-  paste("(", round(auc_hosp_child_susp_cov_ci[1], 2), "-", round(auc_hosp_child_susp_cov_ci[2], 2), ")", sep = "")
+  calibration <- calibration_plot(data = df_child, obs = "hosp_24h_susp_cov", pred = "prediction_hosp_c_susp_cov", data_summary =  T)
+  write.csv(calibration$data_summary, "output/results/calibration_hosp_child_susp_cov.csv")
 
 } else {
   write.csv(data.frame(), "output/results/roc_data_hosp_child_susp_cov.csv")
   auc_hosp_child_susp_cov <- NA
   auc_hosp_child_susp_cov_ci_str <- NA
+  write.csv(data.frame(), "output/results/calibration_hosp_child_susp_cov.csv")
 }
 
 if (!is.null(hosp_child_prob_cov)) {
@@ -72,11 +87,14 @@ if (!is.null(hosp_child_prob_cov)) {
   auc_hosp_child_prob_cov <- auc(mroc_hosp_child_prob_cov)
   auc_hosp_child_prob_cov_ci <- ci.auc(mroc_hosp_child_prob_cov)
   auc_hosp_child_prob_cov_ci_str <-  paste("(", round(auc_hosp_child_prob_cov_ci[1], 2), "-", round(auc_hosp_child_prob_cov_ci[2], 2), ")", sep = "")
+  calibration <- calibration_plot(data = df_child, obs = "hosp_24h_prob_cov", pred = "prediction_hosp_c_prob_cov", data_summary =  T)
+  write.csv(calibration$data_summary, "output/results/calibration_hosp_child_prob_cov.csv")
 
 } else {
   write.csv(data.frame(), "output/results/roc_data_hosp_child_prob_cov.csv")
   auc_hosp_child_prob_cov <- NA
   auc_hosp_child_prob_cov_ci_str <- NA
+  write.csv(data.frame(), "output/results/calibration_hosp_child_prob_cov.csv")
 }
 
 
@@ -103,11 +121,14 @@ if (!is.null(hosp_adult)) {
   auc_hosp_adult <- auc(mroc_hosp_adult)
   auc_hosp_adult_ci <- ci.auc(mroc_hosp_adult)
   auc_hosp_adult_ci_str <-  paste("(", round(auc_hosp_adult_ci[1], 2), "-", round(auc_hosp_adult_ci[2], 2), ")", sep = "")
+  calibration <- calibration_plot(data = df_adult, obs = "hosp_24h", pred = "prediction_hosp_a", data_summary =  T)
+  write.csv(calibration$data_summary, "output/results/calibration_hosp_adult.csv")
 
 } else {
   write.csv(data.frame(), "output/results/roc_data_hosp_adult.csv")
   auc_hosp_adult <- NA
   auc_hosp_adult_ci_str <- NA
+  write.csv(data.frame(), "output/results/calibration_hosp_adult.csv")
 }
 
 if (!is.null(hosp_adult_susp_cov)) {
@@ -123,11 +144,14 @@ if (!is.null(hosp_adult_susp_cov)) {
   auc_hosp_adult_susp_cov <- auc(mroc_hosp_adult_susp_cov)
   auc_hosp_adult_susp_cov_ci <- ci.auc(mroc_hosp_adult_susp_cov)
   auc_hosp_adult_susp_cov_ci_str <-  paste("(", round(auc_hosp_adult_susp_cov_ci[1], 2), "-", round(auc_hosp_adult_susp_cov_ci[2], 2), ")", sep = "")
+  calibration <- calibration_plot(data = df_adult, obs = "hosp_24h_susp_cov", pred = "prediction_hosp_a_susp_cov", data_summary =  T)
+  write.csv(calibration$data_summary, "output/results/calibration_hosp_adult_susp_cov.csv")
 
 } else {
   write.csv(data.frame(), "output/results/roc_data_hosp_adult_susp_cov.csv")
   auc_hosp_adult_susp_cov <- NA
   auc_hosp_adult_susp_cov_ci_str <- NA
+  write.csv(data.frame(), "output/results/calibration_hosp_adult_susp_cov.csv")
 }
 
 if (!is.null(hosp_adult_prob_cov)) {
@@ -143,82 +167,14 @@ if (!is.null(hosp_adult_prob_cov)) {
   auc_hosp_adult_prob_cov <- auc(mroc_hosp_adult_prob_cov)
   auc_hosp_adult_prob_cov_ci <- ci.auc(mroc_hosp_adult_prob_cov)
   auc_hosp_adult_prob_cov_ci_str <-  paste("(", round(auc_hosp_adult_prob_cov_ci[1], 2), "-", round(auc_hosp_adult_prob_cov_ci[2], 2), ")", sep = "")
-
+  calibration <- calibration_plot(data = df_adult, obs = "hosp_24h_prob_cov", pred = "prediction_hosp_a_prob_cov", data_summary =  T)
+  write.csv(calibration$data_summary, "output/results/calibration_hosp_adult_prob_cov.csv")
 } else {
   write.csv(data.frame(), "output/results/roc_data_hosp_adult_prob_cov.csv")
   auc_hosp_adult_prob_cov <- NA
   auc_hosp_adult_prob_cov_ci_str <- NA
+  write.csv(data.frame(), "output/results/calibration_hosp_adult_prob_cov.csv")
 }
-
-
-# death_child_pc <- glm(death_30d_pc ~ total_CAT, data = df_child ,family = "binomial")
-# prediction_dpc_c <- predict.glm(death_child_pc, df_child, type = "response")
-# mroc_dpc_child <- roc(df_child$death_30d_pc, prediction_dpc_c, plot = T)
-# roc_data_dpc_child <- data.frame(
-#   fpr = 1 - mroc_dpc_child$specificities,
-#   sensitivity = mroc_dpc_child$sensitivities,
-#   thresholds = mroc_dpc_child$thresholds
-# )
-# write.csv(roc_data_dpc_child, "output/results/roc_data_dpc_child.csv")
-# auc_dpc_child <- auc(mroc_dpc_child)
-
-# death_adult_pc <- glm(death_30d_pc ~ total_CAT, data = df_adult ,family = "binomial")
-# prediction_dpc_a <- predict.glm(death_adult_pc, df_adult, type = "response")
-# mroc_dpc_adult <- roc(df_adult$death_30d_pc, prediction_dpc_a, plot = T)
-# roc_data_dpc_adult <- data.frame(
-#   fpr = 1 - mroc_dpc_adult$specificities,
-#   sensitivity = mroc_dpc_adult$sensitivities,
-#   thresholds = mroc_dpc_adult$thresholds
-# )
-# write.csv(roc_data_dpc_adult, "output/results/roc_data_dpc_adult.csv")
-# auc_dpc_adult <- auc(mroc_dpc_adult)
-
-
-# #
-# death_child_ons <- glm(death_30d_ons ~ total_CAT, data = df_child ,family = "binomial")
-# prediction_ons_c <- predict.glm(death_child_ons, df_child, type = "response")
-# mroc_ons_child <- roc(df_child$death_30d_ons, prediction_ons_c, plot = T)
-# roc_data_ons_child <- data.frame(
-#   fpr = 1 - mroc_ons_child$specificities,
-#   sensitivity = mroc_ons_child$sensitivities,
-#   thresholds = mroc_ons_child$thresholds
-# )
-# write.csv(roc_data_ons_child, "output/results/roc_data_ons_child.csv")
-# auc_ons_child <- auc(mroc_ons_child)
-
-# death_adult_ons <- glm(death_30d_ons ~ total_CAT, data = df_adult ,family = "binomial")
-# prediction_ons_a <- predict.glm(death_adult_ons, df_adult, type = "response")
-# mroc_ons_adult <- roc(df_adult$death_30d_ons, prediction_ons_a, plot = T)
-# roc_data_ons_adult <- data.frame(
-#   fpr = 1 - mroc_ons_adult$specificities,
-#   sensitivity = mroc_ons_adult$sensitivities,
-#   thresholds = mroc_ons_adult$thresholds
-# )
-# write.csv(roc_data_ons_adult, "output/results/roc_data_ons_adult.csv")
-# auc_ons_adult <- auc(mroc_ons_adult)
-
-# #
-# icu_child <- glm(icu_adm ~ total_CAT, data = df_child ,family = "binomial")
-# prediction_icu_c <- predict.glm(icu_child, df_child, type = "response")
-# mroc_icu_child <- roc(df_child$icu_adm, prediction_icu_c, plot = T)
-# roc_data_icu_child <- data.frame(
-#   fpr = 1 - mroc_icu_child$specificities,
-#   sensitivity = mroc_icu_child$sensitivities,
-#   thresholds = mroc_icu_child$thresholds
-# )
-# write.csv(roc_data_icu_child, "output/results/roc_data_icu_child.csv")
-# auc_icu_child <- auc(mroc_icu_child)
-
-# icu_adult <- glm(icu_adm ~ total_CAT, data = df_adult ,family = "binomial")
-# prediction_icu_a <- predict.glm(icu_adult, df_adult, type = "response")
-# mroc_icu_adult <- roc(df_adult$icu_adm, prediction_icu_a, plot = T)
-# roc_data_icu_adult <- data.frame(
-#   fpr = 1 - mroc_icu_adult$specificities,
-#   sensitivity = mroc_icu_adult$sensitivities,
-#   thresholds = mroc_icu_adult$thresholds
-# )
-# write.csv(roc_data_icu_adult, "output/results/roc_data_icu_adult.csv")
-# auc_icu_adult <- auc(mroc_icu_adult)
 
 
 aucs <- data.frame(auc_hosp_child, auc_hosp_adult, auc_hosp_child_ci_str, auc_hosp_adult_ci_str)
