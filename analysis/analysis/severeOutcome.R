@@ -112,13 +112,13 @@ if (!is.null(severe_o)) {
   colnames(aucs_so) <- c("auc", "ci")
   write.csv(aucs_so, "output/results/aucs_so.csv")
 
-  output <- calibration_plot(data = df_adult, obs = "severe_outcome", pred = "prediction_severe_outcome", data_summary=T)
+  # output <- calibration_plot(data = df_adult, obs = "severe_outcome", pred = "prediction_severe_outcome", data_summary=T)
 
-  write.csv(output[[2]], "output/results/calibration_summary_severe_outcome.csv")
+  # write.csv(output[[2]], "output/results/calibration_summary_severe_outcome.csv")
 
 } else {
   write.csv(data.frame(), "output/results/roc_data_severe_outcome.csv")
   write.csv(data.frame(), "output/results/aucs_so.csv")
-  write.csv(data.frame(), "output/results/calibration_summary_severe_outcome.csv")
+  # write.csv(data.frame(), "output/results/calibration_summary_severe_outcome.csv")
 }
 
