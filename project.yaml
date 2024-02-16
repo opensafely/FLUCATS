@@ -1721,6 +1721,7 @@ actions:
           aucs: output/results/aucs*.csv
           roc: output/results/roc*.csv
           summary: output/results/*summary.txt
+          calibration: output/results/calibration*.csv
 
   severeOutcome:
       run: r:latest analysis/analysis/severeOutcome.R
