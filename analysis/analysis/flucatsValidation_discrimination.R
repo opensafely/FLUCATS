@@ -51,7 +51,7 @@ if (!is.null(hosp_child_susp_cov)) {
 
   auc_hosp_child_susp_cov <- auc(mroc_hosp_child_susp_cov)
   auc_hosp_child_susp_cov_ci <- ci.auc(mroc_hosp_child_susp_cov)
-  auc_hosp_child_susp_cov_ci_str <-  paste("(", round(auc_hosp_child_susp_cov_ci[1], 2), "-", round(auc_hosp_susp_cov_child_ci[2], 2), ")", sep = "")
+  auc_hosp_child_susp_cov_ci_str <-  paste("(", round(auc_hosp_child_susp_cov_ci[1], 2), "-", round(auc_hosp_child_susp_cov_ci[2], 2), ")", sep = "")
 
 } else {
   write.csv(data.frame(), "output/results/roc_data_hosp_child_susp_cov.csv")
