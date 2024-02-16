@@ -1,10 +1,8 @@
-
 library(pROC)
 library(predtools)
 library(dplyr)
 
-source("analysis/analysis/flucats_descriptive.R")
-source("analysis/analysis/flucatsValidation_discrimination.R")
+source("analysis/analysis/utils.R")
 
 
 
