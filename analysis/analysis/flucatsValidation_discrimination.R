@@ -1,21 +1,7 @@
 #Continuing from flucatsValidation.R
 library(pROC)
 
-source("analysis/analysis/flucats_descriptive.R")
-
-
-fit_model <- function(formula, data, family) {
-  tryCatch({
-    model <- glm(formula, data = data, family = family)
-    if (!model$converged) {
-      stop("Model did not converge")
-    }
-    return(model)
-  }, error = function(e) {
-    warning(paste("Error in fitting model:", e))
-    return(NULL)
-  })
-}
+source("analysis/analysis/utils.R")
 
 # read df child from csv
 df <- read.csv("output/input_all_edited.csv")
