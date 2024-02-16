@@ -58,7 +58,7 @@ df_child <- df_child %>%
 
 fit_model_if_two_factors <- function(df, y_var, ...){
   if(length(unique(df[[y_var]])) >= 2){
-    formula <- as.formula(paste(y_var, "~", paste(..., collapse = " + ")))
+    formula <- as.formula(paste(y_var, "~", paste(list(...), collapse = " + ")))
     model <- glm(formula, data = df, family = binomial)
     return(model)
   } else {
