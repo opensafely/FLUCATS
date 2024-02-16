@@ -89,7 +89,7 @@ df <- df %>%
                                 comorb_number >= 2 ~ 2))
 
 df <- df %>% 
-  mutate(isaric_tot = age_categ + sex_cat + comorb_cat + resp_rate_cat + o2sat_cat)
+  mutate(isaric_tot = sum(age_categ + sex_cat + comorb_cat + resp_rate_cat + o2sat_cat))
 
 #Check discrimination and calibration of the total ISARIC score
 isaric_mod <- fit_model(df, "hosp_24h", "isaric_tot")
