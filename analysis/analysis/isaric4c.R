@@ -1,7 +1,11 @@
 library(pROC)
 library(predtools)
 library(dplyr)
-library(arsenal)
+
+
+source("analysis/analysis/utils.R")
+
+df <- read.csv("output/input_all_edited.csv")
 
 # Estimating discriminative ability of the modified ISARIC4C mortality score
 
@@ -11,16 +15,17 @@ library(arsenal)
 df <- df %>% 
   filter(age>=18)
 
-df <- df %>% 
-  mutate(hosp_24h = case_when((flucats_template_date - hospital_admission_date)>=0 & (flucats_template_date - hospital_admission_date)<=1 ~ 1,
-                               TRUE ~ 0),
-         death_30d_pc = case_when((flucats_template_date - died_any_date)>=0 & (flucats_template_date - died_any_date)<=30 ~ 1,
-                                   TRUE ~ 0),#Died due to any cause
-         death_30d_ons = case_when((flucats_template_date - covid_related_death_date)>=0 & (flucats_template_date - covid_related_death_date)<=30 ~ 1,
-                                    TRUE ~ 0))
-df <- df %>% 
-  mutate(covid_hosp = case_when(hosp_24h == 1 & (hosp_probable_covid ==1 | suspected covid==1) ~ 1,
-                                        TRUE ~ 0))#hospitalised due to COVID-19
+# df <- df %>% 
+#   mutate(hosp_24h = case_when((flucats_template_date - hospital_admission_date)>=0 & (flucats_template_date - hospital_admission_date)<=1 ~ 1,
+#                                TRUE ~ 0),
+#          death_30d_pc = case_when((flucats_template_date - died_any_date)>=0 & (flucats_template_date - died_any_date)<=30 ~ 1,
+#                                    TRUE ~ 0),#Died due to any cause
+#          death_30d_ons = case_when((flucats_template_date - covid_related_death_date)>=0 & (flucats_template_date - covid_related_death_date)<=30 ~ 1,
+#                                     TRUE ~ 0))
+# df <- df %>% 
+#   mutate(covid_hosp = case_when(hosp_24h == 1 & (suspected covid==1) ~ 1,
+#                                         TRUE ~ 0))#hospitalised due to COVID-19
+
 
 
 #Define covariates needed
@@ -47,7 +52,7 @@ df <- df %>%
                                     
                                     TRUE ~ 0),
          
-         sex_cat = case_when(sex = "M" ~ 1,
+         sex_cat = case_when(sex == "M" ~ 1,
                              TRUE ~ 0),
          
          o2sat_cat = case_when(flucats_question_numeric_value_oxygen_saturation_431314004_value > 0 & flucats_question_numeric_value_oxygen_saturation_431314004_value <92 ~ 2,
@@ -75,7 +80,7 @@ df <- df %>%
 df <- df %>%   
   rowwise() %>% 
   mutate(comorb_number = sum(asthma, addisons_hypoadrenalism, chronic_heart_disease, chronic_respiratory_disease, ckd35_or_renal_disease, liver_disease,
-                              diabetes, obesity, mental_illness, neurological_disorder, hypertension, pneumonia, immunosuppression_disorder, immunosuppression,
+                              diabetes, obesity, mental_illness, neurological_disorder, hypertension, pneumonia, immunosuppression_disorder, immunosuppression_chemo,
                               splenic_disease, na.rm = T))
 
 df <- df %>% 
@@ -87,23 +92,69 @@ df <- df %>%
   mutate(isaric_tot = age_categ + sex_cat + comorb_cat + resp_rate_cat + o2sat_cat)
 
 #Check discrimination and calibration of the total ISARIC score
-isaric_mod <- glm(hosp_24h ~ isaric_tot, data = df ,family = "binomial")
-df$prediction_hosp <- predict.glm(hosp, df, type = "response")
-mroc_hosp <- roc(df$hosp_24h, prediction_hosp, plot = T)#Save plot
-auc_hosp <- auc(mroc_hosp) #print value
-auc_hosp_ci <- ci.auc(mroc_hosp) #print value
+isaric_mod <- fit_model(df, "hosp_24h", "isaric_tot")
+saveSummary(isaric_mod, "output/results/isaric_mod_hosp_24h.txt")
 
-#Repeat for covid-19 hospitalisation
-isaric_mod <- glm(covid_hosp ~ isaric_tot, data = df ,family = "binomial")
-df$prediction_hosp_covid <- predict.glm(hosp_covid, df, type = "response")
-mroc_hosp_covid <- roc(df$covid_hosp, prediction_hosp_covid, plot = T)#Save plot
-auc_hosp_covid <- auc(mroc_hosp_covid) #print value
-auc_hosp_ci_covid <- ci.auc(mroc_hosp_covid) #print value
-
-#Calibration
-calibration_plot(data = df, obs = "hosp_24", pred = "prediction_hosp")
-calibration_plot(data = df, obs = "covid_hosp", pred = "prediction_hosp_covid")
+if (!is.null(isaric_mod)) {
+  df$prediction_hosp <- predict(isaric_mod, df, type = "response")
+  mroc_hosp <- roc(df$hosp_24h, df$prediction_hosp, plot = T)#Save plot
+  roc_data_hosp <- data.frame(
+    fpr = 1 - mroc_hosp$specificities,
+    sensitivity = mroc_hosp$sensitivities,
+    thresholds = mroc_hosp$thresholds
+  )
+  write.csv(roc_data_hosp, "output/results/isaric_roc_data_hosp.csv")
 
 
+  auc_hosp <- auc(mroc_hosp) #print value
+  auc_hosp_ci <- ci.auc(mroc_hosp) #print value
+  auc_hosp_ci_str <- paste0(round(auc_hosp_ci[1], 3), " (", round(auc_hosp_ci[2], 3), " - ", round(auc_hosp_ci[3], 3), ")")
 
+  aucs_hosp <- data.frame(auc_hosp, auc_hosp_ci_str)
+  colnames(aucs_hosp) <- c("auc", "ci")
+  write.csv(aucs_hosp, "output/results/isaric_aucs_hosp_isaric.csv")
+
+  output <- calibration_plot(data = df, obs = "hosp_24h", pred = "prediction_hosp", data_summary=T)
+  write.csv(output$data_summary, "output/results/isaric_calibration_summary_hosp.csv")
+
+
+} else {
+  write.csv(data.frame(), "output/results/isaric_roc_data_hosp.csv")
+  write.csv(data.frame(), "output/results/isaric_aucs_hosp_isaric.csv")
+  write.csv(data.frame(), "output/results/isaric_calibration_summary_hosp.csv")
+}
+
+
+isaric_mod <- fit_model(df, "covid_hosp", "isaric_tot")
+saveSummary(isaric_mod, "output/results/isaric_mod_covid_hosp.txt")
+
+if (!is.null(isaric_mod)) {
+  df$prediction_hosp_covid <- predict(isaric_mod, df, type = "response")
+  mroc_hosp_covid <- roc(df$covid_hosp, df$prediction_hosp_covid, plot = T)#Save plot
+  roc_data_hosp_covid <- data.frame(
+    fpr = 1 - mroc_hosp_covid$specificities,
+    sensitivity = mroc_hosp_covid$sensitivities,
+    thresholds = mroc_hosp_covid$thresholds
+  )
+  write.csv(roc_data_hosp_covid, "output/results/isaric_roc_data_hosp_covid.csv")
+
+
+  auc_hosp_covid <- auc(mroc_hosp_covid) #print value
+  auc_hosp_covid_ci <- ci.auc(mroc_hosp_covid) #print value
+  auc_hosp_covid_ci_str <- paste0(round(auc_hosp_covid_ci[1], 3), " (", round(auc_hosp_covid_ci[2], 3), " - ", round(auc_hosp_covid_ci[3], 3), ")")
+
+  aucs_hosp_covid <- data.frame(auc_hosp_covid, auc_hosp_covid_ci_str)
+  colnames(aucs_hosp_covid) <- c("auc", "ci")
+  write.csv(aucs_hosp_covid, "output/results/isaric_aucs_hosp_covid_isaric.csv")
+
+  output <- calibration_plot(data = df, obs = "covid_hosp", pred = "prediction_hosp_covid", data_summary=T)
+  write.csv(output$data_summary, "output/results/isaric_calibration_summary_hosp_covid.csv")
+
+
+} else {
+
+  write.csv(data.frame(), "output/results/isaric_roc_data_hosp_covid.csv")
+  write.csv(data.frame(), "output/results/isaric_aucs_hosp_covid_isaric.csv")
+  write.csv(data.frame(), "output/results/isaric_calibration_summary_hosp_covid.csv")
+}
   
