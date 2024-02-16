@@ -4,7 +4,9 @@ library(dplyr)
 
 source("analysis/analysis/utils.R")
 
-
+df <- read.csv("output/input_all_edited.csv")
+df_child <- df[df$category == "Child",]
+df_adult <- df[df$category == "Adult",]
 
 #Define the 'severe outcomes' composite outcome
 df <- df %>% 
@@ -19,6 +21,19 @@ df_adult <- df_adult %>%
   mutate(severe_outcome = case_when(covid_death_30d_ons == 1| icu_adm ==1 ~ 1,
                                      TRUE ~ 0))# composite severe outcome
 
+
+variables <- c("age","age_band","sex","region","bmi","bmi_primis","asthma","addisons_hypoadrenalism",
+               "chronic_heart_disease","chronic_respiratory_disease","ckd_primis_stage",
+               "renal_disease","ckd35_or_renal_disease","ckd_os","liver_disease","pregnant",
+               "diabetes","gestational_diabetes","obesity","mental_illness",
+               "neurological_disorder","hypertension","pneumonia","immunosuppression_disorder",
+               "immunosuppression_chemo","splenic_disease","shield","nonshield",
+               "statins","covadm1","covadm2","pfd1rx","pfd2rx",
+               "azd1rx","azd2rx","covrx1", "covrx2",
+               "ethnicity_opensafely","ethnicity","homeless",
+               "residential_care","imdQ5")
+
+flucats_vars <- c("total_CAT", "flucats_a", "flucats_b", "flucats_c", "flucats_d", "flucats_e", "flucats_f", "flucats_g")
 
 
 #Various tables
@@ -52,7 +67,7 @@ df_adult <- df_adult %>%
 
 df_adult <- df_adult %>% 
   rowwise() %>% 
-  mutate(comorb_number <- sum(asthma, addisons_hypoadrenalism, chronic_heart_disease, chronic_respiratory_disease, ckd35_or_renal_disease, liver_disease,
+  mutate(comorb_number = sum(asthma, addisons_hypoadrenalism, chronic_heart_disease, chronic_respiratory_disease, ckd35_or_renal_disease, liver_disease,
                               diabetes, obesity, mental_illness, neurological_disorder, hypertension, pneumonia, immunosuppression_disorder, immunosuppression_chemo,
                               splenic_disease, na.rm = T))
 

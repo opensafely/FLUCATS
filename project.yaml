@@ -1724,7 +1724,7 @@ actions:
 
   severeOutcome:
       run: r:latest analysis/analysis/severeOutcome.R
-      needs: [descriptive_tables, combined_input_files]
+      needs: [descriptive_tables]
       outputs:
         moderately_sensitive:
           tables: output/results/tab*.csv
