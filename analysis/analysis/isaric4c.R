@@ -91,8 +91,9 @@ df <- df %>%
 df <- df %>% 
   mutate(isaric_tot = sum(age_categ + sex_cat + comorb_cat + resp_rate_cat + o2sat_cat))
 
+
 #Check discrimination and calibration of the total ISARIC score
-isaric_mod <- fit_model(df, "hosp_24h", "isaric_tot")
+isaric_mod <- fit_model(hosp_24h ~ isaric_tot, data = df ,family = "binomial")
 saveSummary(isaric_mod, "output/results/isaric_mod_hosp_24h.txt")
 
 if (!is.null(isaric_mod)) {
@@ -125,7 +126,7 @@ if (!is.null(isaric_mod)) {
 }
 
 
-isaric_mod <- fit_model(df, "covid_hosp", "isaric_tot")
+isaric_mod <- fit_model(covid_hosp ~ isaric_tot, data = df ,family = "binomial")
 saveSummary(isaric_mod, "output/results/isaric_mod_covid_hosp.txt")
 
 if (!is.null(isaric_mod)) {
