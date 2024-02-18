@@ -96,3 +96,26 @@ fit_model <- function(formula, data, family) {
     return(NULL)
   })
 }
+
+
+
+generate_calibration_plot <- function(data, obs, pred, output_path) {
+  output <- tryCatch({
+    calibration_plot(data = data, obs = obs, pred = pred, data_summary = TRUE)
+  }, error = function(e) {
+    
+    message("An error occurred, writing error message to CSV.")
+    data.frame(Error = e$message)
+  })
+
+
+  output_file <- if ("Error" %in% names(output)) {
+    paste0(output_path)
+  } else {
+    paste0(output_path)
+  }
+  
+  # Write the output or error message to the specified CSV file
+  write.csv(output, output_file, row.names = FALSE)
+
+}

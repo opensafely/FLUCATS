@@ -102,7 +102,7 @@ fit_model_if_two_factors <- function(df, y_var, ...){
 }
 
 #Check discrimination and calibration of the total ISARIC score
-isaric_mod <- fit_model_if_two_factors(df, "hosp_24h", "isaric_tot")
+isaric_mod <- fit_model(hosp_24h ~ isaric_tot, data = df ,family = "binomial")
 saveSummary(isaric_mod, "output/results/isaric_mod_hosp_24h.txt")
 
 if (!is.null(isaric_mod)) {
@@ -125,7 +125,8 @@ if (!is.null(isaric_mod)) {
   write.csv(aucs_hosp, "output/results/isaric_aucs_hosp_isaric.csv")
 
   output <- calibration_plot(data = df, obs = "hosp_24h", pred = "prediction_hosp", data_summary=T)
-  write.csv(output$data_summary, "output/results/isaric_calibration_summary_hosp.csv")
+  generate_calibration_plot(data = df, obs = "hosp_24h", pred = "prediction_hosp", output_path = "output/results/isaric_calibration_summary_hosp.csv")
+
 
 
 } else {
@@ -135,7 +136,7 @@ if (!is.null(isaric_mod)) {
 }
 
 
-isaric_mod <- fit_model_if_two_factors(df, "covid_hosp", "isaric_tot")
+isaric_mod <- fit_model(covid_hosp ~ isaric_tot, data = df ,family = "binomial")
 saveSummary(isaric_mod, "output/results/isaric_mod_covid_hosp.txt")
 
 if (!is.null(isaric_mod)) {
@@ -157,8 +158,9 @@ if (!is.null(isaric_mod)) {
   colnames(aucs_hosp_covid) <- c("auc", "ci")
   write.csv(aucs_hosp_covid, "output/results/isaric_aucs_hosp_covid_isaric.csv")
 
-  output <- calibration_plot(data = df, obs = "covid_hosp", pred = "prediction_hosp_covid", data_summary=T)
-  write.csv(output$data_summary, "output/results/isaric_calibration_summary_hosp_covid.csv")
+
+  generate_calibration_plot(data = df, obs = "covid_hosp", pred = "prediction_hosp_covid", output_path = "output/results/isaric_calibration_summary_hosp_covid.csv")
+
 
 
 } else {
