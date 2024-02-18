@@ -124,7 +124,6 @@ if (!is.null(isaric_mod)) {
   colnames(aucs_hosp) <- c("auc", "ci")
   write.csv(aucs_hosp, "output/results/isaric_aucs_hosp_isaric.csv")
 
-  output <- calibration_plot(data = df, obs = "hosp_24h", pred = "prediction_hosp", data_summary=T)
   generate_calibration_plot(data = df, obs = "hosp_24h", pred = "prediction_hosp", output_path = "output/results/isaric_calibration_summary_hosp.csv")
 
 
