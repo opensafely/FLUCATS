@@ -112,6 +112,11 @@ if (!is.null(severe_o)) {
   colnames(aucs_so) <- c("auc", "ci")
   write.csv(aucs_so, "output/results/aucs_so.csv")
 
+
+  # print value counts for the severe outcome and the prediction
+  print(table(df_adult$severe_outcome))
+  print(table(df_adult$prediction_severe_outcome > 0.5))
+
   output <- calibration_plot(data = df_adult, obs = "severe_outcome", pred = "prediction_severe_outcome", data_summary=T)
 
   write.csv(output$data_summary, "output/results/calibration_summary_severe_outcome.csv")
