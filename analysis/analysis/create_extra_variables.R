@@ -177,6 +177,10 @@ df <- df %>%
          obesity_mod = if_else(is.na(obesity), 9, obesity),
          obesity_mod = as.factor(obesity_mod))
 
+print(table(df$obesity_mod))
+
+df$obesity_mod <- factor(df$obesity_mod, levels = c(0, 1, 9))
+
 
 comorbidity_vars <- c("asthma", "addisons_hypoadrenalism", "chronic_heart_disease", "chronic_respiratory_disease", "ckd35_or_renal_disease", "liver_disease", "obesity", "obesity_mod",
                       "diabetes", "mental_illness", "neurological_disorder", "hypertension", "pneumonia", "immunosuppression_disorder", "immunosuppression_chemo",
