@@ -11,17 +11,23 @@ dir.create("output/results/models_combined_criteria", showWarnings = FALSE)
 df <- arrow::read_feather("output/joined/full/input_all_extra_vars.feather")
 
 
-# convert levels of obesity_mod from 1, 2, 3 to 0, 1, 9
-df$obesity_mod <- as.numeric(df$obesity_mod) - 1
-df$obesity_mod[df$obesity_mod == 2] <- 9
+df <- df %>%
+  mutate(obesity = as.numeric(as.character(obesity)),
+         obesity_mod = if_else(is.na(obesity), "missing", as.character(obesity)))
 
-df$obesity_mod <- factor(df$obesity_mod, levels = c(0, 1, 9))
 
+df$obesity_mod <- ifelse(df$obesity_mod == "1", "yes", df$obesity_mod)
+df$obesity_mod <- ifelse(df$obesity_mod == "0", "no", df$obesity_mod)
+
+# convert to factor
+df$obesity_mod <- as.factor(df$obesity_mod)
 
 
 df_child <- df[df$category == "Child",]
 df_adult <- df[df$category == "Adult",]
 
+print(table(df_child$obesity_mod))
+print(table(df_adult$obesity_mod))
 
 
 #Separate models for each outcome, by child/adult status
@@ -183,7 +189,7 @@ if (!is.null(model_so_a_adj_totalCAT)) {
   write.csv(data.frame(), "output/results/models_combined_criteria/severe_outcome_adult_ajd_summary.txt")
 }
 
-generate_model_evaluation(model_so_a_adj_totalCAT, df_adult, "severe_outcome", "severe_outcome_adj", "output/results/models_combined_criteria/severe_outcome")
+# generate_model_evaluation(model_so_a_adj_totalCAT, df_adult, "severe_outcome", "severe_outcome_adj", "output/results/models_combined_criteria/severe_outcome")
 
 
 # ###Discrimination
@@ -195,7 +201,7 @@ if (!is.null(model_so_a_totalCAT)) {
   write.csv(data.frame(), "output/results/models_combined_criteria/severe_outcome_summary.txt")
 }
 
-generate_model_evaluation(model_so_a_totalCAT, df_adult, "severe_outcome", "severe_outcome", "output/results/models_combined_criteria/severe_outcome")
+# generate_model_evaluation(model_so_a_totalCAT, df_adult, "severe_outcome", "severe_outcome", "output/results/models_combined_criteria/severe_outcome")
 
 
 

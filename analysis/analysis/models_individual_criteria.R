@@ -7,10 +7,16 @@ dir.create("output/results/models_individual_criteria", showWarnings = FALSE)
 df <- arrow::read_feather("output/joined/full/input_all_extra_vars.feather")
 flucats_vars <- c("flucats_a", "flucats_b", "flucats_c", "flucats_d", "flucats_e", "flucats_f", "flucats_g", "total_CAT")
 
-df$obesity_mod <- as.numeric(df$obesity_mod) - 1
-df$obesity_mod[df$obesity_mod == 2] <- 9
+df <- df %>%
+  mutate(obesity = as.numeric(as.character(obesity)),
+         obesity_mod = if_else(is.na(obesity), "missing", as.character(obesity)))
 
-df$obesity_mod <- factor(df$obesity_mod, levels = c(0, 1, 9))
+
+df$obesity_mod <- ifelse(df$obesity_mod == "1", "yes", df$obesity_mod)
+df$obesity_mod <- ifelse(df$obesity_mod == "0", "no", df$obesity_mod)
+
+# convert to factor
+df$obesity_mod <- as.factor(df$obesity_mod)
 
 
 df <- df %>% 

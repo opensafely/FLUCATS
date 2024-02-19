@@ -151,6 +151,9 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
 
 generate_model_evaluation <- function(model, dataset, outcome_name, model_name, results_dir) {
   print(table(dataset$obesity_mod))
+
+  dataset$obesity_mod <- factor(dataset$obesity_mod, levels = levels(model$data$obesity_mod))
+
   if (!dir.exists(results_dir)) {
     dir.create(results_dir, recursive = TRUE)
   }
