@@ -1,3 +1,7 @@
+library(pROC)
+library(dplyr)
+library(predtools)
+
 ensureDirExists <- function(filepath) {
   dir <- dirname(filepath)
   if (!dir.exists(dir)) {
@@ -138,4 +142,47 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
   # Write the output or error message to the specified CSV file
   write.csv(output, output_file, row.names = FALSE)
 
+}
+
+
+
+
+
+
+generate_model_evaluation <- function(model, dataset, outcome_name, model_name, results_dir) {
+  if (!dir.exists(results_dir)) {
+    dir.create(results_dir, recursive = TRUE)
+  }
+  
+  if (!is.null(model)) {
+    # Predict the outcome
+    predictions <- predict.glm(model, dataset, type = "response")
+    
+    # ROC analysis
+    mroc <- roc(dataset[[outcome_name]], predictions, plot = TRUE)
+    roc_data <- data.frame(
+      fpr = 1 - mroc$specificities,
+      sensitivity = mroc$sensitivities,
+      thresholds = mroc$thresholds
+    )
+    print(file.path(results_dir, paste("roc_data", model_name, ".csv", sep = "_")))
+    write.csv(roc_data, file.path(results_dir, paste("roc_data", model_name, ".csv", sep = "_")))
+    
+    # AUC and its CI
+    auc_value <- auc(mroc) 
+    auc_ci <- ci.auc(mroc)
+    auc_ci_str <- paste("AUC: ", round(auc_ci[2], 5), " (CI: ", round(auc_ci[1], 5), "-", round(auc_ci[3], 5), ")")
+    
+    aucs_data <- data.frame(auc = auc_ci_str)
+    write.csv(aucs_data, file.path(results_dir, paste("aucs", model_name, ".csv", sep = "_")))
+    
+    
+    generate_calibration_plot(data = dataset, obs = outcome_name, pred = prediction_column_name, output_path = file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
+    
+  } else {
+    # Write empty files if the model is null
+    write.csv(data.frame(), file.path(results_dir, paste("roc_data", model_name, ".csv", sep = "_")))
+    write.csv(data.frame(), file.path(results_dir, paste("aucs", model_name, ".csv", sep = "_")))
+    write.csv(data.frame(), file.path(results_dir, paste("calibration", model_name, ".csv", sep = "_")))
+  }
 }

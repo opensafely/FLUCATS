@@ -25,29 +25,7 @@ saveSummary(hosp_child_susp_cov, "output/results/models_combined_criteria/hosp_c
 saveSummary(hosp_child_prob_cov, "output/results/models_combined_criteria/hosp_child_prob_cov_summary.txt")
 
 
-if (!is.null(hosp_child)) {
-  prediction_hosp_c <- predict.glm(hosp_child, df_child, type = "response")
-  mroc_hosp_child <- roc(df_child$hosp_24h, prediction_hosp_c, plot = T)
-  roc_data_hosp_child <- data.frame(
-    fpr = round(1 - mroc_hosp_child$specificities, 4),
-    sensitivity = round(mroc_hosp_child$sensitivities, 4),
-    thresholds = round(mroc_hosp_child$thresholds, 4)
-  )
-  write.csv(roc_data_hosp_child, "output/results/models_combined_criteria/roc_data_hosp_child.csv")
-
-  auc_hosp_child <- auc(mroc_hosp_child)
-  auc_hosp_child_ci <- ci.auc(mroc_hosp_child)
-  auc_hosp_child_ci_str <- paste("AUC: ", round(auc_hosp_child[2], 5), " (CI: ", round(auc_hosp_child_ci[1], 5), "-", round(auc_hosp_child_ci[3], 5), ")")
-
-  generate_calibration_plot(data = df_child, obs = "hosp_24h", pred = "prediction_hosp_c", output_path = "output/results/models_combined_criteria/calibration_hosp_child.csv")
-
-
-} else {
-  write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_hosp_child.csv")
-  auc_hosp_child <- NA
-  auc_hosp_child_ci_str <- NA
-  write.csv(data.frame(), "output/results/models_combined_criteria/calibration_hosp_child.csv")
-}
+generate_model_evaluation(hosp_child, df_child, "hosp_24h", "hosp_child", "output/results/models_combined_criteria")
 
 
 if (!is.null(hosp_child_susp_cov)) {
