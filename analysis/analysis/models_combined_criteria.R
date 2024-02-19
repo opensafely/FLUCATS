@@ -40,7 +40,7 @@ if (!is.null(hosp_child)) {
 
   auc_hosp_child <- auc(mroc_hosp_child)
   auc_hosp_child_ci <- ci.auc(mroc_hosp_child)
-  auc_hosp_child_ci_str <- paste("AUC: ", round(auc_hosp_child, 5), " (CI: ", round(auc_hosp_child_ci[1], 5), "-", round(auc_hosp_child_ci[2], 5), ")")
+  auc_hosp_child_ci_str <- paste("AUC: ", round(auc_hosp_child[2], 5), " (CI: ", round(auc_hosp_child_ci[1], 5), "-", round(auc_hosp_child_ci[3], 5), ")")
 
   generate_calibration_plot(data = df_child, obs = "hosp_24h", pred = "prediction_hosp_c", output_path = "output/results/models_combined_criteria/calibration_hosp_child.csv")
 
@@ -65,7 +65,7 @@ if (!is.null(hosp_child_susp_cov)) {
 
   auc_hosp_child_susp_cov <- auc(mroc_hosp_child_susp_cov)
   auc_hosp_child_susp_cov_ci <- ci.auc(mroc_hosp_child_susp_cov)
-  auc_hosp_child_susp_cov_ci_str <- paste("AUC: ", round(auc_hosp_child_susp_cov, 5), " (CI: ", round(auc_hosp_child_susp_cov_ci[1], 5), "-", round(auc_hosp_child_susp_cov_ci[2], 5), ")")
+  auc_hosp_child_susp_cov_ci_str <- paste("AUC: ", round(auc_hosp_child_susp_cov[2], 5), " (CI: ", round(auc_hosp_child_susp_cov_ci[1], 5), "-", round(auc_hosp_child_susp_cov_ci[3], 5), ")")
   generate_calibration_plot(data = df_child, obs = "hosp_24h_susp_cov", pred = "prediction_hosp_c_susp_cov", output_path = "output/results/models_combined_criteria/calibration_hosp_child_susp_cov.csv")
 
 } else {
@@ -87,7 +87,7 @@ if (!is.null(hosp_child_prob_cov)) {
 
   auc_hosp_child_prob_cov <- auc(mroc_hosp_child_prob_cov)
   auc_hosp_child_prob_cov_ci <- ci.auc(mroc_hosp_child_prob_cov)
-  auc_hosp_child_prob_cov_ci_str <- paste("AUC: ", round(auc_hosp_child_prob_cov, 5), " (CI: ", round(auc_hosp_child_prob_cov_ci[1], 5), "-", round(auc_hosp_child_prob_cov_ci[2], 5), ")")
+  auc_hosp_child_prob_cov_ci_str <- paste("AUC: ", round(auc_hosp_child_prob_cov[2], 5), " (CI: ", round(auc_hosp_child_prob_cov_ci[1], 5), "-", round(auc_hosp_child_prob_cov_ci[3], 5), ")")
   generate_calibration_plot(data = df_child, obs = "hosp_24h_prob_cov", pred = "prediction_hosp_c_prob_cov", output_path = "output/results/models_combined_criteria/calibration_hosp_child_prob_cov.csv")
 
 } else {
@@ -121,7 +121,7 @@ if (!is.null(hosp_adult)) {
   auc_hosp_adult <- auc(mroc_hosp_adult)
   auc_hosp_adult_ci <- ci.auc(mroc_hosp_adult)
   print(auc_hosp_adult_ci)
-  auc_hosp_adult_ci_str <-  paste("AUC: ", round(auc_hosp_adult_ci$auc, 5), " (CI: ", round(auc_hosp_adult_ci$conf.int[1], 5), "-", round(auc_hosp_adult_ci$conf.int[2], 5), ")")
+  auc_hosp_adult_ci_str <-  paste("AUC: ", round(auc_hosp_adult_ci[2], 5), " (CI: ", round(auc_hosp_adult_ci[1], 5), "-", round(auc_hosp_adult_ci[3], 5), ")")
   generate_calibration_plot(data = df_adult, obs = "hosp_24h", pred = "prediction_hosp_a", output_path = "output/results/models_combined_criteria/calibration_hosp_adult.csv")
 
 } else {
@@ -143,7 +143,7 @@ if (!is.null(hosp_adult_susp_cov)) {
 
   auc_hosp_adult_susp_cov <- auc(mroc_hosp_adult_susp_cov)
   auc_hosp_adult_susp_cov_ci <- ci.auc(mroc_hosp_adult_susp_cov)
-  auc_hosp_adult_susp_cov_ci_str <-  paste("AUC: ", round(auc_hosp_adult_susp_cov_ci$auc, 5), " (CI: ", round(auc_hosp_adult_susp_cov_ci$conf.int[1], 5), "-", round(auc_hosp_adult_susp_cov_ci$conf.int[2], 5), ")")
+  auc_hosp_adult_susp_cov_ci_str <-  paste("AUC: ", round(auc_hosp_adult_susp_cov_ci[2], 5), " (CI: ", round(auc_hosp_adult_susp_cov_ci[1], 5), "-", round(auc_hosp_adult_susp_cov_ci[3], 5), ")")
   generate_calibration_plot(data = df_adult, obs = "hosp_24h_susp_cov", pred = "prediction_hosp_a_susp_cov", output_path = "output/results/models_combined_criteria/calibration_hosp_adult_susp_cov.csv")
 
 } else {
@@ -165,7 +165,7 @@ if (!is.null(hosp_adult_prob_cov)) {
 
   auc_hosp_adult_prob_cov <- auc(mroc_hosp_adult_prob_cov)
   auc_hosp_adult_prob_cov_ci <- ci.auc(mroc_hosp_adult_prob_cov)
-  auc_hosp_adult_prob_cov_ci_str <-  paste("AUC: ", round(auc_hosp_adult_prob_cov_ci$auc, 5), " (CI: ", round(auc_hosp_adult_prob_cov_ci$conf.int[1], 5), "-", round(auc_hosp_adult_prob_cov_ci$conf.int[2], 5), ")")
+  auc_hosp_adult_prob_cov_ci_str <-  paste("AUC: ", round(auc_hosp_adult_prob_cov_ci[2], 5), " (CI: ", round(auc_hosp_adult_prob_cov_ci[1], 5), "-", round(auc_hosp_adult_prob_cov_ci[3], 5), ")")
   generate_calibration_plot(data = df_adult, obs = "hosp_24h_prob_cov", pred = "prediction_hosp_a_prob_cov", output_path = "output/results/models_combined_criteria/calibration_hosp_adult_prob_cov.csv")
 } else {
   write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_hosp_adult_prob_cov.csv")
@@ -214,7 +214,7 @@ if (!is.null(severe_o)) {
 
   auc_so_adult <- auc(mroc_severe_outcome) 
   auc_so_ci <- ci.auc(mroc_severe_outcome)
-  auc_so_ci_str <- paste("AUC: ", round(auc_so_ci$auc, 5), " (CI: ", round(auc_so_ci$conf.int[1], 5), "-", round(auc_so_ci$conf.int[2], 5), ")")
+  auc_so_ci_str <- paste("AUC: ", round(auc_so_ci[2], 5), " (CI: ", round(auc_so_ci[1], 5), "-", round(auc_so_ci[3], 5), ")")
 
   aucs_so <- data.frame(auc_so_ci_str)
   colnames(aucs_so) <- c("auc")
