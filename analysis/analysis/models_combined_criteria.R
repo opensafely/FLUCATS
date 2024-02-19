@@ -15,32 +15,13 @@ df <- arrow::read_feather("output/joined/full/input_all_extra_vars.feather")
 df$obesity_mod <- as.numeric(df$obesity_mod) - 1
 df$obesity_mod[df$obesity_mod == 2] <- 9
 
-df$obesity_mod <- as.factor(df$obesity_mod)
+df$obesity_mod <- as.factor(df$obesity_mod, levels = c(0, 1, 9))
 
 
 df_child <- df[df$category == "Child",]
 df_adult <- df[df$category == "Adult",]
 
-print(table(df_child$obesity_mod))
-print(table(df_adult$obesity_mod))
 
-for (i in 1:length(df_child)) {
-  if (length(levels(df_child[[i]])) > 0) {
-    df_child[[i]] <- droplevels(df_child[[i]])
-  }
-}
-
-for (i in 1:length(df_adult)) {
-  if (length(levels(df_adult[[i]])) > 0) {
-    df_adult[[i]] <- droplevels(df_adult[[i]])
-  }
-}
-
-print(table(df_child$obesity_mod))
-print(table(df_adult$obesity_mod))
-
-
-# now set the 
 
 #Separate models for each outcome, by child/adult status
 
