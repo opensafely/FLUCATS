@@ -126,10 +126,10 @@ if (!is.null(isaric_mod)) {
 
   auc_hosp_covid <- auc(mroc_hosp_covid)
   auc_hosp_covid_ci <- ci.auc(mroc_hosp_covid) 
-  auc_hosp_covid_ci_str <- paste0(round(auc_hosp_covid_ci[1], 3), " (", round(auc_hosp_covid_ci[2], 3), " - ", round(auc_hosp_covid_ci[3], 3), ")")
+  auc_hosp_covid_ci_str <- paste0("AUC: ", round(auc_hosp_covid_ci[1], 5), " (", round(auc_hosp_covid_ci[2], 5), " - ", round(auc_hosp_covid_ci[3], 5), ")")
 
-  aucs_hosp_covid <- data.frame(auc_hosp_covid, auc_hosp_covid_ci_str)
-  colnames(aucs_hosp_covid) <- c("auc", "ci")
+  aucs_hosp_covid <- data.frame(auc_hosp_covid_ci_str)
+  colnames(aucs_hosp_covid) <- c("ci")
   write.csv(aucs_hosp_covid, "output/results/isaric/isaric_aucs_hosp_covid_isaric.csv")
 
 
