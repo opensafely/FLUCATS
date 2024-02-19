@@ -156,10 +156,10 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
   
   if (!is.null(model)) {
     # Predict the outcome
-    predictions <- predict.glm(model, dataset, type = "response")
+    dataset$predictions <- predict.glm(model, dataset, type = "response")
     
     # ROC analysis
-    mroc <- roc(dataset[[outcome_name]], predictions, plot = TRUE)
+    mroc <- roc(dataset[[outcome_name]], dataset$predictions, plot = TRUE)
     roc_data <- data.frame(
       fpr = 1 - mroc$specificities,
       sensitivity = mroc$sensitivities,

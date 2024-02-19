@@ -38,8 +38,8 @@ generate_model_evaluation(hosp_child, df_child, "hosp_24h", "hosp_child", "outpu
 
 
 if (!is.null(hosp_child_susp_cov)) {
-  prediction_hosp_c_susp_cov <- predict.glm(hosp_child_susp_cov, df_child, type = "response")
-  mroc_hosp_child_susp_cov <- roc(df_child$hosp_24h_susp_cov, prediction_hosp_c_susp_cov, plot = T)
+  df_child$prediction_hosp_c_susp_cov <- predict.glm(hosp_child_susp_cov, df_child, type = "response")
+  mroc_hosp_child_susp_cov <- roc(df_child$hosp_24h_susp_cov, df_child$prediction_hosp_c_susp_cov, plot = T)
   roc_data_hosp_child_susp_cov <- data.frame(
     fpr = round(1 - mroc_hosp_child_susp_cov$specificities, 4),
     sensitivity = round(mroc_hosp_child_susp_cov$sensitivities, 4),
@@ -60,8 +60,8 @@ if (!is.null(hosp_child_susp_cov)) {
 }
 
 if (!is.null(hosp_child_prob_cov)) {
-  prediction_hosp_c_prob_cov <- predict.glm(hosp_child_prob_cov, df_child, type = "response")
-  mroc_hosp_child_prob_cov <- roc(df_child$hosp_24h_prob_cov, prediction_hosp_c_prob_cov, plot = T)
+  df_child$prediction_hosp_c_prob_cov <- predict.glm(hosp_child_prob_cov, df_child, type = "response")
+  mroc_hosp_child_prob_cov <- roc(df_child$hosp_24h_prob_cov, df_child$prediction_hosp_c_prob_cov, plot = T)
   roc_data_hosp_child_prob_cov <- data.frame(
     fpr = round(1 - mroc_hosp_child_prob_cov$specificities, 4),
     sensitivity = round(mroc_hosp_child_prob_cov$sensitivities, 4),
@@ -93,8 +93,8 @@ hosp_adult_prob_cov <- fit_model(hosp_24h_prob_cov ~ total_CAT, data = df_adult 
 saveSummary(hosp_adult_prob_cov, "output/results/models_combined_criteria/hosp_adult_prob_cov_summary.txt")
 
 if (!is.null(hosp_adult)) {
-  prediction_hosp_a <- predict.glm(hosp_adult, df_adult, type = "response")
-  mroc_hosp_adult <- roc(df_adult$hosp_24h, prediction_hosp_a, plot = T)
+  df_adult$prediction_hosp_a <- predict.glm(hosp_adult, df_adult, type = "response")
+  mroc_hosp_adult <- roc(df_adult$hosp_24h, df_adult$prediction_hosp_a, plot = T)
   roc_data_hosp_adult <- data.frame(
     fpr = round(1 - mroc_hosp_adult$specificities, 4),
     sensitivity = round(mroc_hosp_adult$sensitivities, 4),
@@ -104,7 +104,6 @@ if (!is.null(hosp_adult)) {
 
   auc_hosp_adult <- auc(mroc_hosp_adult)
   auc_hosp_adult_ci <- ci.auc(mroc_hosp_adult)
-  print(auc_hosp_adult_ci)
   auc_hosp_adult_ci_str <-  paste("AUC: ", round(auc_hosp_adult_ci[2], 5), " (CI: ", round(auc_hosp_adult_ci[1], 5), "-", round(auc_hosp_adult_ci[3], 5), ")")
   generate_calibration_plot(data = df_adult, obs = "hosp_24h", pred = "prediction_hosp_a", output_path = "output/results/models_combined_criteria/calibration_hosp_adult.csv")
 
@@ -116,8 +115,8 @@ if (!is.null(hosp_adult)) {
 }
 
 if (!is.null(hosp_adult_susp_cov)) {
-  prediction_hosp_a_susp_cov <- predict.glm(hosp_adult_susp_cov, df_adult, type = "response")
-  mroc_hosp_adult_susp_cov <- roc(df_adult$hosp_24h_susp_cov, prediction_hosp_a_susp_cov, plot = T)
+  df_adult$prediction_hosp_a_susp_cov <- predict.glm(hosp_adult_susp_cov, df_adult, type = "response")
+  mroc_hosp_adult_susp_cov <- roc(df_adult$hosp_24h_susp_cov, df_adult$prediction_hosp_a_susp_cov, plot = T)
   roc_data_hosp_adult_susp_cov <- data.frame(
     fpr = round(1 - mroc_hosp_adult_susp_cov$specificities, 4),
     sensitivity = round(mroc_hosp_adult_susp_cov$sensitivities, 4),
@@ -138,8 +137,8 @@ if (!is.null(hosp_adult_susp_cov)) {
 }
 
 if (!is.null(hosp_adult_prob_cov)) {
-  prediction_hosp_a_prob_cov <- predict.glm(hosp_adult_prob_cov, df_adult, type = "response")
-  mroc_hosp_adult_prob_cov <- roc(df_adult$hosp_24h_prob_cov, prediction_hosp_a_prob_cov, plot = T)
+  df_adult$prediction_hosp_a_prob_cov <- predict.glm(hosp_adult_prob_cov, df_adult, type = "response")
+  mroc_hosp_adult_prob_cov <- roc(df_adult$hosp_24h_prob_cov, df_adult$prediction_hosp_a_prob_cov, plot = T)
   roc_data_hosp_adult_prob_cov <- data.frame(
     fpr = round(1 - mroc_hosp_adult_prob_cov$specificities, 4),
     sensitivity = round(mroc_hosp_adult_prob_cov$sensitivities, 4),
