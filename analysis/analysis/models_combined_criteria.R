@@ -150,16 +150,16 @@ if (!is.null(hosp_adult_prob_cov)) {
 }
 
 
-aucs <- data.frame(auc_hosp_child_ci_str, auc_hosp_adult_ci_str)
+# aucs <- data.frame(auc_hosp_child_ci_str, auc_hosp_adult_ci_str)
 aucs_susp_cov <- data.frame(auc_hosp_child_susp_cov_ci_str, auc_hosp_adult_susp_cov_ci_str)
 aucs_prob_cov <- data.frame(auc_hosp_child_prob_cov_ci_str, auc_hosp_adult_prob_cov_ci_str)
 
 
-colnames(aucs) <- c("ci_hosp_child", "ci_hosp_adult")
+# colnames(aucs) <- c("ci_hosp_child", "ci_hosp_adult")
 colnames(aucs_susp_cov) <- c("ci_hosp_child_susp_cov", "ci_hosp_adult_susp_cov")
 colnames(aucs_prob_cov) <- c("ci_hosp_child_prob_cov", "ci_hosp_adult_prob_cov")
 
-write.csv(aucs, "output/results/models_combined_criteria/aucs.csv")
+# write.csv(aucs, "output/results/models_combined_criteria/aucs.csv")
 write.csv(aucs_susp_cov, "output/results/models_combined_criteria/aucs_susp_cov.csv")
 write.csv(aucs_prob_cov, "output/results/models_combined_criteria/aucs_prob_cov.csv")
 
@@ -174,31 +174,7 @@ if (!is.null(model_so_a_adj_totalCAT)) {
   write.csv(data.frame(), "output/results/models_combined_criteria/severe_outcome_adult_ajd_summary.txt")
 }
 
-if (!is.null(model_so_a_adj_totalCAT)) {
-  df_adult$prediction_severe_outcome <- predict.glm(model_so_a_adj_totalCAT, df_adult, type = "response")
-  mroc_severe_outcome <- roc(df_adult$severe_outcome, df_adult$prediction_severe_outcome, plot = T)
-  roc_data_severe_outcome <- data.frame(
-    fpr = 1 - mroc_severe_outcome$specificities,
-    sensitivity = mroc_severe_outcome$sensitivities,
-    thresholds = mroc_severe_outcome$thresholds
-  )
-  write.csv(roc_data_severe_outcome, "output/results/models_combined_criteria/roc_data_severe_outcome_adj.csv")
-
-  auc_so_adult <- auc(mroc_severe_outcome) 
-  auc_so_ci <- ci.auc(mroc_severe_outcome)
-  auc_so_ci_str <- paste("AUC: ", round(auc_so_ci[2], 5), " (CI: ", round(auc_so_ci[1], 5), "-", round(auc_so_ci[3], 5), ")")
-
-  aucs_so <- data.frame(auc_so_ci_str)
-  colnames(aucs_so) <- c("auc")
-  write.csv(aucs_so, "output/results/models_combined_criteria/aucs_severe_outcome_adj.csv")
-  generate_calibration_plot(data = df_adult, obs = "severe_outcome", pred = "prediction_severe_outcome", output_path = "output/results/calibration_summary_severe_outcome_adj.csv")
-
-} else {
-  write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_severe_outcome_adj.csv")
-  write.csv(data.frame(), "output/results/models_combined_criteria/aucs_severe_outcome_adj.csv")
-  write.csv(data.frame(), "output/results/models_combined_criteria/calibration_severe_outcome_adj.csv")
-}
-
+generate_model_evaluation(model_so_a_adj_totalCAT, df_adult, "severe_outcome", "severe_outcome_adj", "output/results/models_combined_criteria/severe_outcome")
 
 
 # ###Discrimination
@@ -210,35 +186,7 @@ if (!is.null(model_so_a_totalCAT)) {
   write.csv(data.frame(), "output/results/models_combined_criteria/severe_outcome_summary.txt")
 }
 
-if (!is.null(model_so_a_totalCAT)) {
-  df_adult$prediction_severe_outcome <- predict.glm(model_so_a_totalCAT, df_adult, type = "response")
-  mroc_severe_outcome <- roc(df_adult$severe_outcome, df_adult$prediction_severe_outcome, plot = T)
-  roc_data_severe_outcome <- data.frame(
-    fpr = 1 - mroc_severe_outcome$specificities,
-    sensitivity = mroc_severe_outcome$sensitivities,
-    thresholds = mroc_severe_outcome$thresholds
-  )
-  write.csv(roc_data_severe_outcome, "output/results/models_combined_criteria/roc_data_severe_outcome.csv")
-
-  auc_so_adult <- auc(mroc_severe_outcome) 
-  auc_so_ci <- ci.auc(mroc_severe_outcome)
-  auc_so_ci_str <- paste("AUC: ", round(auc_so_ci[2], 5), " (CI: ", round(auc_so_ci[1], 5), "-", round(auc_so_ci[3], 5), ")")
-
-  aucs_so <- data.frame(auc_so_ci_str)
-  colnames(aucs_so) <- c("auc")
-  write.csv(aucs_so, "output/results/models_combined_criteria/aucs_severe_outcome.csv")
-  generate_calibration_plot(data = df_adult, obs = "severe_outcome", pred = "prediction_severe_outcome", output_path = "output/results/calibration_summary_severe_outcome.csv")
-
-} else {
-  write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_severe_outcome.csv")
-  write.csv(data.frame(), "output/results/models_combined_criteria/aucs_severe_outcome.csv")
-  write.csv(data.frame(), "output/results/models_combined_criteria/calibration_severe_outcome.csv")
-}
-
-
-
-
-
+generate_model_evaluation(model_so_a_totalCAT, df_adult, "severe_outcome", "severe_outcome", "output/results/models_combined_criteria/severe_outcome")
 
 
 
