@@ -139,8 +139,8 @@ outcomes_combined <- outcomes %>%
   mutate_all(~ifelse(. <= 7, 0, .)) %>%
   mutate_all(~round(./5) * 5)
 
+print(outcomes_combined)
 
-rownames(outcomes_combined) <- c("Total", "Child", "Adult")
 
 
 write.csv(outcomes_combined, "output/results/descriptive/outcomes.csv", row.names = TRUE)
