@@ -191,16 +191,49 @@ model_so_a_adj_totalCAT <- fit_model(severe_outcome ~ total_CAT +
                                     age + sex + obesity_mod + comorb_number, data = df_adult, family = binomial)
 
 if (!is.null(model_so_a_adj_totalCAT)) {
-  saveSummary(model_so_a_adj_totalCAT, "output/results/models_combined_criteria/adult_severe_outcome_ajd.txt")
+  saveSummary(model_so_a_adj_totalCAT, "output/results/models_combined_criteria/severe_outcome_adult_ajd_summary.txt")
 } else {
-  write.csv(data.frame(), "output/results/models_combined_criteria/adult_severe_outcome_ajd.txt")
+  write.csv(data.frame(), "output/results/models_combined_criteria/severe_outcome_adult_ajd_summary.txt")
 }
 
-# ###Discrimination
-severe_o <- fit_model(severe_outcome ~ total_CAT, data = df_adult ,family = "binomial")
+if (!is.null(model_so_a_adj_totalCAT)) {
+  df_adult$prediction_severe_outcome <- predict.glm(model_so_a_adj_totalCAT, df_adult, type = "response")
+  mroc_severe_outcome <- roc(df_adult$severe_outcome, df_adult$prediction_severe_outcome, plot = T)
+  roc_data_severe_outcome <- data.frame(
+    fpr = 1 - mroc_severe_outcome$specificities,
+    sensitivity = mroc_severe_outcome$sensitivities,
+    thresholds = mroc_severe_outcome$thresholds
+  )
+  write.csv(roc_data_severe_outcome, "output/results/models_combined_criteria/roc_data_severe_outcome_adj.csv")
 
-if (!is.null(severe_o)) {
-  df_adult$prediction_severe_outcome <- predict.glm(severe_o, df_adult, type = "response")
+  auc_so_adult <- auc(mroc_severe_outcome) 
+  auc_so_ci <- ci.auc(mroc_severe_outcome)
+  auc_so_ci_str <- paste("AUC: ", round(auc_so_ci[2], 5), " (CI: ", round(auc_so_ci[1], 5), "-", round(auc_so_ci[3], 5), ")")
+
+  aucs_so <- data.frame(auc_so_ci_str)
+  colnames(aucs_so) <- c("auc")
+  write.csv(aucs_so, "output/results/models_combined_criteria/aucs_severe_outcome_adj.csv")
+  generate_calibration_plot(data = df_adult, obs = "severe_outcome", pred = "prediction_severe_outcome", output_path = "output/results/calibration_summary_severe_outcome_adj.csv")
+
+} else {
+  write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_severe_outcome_adj.csv")
+  write.csv(data.frame(), "output/results/models_combined_criteria/aucs_severe_outcome_adj.csv")
+  write.csv(data.frame(), "output/results/models_combined_criteria/calibration_severe_outcome_adj.csv")
+}
+
+
+
+# ###Discrimination
+model_so_a_totalCAT <- fit_model(severe_outcome ~ total_CAT, data = df_adult ,family = "binomial")
+
+if (!is.null(model_so_a_totalCAT)) {
+  saveSummary(model_so_a_totalCAT, "output/results/models_combined_criteria/severe_outcome_summary.txt")
+} else {
+  write.csv(data.frame(), "output/results/models_combined_criteria/severe_outcome_summary.txt")
+}
+
+if (!is.null(model_so_a_totalCAT)) {
+  df_adult$prediction_severe_outcome <- predict.glm(model_so_a_totalCAT, df_adult, type = "response")
   mroc_severe_outcome <- roc(df_adult$severe_outcome, df_adult$prediction_severe_outcome, plot = T)
   roc_data_severe_outcome <- data.frame(
     fpr = 1 - mroc_severe_outcome$specificities,
@@ -225,25 +258,32 @@ if (!is.null(severe_o)) {
 }
 
 
+
+
+
+
+
+
+
 # adjusted models
 
 model_hosp_a_adj_totalCAT <- fit_model_if_two_factors(df_adult, "hosp_24h", "total_CAT", "age", "sex", "obesity_mod", "comorb_number")
-saveSummary(model_hosp_a_adj_totalCAT, "output/results/models_combined_criteria/adult_hospitalisation_adj.txt")
+saveSummary(model_hosp_a_adj_totalCAT, "output/results/models_combined_criteria/hosp_adult_adj_summary.txt")
 
 model_hosp_c_adj_totalCAT <- fit_model_if_two_factors(df_child, "hosp_24h", "total_CAT", "age", "sex", "obesity_mod", "comorb_number")
-saveSummary(model_hosp_c_adj_totalCAT, "output/results/models_combined_criteria/child_hospitalisation_adj.txt")
+saveSummary(model_hosp_c_adj_totalCAT, "output/results/models_combined_criteria/hosp_child_adj_summary.txt")
 
 
 
 model_covidhosp_a_adj_totalCAT <- fit_model_if_two_factors(df_adult, "covid_hosp_susp", "total_CAT", "age", "sex", "obesity_mod", "comorb_number")
-saveSummary(model_covidhosp_a_adj_totalCAT, "output/results/models_combined_criteria/adult_hospitalisation_covid_adj_susp_cov.txt")
+saveSummary(model_covidhosp_a_adj_totalCAT, "output/results/models_combined_criteria/hosp_adult_susp_cov_adj_summary.txt")
 
 model_covidhosp_c_adj_totalCAT <- fit_model_if_two_factors(df_child, "covid_hosp_susp", "total_CAT", "age", "sex", "obesity_mod", "comorb_number")
-saveSummary(model_covidhosp_c_adj_totalCAT, "output/results/models_combined_criteria/child_hospitalisation_covid_adj_susp_cov.txt")
+saveSummary(model_covidhosp_c_adj_totalCAT, "output/results/models_combined_criteria/hosp_child_susp_cov_adj_summary.txt")
 
 
 model_covidhosp_prob_a_adj_totalCAT <- fit_model_if_two_factors(df_adult, "covid_hosp_prob", "total_CAT", "age", "sex", "obesity_mod", "comorb_number")
-saveSummary(model_covidhosp_a_adj_totalCAT, "output/results/models_combined_criteria/adult_hospitalisation_covid_adj_prob_cov.txt")
+saveSummary(model_covidhosp_a_adj_totalCAT, "output/results/models_combined_criteria/hosp_adult_prob_cov_adj_summary.txt")
 
 model_covidhosp_prob_c_adj_totalCAT <- fit_model_if_two_factors(df_child, "covid_hosp_prob", "total_CAT", "age", "sex", "obesity_mod", "comorb_number")
-saveSummary(model_covidhosp_c_adj_totalCAT, "output/results/models_combined_criteria/child_hospitalisation_covid_adj_prob_cov.txt")
+saveSummary(model_covidhosp_c_adj_totalCAT, "output/results/models_combined_criteria/hosp_child_prob_covid_adj_summary.txt")
