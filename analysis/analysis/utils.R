@@ -99,6 +99,18 @@ fit_model <- function(formula, data, family) {
 
 
 
+fit_model_if_two_factors <- function(df, y_var, ...){
+  if(length(unique(df[[y_var]])) >= 2){
+    formula <- as.formula(paste(y_var, "~", paste(list(...), collapse = " + ")))
+    model <- glm(formula, data = df, family = binomial)
+    return(model)
+  } else {
+    return(NULL)
+  }
+}
+
+
+
 generate_calibration_plot <- function(data, obs, pred, output_path) {
   output <- tryCatch({
     calibration_plot(data = data, obs = obs, pred = pred, data_summary = TRUE)
