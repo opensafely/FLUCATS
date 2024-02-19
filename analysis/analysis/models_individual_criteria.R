@@ -10,9 +10,6 @@ flucats_vars <- c("flucats_a", "flucats_b", "flucats_c", "flucats_d", "flucats_e
 df <- df %>% 
   mutate(across(all_of(flucats_vars), as.numeric))
 
-df <- df %>%
-  mutate(obesity = as.numeric(as.character(obesity)),
-         obesity_mod = if_else(obesity == 0, 9, obesity))
 
 df_adult <- df[df$category == "Adult",]
 df_child <- df[df$category == "Child",]

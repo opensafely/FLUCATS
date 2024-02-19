@@ -10,9 +10,6 @@ dir.create("output/results/models_combined_criteria", showWarnings = FALSE)
 
 df <- arrow::read_feather("output/joined/full/input_all_extra_vars.feather")
 
-df <- df %>%
-  mutate(obesity = as.numeric(as.character(obesity)),
-         obesity_mod = if_else(obesity == 0, 9, obesity))
 
 df_child <- df[df$category == "Child",]
 df_adult <- df[df$category == "Adult",]
