@@ -177,7 +177,6 @@ df <- df %>%
          obesity_mod = if_else(is.na(obesity), 9, obesity),
          obesity_mod = as.factor(obesity_mod))
 
-print(table(df$obesity_mod))
 
 df$obesity_mod <- factor(df$obesity_mod, levels = c(0, 1, 9))
 

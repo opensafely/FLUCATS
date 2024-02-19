@@ -7,6 +7,11 @@ dir.create("output/results/models_individual_criteria", showWarnings = FALSE)
 df <- arrow::read_feather("output/joined/full/input_all_extra_vars.feather")
 flucats_vars <- c("flucats_a", "flucats_b", "flucats_c", "flucats_d", "flucats_e", "flucats_f", "flucats_g", "total_CAT")
 
+df$obesity_mod <- as.numeric(df$obesity_mod) - 1
+df$obesity_mod[df$obesity_mod == 2] <- 9
+
+df$obesity_mod <- as.factor(df$obesity_mod)
+
 df <- df %>% 
   mutate(across(all_of(flucats_vars), as.numeric))
 
@@ -14,7 +19,8 @@ df <- df %>%
 df_adult <- df[df$category == "Adult",]
 df_child <- df[df$category == "Child",]
 
-
+print(table(df_child$obesity_mod))
+print(table(df_adult$obesity_mod))
 
 #Logistic regression for each outcome where FluCATs criteria are modelled independently
 #CHILD
