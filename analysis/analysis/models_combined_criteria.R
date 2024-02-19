@@ -11,9 +11,13 @@ dir.create("output/results/models_combined_criteria", showWarnings = FALSE)
 df <- arrow::read_feather("output/joined/full/input_all_extra_vars.feather")
 
 
+print(table(df$obesity_mod))
+
 df_child <- df[df$category == "Child",]
 df_adult <- df[df$category == "Adult",]
 
+print(table(df_child$obesity_mod))
+print(table(df_adult$obesity_mod))
 
 #Separate models for each outcome, by child/adult status
 hosp_child <- fit_model(hosp_24h ~ total_CAT, df_child ,family = "binomial")
