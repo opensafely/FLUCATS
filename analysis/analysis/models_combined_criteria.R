@@ -233,8 +233,17 @@ saveSummary(model_hosp_a_adj_totalCAT, "output/results/models_combined_criteria/
 model_hosp_c_adj_totalCAT <- fit_model_if_two_factors(df_child, "hosp_24h", "total_CAT", "age", "sex", "obesity_mod", "comorb_number")
 saveSummary(model_hosp_c_adj_totalCAT, "output/results/models_combined_criteria/child_hospitalisation_adj.txt")
 
+
+
 model_covidhosp_a_adj_totalCAT <- fit_model_if_two_factors(df_adult, "covid_hosp_susp", "total_CAT", "age", "sex", "obesity_mod", "comorb_number")
-saveSummary(model_covidhosp_a_adj_totalCAT, "output/results/models_combined_criteria/adult_hospitalisation_covid_adj.txt")
+saveSummary(model_covidhosp_a_adj_totalCAT, "output/results/models_combined_criteria/adult_hospitalisation_covid_adj_susp_cov.txt")
 
 model_covidhosp_c_adj_totalCAT <- fit_model_if_two_factors(df_child, "covid_hosp_susp", "total_CAT", "age", "sex", "obesity_mod", "comorb_number")
-saveSummary(model_covidhosp_c_adj_totalCAT, "output/results/models_combined_criteria/child_hospitalisation_covid_adj.txt")
+saveSummary(model_covidhosp_c_adj_totalCAT, "output/results/models_combined_criteria/child_hospitalisation_covid_adj_susp_cov.txt")
+
+
+model_covidhosp_prob_a_adj_totalCAT <- fit_model_if_two_factors(df_adult, "covid_hosp_prob", "total_CAT", "age", "sex", "obesity_mod", "comorb_number")
+saveSummary(model_covidhosp_a_adj_totalCAT, "output/results/models_combined_criteria/adult_hospitalisation_covid_adj_prob_cov.txt")
+
+model_covidhosp_prob_c_adj_totalCAT <- fit_model_if_two_factors(df_child, "covid_hosp_prob", "total_CAT", "age", "sex", "obesity_mod", "comorb_number")
+saveSummary(model_covidhosp_c_adj_totalCAT, "output/results/models_combined_criteria/child_hospitalisation_covid_adj_prob_cov.txt")

@@ -110,18 +110,18 @@ if (!is.null(isaric_mod)) {
 }
 
 
-isaric_mod <- fit_model(covid_hosp_susp ~ isaric_tot, data = df ,family = "binomial")
-saveSummary(isaric_mod, "output/results/isaric/isaric_mod_covid_hosp.txt")
+isaric_mod_susp_cov <- fit_model(covid_hosp_susp ~ isaric_tot, data = df ,family = "binomial")
+saveSummary(isaric_mod_susp_cov, "output/results/isaric/isaric_mod_susp_cov.txt")
 
 if (!is.null(isaric_mod)) {
-  df$prediction_hosp_covid <- predict(isaric_mod, df, type = "response")
-  mroc_hosp_covid <- roc(df$covid_hosp_susp, df$prediction_hosp_covid, plot = T)
+  df$prediction_hosp_covid_susp <- predict(isaric_mod_susp_cov, df, type = "response")
+  mroc_hosp_covid <- roc(df$covid_hosp_susp, df$prediction_hosp_covid_susp, plot = T)
   roc_data_hosp_covid <- data.frame(
     fpr = 1 - mroc_hosp_covid$specificities,
     sensitivity = mroc_hosp_covid$sensitivities,
     thresholds = mroc_hosp_covid$thresholds
   )
-  write.csv(roc_data_hosp_covid, "output/results/isaric/isaric_roc_data_hosp_covid.csv")
+  write.csv(roc_data_hosp_covid, "output/results/isaric/isaric_roc_data_hosp_susp_cov.csv")
 
 
   auc_hosp_covid <- auc(mroc_hosp_covid)
@@ -130,15 +130,51 @@ if (!is.null(isaric_mod)) {
 
   aucs_hosp_covid <- data.frame(auc_hosp_covid_ci_str)
   colnames(aucs_hosp_covid) <- c("ci")
-  write.csv(aucs_hosp_covid, "output/results/isaric/isaric_aucs_hosp_covid_isaric.csv")
+  write.csv(aucs_hosp_covid, "output/results/isaric/isaric_aucs_hosp_susp_cov_isaric.csv")
 
 
-  generate_calibration_plot(data = df, obs = "covid_hosp_susp", pred = "prediction_hosp_covid", output_path = "output/results/isaric_calibration_summary_hosp_covid.csv")
+  generate_calibration_plot(data = df, obs = "covid_hosp_susp", pred = "prediction_hosp_covid_susp", output_path = "output/results/isaric_calibration_summary_hosp_susp_cov.csv")
 
 
 } else {
 
-  write.csv(data.frame(), "output/results/isaric/isaric_roc_data_hosp_covid.csv")
-  write.csv(data.frame(), "output/results/isaric/isaric_aucs_hosp_covid_isaric.csv")
-  write.csv(data.frame(), "output/results/isaric/isaric_calibration_summary_hosp_covid.csv")
+  write.csv(data.frame(), "output/results/isaric/isaric_roc_data_hosp_susp_cov.csv")
+  write.csv(data.frame(), "output/results/isaric/isaric_aucs_hosp_susp_cov_isaric.csv")
+  write.csv(data.frame(), "output/results/isaric/isaric_calibration_summary_hosp_susp_cov.csv")
+}
+
+
+
+
+isaric_mod_prob_cov <- fit_model(covid_hosp_susp ~ isaric_tot, data = df ,family = "binomial")
+saveSummary(isaric_mod_prob_cov, "output/results/isaric/isaric_mod_prob_cov.txt")
+
+if (!is.null(isaric_mod)) {
+  df$prediction_hosp_covid_prob <- predict(isaric_mod_prob_cov, df, type = "response")
+  mroc_hosp_covid <- roc(df$covid_hosp_susp, df$prediction_hosp_covid_prob, plot = T)
+  roc_data_hosp_covid <- data.frame(
+    fpr = 1 - mroc_hosp_covid$specificities,
+    sensitivity = mroc_hosp_covid$sensitivities,
+    thresholds = mroc_hosp_covid$thresholds
+  )
+  write.csv(roc_data_hosp_covid, "output/results/isaric/isaric_roc_data_hosp_prob_cov.csv")
+
+
+  auc_hosp_covid <- auc(mroc_hosp_covid)
+  auc_hosp_covid_ci <- ci.auc(mroc_hosp_covid) 
+  auc_hosp_covid_ci_str <- paste0("AUC: ", round(auc_hosp_covid_ci[2], 5), " (", round(auc_hosp_covid_ci[1], 5), " - ", round(auc_hosp_covid_ci[3], 5), ")")
+
+  aucs_hosp_covid <- data.frame(auc_hosp_covid_ci_str)
+  colnames(aucs_hosp_covid) <- c("ci")
+  write.csv(aucs_hosp_covid, "output/results/isaric/isaric_aucs_hosp_prob_cov_isaric.csv")
+
+
+  generate_calibration_plot(data = df, obs = "covid_hosp_prob", pred = "prediction_hosp_covid_prob", output_path = "output/results/isaric_calibration_summary_hosp_susp_cov.csv")
+
+
+} else {
+
+  write.csv(data.frame(), "output/results/isaric/isaric_roc_data_hosp_prob_cov.csv")
+  write.csv(data.frame(), "output/results/isaric/isaric_aucs_hosp_prob_cov_isaric.csv")
+  write.csv(data.frame(), "output/results/isaric/isaric_calibration_summary_hosp_prob_cov.csv")
 }
