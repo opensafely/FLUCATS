@@ -15,7 +15,8 @@ df <- arrow::read_feather("output/joined/full/input_all_extra_vars.feather")
 df$obesity_mod <- as.numeric(df$obesity_mod) - 1
 df$obesity_mod[df$obesity_mod == 2] <- 9
 
-df$obesity_mod <- as.factor(df$obesity_mod, levels = c(0, 1, 9))
+df$obesity_mod <- factor(df$obesity_mod, levels = c(0, 1, 9))
+
 
 
 df_child <- df[df$category == "Child",]

@@ -10,7 +10,8 @@ flucats_vars <- c("flucats_a", "flucats_b", "flucats_c", "flucats_d", "flucats_e
 df$obesity_mod <- as.numeric(df$obesity_mod) - 1
 df$obesity_mod[df$obesity_mod == 2] <- 9
 
-df$obesity_mod <- as.factor(df$obesity_mod)
+df$obesity_mod <- factor(df$obesity_mod, levels = c(0, 1, 9))
+
 
 df <- df %>% 
   mutate(across(all_of(flucats_vars), as.numeric))
