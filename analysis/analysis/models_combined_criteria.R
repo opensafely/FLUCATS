@@ -24,6 +24,24 @@ df_adult <- df[df$category == "Adult",]
 print(table(df_child$obesity_mod))
 print(table(df_adult$obesity_mod))
 
+for (i in 1:length(df_child)) {
+  if (length(levels(df_child[[i]])) > 0) {
+    df_child[[i]] <- droplevels(df_child[[i]])
+  }
+}
+
+for (i in 1:length(df_adult)) {
+  if (length(levels(df_adult[[i]])) > 0) {
+    df_adult[[i]] <- droplevels(df_adult[[i]])
+  }
+}
+
+print(table(df_child$obesity_mod))
+print(table(df_adult$obesity_mod))
+
+
+# now set the 
+
 #Separate models for each outcome, by child/adult status
 
 hosp_child <- fit_model(hosp_24h ~ total_CAT, df_child,family = "binomial")
