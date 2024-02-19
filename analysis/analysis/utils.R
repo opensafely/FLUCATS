@@ -1,4 +1,12 @@
+ensureDirExists <- function(filepath) {
+  dir <- dirname(filepath)
+  if (!dir.exists(dir)) {
+    dir.create(dir, recursive = TRUE)
+  }
+}
+
 saveSummary <- function(model, filename) {
+  ensureDirExists(filename)
   if (!is.null(model)) {
     sink(filename)
     print(summary(model))
