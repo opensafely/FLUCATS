@@ -120,6 +120,7 @@ if (!is.null(hosp_adult)) {
 
   auc_hosp_adult <- auc(mroc_hosp_adult)
   auc_hosp_adult_ci <- ci.auc(mroc_hosp_adult)
+  print(auc_hosp_adult_ci)
   auc_hosp_adult_ci_str <-  paste("AUC: ", round(auc_hosp_adult_ci$auc, 5), " (CI: ", round(auc_hosp_adult_ci$conf.int[1], 5), "-", round(auc_hosp_adult_ci$conf.int[2], 5), ")")
   generate_calibration_plot(data = df_adult, obs = "hosp_24h", pred = "prediction_hosp_a", output_path = "output/results/models_combined_criteria/calibration_hosp_adult.csv")
 
