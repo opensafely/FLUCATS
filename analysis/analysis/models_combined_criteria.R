@@ -41,9 +41,7 @@ if (!is.null(hosp_child)) {
   auc_hosp_child <- auc(mroc_hosp_child)
   auc_hosp_child_ci <- ci.auc(mroc_hosp_child)
   auc_hosp_child_ci_str <-  paste("(", round(auc_hosp_child_ci[1], 2), "-", round(auc_hosp_child_ci[2], 2), ")", sep = "")
-  calibration <- calibration_plot(data = df_child, obs = "hosp_24h", pred = "prediction_hosp_c", data_summary =  T)
-  write.csv(calibration$data_summary, "output/results/models_combined_criteria/calibration_hosp_child.csv")
-
+  generate_calibration_plot(data = df_child, obs = "hosp_24h", pred = "prediction_hosp_c", output_path = "output/results/models_combined_criteria/calibration_hosp_child.csv")
 
 
 } else {
@@ -67,8 +65,7 @@ if (!is.null(hosp_child_susp_cov)) {
   auc_hosp_child_susp_cov <- auc(mroc_hosp_child_susp_cov)
   auc_hosp_child_susp_cov_ci <- ci.auc(mroc_hosp_child_susp_cov)
   auc_hosp_child_susp_cov_ci_str <-  paste("(", round(auc_hosp_child_susp_cov_ci[1], 2), "-", round(auc_hosp_child_susp_cov_ci[2], 2), ")", sep = "")
-  calibration <- calibration_plot(data = df_child, obs = "hosp_24h_susp_cov", pred = "prediction_hosp_c_susp_cov", data_summary =  T)
-  write.csv(calibration$data_summary, "output/results/models_combined_criteria/calibration_hosp_child_susp_cov.csv")
+  generate_calibration_plot(data = df_child, obs = "hosp_24h_susp_cov", pred = "prediction_hosp_c_susp_cov", output_path = "output/results/models_combined_criteria/calibration_hosp_child_susp_cov.csv")
 
 } else {
   write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_hosp_child_susp_cov.csv")
@@ -90,8 +87,7 @@ if (!is.null(hosp_child_prob_cov)) {
   auc_hosp_child_prob_cov <- auc(mroc_hosp_child_prob_cov)
   auc_hosp_child_prob_cov_ci <- ci.auc(mroc_hosp_child_prob_cov)
   auc_hosp_child_prob_cov_ci_str <-  paste("(", round(auc_hosp_child_prob_cov_ci[1], 2), "-", round(auc_hosp_child_prob_cov_ci[2], 2), ")", sep = "")
-  calibration <- calibration_plot(data = df_child, obs = "hosp_24h_prob_cov", pred = "prediction_hosp_c_prob_cov", data_summary =  T)
-  write.csv(calibration$data_summary, "output/results/models_combined_criteria/calibration_hosp_child_prob_cov.csv")
+  generate_calibration_plot(data = df_child, obs = "hosp_24h_prob_cov", pred = "prediction_hosp_c_prob_cov", output_path = "output/results/models_combined_criteria/calibration_hosp_child_prob_cov.csv")
 
 } else {
   write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_hosp_child_prob_cov.csv")
@@ -124,8 +120,7 @@ if (!is.null(hosp_adult)) {
   auc_hosp_adult <- auc(mroc_hosp_adult)
   auc_hosp_adult_ci <- ci.auc(mroc_hosp_adult)
   auc_hosp_adult_ci_str <-  paste("(", round(auc_hosp_adult_ci[1], 2), "-", round(auc_hosp_adult_ci[2], 2), ")", sep = "")
-  calibration <- calibration_plot(data = df_adult, obs = "hosp_24h", pred = "prediction_hosp_a", data_summary =  T)
-  write.csv(calibration$data_summary, "output/results/models_combined_criteria/calibration_hosp_adult.csv")
+  generate_calibration_plot(data = df_adult, obs = "hosp_24h", pred = "prediction_hosp_a", output_path = "output/results/models_combined_criteria/calibration_hosp_adult.csv")
 
 } else {
   write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_hosp_adult.csv")
@@ -147,8 +142,7 @@ if (!is.null(hosp_adult_susp_cov)) {
   auc_hosp_adult_susp_cov <- auc(mroc_hosp_adult_susp_cov)
   auc_hosp_adult_susp_cov_ci <- ci.auc(mroc_hosp_adult_susp_cov)
   auc_hosp_adult_susp_cov_ci_str <-  paste("(", round(auc_hosp_adult_susp_cov_ci[1], 2), "-", round(auc_hosp_adult_susp_cov_ci[2], 2), ")", sep = "")
-  calibration <- calibration_plot(data = df_adult, obs = "hosp_24h_susp_cov", pred = "prediction_hosp_a_susp_cov", data_summary =  T)
-  write.csv(calibration$data_summary, "output/results/models_combined_criteria/calibration_hosp_adult_susp_cov.csv")
+  generate_calibration_plot(data = df_adult, obs = "hosp_24h_susp_cov", pred = "prediction_hosp_a_susp_cov", output_path = "output/results/models_combined_criteria/calibration_hosp_adult_susp_cov.csv")
 
 } else {
   write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_hosp_adult_susp_cov.csv")
@@ -170,8 +164,7 @@ if (!is.null(hosp_adult_prob_cov)) {
   auc_hosp_adult_prob_cov <- auc(mroc_hosp_adult_prob_cov)
   auc_hosp_adult_prob_cov_ci <- ci.auc(mroc_hosp_adult_prob_cov)
   auc_hosp_adult_prob_cov_ci_str <-  paste("(", round(auc_hosp_adult_prob_cov_ci[1], 2), "-", round(auc_hosp_adult_prob_cov_ci[2], 2), ")", sep = "")
-  calibration <- calibration_plot(data = df_adult, obs = "hosp_24h_prob_cov", pred = "prediction_hosp_a_prob_cov", data_summary =  T)
-  write.csv(calibration$data_summary, "output/results/models_combined_criteria/calibration_hosp_adult_prob_cov.csv")
+  generate_calibration_plot(data = df_adult, obs = "hosp_24h_prob_cov", pred = "prediction_hosp_a_prob_cov", output_path = "output/results/models_combined_criteria/calibration_hosp_adult_prob_cov.csv")
 } else {
   write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_hosp_adult_prob_cov.csv")
   auc_hosp_adult_prob_cov <- NA
@@ -224,8 +217,6 @@ if (!is.null(severe_o)) {
   aucs_so <- data.frame(auc_so_adult, auc_so_ci_str)
   colnames(aucs_so) <- c("auc", "ci")
   write.csv(aucs_so, "output/results/models_combined_criteria/aucs_severe_outcome.csv")
-
-
   generate_calibration_plot(data = df_adult, obs = "severe_outcome", pred = "prediction_severe_outcome", output_path = "output/results/calibration_summary_severe_outcome.csv")
 
 } else {
