@@ -25,7 +25,8 @@ print(table(df_child$obesity_mod))
 print(table(df_adult$obesity_mod))
 
 #Separate models for each outcome, by child/adult status
-hosp_child <- fit_model(hosp_24h ~ total_CAT, df_child ,family = "binomial")
+
+hosp_child <- fit_model(hosp_24h ~ total_CAT, df_child,family = "binomial")
 hosp_child_susp_cov <- fit_model(hosp_24h_susp_cov ~ total_CAT, df_child ,family = "binomial")
 hosp_child_prob_cov <- fit_model(hosp_24h_prob_cov ~ total_CAT, df_child ,family = "binomial")
 

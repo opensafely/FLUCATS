@@ -150,6 +150,7 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
 
 
 generate_model_evaluation <- function(model, dataset, outcome_name, model_name, results_dir) {
+  print(table(dataset$obesity_mod))
   if (!dir.exists(results_dir)) {
     dir.create(results_dir, recursive = TRUE)
   }
@@ -177,7 +178,7 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
     write.csv(aucs_data, file.path(results_dir, paste("aucs", model_name, ".csv", sep = "_")))
     
     
-    generate_calibration_plot(data = dataset, obs = outcome_name, pred = prediction_column_name, output_path = file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
+    generate_calibration_plot(data = dataset, obs = outcome_name, pred = predictions, output_path = file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
     
   } else {
     # Write empty files if the model is null
