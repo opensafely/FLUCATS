@@ -124,6 +124,8 @@ fit_model_if_two_factors <- function(df, y_var, ...){
 
 
 generate_calibration_plot <- function(data, obs, pred, output_path) {
+  print("Generating calibration plot")
+  print(output_path)
   output <- tryCatch({
     calibration_plot(data = data, obs = obs, pred = pred, data_summary = TRUE)
   }, error = function(e) {
@@ -145,15 +147,8 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
 }
 
 
-
-
-
-
 generate_model_evaluation <- function(model, dataset, outcome_name, model_name, results_dir) {
-  print(table(dataset$obesity_mod))
-
-  dataset$obesity_mod <- factor(dataset$obesity_mod, levels = levels(model$data$obesity_mod))
-
+  
   if (!dir.exists(results_dir)) {
     dir.create(results_dir, recursive = TRUE)
   }
@@ -162,15 +157,22 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
     # Predict the outcome
     dataset$predictions <- predict.glm(model, dataset, type = "response")
     
-    # ROC analysis
-    mroc <- roc(dataset[[outcome_name]], dataset$predictions, plot = TRUE)
-    roc_data <- data.frame(
-      fpr = 1 - mroc$specificities,
-      sensitivity = mroc$sensitivities,
-      thresholds = mroc$thresholds
-    )
-    print(file.path(results_dir, paste("roc_data", model_name, ".csv", sep = "_")))
-    write.csv(roc_data, file.path(results_dir, paste("roc_data", model_name, ".csv", sep = "_")))
+  
+    if (length(unique(dataset[[outcome_name]])) < 2) {    
+      write.csv(data.frame(), file.path(results_dir, paste("roc_data", model_name, ".csv", sep = "_")))
+      write.csv(data.frame(), file.path(results_dir, paste("aucs", model_name, ".csv", sep = "_")))
+
+    }
+    else {
+      mroc <- roc(dataset[[outcome_name]], dataset$predictions, plot = TRUE)
+      roc_data <- data.frame(
+        fpr = 1 - mroc$specificities,
+        sensitivity = mroc$sensitivities,
+        thresholds = mroc$thresholds
+      )
+      
+      write.csv(roc_data, file.path(results_dir, paste("roc_data", model_name, ".csv", sep = "_")))
+    
     
     # AUC and its CI
     auc_value <- auc(mroc) 
@@ -180,7 +182,8 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
     aucs_data <- data.frame(auc = auc_ci_str)
     write.csv(aucs_data, file.path(results_dir, paste("aucs", model_name, ".csv", sep = "_")))
     
-    
+    }
+    print(file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
     generate_calibration_plot(data = dataset, obs = outcome_name, pred = predictions, output_path = file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
     
   } else {

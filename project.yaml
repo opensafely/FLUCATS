@@ -1722,6 +1722,9 @@ actions:
       moderately_sensitive:
         summaries_adult: output/results/models_individual_criteria/adult*.txt
         summaries_child: output/results/models_individual_criteria/child*.txt
+        aucs: output/results/models_individual_criteria/aucs*.csv
+        roc: output/results/models_individual_criteria/roc*.csv
+        calibration: output/results/models_individual_criteria/calibration*.csv
   
   models_combined_criteria:
       run: r:latest analysis/analysis/models_combined_criteria.R
