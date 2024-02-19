@@ -115,7 +115,7 @@ saveSummary(isaric_mod, "output/results/isaric/isaric_mod_covid_hosp.txt")
 
 if (!is.null(isaric_mod)) {
   df$prediction_hosp_covid <- predict(isaric_mod, df, type = "response")
-  mroc_hosp_covid <- roc(df$covid_hosp, df$prediction_hosp_covid, plot = T)
+  mroc_hosp_covid <- roc(df$covid_hosp_susp, df$prediction_hosp_covid, plot = T)
   roc_data_hosp_covid <- data.frame(
     fpr = 1 - mroc_hosp_covid$specificities,
     sensitivity = mroc_hosp_covid$sensitivities,
