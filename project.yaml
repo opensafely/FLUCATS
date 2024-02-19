@@ -1682,27 +1682,7 @@ actions:
       moderately_sensitive:
         attrition: output/died_any_counts.csv
         test: output/*_test_counts.csv
-        
-  descriptive_tables:
-    run: r:latest analysis/analysis/flucats_descriptive.R
-    needs: [combined_input_files]
-    outputs:
-      highly_sensitive:
-        flucat_tables: output/input_all_edited.csv
-      moderately_sensitive:
-        attrition: output/results/attrition.csv
-        histogram_age: output/results/age_hist.png
-        histogram_age_data: output/results/age_hist.csv
-        date_plot: output/results/weekly_template.png
-        date_plot_data: output/results/weekly_template.csv
-        flucat_tables: output/results/flucat*.csv
-        sex_table: output/results/sex_table.csv
-        region_table: output/results/region_table.csv
-        demographics: output/results/demographics.csv
-        tables: output/results/table*.csv
-        tables_txt: output/results/table*.txt
-        outcomes: output/results/outcomes.csv
-        
+
   hosp_adm_breakdown:
     run: python:latest python analysis/analysis/hospital_admission_breakdown.py
     needs: [descriptive_tables]
@@ -1712,41 +1692,51 @@ actions:
         cov_status: output/results/cov_status_value_counts.csv
         cov_status_by_code: output/results/*covid_value_counts.csv
 
+  create_extra_vars:
+      run: r:latest analysis/analysis/create_extra_variables.R
+      needs: [combined_input_files]
+      outputs:
+        highly_sensitive:
+          df: output/joined/full/input_all_extra_vars.feather
 
-  discrimination:
-      run: r:latest analysis/analysis/flucatsValidation_discrimination.R
-      needs: [descriptive_tables]
+  descriptive_tables:
+    run: r:latest analysis/analysis/flucats_descriptive.R
+    needs: [create_extra_vars]
+    outputs:
+      moderately_sensitive:
+        attrition: output/results/descriptive/attrition.csv
+        histogram_age_data: output/results/descriptive/age_hist.csv
+        date_plot_data: output/results/descriptive/weekly_template.csv
+        flucat_tables: output/results/descriptive/flucat*.csv
+        sex_table: output/results/descriptive/sex_table.csv
+        region_table: output/results/descriptive/region_table.csv
+        demographics: output/results/descriptive/demographics.csv
+        demographic_summaries: output/results/descriptive/demographic_summary*.csv
+        flucats_tables: output/results/descriptive/flucat_criteria_counts*.csv
+        outcomes: output/results/descriptive/outcomes.csv
+  
+  models_individual_criteria:
+    run: r:latest analysis/analysis/models_individual_criteria.R
+    needs: [create_extra_vars]
+    outputs:
+      moderately_sensitive:
+        summaries_adult: output/results/models_individual_criteria/adult*.txt
+        summaries_child: output/results/models_individual_criteria/child*.txt
+  
+  models_combined_criteria:
+      run: r:latest analysis/analysis/models_combined_criteria.R
+      needs: [create_extra_vars]
       outputs:
         moderately_sensitive:
-          aucs: output/results/aucs*.csv
-          roc: output/results/roc*.csv
-          summary: output/results/*summary.txt
-          calibration: output/results/calibration*.csv
-
-  severeOutcome:
-      run: r:latest analysis/analysis/severeOutcome.R
-      needs: [descriptive_tables]
-      outputs:
-        moderately_sensitive:
-          tables: output/results/tab*.csv
-          summary: output/results/tabl*.txt
-          roc: output/results/ro*.csv
-          aucs: output/results/auc*.csv
-          # calibration: output/results/calibration*.csv
-
-
-  adjustedModels:
-      run: r:latest analysis/analysis/adjustedModels.R
-      needs: [descriptive_tables]
-      outputs:
-        moderately_sensitive:
-          tables: output/results/adju*.txt
-
+          aucs: output/results/models_combined_criteria/aucs*.csv
+          roc: output/results/models_combined_criteria/roc*.csv
+          summary: output/results/models_combined_criteria/*summary.txt
+          calibration: output/results/models_combined_criteria/calibration*.csv
 
   isaric:
       run: r:latest analysis/analysis/isaric4c.R
-      needs: [descriptive_tables]
+      needs: [create_extra_vars]
       outputs:
         moderately_sensitive:
-          tables: output/results/isaric*.csv
-          txt: output/results/isaric*.txt
+          tables: output/results/isaric/isaric*.csv
+          txt: output/results/isaric/isaric*.txt
