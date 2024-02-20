@@ -117,18 +117,22 @@ write.csv(summary_df, "output/results/descriptive/demographics.csv", row.names =
 # hosp_24h, hosp_24h_susp_cov, hosp_24h_prob_cov, death_30d_pc, death_30d_ons, icu_adm, severe_outcome
 
 outcomes <- df %>%
+  ungroup() %>%
   summarise(
     Count = sum(hosp_24h) + sum(hosp_24h_susp_cov) + sum(hosp_24h_prob_cov) + sum(death_30d_pc) + sum(death_30d_ons) + sum(icu_adm) + sum(severe_outcome),
   )
 
+
 # the above, but filtered to children and adults
 outcomes_child <- df %>%
+  ungroup() %>%
   filter(category == "Child") %>%
   summarise(
     Count = sum(hosp_24h) + sum(hosp_24h_susp_cov) + sum(hosp_24h_prob_cov) + sum(death_30d_pc) + sum(death_30d_ons) + sum(icu_adm) + sum(severe_outcome)
   )
 
 outcomes_adult <- df %>%
+  ungroup() %>%
   filter(category == "Adult") %>%
   summarise(
     Count = sum(hosp_24h) + sum(hosp_24h_susp_cov) + sum(hosp_24h_prob_cov) + sum(death_30d_pc) + sum(death_30d_ons) + sum(icu_adm) + sum(severe_outcome)
