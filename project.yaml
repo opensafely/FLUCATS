@@ -1748,7 +1748,7 @@ actions:
       needs: [models_individual_criteria]
       outputs:
         moderately_sensitive:
-          table: output/results/models_individual_criteria/aucs_combined.csv
+          table: output/results/models_combined_criteria/aucs_combined.csv
 
   isaric:
       run: r:latest analysis/analysis/isaric4c.R
