@@ -135,8 +135,10 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
     calibration_plot(data = data, obs = obs, pred = pred, data_summary = TRUE)
   }, error = function(e) {
     
-    message("An error occurred, writing error message to CSV.")
-    data.frame(Error = e$message)
+    # add errro message
+    message("An error occurred, writing error message to CSV. Error: ", e)
+
+  
   })
 
 
