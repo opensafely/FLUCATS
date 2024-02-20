@@ -242,3 +242,111 @@ fit_model_and_evaluate <- function(formula, data, family, outcome_name, model_na
   generate_model_evaluation(model, data, outcome_name, model_name, results_dir)
 }
 
+
+# source: https://github.com/resplab/predtools/blob/4d90f59c22485177c65cfae3778ec16ec48e950a/R/calibPlot.R
+calibration_plot_safe <- function(data,
+                             obs,
+                             follow_up = NULL,
+                             pred,
+                             group = NULL,
+                             nTiles = 10,
+                             legendPosition = "right",
+                             title = NULL,
+                             x_lim = NULL,
+                             y_lim = NULL,
+                             xlab = "Prediction",
+                             ylab = "Observation",
+                             points_col_list = NULL,
+                             data_summary = FALSE) {
+  
+  if (! exists("obs") | ! exists("pred")) stop("obs and pred can not be null.")
+  
+  n_groups <- length(unique(data[ , group]))
+  
+  if (is.null(follow_up)) data$follow_up <- 1
+
+  if (! is.null(group)) {
+    data %>%
+      group_by(!!sym(group)) %>%
+      mutate(decile = ntile(!!sym(pred), nTiles)) %>%
+      group_by(.data$decile, !!sym(group)) %>%
+      summarise(obsRate = mean(!!sym(obs) / follow_up, na.rm = T),
+                obsRate_SE = sd(!!sym(obs) / follow_up, na.rm = T) / sqrt(n()),
+                obsNo = n(),
+                predRate = mean(!!sym(pred), na.rm = T)) -> dataDec_mods
+    colnames(dataDec_mods)[colnames(dataDec_mods) == "group"] <- group
+  }
+  else {
+    data %>%
+      mutate(decile = ntile(!!sym(pred), nTiles)) %>%
+      group_by(.data$decile) %>%
+      summarise(obsRate = mean(!!sym(obs) / follow_up, na.rm = T),
+                obsRate_SE = sd(!!sym(obs) / follow_up, na.rm = T) / sqrt(n()),
+                obsNo = n(),
+                predRate = mean(!!sym(pred), na.rm = T)) -> dataDec_mods
+  }
+
+  # Filter rows where obsNo <= 7
+  dataDec_mods <- dataDec_mods %>% filter(obsNo > 7)
+
+  # Round obsNo to the nearest 5
+  dataDec_mods$obsNo <- round(dataDec_mods$obsNo / 5) * 5
+
+  # Recalculate obsRate
+  total_obs <- sum(dataDec_mods$obsNo)
+  dataDec_mods$obsRate <- dataDec_mods$obsNo / total_obs
+  
+  dataDec_mods$obsRate_UCL <- dataDec_mods$obsRate + 1.96 * dataDec_mods$obsRate_SE
+  dataDec_mods$obsRate_LCL <- dataDec_mods$obsRate - 1.96 * dataDec_mods$obsRate_SE
+  
+  dataDec_mods <- as.data.frame(dataDec_mods)
+  
+  if (! is.null(group)) {
+    dataDec_mods[ , group] <- factor(dataDec_mods[ , group])
+    calibPlot_obj <-
+      ggplot(data = dataDec_mods, aes(y = .data$obsRate, x = .data$predRate, group = !!sym(group), color = !!sym(group))) +
+      geom_point() +
+      lims(x = ifelse(rep(is.null(x_lim), 2), c(min(dataDec_mods$predRate), max(dataDec_mods$predRate)), x_lim),
+           y = ifelse(rep(is.null(y_lim), 2), c(min(dataDec_mods$obsRate_LCL), max(dataDec_mods$obsRate_UCL)), y_lim)) +
+      geom_errorbar(aes(ymax = .data$obsRate_UCL, ymin = .data$obsRate_LCL)) +
+      geom_abline(intercept = 0, slope = 1) +
+      scale_color_manual(values = ifelse(rep(is.null(points_col_list), n_groups),
+                                         (ggplot2::scale_colour_brewer(palette = "Set3")$palette(8)[c(4 : 8, 1 : 3)])[c(1 : n_groups)],
+                                         points_col_list)) +
+      labs(x = ifelse(is.null(xlab), pred, xlab),
+           y = ifelse(is.null(ylab), obs, ylab),
+           title = title) +
+      theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+            panel.background = element_blank(), axis.line = element_line(colour = "black"),
+            legend.key = element_rect(fill = "white"),
+            axis.text = element_text(colour = "black", size = 12),
+            legend.position = legendPosition)
+  }
+  else {
+    calibPlot_obj <-
+      ggplot(data = dataDec_mods, aes(y = .data$obsRate, x = .data$predRate)) +
+      geom_point(color = ggplot2::scale_colour_brewer(palette = "Set3")$palette(8)[5]) +
+      lims(x = ifelse(rep(is.null(x_lim), 2), c(min(dataDec_mods$predRate), max(dataDec_mods$predRate)), x_lim),
+           y = ifelse(rep(is.null(y_lim), 2), c(min(dataDec_mods$obsRate_LCL), max(dataDec_mods$obsRate_UCL)), y_lim)) +
+      geom_errorbar(aes(ymax = .data$obsRate_UCL, ymin = .data$obsRate_LCL),
+                    col = ifelse(is.null(points_col_list),
+                                 ggplot2::scale_colour_brewer(palette = "Set3")$palette(8)[5],
+                                 points_col_list)) +
+      geom_abline(intercept = 0, slope = 1) +
+      scale_color_manual(values = ifelse(is.null(points_col_list),
+                                         ggplot2::scale_colour_brewer(palette = "Set3")$palette(8)[5],
+                                         points_col_list)) +
+      labs(x = ifelse(is.null(xlab), pred, xlab),
+           y = ifelse(is.null(ylab), obs, ylab),
+           title = title) +
+      theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+            panel.background = element_blank(), axis.line = element_line(colour = "black"),
+            axis.text = element_text(colour = "black", size = 12),
+            legend.position = legendPosition)
+  }
+  
+  res_list <- list(calibration_plot = calibPlot_obj)
+  if (data_summary) res_list$data_summary <- dataDec_mods
+
+  return(res_list)
+}

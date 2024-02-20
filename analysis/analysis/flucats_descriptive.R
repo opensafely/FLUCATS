@@ -229,6 +229,8 @@ summarise_and_export_data(df_adult, variables, "output/results/descriptive/demog
 
 flucats_vars <- c("total_CAT", "flucats_a", "flucats_b", "flucats_c", "flucats_d", "flucats_e", "flucats_f", "flucats_g")
 
+
+
 #Table 5-8: flucats criteria by outcome 
 #CHILD
 summarise_and_export_data(df_child, flucats_vars, "output/results/descriptive/flucat_criteria_counts_child_hospitalisation.csv", split_by="hosp_24h")
