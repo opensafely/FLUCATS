@@ -138,6 +138,9 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
   print(table(data[[pred]] > 0.5))
 
   data <- data[, c(obs, pred)]
+  
+  # print shape of data
+  print(dim(data))
   print(head(data))
 
   output <- tryCatch({
