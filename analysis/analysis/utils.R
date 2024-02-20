@@ -195,7 +195,7 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
     
     }
     print(file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
-    generate_calibration_plot(data = dataset, obs = outcome_name, pred = predictions, output_path = file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
+    generate_calibration_plot(data = dataset, obs = outcome_name, pred = "predictions", output_path = file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
     
   } else {
     # Write empty files if the model is null
