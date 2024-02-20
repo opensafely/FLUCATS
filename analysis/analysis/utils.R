@@ -164,11 +164,10 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
   
   
   if (!is.null(output)) {
-    # Write the output or error message to the specified CSV file
-    write.csv(output$data_summary, output_file, row.names = FALSE)
+    write.csv(output$data_summary, output_path, row.names = FALSE)
 
   } else {
-    write.csv(data.frame(), output_file)
+    write.csv(data.frame(), output_path)
   }
 }
 
