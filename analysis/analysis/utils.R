@@ -154,11 +154,13 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
 
 generate_model_evaluation <- function(model, dataset, outcome_name, model_name, results_dir) {
   
-  
+
   
   if (!is.null(model)) {
-    # Predict the outcome
-    dataset$predictions <- predict.glm(model, type = "response")
+    dataset.p <- expand.grid(w=dataset$w, x=dataset$x, z=levels(dataset$z))
+    dataset.p[[outcome_name]] <- dataset[[outcome_name]]
+    dataset.p$predictions <- predict.glm(model, dataset, type = "response", allow.new.levels = TRUE)
+
     
   
     if (length(unique(dataset[[outcome_name]])) < 2) {    
@@ -167,7 +169,7 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
 
     }
     else {
-      mroc <- roc(dataset[[outcome_name]], dataset$predictions, plot = TRUE)
+      mroc <- roc(dataset[[outcome_name]], dataset.p$predictions, plot = TRUE)
       roc_data <- data.frame(
         fpr = 1 - mroc$specificities,
         sensitivity = mroc$sensitivities,
@@ -187,7 +189,7 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
     
     }
     print(file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
-    generate_calibration_plot(data = dataset, obs = outcome_name, pred = predictions, output_path = file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
+    generate_calibration_plot(data = dataset.p, obs = column_name, pred = predictions, output_path = file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
     
   } else {
     # Write empty files if the model is null
@@ -206,8 +208,11 @@ fit_model_and_evaluate <- function(formula, data, family, outcome_name, model_na
     dir.create(results_dir, recursive = TRUE)
   }
 
+  data$obesity_mod <- factor(data$obesity_mod, levels = c("yes", "no", "missing"))
+
   model <- fit_model(formula, data, family)
   saveSummary(model, file.path(results_dir, paste(model_name, "summary.txt", sep = "_")))
+  data$obesity_mod <- factor(data$obesity_mod, levels = c("yes", "no", "missing"))
   generate_model_evaluation(model, data, outcome_name, model_name, results_dir)
 }
 
