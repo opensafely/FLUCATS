@@ -75,53 +75,8 @@ fit_model_and_evaluate(hosp_24h_prob_cov ~ total_CAT, df_child, "binomial", "hos
 
 # severe outcome
 
-
-
-model_so_a_totalCat_adj = fit_model(severe_outcome ~ total_CAT + age + sex + obesity_mod + comorb_number, data = df_adult, family = "binomial")
-saveSummary(model_so_a_totalCat_adj, "output/results/models_combined_criteria/severe_outcome_adult_adj_summary.txt")
-
-if (!is.null(model_so_a_totalCat_adj)) {
-    # Predict the outcome
-    df_adult$predictions_model_so_a_totalCat_adj <- predict.glm(model_so_a_totalCat_adj, df_adult, type = "response")
-    
-  
-    if (length(unique(df_adult$severe_outcome)) < 2) {    
-      write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_severe_outcome_adult_adj.csv")
-      write.csv(data.frame(), "output/results/models_combined_criteria/aucs_severe_outcome_adult_adj.csv")
-
-    }
-    else {
-      mroc <- roc(df_adult$severe_outcome, dataset$predictions, plot = TRUE)
-      roc_data <- data.frame(
-        fpr = 1 - mroc$specificities,
-        sensitivity = mroc$sensitivities,
-        thresholds = mroc$thresholds
-      )
-      
-      write.csv(roc_data, "output/results/models_combined_criteria/roc_data_severe_outcome_adult_adj.csv")
-    
-    
-      # AUC and its CI
-      auc_value <- auc(mroc) 
-      auc_ci <- ci.auc(mroc)
-      auc_ci_str <- paste("AUC: ", round(auc_ci[2], 5), " (CI: ", round(auc_ci[1], 5), "-", round(auc_ci[3], 5), ")")
-      
-      aucs_data <- data.frame(auc = auc_ci_str)
-      write.csv(aucs_data, "output/results/models_combined_criteria/aucs_severe_outcome_adult_adj.csv")
-      
-    }
-  
-    generate_calibration_plot(data = dataset, obs = outcome_name, pred = predictions, output_path = "output/results/models_combined_criteria/calibration_summary_severe_outcome_adult_adj.csv")
-    
-  } else {
-    # Write empty files if the model is null
-    write.csv(data.frame(), "output/results/models_combined_criteria/roc_data_severe_outcome_adult_adj.csv")
-    write.csv(data.frame(), "output/results/models_combined_criteria/aucs_severe_outcome_adult_adj.csv")
-    write.csv(data.frame(), "output/results/models_combined_criteria/calibration_severe_outcome_adult_adj.csv")
-  }
-
-# fit_model_and_evaluate(severe_outcome ~ total_CAT +
-#                                     age + sex + obesity_mod + comorb_number, df_adult, "binomial", "severe_outcome", "severe_outcome_adj", "output/results/models_combined_criteria")
+fit_model_and_evaluate(severe_outcome ~ total_CAT +
+                                    age + sex + obesity_mod + comorb_number, df_adult, "binomial", "severe_outcome", "severe_outcome_adj", "output/results/models_combined_criteria")
 
 # model_so_a_adj_totalCAT <- fit_model(severe_outcome ~ total_CAT +
 #                                     age + sex + obesity_mod + comorb_number, data = df_adult, family = binomial)
