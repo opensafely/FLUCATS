@@ -20,11 +20,14 @@ df$obesity_mod <- ifelse(df$obesity_mod == "1", "yes", df$obesity_mod)
 df$obesity_mod <- ifelse(df$obesity_mod == "0", "no", df$obesity_mod)
 
 # convert to factor
-df$obesity_mod <- as.factor(df$obesity_mod)
+
 
 
 df_child <- df[df$category == "Child",]
 df_adult <- df[df$category == "Adult",]
+
+df_child$obesity_mod <- factor(df_child$obesity_mod, levels = c("yes", "no", "missing"))
+df_adult$obesity_mod <- factor(df_adult$obesity_mod, levels = c("yes", "no", "missing"))
 
 print(table(df_child$obesity_mod))
 print(table(df_adult$obesity_mod))
