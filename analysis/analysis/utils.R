@@ -131,6 +131,12 @@ fit_model_if_two_factors <- function(df, y_var, ...){
 generate_calibration_plot <- function(data, obs, pred, output_path) {
   print("Generating calibration plot")
   print(output_path)
+
+  print(table(data[[obs]]))
+  
+  #
+  print(table(data[[pred]] > 0.5))
+
   output <- tryCatch({
     calibration_plot(data = data, obs = obs, pred = pred, data_summary = TRUE)
   }, error = function(e) {
