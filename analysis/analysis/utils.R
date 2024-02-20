@@ -195,6 +195,12 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
     
     }
     print(file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
+
+    # check if any nas in the outcome and predictions
+    if (sum(is.na(dataset[[outcome_name]])) > 0 | sum(is.na(dataset$predictions)) > 0) {
+      message("There are NAs in the outcome or predictions.")
+    }
+
     generate_calibration_plot(data = dataset, obs = outcome_name, pred = "predictions", output_path = file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
     
   } else {
