@@ -129,6 +129,7 @@ fit_model_if_two_factors <- function(df, y_var, ...){
 
 
 generate_calibration_plot <- function(data, obs, pred, output_path) {
+  data = as.data.frame(data)
   print("Generating calibration plot")
   print(output_path)
 
