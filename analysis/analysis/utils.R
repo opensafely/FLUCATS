@@ -289,6 +289,7 @@ calibration_plot_safe <- function(data,
   
   # get the number of events - obsNo * obsRate
   dataDec_mods$events <- dataDec_mods$obsNo * dataDec_mods$obsRate
+  print(dataDec_mods)
 
   # Filter rows where events <= 7
   dataDec_mods <- dataDec_mods %>% filter(events > 7)
