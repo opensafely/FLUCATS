@@ -103,7 +103,7 @@ fit_model <- function(formula, data, family) {
   }
   
   tryCatch({
-    model <- glm(formula, data = data, family = family)
+    model <- glm(formula, data = data, family = family, na.action = na.omit)
     if (!model$converged) {
       stop("Model did not converge")
     }
@@ -119,7 +119,7 @@ fit_model <- function(formula, data, family) {
 fit_model_if_two_factors <- function(df, y_var, ...){
   if(length(unique(df[[y_var]])) >= 2){
     formula <- as.formula(paste(y_var, "~", paste(list(...), collapse = " + ")))
-    model <- glm(formula, data = df, family = binomial)
+    model <- glm(formula, data = df, family = binomial, na.action = na.omit)
     return(model)
   } else {
     return(NULL)
