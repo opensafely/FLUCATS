@@ -158,7 +158,7 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
   
   if (!is.null(model)) {
     # Predict the outcome
-    dataset$predictions <- predict.glm(model, dataset, type = "response")
+    dataset$predictions <- predict.glm(model, dataset, type = "response", na.action = na.omit)
     
   
     if (length(unique(dataset[[outcome_name]])) < 2) {    
