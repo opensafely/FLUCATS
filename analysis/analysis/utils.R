@@ -308,6 +308,7 @@ calibration_plot_safe <- function(data,
   dataDec_mods$obsRate_LCL <- dataDec_mods$obsRate - 1.96 * dataDec_mods$obsRate_SE
   
   dataDec_mods <- as.data.frame(dataDec_mods)
+  print(dataDec_mods)
   
   if (! is.null(group)) {
     dataDec_mods[ , group] <- factor(dataDec_mods[ , group])
@@ -352,7 +353,7 @@ calibration_plot_safe <- function(data,
             axis.text = element_text(colour = "black", size = 12),
             legend.position = legendPosition)
   }
-  
+  print(dataDec_mods)
   res_list <- list(calibration_plot = calibPlot_obj)
   if (data_summary) res_list$data_summary <- dataDec_mods
 
