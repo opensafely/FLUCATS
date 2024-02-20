@@ -97,6 +97,11 @@ summarise_and_export_data <- function(df, variables, output_file, split_by = NUL
 
 
 fit_model <- function(formula, data, family) {
+  
+  if (length(unique(data[[as.character(formula[[2]])]])) < 2) {
+    return(NULL)
+  }
+  
   tryCatch({
     model <- glm(formula, data = data, family = family)
     if (!model$converged) {
@@ -149,9 +154,7 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
 
 generate_model_evaluation <- function(model, dataset, outcome_name, model_name, results_dir) {
   
-  if (!dir.exists(results_dir)) {
-    dir.create(results_dir, recursive = TRUE)
-  }
+  
   
   if (!is.null(model)) {
     # Predict the outcome
@@ -193,3 +196,17 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
     write.csv(data.frame(), file.path(results_dir, paste("calibration", model_name, ".csv", sep = "_")))
   }
 }
+
+
+
+# function that combines fit_model, saveSummary and generate_model_evaluation
+
+fit_model_and_evaluate <- function(formula, data, family, outcome_name, model_name, results_dir) {
+  if (!dir.exists(results_dir)) {
+    dir.create(results_dir, recursive = TRUE)
+  }
+  model <- fit_model(formula, data, family)
+  saveSummary(model, file.path(results_dir, paste(model_name, "summary.txt", sep = "_")))
+  generate_model_evaluation(model, data, outcome_name, model_name, results_dir)
+}
+
