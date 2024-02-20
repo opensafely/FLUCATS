@@ -116,35 +116,54 @@ write.csv(summary_df, "output/results/descriptive/demographics.csv", row.names =
 # save table of outcomes - this is the sum of each of the following columns in adults, children and total
 # hosp_24h, hosp_24h_susp_cov, hosp_24h_prob_cov, death_30d_pc, death_30d_ons, icu_adm, severe_outcome
 
+
 outcomes <- df %>%
   ungroup() %>%
   summarise(
-    Count = sum(hosp_24h) + sum(hosp_24h_susp_cov) + sum(hosp_24h_prob_cov) + sum(death_30d_pc) + sum(death_30d_ons) + sum(icu_adm) + sum(severe_outcome),
+    hosp_24h = sum(hosp_24h),
+    hosp_24h_susp_cov = sum(hosp_24h_susp_cov),
+    hosp_24h_prob_cov = sum(hosp_24h_prob_cov),
+    death_30d_pc = sum(death_30d_pc),
+    death_30d_ons = sum(death_30d_ons),
+    icu_adm = sum(icu_adm),
+    severe_outcome = sum(severe_outcome)
   )
-
 
 # the above, but filtered to children and adults
 outcomes_child <- df %>%
   ungroup() %>%
   filter(category == "Child") %>%
   summarise(
-    Count = sum(hosp_24h) + sum(hosp_24h_susp_cov) + sum(hosp_24h_prob_cov) + sum(death_30d_pc) + sum(death_30d_ons) + sum(icu_adm) + sum(severe_outcome)
+    hosp_24h = sum(hosp_24h),
+    hosp_24h_susp_cov = sum(hosp_24h_susp_cov),
+    hosp_24h_prob_cov = sum(hosp_24h_prob_cov),
+    death_30d_pc = sum(death_30d_pc),
+    death_30d_ons = sum(death_30d_ons),
+    icu_adm = sum(icu_adm),
+    severe_outcome = sum(severe_outcome)
   )
 
 outcomes_adult <- df %>%
   ungroup() %>%
   filter(category == "Adult") %>%
   summarise(
-    Count = sum(hosp_24h) + sum(hosp_24h_susp_cov) + sum(hosp_24h_prob_cov) + sum(death_30d_pc) + sum(death_30d_ons) + sum(icu_adm) + sum(severe_outcome)
+    hosp_24h = sum(hosp_24h),
+    hosp_24h_susp_cov = sum(hosp_24h_susp_cov),
+    hosp_24h_prob_cov = sum(hosp_24h_prob_cov),
+    death_30d_pc = sum(death_30d_pc),
+    death_30d_ons = sum(death_30d_ons),
+    icu_adm = sum(icu_adm),
+    severe_outcome = sum(severe_outcome)
   )
+
 
 outcomes <- rbind(outcomes, outcomes_child, outcomes_adult)
 outcomes_combined <- outcomes %>%
   mutate_all(~ifelse(. <= 7, 0, .)) %>%
   mutate_all(~round(./5) * 5)
 
-print(outcomes_combined)
-
+# set row names
+rownames(outcomes_combined) <- c("Total", "Child", "Adult")
 
 
 write.csv(outcomes_combined, "output/results/descriptive/outcomes.csv", row.names = TRUE)
