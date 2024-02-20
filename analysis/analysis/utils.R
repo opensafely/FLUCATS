@@ -137,7 +137,7 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
   #
   print(table(data[[pred]] > 0.5))
 
- 
+  data <- data[, c(obs, pred)]
   print(head(data))
 
   output <- tryCatch({
@@ -195,7 +195,8 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
     
     aucs_data <- data.frame(auc = auc_ci_str)
     write.csv(aucs_data, file.path(results_dir, paste("aucs", model_name, ".csv", sep = "_")))
-    
+
+
     }
     print(file.path(results_dir, paste("calibration_summary", model_name, ".csv", sep = "_")))
 
