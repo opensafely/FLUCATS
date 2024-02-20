@@ -44,7 +44,7 @@ write.csv(filtered_age_band_counts, "output/results/descriptive/age_hist.csv")
 
 # Get counts of template use over time
 df <- df %>% 
-  mutate(template_week = week(ymd(flucats_template_date)))
+  mutate(template_week = format(ymd(flucats_template_date), "%Y-%W"))
 
 week_counts <- df %>%
   count(template_week)
