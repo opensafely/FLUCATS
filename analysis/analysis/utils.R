@@ -145,7 +145,7 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
   print(head(data))
 
   output <- tryCatch({
-    calibration_plot(data = data, obs = obs, pred = pred, data_summary = TRUE)
+    calibration_plot_safe(data = data, obs = obs, pred = pred, data_summary = TRUE)
   }, error = function(e) {
     
     # add errro message
@@ -155,7 +155,7 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
   })
 
   output <- tryCatch({
-    calibration_plot(data = data, obs = obs, pred = pred, data_summary = TRUE)
+    calibration_plot_safe(data = data, obs = obs, pred = pred, data_summary = TRUE)
   }, error = function(e) {
     message("An error occurred, writing error message to CSV. Error: ", e)
     return(NULL)  #
@@ -295,7 +295,7 @@ calibration_plot_safe <- function(data,
   # Recalculate obsRate
   total_obs <- sum(dataDec_mods$obsNo)
   dataDec_mods$obsRate <- dataDec_mods$obsNo / total_obs
-  
+
   dataDec_mods$obsRate_UCL <- dataDec_mods$obsRate + 1.96 * dataDec_mods$obsRate_SE
   dataDec_mods$obsRate_LCL <- dataDec_mods$obsRate - 1.96 * dataDec_mods$obsRate_SE
   
