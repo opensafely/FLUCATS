@@ -1720,8 +1720,7 @@ actions:
     needs: [create_extra_vars]
     outputs:
       moderately_sensitive:
-        summaries_adult: output/results/models_individual_criteria/adult*.txt
-        summaries_child: output/results/models_individual_criteria/child*.txt
+        summaries: output/results/models_individual_criteria/*.txt
         aucs: output/results/models_individual_criteria/aucs*.csv
         roc: output/results/models_individual_criteria/roc*.csv
         calibration: output/results/models_individual_criteria/calibration*.csv
