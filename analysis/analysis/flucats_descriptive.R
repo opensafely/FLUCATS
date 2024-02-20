@@ -97,10 +97,17 @@ calculate_summary <- function(data, condition_col, condition_val, total) {
 # Total count of patients
 total <- nrow(df)
 
-female_summary <- calculate_summary(df, "sex", "F", total)
-male_summary <- calculate_summary(df, "sex", "M", total)
-child_summary <- calculate_summary(df, "category", "Child", total)
-adult_summary <- calculate_summary(df, "category", "Adult", total)
+# for sex and category, only want the last encounter for each patient
+df_last <- df %>% 
+  group_by(patient_id) %>% 
+  filter(row_number() == n())
+
+
+
+female_summary <- calculate_summary(df_last, "sex", "F", total)
+male_summary <- calculate_summary(df_last, "sex", "M", total)
+child_summary <- calculate_summary(df_last, "category", "Child", total)
+adult_summary <- calculate_summary(df_last, "category", "Adult", total)
 hospital_summary <- calculate_summary(df, "hospital_admission", 1, total)
 
 # Creating a dataframe for the summaries
