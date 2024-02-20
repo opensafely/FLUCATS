@@ -1,6 +1,7 @@
 library(pROC)
 library(dplyr)
 library(predtools)
+library(ggplot2) 
 
 ensureDirExists <- function(filepath) {
   dir <- dirname(filepath)
@@ -289,12 +290,11 @@ calibration_plot_safe <- function(data,
   
   # get the number of events - obsNo * obsRate
   dataDec_mods$events <- as.integer(dataDec_mods$obsNo * dataDec_mods$obsRate)
-  print(dataDec_mods)
+
 
   # Filter rows where events <= 7
   dataDec_mods <- dataDec_mods %>% filter(events > 7)
 
-  print(dataDec_mods)
 
   # round events to the nearest 5
   dataDec_mods$events <- round(dataDec_mods$events / 5) * 5
@@ -307,8 +307,11 @@ calibration_plot_safe <- function(data,
   dataDec_mods$obsRate_UCL <- dataDec_mods$obsRate + 1.96 * dataDec_mods$obsRate_SE
   dataDec_mods$obsRate_LCL <- dataDec_mods$obsRate - 1.96 * dataDec_mods$obsRate_SE
   
+  # drop events
+  dataDec_mods <- dataDec_mods %>% select(-events)
+
   dataDec_mods <- as.data.frame(dataDec_mods)
-  print(dataDec_mods)
+
   
   if (! is.null(group)) {
     dataDec_mods[ , group] <- factor(dataDec_mods[ , group])
@@ -353,7 +356,7 @@ calibration_plot_safe <- function(data,
             axis.text = element_text(colour = "black", size = 12),
             legend.position = legendPosition)
   }
-  print(dataDec_mods)
+ 
   res_list <- list(calibration_plot = calibPlot_obj)
   if (data_summary) res_list$data_summary <- dataDec_mods
 
