@@ -154,16 +154,22 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
   
   })
 
+  output <- tryCatch({
+    calibration_plot(data = data, obs = obs, pred = pred, data_summary = TRUE)
+  }, error = function(e) {
+    message("An error occurred, writing error message to CSV. Error: ", e)
+    return(NULL)  #
+  })
 
-  output_file <- if ("Error" %in% names(output)) {
-    paste0(output_path)
-  } else {
-    paste0(output_path)
-  }
   
-  # Write the output or error message to the specified CSV file
-  write.csv(output, output_file, row.names = FALSE)
+  
+  if (!is.null(output)) {
+    # Write the output or error message to the specified CSV file
+    write.csv(output$data_summary, output_file, row.names = FALSE)
 
+  } else {
+    write.csv(data.frame(), output_file)
+  }
 }
 
 
