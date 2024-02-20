@@ -288,11 +288,13 @@ calibration_plot_safe <- function(data,
 
   
   # get the number of events - obsNo * obsRate
-  dataDec_mods$events <- dataDec_mods$obsNo * dataDec_mods$obsRate
+  dataDec_mods$events <- as.integer(dataDec_mods$obsNo * dataDec_mods$obsRate)
   print(dataDec_mods)
 
   # Filter rows where events <= 7
   dataDec_mods <- dataDec_mods %>% filter(events > 7)
+
+  print(dataDec_mods)
 
   # round events to the nearest 5
   dataDec_mods$events <- round(dataDec_mods$events / 5) * 5
