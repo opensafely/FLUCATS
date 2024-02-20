@@ -95,8 +95,8 @@ if (!is.null(isaric_mod)) {
   auc_hosp_ci <- ci.auc(mroc_hosp) #print value
   auc_hosp_ci_str <- paste0("AUC: ", round(auc_hosp_ci[2], 5), " (", round(auc_hosp_ci[1], 5), " - ", round(auc_hosp_ci[3], 5), ")")
 
-  aucs_hosp <- data.frame(auc_hosp, auc_hosp_ci_str)
-  colnames(aucs_hosp) <- c("auc", "ci")
+  aucs_hosp <- data.frame(auc_hosp_ci_str)
+  colnames(aucs_hosp) <- c("ci")
   write.csv(aucs_hosp, "output/results/isaric/isaric_aucs_hosp_isaric.csv")
 
   generate_calibration_plot(data = df, obs = "hosp_24h", pred = "prediction_hosp", output_path = "output/results/isaric_calibration_summary_hosp.csv")
