@@ -70,9 +70,9 @@ fit_model_and_evaluate(severe_outcome ~ flucats_a + flucats_b + flucats_c + fluc
 # Other adjusted models
 
 # Usage
-fit_model_and_evaluate(hosp_24h ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g + age + sex + obesity_mod + comorb_number, df_adult, "binomial", "hosp_adult", "hosp_adult_adj", "output/results/models_individual_criteria")
+fit_model_and_evaluate(hosp_24h ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g + age + sex + obesity_mod + comorb_number, df_adult, "binomial", "hosp_24h", "hosp_adult_adj", "output/results/models_individual_criteria")
 
-fit_model_and_evaluate(hosp_24h ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g + age + sex + obesity_mod + comorb_number, df_child, "binomial", "hosp_child", "hosp_child_adj", "output/results/models_individual_criteria")
+fit_model_and_evaluate(hosp_24h ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g + age + sex + obesity_mod + comorb_number, df_child, "binomial", "hosp_24h", "hosp_child_adj", "output/results/models_individual_criteria")
 
 fit_model_and_evaluate(covid_hosp_susp ~ flucats_a + flucats_b + flucats_c + flucats_d + flucats_e + flucats_f + flucats_g + age + sex + obesity_mod + comorb_number, df_adult, "binomial", "covid_hosp_susp", "covid_hosp_susp_adult_adj", "output/results/models_individual_criteria")
 
