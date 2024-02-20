@@ -1744,7 +1744,7 @@ actions:
           calibration: output/results/models_combined_criteria/calibration*.csv
 
   combine_aucs_combined:
-      run: r:latest analysis/analysis/combine_aucs.R output/results/models_combined_criteria aucs_covid_hosp_prob_adult_adj_.csv aucs_covid_hosp_prob_child_adj_.csv aucs_covid_hosp_susp_adult_adj_.csv aucs_covid_hosp_susp_child_adj_.csv aucs_hosp_adult_.csv aucs_hosp_adult_adj_.csv aucs_hosp_adult_prob_cov_.csv aucs_hosp_adult_susp_cov_.csv aucs_hosp_child_.csv aucs_hosp_child_adj_.csv aucs_hosp_child_prob_cov_.csv aucs_hosp_child_susp_cov_.csv aucs_severe_outcome_.csv aucs_severe_outcome_adj_.csv
+      run: r:latest analysis/analysis/combine_aucs.R output/results/models_combined_criteria aucs_covid_hosp_prob_adult_adj_.csv aucs_covid_hosp_prob_child_adj_.csv aucs_covid_hosp_susp_adult_adj_.csv aucs_covid_hosp_susp_child_adj_.csv aucs_hosp_adult_.csv aucs_hosp_adult_adj_.csv aucs_hosp_adult_prob_cov_.csv aucs_hosp_adult_susp_cov_.csv aucs_hosp_child_.csv aucs_hosp_child_adj_.csv aucs_hosp_child_susp_cov_.csv aucs_severe_outcome_.csv aucs_severe_outcome_adj_.csv
       needs: [models_individual_criteria]
       outputs:
         moderately_sensitive:
