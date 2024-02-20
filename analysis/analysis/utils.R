@@ -145,7 +145,7 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
   print(head(data))
 
   output <- tryCatch({
-    calibration_plot(data = data, obs = obs, pred = pred, data_summary = TRUE)
+    calibration_plot_safe(data = data, obs = obs, pred = pred, data_summary = TRUE)
   }, error = function(e) {
     
     # add errro message
@@ -155,7 +155,7 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
   })
 
   output <- tryCatch({
-    calibration_plot(data = data, obs = obs, pred = pred, data_summary = TRUE)
+    calibration_plot_safe(data = data, obs = obs, pred = pred, data_summary = TRUE)
   }, error = function(e) {
     message("An error occurred, writing error message to CSV. Error: ", e)
     return(NULL)  #
@@ -286,15 +286,20 @@ calibration_plot_safe <- function(data,
                 predRate = mean(!!sym(pred), na.rm = T)) -> dataDec_mods
   }
 
-  # Filter rows where obsNo <= 7
-  dataDec_mods <- dataDec_mods %>% filter(obsNo > 7)
+  
+  # get the number of events - obsNo * obsRate
+  dataDec_mods$events <- dataDec_mods$obsNo * dataDec_mods$obsRate
 
-  # Round obsNo to the nearest 5
+  # Filter rows where events <= 7
+  dataDec_mods <- dataDec_mods %>% filter(events > 7)
+
+  # round events to the nearest 5
+  dataDec_mods$events <- round(dataDec_mods$events / 5) * 5
+  # round obsNo to the nearest 5
   dataDec_mods$obsNo <- round(dataDec_mods$obsNo / 5) * 5
 
-  # Recalculate obsRate
-  
-  dataDec_mods$obsRate <- dataDec_mods$obsNo / total_obs
+  # recalculate obsRate
+  dataDec_mods$obsRate <- dataDec_mods$events / dataDec_mods$obsNo
 
   dataDec_mods$obsRate_UCL <- dataDec_mods$obsRate + 1.96 * dataDec_mods$obsRate_SE
   dataDec_mods$obsRate_LCL <- dataDec_mods$obsRate - 1.96 * dataDec_mods$obsRate_SE
