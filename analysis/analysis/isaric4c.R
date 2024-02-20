@@ -93,7 +93,7 @@ if (!is.null(isaric_mod)) {
 
   auc_hosp <- auc(mroc_hosp) #print value
   auc_hosp_ci <- ci.auc(mroc_hosp) #print value
-  auc_hosp_ci_str <- paste0(round(auc_hosp_ci[2], 3), " (", round(auc_hosp_ci[1], 3), " - ", round(auc_hosp_ci[3], 3), ")")
+  auc_hosp_ci_str <- paste0("AUC: ", round(auc_hosp_ci[2], 5), " (", round(auc_hosp_ci[1], 5), " - ", round(auc_hosp_ci[3], 5), ")")
 
   aucs_hosp <- data.frame(auc_hosp, auc_hosp_ci_str)
   colnames(aucs_hosp) <- c("auc", "ci")
