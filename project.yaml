@@ -1757,3 +1757,10 @@ actions:
         moderately_sensitive:
           tables: output/results/isaric/isaric*.csv
           txt: output/results/isaric/isaric*.txt
+
+  combine_aucs_isaric:
+      run: r:latest analysis/analysis/combine_aucs.R output/results/isaric isaric_aucs_hosp_isaric.csv isaric_aucs_hosp_prob_cov_isaric.csv isaric_aucs_hosp_susp_cov_isaric.csv
+      needs: [isaric]
+      outputs:
+        moderately_sensitive:
+          table: output/results/isaric/aucs_combined.csv
