@@ -125,6 +125,7 @@ outcomes <- df %>%
     hosp_24h_prob_cov = sum(hosp_24h_prob_cov),
     death_30d_pc = sum(death_30d_pc),
     death_30d_ons = sum(death_30d_ons),
+    covid_death_30d_ons = sum(covid_death_30d_ons),
     icu_adm = sum(icu_adm),
     severe_outcome = sum(severe_outcome)
   )
@@ -139,6 +140,7 @@ outcomes_child <- df %>%
     hosp_24h_prob_cov = sum(hosp_24h_prob_cov),
     death_30d_pc = sum(death_30d_pc),
     death_30d_ons = sum(death_30d_ons),
+    covid_death_30d_ons = sum(covid_death_30d_ons),
     icu_adm = sum(icu_adm),
     severe_outcome = sum(severe_outcome)
   )
@@ -152,6 +154,7 @@ outcomes_adult <- df %>%
     hosp_24h_prob_cov = sum(hosp_24h_prob_cov),
     death_30d_pc = sum(death_30d_pc),
     death_30d_ons = sum(death_30d_ons),
+    covid_death_30d_ons = sum(covid_death_30d_ons),
     icu_adm = sum(icu_adm),
     severe_outcome = sum(severe_outcome)
   )
