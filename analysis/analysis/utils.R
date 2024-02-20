@@ -205,8 +205,12 @@ fit_model_and_evaluate <- function(formula, data, family, outcome_name, model_na
   if (!dir.exists(results_dir)) {
     dir.create(results_dir, recursive = TRUE)
   }
+
+  data$obesity_mod <- as.factor(data$obesity_mod, levels = c("yes", "no", "missing"))
+
   model <- fit_model(formula, data, family)
   saveSummary(model, file.path(results_dir, paste(model_name, "summary.txt", sep = "_")))
+  data$obesity_mod <- as.factor(data$obesity_mod, levels = c("yes", "no", "missing"))
   generate_model_evaluation(model, data, outcome_name, model_name, results_dir)
 }
 
