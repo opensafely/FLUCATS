@@ -174,7 +174,7 @@ df$bmi_primis <- ifelse(df$bmi_primis > 50, NA, df$bmi_primis)
 # get comorbitity number
 
 
-comorbidity_vars <- c("asthma", "addisons_hypoadrenalism", "chronic_heart_disease", "chronic_respiratory_disease", "ckd35_or_renal_disease", "liver_disease", "obesity", "obesity_mod",
+comorbidity_vars <- c("asthma", "addisons_hypoadrenalism", "chronic_heart_disease", "chronic_respiratory_disease", "ckd35_or_renal_disease", "liver_disease", "obesity",
                       "diabetes", "mental_illness", "neurological_disorder", "hypertension", "pneumonia", "immunosuppression_disorder", "immunosuppression_chemo",
                       "splenic_disease")
 # comorbidity_vars - these need to be converte to numeric
