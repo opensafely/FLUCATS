@@ -1725,6 +1725,13 @@ actions:
         roc: output/results/models_individual_criteria/roc*.csv
         calibration: output/results/models_individual_criteria/calibration*.csv
   
+  combine_aucs_individual:
+      run: r:latest analysis/analysis/combine_aucs.R output/results/models_individual_criteria aucs_hosp_child_.csv aucs_hosp_child_susp_cov_.csv
+      needs: [models_individual_criteria]
+      outputs:
+        moderately_sensitive:
+          table: output/results/models_individual_criteria/aucs_combined.csv
+  
   models_combined_criteria:
       run: r:latest analysis/analysis/models_combined_criteria.R
       needs: [create_extra_vars]
