@@ -126,6 +126,15 @@ fit_model <- function(formula, data, family) {
   }
   
   tryCatch({
+
+    
+    for (var in all.vars(formula)) {
+      print(var)
+      if (is.factor(data[[var]]) && length(levels(data[[var]])) < 2) {
+        print(paste("Variable", var, "has less than 2 levels"))
+      }
+    }
+
     model <- glm(formula, data = data, family = family, na.action = na.omit)
     if (!model$converged) {
       stop("Model did not converge")
