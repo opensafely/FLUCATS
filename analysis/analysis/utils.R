@@ -24,6 +24,28 @@ saveSummary <- function(model, filename) {
 
 summarise_and_export_data <- function(df, variables, output_file, split_by = NULL) {
   
+  # if the sum of the split by column is less than 100, aggregate some of the variables:
+  # age_band - over and under 50
+  # ckd_primis_stage - over and under 3
+  # region - drop
+  # ethnicity - white (1, 2, 3) and non-white
+
+  if (sum(df$split_by) < 100) {
+    # if age_band in the variables, split into over and under 50
+    if ("age_band" %in% variables) {
+      df$age_band <- ifelse(df$age_band > 50, "Over 50", "Under 50")
+    }
+    if ("ckd_primis_stage" %in% variables) {
+      df$ckd_primis_stage <- ifelse(df$ckd_primis_stage > 3, "Over 3", "Under 3")
+    }
+    if ("region" %in% variables) {
+       df$region <- NULL
+    }
+    if ("ethnicity" %in% variables) {
+      df$ethnicity <- ifelse(df$ethnicity %in% c(1, 2, 3), "White", "Non-white")
+    }
+  }
+
   summarise_data <- function(df, var) {
     if (is.numeric(df[[var]])) {
       count = sum(!is.na(df[[var]]))
