@@ -99,7 +99,7 @@ if (!is.null(isaric_mod)) {
   colnames(aucs_hosp) <- c("ci")
   write.csv(aucs_hosp, "output/results/isaric/isaric_aucs_hosp_isaric.csv")
 
-  generate_calibration_plot(data = df, obs = "hosp_24h", pred = "prediction_hosp", output_path = "output/results/isaric_calibration_summary_hosp.csv")
+  generate_calibration_plot(data = df, obs = "hosp_24h", pred = "prediction_hosp", output_path = "output/results/isaric/isaric_calibration_summary_hosp.csv")
 
 
 
@@ -133,7 +133,7 @@ if (!is.null(isaric_mod)) {
   write.csv(aucs_hosp_covid, "output/results/isaric/isaric_aucs_hosp_susp_cov_isaric.csv")
 
 
-  generate_calibration_plot(data = df, obs = "covid_hosp_susp", pred = "prediction_hosp_covid_susp", output_path = "output/results/isaric_calibration_summary_hosp_susp_cov.csv")
+  generate_calibration_plot(data = df, obs = "covid_hosp_susp", pred = "prediction_hosp_covid_susp", output_path = "output/results/isaric/isaric_calibration_summary_hosp_susp_cov.csv")
 
 
 } else {
@@ -169,7 +169,7 @@ if (!is.null(isaric_mod)) {
   write.csv(aucs_hosp_covid, "output/results/isaric/isaric_aucs_hosp_prob_cov_isaric.csv")
 
 
-  generate_calibration_plot(data = df, obs = "covid_hosp_prob", pred = "prediction_hosp_covid_prob", output_path = "output/results/isaric_calibration_summary_hosp_susp_cov.csv")
+  generate_calibration_plot(data = df, obs = "covid_hosp_prob", pred = "prediction_hosp_covid_prob", output_path = "output/results/isaric/isaric_calibration_summary_hosp_susp_cov.csv")
 
 
 } else {
