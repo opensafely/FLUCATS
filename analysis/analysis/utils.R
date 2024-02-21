@@ -130,6 +130,7 @@ fit_model <- function(formula, data, family) {
     
     for (var in all.vars(formula)) {
       print(var)
+      print(table(data[[var]]))
       if (is.factor(data[[var]]) && length(levels(data[[var]])) < 2) {
         print(paste("Variable", var, "has less than 2 levels"))
       }
@@ -226,23 +227,29 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
         thresholds = mroc$thresholds
       )
       
-      roc_data <- roc_data[!is.infinite(roc_data$thresholds), ]
+      # if length of roc_data >10, then aggregate the data
+      if (length(roc_data$thresholds) > 10) {
+        roc_data <- roc_data[!is.infinite(roc_data$thresholds), ]
 
-      desired_thresholds <- quantile(roc_data$thresholds, probs = seq(roc_data$thresholds[1], roc_data$thresholds[length(roc_data$thresholds)], length.out = 10))
-      aggregated_roc_data <- data.frame(fpr = numeric(0), sensitivity = numeric(0), thresholds = numeric(0))
-      for (threshold in desired_thresholds) {
-        idx <- which.min(abs(roc_data$thresholds - threshold))
-        aggregated_roc_data <- rbind(aggregated_roc_data, roc_data[idx, ])
+        desired_thresholds <- quantile(roc_data$thresholds, probs = seq(roc_data$thresholds[1], roc_data$thresholds[length(roc_data$thresholds)], length.out = 10))
+        print(desired_thresholds)
+        aggregated_roc_data <- data.frame(fpr = numeric(0), sensitivity = numeric(0), thresholds = numeric(0))
+        for (threshold in desired_thresholds) {
+          idx <- which.min(abs(roc_data$thresholds - threshold))
+          aggregated_roc_data <- rbind(aggregated_roc_data, roc_data[idx, ])
+        }
+        aggregated_roc_data <- aggregated_roc_data[!duplicated(aggregated_roc_data$thresholds), ]
+
+        aggregated_roc_data$thresholds <- round(aggregated_roc_data$thresholds, 6)
+        aggregated_roc_data$fpr <- round(aggregated_roc_data$fpr, 6)
+        aggregated_roc_data$sensitivity <- round(aggregated_roc_data$sensitivity, 6)
+        write.csv(aggregated_roc_data, file.path(results_dir, paste("roc_data_aggregated", model_name, ".csv", sep = "_")))
+    
       }
-      aggregated_roc_data <- aggregated_roc_data[!duplicated(aggregated_roc_data$thresholds), ]
-
-      aggregated_roc_data$thresholds <- round(aggregated_roc_data$thresholds, 6)
-      aggregated_roc_data$fpr <- round(aggregated_roc_data$fpr, 6)
-      aggregated_roc_data$sensitivity <- round(aggregated_roc_data$sensitivity, 6)
+      
 
       write.csv(roc_data, file.path(results_dir, paste("roc_data", model_name, ".csv", sep = "_")))
-      write.csv(aggregated_roc_data, file.path(results_dir, paste("roc_data_aggregated", model_name, ".csv", sep = "_")))
-    
+      
     
     # AUC and its CI
     auc_value <- auc(mroc) 
