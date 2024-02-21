@@ -265,6 +265,10 @@ fit_model_and_evaluate <- function(formula, data, family, outcome_name, model_na
   generate_model_evaluation(model, data, outcome_name, model_name, results_dir)
 }
 
+roundmid_any <- function(x, to=6){
+  # like round_any, but centers on (integer) midpoint of the rounding points
+  ceiling(x/to)*to - (floor(to/2)*(x!=0))
+}
 
 # source: https://github.com/resplab/predtools/blob/4d90f59c22485177c65cfae3778ec16ec48e950a/R/calibPlot.R
 calibration_plot_safe <- function(data,
@@ -313,15 +317,10 @@ calibration_plot_safe <- function(data,
   # get the number of events - obsNo * obsRate
   dataDec_mods$events <- as.integer(dataDec_mods$obsNo * dataDec_mods$obsRate)
 
-
-  # Filter rows where events <= 7
-  dataDec_mods <- dataDec_mods %>% filter(events > 7)
-
-
-  # round events to the nearest 5
-  dataDec_mods$events <- round(dataDec_mods$events / 5) * 5
-  # round obsNo to the nearest 5
-  dataDec_mods$obsNo <- round(dataDec_mods$obsNo / 5) * 5
+  # midpoint 6 rounding for events
+  dataDec_mods$events <- roundmid_any(dataDec_mods$events, to = 6)
+  # midpoint 6 rounding for obsNo
+  dataDec_mods$obsNo <- roundmid_any(dataDec_mods$obsNo, to = 6)
 
   # recalculate obsRate
   dataDec_mods$obsRate <- dataDec_mods$events / dataDec_mods$obsNo
