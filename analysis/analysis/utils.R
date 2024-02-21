@@ -226,7 +226,8 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
         thresholds = mroc$thresholds
       )
       
-      
+      roc_data <- roc_data[!is.infinite(roc_data$thresholds), ]
+
       desired_thresholds <- quantile(roc_data$thresholds, probs = seq(roc_data$thresholds[1], roc_data$thresholds[length(roc_data$thresholds)], length.out = 10))
       aggregated_roc_data <- data.frame(fpr = numeric(0), sensitivity = numeric(0), thresholds = numeric(0))
       for (threshold in desired_thresholds) {
