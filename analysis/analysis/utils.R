@@ -217,7 +217,21 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
         thresholds = mroc$thresholds
       )
       
+      
+      desired_thresholds <- quantile(roc_data$thresholds, probs = seq(roc_data$thresholds[1], roc_data$thresholds[length(roc_data$thresholds)], length.out = 10))
+      aggregated_roc_data <- data.frame(fpr = numeric(0), sensitivity = numeric(0), thresholds = numeric(0))
+      for (threshold in desired_thresholds) {
+        idx <- which.min(abs(roc_data$thresholds - threshold))
+        aggregated_roc_data <- rbind(aggregated_roc_data, roc_data[idx, ])
+      }
+      aggregated_roc_data <- aggregated_roc_data[!duplicated(aggregated_roc_data$thresholds), ]
+
+      aggregated_roc_data$thresholds <- round(aggregated_roc_data$thresholds, 6)
+      aggregated_roc_data$fpr <- round(aggregated_roc_data$fpr, 6)
+      aggregated_roc_data$sensitivity <- round(aggregated_roc_data$sensitivity, 6)
+
       write.csv(roc_data, file.path(results_dir, paste("roc_data", model_name, ".csv", sep = "_")))
+      write.csv(aggregated_roc_data, file.path(results_dir, paste("roc_data_aggregated", model_name, ".csv", sep = "_")))
     
     
     # AUC and its CI
