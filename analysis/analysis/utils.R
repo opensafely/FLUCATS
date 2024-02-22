@@ -28,7 +28,9 @@ summarise_and_export_data <- function(df, variables, output_file, split_by = NUL
   # age_band - over and under 50
   # ckd_primis_stage - over and under 3
   # region - drop
-  # ethnicity - white (1, 2, 3) and non-white
+  # ethnicity_opensafely - white (1, 2, 3) and non-white
+  # imdQ5 - over and under 3
+
 
   if (sum(df$split_by) < 100) {
     # if age_band in the variables, split into over and under 50
@@ -36,13 +38,19 @@ summarise_and_export_data <- function(df, variables, output_file, split_by = NUL
       df$age_band <- ifelse(df$age_band > 50, "Over 50", "Under 50")
     }
     if ("ckd_primis_stage" %in% variables) {
-      df$ckd_primis_stage <- ifelse(df$ckd_primis_stage > 3, "Over 3", "Under 3")
+      df$ckd_primis_stage <- ifelse(df$ckd_primis_stage %in% c("3", "4", "5"), "Over 3", "Under 3")
     }
     if ("region" %in% variables) {
        df$region <- NULL
     }
+    if ("ethnicity_opensafely" %in% variables) {
+      df$ethnicity <- ifelse(df$ethnicity_opensafely %in% c(1, 2, 3), "White", "Non-white")
+    }
     if ("ethnicity" %in% variables) {
       df$ethnicity <- ifelse(df$ethnicity %in% c(1, 2, 3), "White", "Non-white")
+    }
+    if ("imdQ5" %in% variables) {
+      df$imdQ5 <- ifelse(df$imdQ5 %in% c("4", "5"), "Over 3", "Under 3")
     }
   }
 
