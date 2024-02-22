@@ -162,6 +162,7 @@ fit_model_if_two_factors <- function(df, y_var, ...){
 
 
 generate_calibration_plot <- function(data, obs, pred, output_path) {
+
   data = as.data.frame(data)
   print("Generating calibration plot")
   print(output_path)
@@ -178,30 +179,20 @@ generate_calibration_plot <- function(data, obs, pred, output_path) {
   print(head(data))
 
   output <- tryCatch({
-    calibration_plot_safe(data = data, obs = obs, pred = pred, data_summary = TRUE)
-  }, error = function(e) {
-    
-    # add errro message
-    message("An error occurred, writing error message to CSV. Error: ", e)
-
-  
-  })
-
-  output <- tryCatch({
-    calibration_plot_safe(data = data, obs = obs, pred = pred, data_summary = TRUE)
+    calibration_plot(data = data, obs = obs, pred = pred, data_summary = TRUE)
   }, error = function(e) {
     message("An error occurred, writing error message to CSV. Error: ", e)
     return(NULL)  #
   })
 
-  
-  
+
   if (!is.null(output)) {
     write.csv(output$data_summary, output_path, row.names = FALSE)
 
   } else {
     write.csv(data.frame(), output_path)
   }
+
 }
 
 
