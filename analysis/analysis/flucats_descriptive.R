@@ -102,12 +102,14 @@ df_last <- df %>%
   group_by(patient_id) %>% 
   filter(row_number() == n())
 
+total_last <- nrow(df_last)
 
 
-female_summary <- calculate_summary(df_last, "sex", "F", total)
-male_summary <- calculate_summary(df_last, "sex", "M", total)
-child_summary <- calculate_summary(df_last, "category", "Child", total)
-adult_summary <- calculate_summary(df_last, "category", "Adult", total)
+
+female_summary <- calculate_summary(df_last, "sex", "F", total_last)
+male_summary <- calculate_summary(df_last, "sex", "M", total_last)
+child_summary <- calculate_summary(df_last, "category", "Child", total_last)
+adult_summary <- calculate_summary(df_last, "category", "Adult", total_last)
 hospital_summary <- calculate_summary(df, "hospital_admission", 1, total)
 
 # Creating a dataframe for the summaries
