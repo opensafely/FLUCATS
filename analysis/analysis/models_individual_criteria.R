@@ -12,10 +12,10 @@ df <- df %>%
   mutate(obesity = as.numeric(as.character(obesity)),
          obesity_mod = if_else(is.na(obesity), "missing", as.character(obesity)))
 
-print(table(df$obesity_mod))
 
-df$obesity_mod <- ifelse(df$obesity_mod == "1", "yes", df$obesity_mod)
-df$obesity_mod <- ifelse(df$obesity_mod == "0", "no", df$obesity_mod)
+
+df$obesity_mod <- ifelse(df$obesity_mod == "1", "no", df$obesity_mod)
+df$obesity_mod <- ifelse(df$obesity_mod == "2", "yes", df$obesity_mod)
 
 # convert to factor
 df$obesity_mod <- as.factor(df$obesity_mod)

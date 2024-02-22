@@ -10,14 +10,14 @@ dir.create("output/results/models_combined_criteria", showWarnings = FALSE)
 
 df <- arrow::read_feather("output/joined/full/input_all_extra_vars.feather")
 
-
+print(table(df$obesity))
 df <- df %>%
   mutate(obesity = as.numeric(as.character(obesity)),
          obesity_mod = if_else(is.na(obesity), "missing", as.character(obesity)))
 
-
-df$obesity_mod <- ifelse(df$obesity_mod == "1", "yes", df$obesity_mod)
-df$obesity_mod <- ifelse(df$obesity_mod == "0", "no", df$obesity_mod)
+print(table(df$obesity_mod))
+df$obesity_mod <- ifelse(df$obesity_mod == "1", "no", df$obesity_mod)
+df$obesity_mod <- ifelse(df$obesity_mod == "2", "yes", df$obesity_mod)
 
 df$obesity_mod <- factor(df$obesity_mod, levels = c("yes", "no", "missing"))
 
