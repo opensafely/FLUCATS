@@ -243,8 +243,8 @@ generate_model_evaluation <- function(model, dataset, outcome_name, model_name, 
         aggregated_roc_data$thresholds <- round(aggregated_roc_data$thresholds, 6)
         aggregated_roc_data$fpr <- round(aggregated_roc_data$fpr, 6)
         aggregated_roc_data$sensitivity <- round(aggregated_roc_data$sensitivity, 6)
-        aggregated_roc_data <- aggregated_roc_data[, -1]
-        write.csv(aggregated_roc_data, file.path(results_dir, paste("roc_data_aggregated", model_name, ".csv", sep = "_")))
+        
+        write.csv(aggregated_roc_data, file.path(results_dir, paste("roc_data_aggregated", model_name, ".csv", sep = "_")), row.names = FALSE)
     
       }
       
