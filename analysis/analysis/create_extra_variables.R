@@ -177,9 +177,13 @@ df$bmi_primis <- ifelse(df$bmi_primis > 50, NA, df$bmi_primis)
 comorbidity_vars <- c("asthma", "addisons_hypoadrenalism", "chronic_heart_disease", "chronic_respiratory_disease", "ckd35_or_renal_disease", "liver_disease", "obesity",
                       "diabetes", "mental_illness", "neurological_disorder", "hypertension", "pneumonia", "immunosuppression_disorder", "immunosuppression_chemo",
                       "splenic_disease")
-# comorbidity_vars - these need to be converte to numeric
+
+
 df <- df %>% 
-  mutate(across(all_of(comorbidity_vars), as.numeric))
+  mutate(across(all_of(comorbidity_vars), as.numeric),
+  across(all_of(comorbidity_vars), ~ifelse(. == 2, 1, 0)),
+  )
+
 
 df <- df %>% 
   rowwise() %>% 
