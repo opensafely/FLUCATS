@@ -16,8 +16,8 @@ df <- df %>%
          obesity_mod = if_else(is.na(obesity), "missing", as.character(obesity)))
 
 print(table(df$obesity_mod))
-df$obesity_mod <- ifelse(df$obesity_mod == "1", "no", df$obesity_mod)
-df$obesity_mod <- ifelse(df$obesity_mod == "2", "yes", df$obesity_mod)
+df$obesity_mod <- ifelse(df$obesity_mod == "0", "no", df$obesity_mod)
+df$obesity_mod <- ifelse(df$obesity_mod == "1", "yes", df$obesity_mod)
 
 df$obesity_mod <- factor(df$obesity_mod, levels = c("yes", "no", "missing"))
 

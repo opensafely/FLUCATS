@@ -14,8 +14,8 @@ df <- df %>%
 
 print(table(df$obesity_mod))
 
-df$obesity_mod <- ifelse(df$obesity_mod == "1", "no", df$obesity_mod)
-df$obesity_mod <- ifelse(df$obesity_mod == "2", "yes", df$obesity_mod)
+df$obesity_mod <- ifelse(df$obesity_mod == "0", "no", df$obesity_mod)
+df$obesity_mod <- ifelse(df$obesity_mod == "1", "yes", df$obesity_mod)
 
 # convert to factor
 df$obesity_mod <- as.factor(df$obesity_mod)
