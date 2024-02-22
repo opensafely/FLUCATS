@@ -169,7 +169,7 @@ if (!is.null(isaric_mod)) {
   write.csv(aucs_hosp_covid, "output/results/isaric/isaric_aucs_hosp_prob_cov_isaric.csv")
 
 
-  generate_calibration_plot(data = df, obs = "covid_hosp_prob", pred = "prediction_hosp_covid_prob", output_path = "output/results/isaric/isaric_calibration_summary_hosp_susp_cov.csv")
+  generate_calibration_plot(data = df, obs = "covid_hosp_prob", pred = "prediction_hosp_covid_prob", output_path = "output/results/isaric/isaric_calibration_summary_hosp_prob_cov.csv")
 
 
 } else {
