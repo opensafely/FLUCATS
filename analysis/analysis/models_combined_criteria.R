@@ -44,9 +44,9 @@ fit_model_and_evaluate(severe_outcome ~ total_CAT, df_adult, "binomial", "severe
 
 # adjusted models
 
-fit_model_and_evaluate(hosp_24h ~ total_CAT + age + sex + obesity_mod + comorb_number, df_adult, "binomial", "hosp_adult", "hosp_adult_adj", "output/results/models_combined_criteria")
+fit_model_and_evaluate(hosp_24h ~ total_CAT + age + sex + obesity_mod + comorb_number, df_adult, "binomial", "hosp_24h", "hosp_adult_adj", "output/results/models_combined_criteria")
 
-fit_model_and_evaluate(hosp_24h ~ total_CAT + age + sex + obesity_mod + comorb_number, df_child, "binomial", "hosp_child", "hosp_child_adj", "output/results/models_combined_criteria")
+fit_model_and_evaluate(hosp_24h ~ total_CAT + age + sex + obesity_mod + comorb_number, df_child, "binomial", "hosp_24h", "hosp_child_adj", "output/results/models_combined_criteria")
 
 fit_model_and_evaluate(covid_hosp_susp ~ total_CAT + age + sex + obesity_mod + comorb_number, df_adult, "binomial", "covid_hosp_susp", "covid_hosp_susp_adult_adj", "output/results/models_combined_criteria")
 
