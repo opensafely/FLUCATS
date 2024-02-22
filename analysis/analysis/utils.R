@@ -125,16 +125,25 @@ fit_model <- function(formula, data, family) {
     return(NULL)
   }
   
+  vars_to_drop = c()
+
   tryCatch({
 
     
     for (var in all.vars(formula)) {
       print(var)
       print(table(data[[var]]))
-      if (is.factor(data[[var]]) && length(levels(data[[var]])) < 2) {
-        print(paste("Variable", var, "has less than 2 levels"))
+      if (length(unique(data[[var]])) < 2) {
+        vars_to_drop <- c(vars_to_drop, var)
       }
+
     }
+
+    # remove any vars_to_drop from the formula
+    if (length(vars_to_drop) > 0) {
+      formula <- update(formula, . ~ . - paste(vars_to_drop, collapse = " + "))
+    }
+    print(formula)
 
     model <- glm(formula, data = data, family = family, na.action = na.omit)
     if (!model$converged) {
