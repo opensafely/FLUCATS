@@ -44,7 +44,7 @@ summarise_and_export_data <- function(df, variables, output_file, split_by = NUL
        df$region <- NULL
     }
     if ("ethnicity_opensafely" %in% variables) {
-      df$ethnicity <- ifelse(df$ethnicity_opensafely %in% c("1", "2", "3"), "White", "Non-white")
+      df$ethnicity_opensafely <- ifelse(df$ethnicity_opensafely %in% c("1", "2", "3"), "White", "Non-white")
     }
     if ("ethnicity" %in% variables) {
       df$ethnicity <- ifelse(df$ethnicity %in% c(1, 2, 3), "White", "Non-white")
