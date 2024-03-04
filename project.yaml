@@ -1764,3 +1764,10 @@ actions:
       outputs:
         moderately_sensitive:
           table: output/results/isaric/aucs_combined.csv
+
+  test_vars:
+      run: r:latest analysis/analysis/test_vars.R
+      needs: [create_extra_vars]
+      outputs:
+        moderately_sensitive:
+          txt: output/test_vars.txt
